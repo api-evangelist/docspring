@@ -1,0 +1,16 @@
+{
+  "summary": "Create a Folder",
+  "description": "Organize templates into folders",
+  "request": {
+    "folder": {
+      "name": "HR Documents",
+      "parent_folder_id": null
+    }
+  },
+  "response": {
+    "id": "fld_000000000000001",
+    "name": "HR Documents",
+    "path": "HR Documents",
+    "parent_folder_id": null
+  }
+}

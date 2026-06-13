@@ -1,0 +1,156 @@
+vocabulary:
+  - term: submission
+    definition: >-
+      A generated PDF document created by filling a template with dynamic data.
+      Submissions can be in states: pending, processed, invalid_data, error,
+      image_download_failed, unable_to_add_to_combined, broken.
+    tags:
+      - core
+      - document-generation
+
+  - term: template
+    definition: >-
+      A PDF form or document with defined fields that can be filled programmatically.
+      Templates serve as the reusable blueprint for generating submissions.
+    tags:
+      - core
+      - document-management
+
+  - term: combined_submission
+    definition: >-
+      A merged PDF document that concatenates multiple individual submissions into
+      a single downloadable file.
+    tags:
+      - core
+      - document-management
+
+  - term: data_request
+    definition: >-
+      A request sent to one or more signers to collect form data or legally binding
+      e-signatures for a submission. Supports multi-party signing workflows.
+    tags:
+      - core
+      - esignature
+      - workflow
+
+  - term: submission_batch
+    definition: >-
+      A bulk operation that generates multiple PDF submissions from a single API call,
+      each with its own data payload.
+    tags:
+      - core
+      - bulk-operations
+
+  - term: custom_file
+    definition: >-
+      A user-uploaded file (e.g., image, PDF page) that can be referenced within
+      template fields during submission generation.
+    tags:
+      - document-management
+
+  - term: folder
+    definition: >-
+      An organizational container for grouping templates. Folders support nesting
+      via parent_folder_id.
+    tags:
+      - document-management
+      - organization
+
+  - term: submission_action
+    definition: >-
+      An automated action triggered after a submission is generated, such as sending
+      an email, posting a webhook, or uploading to cloud storage.
+    tags:
+      - automation
+      - workflow
+
+  - term: combined_submission_action
+    definition: >-
+      An automated action triggered after a combined (merged) PDF submission is
+      generated.
+    tags:
+      - automation
+      - workflow
+
+  - term: presign
+    definition: >-
+      A pre-signed S3 upload URL and fields used to directly upload a PDF or other
+      file to DocSpring's cloud storage before creating a template.
+    tags:
+      - infrastructure
+      - uploads
+
+  - term: test_mode
+    definition: >-
+      A flag on submissions (test: true) that causes the PDF to be generated with a
+      watermark. Test submissions do not count toward billing limits.
+    tags:
+      - developer-experience
+
+  - term: wait_mode
+    definition: >-
+      Synchronous processing mode (wait: true) where the API call blocks until the
+      PDF is fully generated and returns a download URL in the response.
+    tags:
+      - processing-modes
+
+  - term: permanent_download_url
+    definition: >-
+      A permanent, authenticated URL for downloading a completed submission PDF.
+      This URL persists as long as the submission is not deleted or expired.
+    tags:
+      - document-access
+
+  - term: template_schema
+    definition: >-
+      A JSON Schema that describes the valid data structure for filling a specific
+      template's fields. Used for validating submission data before generation.
+    tags:
+      - validation
+      - developer-experience
+
+  - term: publish_version
+    definition: >-
+      The action of publishing a new version of a template after making edits,
+      making it available for new submissions.
+    tags:
+      - document-management
+      - versioning
+
+  - term: restore_version
+    definition: >-
+      Rolling back a template to a previously published version.
+    tags:
+      - document-management
+      - versioning
+
+  - term: html_template
+    definition: >-
+      A template type that accepts HTML content and converts it to a PDF, as opposed
+      to PDF-form-based templates.
+    tags:
+      - html-to-pdf
+      - template-types
+
+  - term: add_fields
+    definition: >-
+      API operation to programmatically add new fillable fields to an existing
+      template without using the visual editor.
+    tags:
+      - template-management
+
+  - term: api_token
+    definition: >-
+      Authentication credential pair consisting of an API Token ID (username) and
+      API Token Secret (password) used with HTTP Basic Authentication.
+    tags:
+      - authentication
+      - security
+
+  - term: submission_data_request_token
+    definition: >-
+      A short-lived token that grants a signer access to a data request form without
+      requiring a DocSpring account login.
+    tags:
+      - esignature
+      - authentication

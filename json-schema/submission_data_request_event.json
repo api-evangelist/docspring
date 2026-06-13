@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/docspring/main/json-schema/submission_data_request_event.json",
+  "title": "submission_data_request_event",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "nullable": true
+    },
+    "submission_id": {
+      "type": "string",
+      "nullable": true
+    },
+    "submission_data_request_id": {
+      "type": "string",
+      "nullable": true
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "send_request",
+        "view_request",
+        "accepted_terms",
+        "decline_request",
+        "sign_request",
+        "all_completed"
+      ]
+    },
+    "message_type": {
+      "type": "string",
+      "enum": [
+        "email",
+        "sms",
+        "fax",
+        "mail",
+        "slack",
+        "msteams",
+        "discord",
+        "telegram",
+        "whatsapp"
+      ],
+      "nullable": true
+    },
+    "message_recipient": {
+      "type": "string",
+      "nullable": true
+    },
+    "occurred_at": {
+      "type": "string",
+      "nullable": true
+    }
+  },
+  "required": [
+    "event_type",
+    "id",
+    "message_recipient",
+    "message_type",
+    "occurred_at",
+    "submission_data_request_id",
+    "submission_id"
+  ],
+  "additionalProperties": false
+}

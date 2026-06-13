@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/docspring/main/json-schema/submission_422_response.json",
+  "title": "submission_422_response",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "error"
+      ]
+    },
+    "error": {
+      "type": "string",
+      "description": "Single error message (for non-validation errors)"
+    },
+    "submission": {
+      "$ref": "#/definitions/submission_preview",
+      "description": "The submission object with validation errors (for validation errors)"
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Array of validation error messages (when submission data is invalid)"
+    }
+  },
+  "required": [
+    "status"
+  ],
+  "additionalProperties": false
+}

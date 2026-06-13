@@ -1,0 +1,88 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.docspring.com/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/",
+    "docspring": "https://schema.docspring.com/",
+
+    "Submission": "docspring:Submission",
+    "Template": "docspring:Template",
+    "CombinedSubmission": "docspring:CombinedSubmission",
+    "DataRequest": "docspring:DataRequest",
+    "SubmissionBatch": "docspring:SubmissionBatch",
+    "SubmissionAction": "docspring:SubmissionAction",
+    "CombinedSubmissionAction": "docspring:CombinedSubmissionAction",
+    "CustomFile": "docspring:CustomFile",
+    "Folder": "docspring:Folder",
+
+    "id": "@id",
+    "type": "@type",
+
+    "submission": {"@id": "docspring:submission", "@type": "@id"},
+    "template": {"@id": "docspring:template", "@type": "@id"},
+    "template_id": {"@id": "docspring:templateId"},
+    "submission_id": {"@id": "docspring:submissionId"},
+    "combined_submission_id": {"@id": "docspring:combinedSubmissionId"},
+    "batch_id": {"@id": "docspring:batchId"},
+    "data_request_id": {"@id": "docspring:dataRequestId"},
+    "folder_id": {"@id": "docspring:folderId"},
+    "parent_folder_id": {"@id": "docspring:parentFolderId"},
+
+    "state": {"@id": "docspring:state"},
+    "test": {"@id": "docspring:test", "@type": "xsd:boolean"},
+    "editable": {"@id": "docspring:editable", "@type": "xsd:boolean"},
+    "expired": {"@id": "docspring:expired", "@type": "xsd:boolean"},
+    "locked": {"@id": "docspring:locked", "@type": "xsd:boolean"},
+
+    "name": {"@id": "schema:name"},
+    "description": {"@id": "schema:description"},
+    "email": {"@id": "schema:email"},
+    "source": {"@id": "docspring:source"},
+
+    "download_url": {"@id": "schema:url"},
+    "permanent_download_url": {"@id": "docspring:permanentDownloadUrl"},
+    "pdf_hash": {"@id": "docspring:pdfHash"},
+
+    "data": {"@id": "docspring:data"},
+    "metadata": {"@id": "docspring:metadata"},
+
+    "submissions": {"@id": "docspring:submissions", "@container": "@set"},
+    "submission_ids": {"@id": "docspring:submissionIds", "@container": "@set"},
+    "data_requests": {"@id": "docspring:dataRequests", "@container": "@set"},
+    "actions": {"@id": "docspring:actions", "@container": "@set"},
+    "errors": {"@id": "docspring:errors", "@container": "@set"},
+    "new_field_ids": {"@id": "docspring:newFieldIds", "@container": "@set"},
+
+    "created_at": {"@id": "schema:dateCreated", "@type": "xsd:dateTime"},
+    "updated_at": {"@id": "schema:dateModified", "@type": "xsd:dateTime"},
+    "expires_at": {"@id": "docspring:expiresAt", "@type": "xsd:dateTime"},
+    "completed_at": {"@id": "docspring:completedAt", "@type": "xsd:dateTime"},
+    "viewed_at": {"@id": "docspring:viewedAt", "@type": "xsd:dateTime"},
+    "published_at": {"@id": "docspring:publishedAt", "@type": "xsd:dateTime"},
+
+    "order": {"@id": "docspring:order", "@type": "xsd:integer"},
+    "sort_order": {"@id": "docspring:sortOrder", "@type": "xsd:integer"},
+    "expire_after": {"@id": "docspring:expireAfter", "@type": "xsd:integer"},
+
+    "version": {"@id": "docspring:version"},
+    "latest_version": {"@id": "docspring:latestVersion"},
+    "versions": {"@id": "docspring:versions", "@container": "@set"},
+    "path": {"@id": "docspring:path"},
+    "status": {"@id": "docspring:status"},
+    "error": {"@id": "docspring:error"},
+
+    "public_web_form": {"@id": "docspring:publicWebForm", "@type": "xsd:boolean"},
+    "public_submissions": {"@id": "docspring:publicSubmissions", "@type": "xsd:boolean"},
+    "expire_submissions": {"@id": "docspring:expireSubmissions", "@type": "xsd:boolean"},
+
+    "action_type": {"@id": "docspring:actionType"},
+    "action_category": {"@id": "docspring:actionCategory"},
+    "processed_at": {"@id": "docspring:processedAt", "@type": "xsd:dateTime"},
+    "url": {"@id": "schema:url"},
+    "fields": {"@id": "docspring:fields"},
+    "key": {"@id": "docspring:key"},
+    "policy": {"@id": "docspring:policy"},
+    "content_type": {"@id": "docspring:contentType"}
+  }
+}

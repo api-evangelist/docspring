@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/docspring/main/json-schema/submission_data_request_token.json",
+  "title": "submission_data_request_token",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "nullable": true
+    },
+    "secret": {
+      "type": "string"
+    },
+    "expires_at": {
+      "type": "string",
+      "nullable": true
+    },
+    "data_request_url": {
+      "type": "string",
+      "nullable": true
+    }
+  },
+  "required": [
+    "data_request_url",
+    "expires_at",
+    "id",
+    "secret"
+  ],
+  "additionalProperties": false
+}

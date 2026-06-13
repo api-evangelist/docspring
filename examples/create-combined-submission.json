@@ -1,0 +1,24 @@
+{
+  "summary": "Merge Multiple PDFs",
+  "description": "Combine multiple submissions into a single PDF",
+  "request": {
+    "submission_ids": [
+      "sub_000000000000001",
+      "sub_000000000000002"
+    ],
+    "expires_in": 3600
+  },
+  "response": {
+    "status": "success",
+    "combined_submission": {
+      "id": "com_000000000000001",
+      "state": "pending",
+      "expired": false,
+      "expires_at": null,
+      "download_url": null,
+      "permanent_download_url": null,
+      "metadata": {},
+      "submissions": []
+    }
+  }
+}

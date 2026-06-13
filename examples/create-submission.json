@@ -1,0 +1,38 @@
+{
+  "summary": "Create a PDF Submission",
+  "description": "Generate a PDF from a template with dynamic data",
+  "request": {
+    "data": {
+      "first_name": "John",
+      "last_name": "Doe",
+      "date_of_birth": "1980-01-15",
+      "email": "john.doe@example.com"
+    },
+    "metadata": {
+      "user_id": "usr_12345",
+      "order_id": "ord_67890"
+    },
+    "wait": false,
+    "test": false
+  },
+  "response": {
+    "status": "success",
+    "submission": {
+      "id": "sub_000000000000001",
+      "template_id": "tpl_000000000000001",
+      "state": "pending",
+      "test": false,
+      "editable": false,
+      "expired": false,
+      "expires_at": null,
+      "pdf_hash": null,
+      "download_url": null,
+      "permanent_download_url": null,
+      "batch_id": null,
+      "data_requests": [],
+      "actions": [],
+      "source": "api",
+      "created_at": "2026-06-13T00:00:00.000Z"
+    }
+  }
+}

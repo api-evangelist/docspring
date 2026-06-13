@@ -1,0 +1,7 @@
+{
+  "summary": "Test Authentication",
+  "description": "Verify your API credentials are valid",
+  "value": {
+    "status": "success"
+  }
+}

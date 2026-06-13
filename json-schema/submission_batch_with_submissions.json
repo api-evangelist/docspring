@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/docspring/main/json-schema/submission_batch_with_submissions.json",
+  "title": "submission_preview",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "nullable": true
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "processed",
+        "error"
+      ]
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "processed_at": {
+      "type": "string",
+      "nullable": true
+    },
+    "total_count": {
+      "type": "integer"
+    },
+    "pending_count": {
+      "type": "integer"
+    },
+    "error_count": {
+      "type": "integer"
+    },
+    "completion_percentage": {
+      "type": "number"
+    },
+    "submissions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/submission_preview"
+      }
+    }
+  },
+  "required": [
+    "completion_percentage",
+    "error_count",
+    "id",
+    "metadata",
+    "pending_count",
+    "processed_at",
+    "state",
+    "total_count"
+  ],
+  "additionalProperties": false
+}

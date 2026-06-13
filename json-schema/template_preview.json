@@ -1,0 +1,226 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/docspring/main/json-schema/template_preview.json",
+  "title": "template_preview",
+  "type": "object",
+  "properties": {
+    "add_data_request_submission_id_footers": {
+      "type": "boolean"
+    },
+    "allow_additional_properties": {
+      "type": "boolean"
+    },
+    "description": {
+      "type": "string",
+      "nullable": true
+    },
+    "document_filename": {
+      "type": "string",
+      "nullable": true
+    },
+    "document_md5": {
+      "type": "string",
+      "nullable": true
+    },
+    "document_parse_error": {
+      "type": "boolean"
+    },
+    "document_processed": {
+      "type": "boolean"
+    },
+    "document_state": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "processed",
+        "password_required",
+        "malformed_pdf",
+        "unknown_error"
+      ]
+    },
+    "document_url": {
+      "type": "string",
+      "nullable": true
+    },
+    "editable_submissions": {
+      "type": "boolean"
+    },
+    "embed_domains": {
+      "type": "string",
+      "nullable": true
+    },
+    "encrypt_pdfs_password": {
+      "type": "string",
+      "nullable": true
+    },
+    "encrypt_pdfs": {
+      "type": "boolean"
+    },
+    "expiration_interval": {
+      "type": "string"
+    },
+    "expire_after": {
+      "type": "integer"
+    },
+    "expire_submissions": {
+      "type": "boolean"
+    },
+    "external_predefined_fields_template_id": {
+      "type": "string",
+      "nullable": true
+    },
+    "external_predefined_fields_template_name": {
+      "type": "string",
+      "nullable": true
+    },
+    "first_template": {
+      "type": "boolean"
+    },
+    "id": {
+      "type": "string",
+      "nullable": true
+    },
+    "locked": {
+      "type": "boolean"
+    },
+    "merge_audit_trail_pdf": {
+      "type": "boolean"
+    },
+    "name": {
+      "type": "string",
+      "nullable": true
+    },
+    "page_count": {
+      "type": "integer"
+    },
+    "page_dimensions": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "items": {
+          "type": "number"
+        }
+      },
+      "nullable": true
+    },
+    "parent_folder_id": {
+      "type": "string",
+      "nullable": true
+    },
+    "path": {
+      "type": "string",
+      "nullable": true
+    },
+    "permanent_document_url": {
+      "type": "string",
+      "nullable": true
+    },
+    "public_submissions": {
+      "type": "boolean"
+    },
+    "public_web_form": {
+      "type": "boolean"
+    },
+    "redirect_url": {
+      "type": "string",
+      "nullable": true
+    },
+    "slack_webhook_url": {
+      "type": "string",
+      "nullable": true
+    },
+    "template_type": {
+      "type": "string",
+      "enum": [
+        "pdf",
+        "html"
+      ]
+    },
+    "updated_at": {
+      "type": "string",
+      "nullable": true
+    },
+    "version_published_at": {
+      "type": "string",
+      "nullable": true
+    },
+    "version": {
+      "type": "string",
+      "nullable": true
+    },
+    "webhook_url": {
+      "type": "string",
+      "nullable": true
+    },
+    "demo": {
+      "type": "boolean"
+    },
+    "latest_version": {
+      "type": "string",
+      "nullable": true
+    },
+    "last_changed_at": {
+      "type": "string",
+      "nullable": true
+    },
+    "last_changed_by_type": {
+      "type": "string",
+      "enum": [
+        "user",
+        "api"
+      ],
+      "nullable": true
+    },
+    "last_changed_by_id": {
+      "type": "string",
+      "nullable": true
+    }
+  },
+  "required": [
+    "add_data_request_submission_id_footers",
+    "allow_additional_properties",
+    "demo",
+    "description",
+    "document_filename",
+    "document_md5",
+    "document_parse_error",
+    "document_processed",
+    "document_state",
+    "document_url",
+    "editable_submissions",
+    "embed_domains",
+    "encrypt_pdfs",
+    "encrypt_pdfs_password",
+    "expiration_interval",
+    "expire_after",
+    "expire_submissions",
+    "external_predefined_fields_template_id",
+    "external_predefined_fields_template_name",
+    "first_template",
+    "id",
+    "last_changed_at",
+    "last_changed_by_id",
+    "last_changed_by_type",
+    "latest_version",
+    "locked",
+    "merge_audit_trail_pdf",
+    "name",
+    "page_count",
+    "page_dimensions",
+    "parent_folder_id",
+    "path",
+    "permanent_document_url",
+    "public_submissions",
+    "public_web_form",
+    "redirect_url",
+    "slack_webhook_url",
+    "template_type",
+    "updated_at",
+    "version",
+    "version_published_at",
+    "webhook_url"
+  ],
+  "additionalProperties": false
+}

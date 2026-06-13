@@ -1,0 +1,22 @@
+{
+  "summary": "List Templates",
+  "description": "Retrieve all PDF templates in your account",
+  "response": {
+    "templates": [
+      {
+        "id": "tpl_000000000000001",
+        "name": "Employment Contract",
+        "description": "Standard employment agreement template",
+        "public_web_form": false,
+        "public_submissions": false,
+        "expire_submissions": false,
+        "expire_after": null,
+        "locked": false,
+        "created_at": "2026-01-01T00:00:00.000Z",
+        "updated_at": "2026-06-01T00:00:00.000Z"
+      }
+    ],
+    "limit": 50,
+    "cursor": null
+  }
+}

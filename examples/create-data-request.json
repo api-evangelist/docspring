@@ -1,0 +1,16 @@
+{
+  "summary": "Request E-Signature",
+  "description": "Create a data request for e-signature collection",
+  "value": {
+    "id": "drq_000000000000001",
+    "submission_id": "sub_000000000000001",
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "state": "pending",
+    "order": 1,
+    "sort_order": 1,
+    "viewed_at": null,
+    "completed_at": null,
+    "metadata": {}
+  }
+}

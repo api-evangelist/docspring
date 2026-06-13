@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/docspring/main/json-schema/upload_presign_response.json",
+  "title": "upload_presign_response",
+  "type": "object",
+  "properties": {
+    "fields": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "policy": {
+          "type": "string"
+        },
+        "x-amz-algorithm": {
+          "type": "string"
+        },
+        "x-amz-credential": {
+          "type": "string"
+        },
+        "x-amz-date": {
+          "type": "string"
+        },
+        "x-amz-signature": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "policy",
+        "x-amz-algorithm",
+        "x-amz-credential",
+        "x-amz-date",
+        "x-amz-signature"
+      ],
+      "additionalProperties": false
+    },
+    "headers": {
+      "type": "object"
+    },
+    "url": {
+      "type": "string"
+    },
+    "method": {
+      "type": "string",
+      "enum": [
+        "post"
+      ]
+    }
+  },
+  "required": [
+    "fields",
+    "headers",
+    "url"
+  ],
+  "additionalProperties": false
+}
