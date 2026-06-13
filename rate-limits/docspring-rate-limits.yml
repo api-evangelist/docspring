@@ -1,0 +1,61 @@
+name: DocSpring API Rate Limits
+description: >-
+  DocSpring does not publicly document explicit API rate limits in their
+  documentation or OpenAPI specification. Practical throughput is constrained
+  by plan-level PDF generation quotas (live submissions per month). Batch
+  submissions support up to 50 requests per batch. Synchronous processing is
+  available via the sync subdomain; asynchronous processing is available via
+  the standard domain with webhook or polling callbacks.
+specificationVersion: "0.1"
+url: https://docspring.com/docs/
+
+limits:
+  - name: Monthly PDF Generation Quota
+    description: >-
+      Each plan includes a fixed number of live PDF submissions per month.
+      Overages are billed per additional PDF. Test submissions are unlimited and
+      free on all plans.
+    scope: account
+    period: monthly
+    enforcement: soft
+    plans:
+      - plan: Starter
+        included: 50
+        overage_unit: PDF
+        overage_cost_usd: 0.25
+      - plan: Professional
+        included: 1000
+        overage_unit: PDF
+        overage_cost_usd: 0.10
+      - plan: Business
+        included: 5000
+        overage_unit: PDF
+        overage_cost_usd: 0.05
+
+  - name: Batch Submission Size
+    description: >-
+      The batch submissions endpoint accepts up to 50 submission requests per
+      batch call. Each entry in a batch can target a different template, switch
+      between test and live mode, and specify its own metadata.
+    scope: request
+    limit: 50
+    unit: submissions per batch request
+    endpoint: POST /api/v1/submissions/batches
+
+processing_modes:
+  - name: Synchronous
+    description: >-
+      Submit to sync.api.docspring.com to receive a download URL immediately
+      in the API response. Best for lower-latency use cases.
+    base_url: https://sync.api.docspring.com/api/v1
+  - name: Asynchronous
+    description: >-
+      Submit to the standard API domain. Response returns a pending status;
+      monitor completion via polling or webhook callbacks.
+    base_url: https://api.docspring.com/api/v1
+
+notes:
+  - No published request-per-second or concurrent request limits found in
+    DocSpring documentation or OpenAPI spec as of June 2026.
+  - For high-volume workloads, contact DocSpring directly for guidance on
+    throughput expectations and enterprise options.

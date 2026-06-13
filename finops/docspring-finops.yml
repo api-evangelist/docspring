@@ -1,0 +1,136 @@
+name: DocSpring FinOps
+description: >-
+  FinOps Framework 1.0 FOCUS-aligned cost model for DocSpring API usage.
+  DocSpring pricing is based on monthly subscription tiers with per-unit
+  overage charges for live PDF submissions. Test submissions are free and
+  unlimited, enabling cost-free development and QA workflows.
+specificationVersion: "1.0"
+framework: FinOps Framework
+alignment: FOCUS 1.0
+url: https://docspring.com/pricing
+
+cost_model:
+  type: subscription_with_overage
+  billing_period: monthly
+  currency: USD
+  commitment: month-to-month
+  free_trial_days: 14
+
+sku_list:
+  - sku: DOCSPRING-STARTER
+    name: Starter Plan
+    description: Base subscription for up to 50 live PDF submissions per month
+    unit_price: 49.00
+    unit: month
+    included_units: 50
+    included_unit_type: live PDF submissions
+    tags:
+      - plan: starter
+      - tier: entry
+
+  - sku: DOCSPRING-STARTER-OVERAGE
+    name: Starter Overage
+    description: Per-PDF charge above the 50 included live submissions on Starter
+    unit_price: 0.25
+    unit: PDF
+    tags:
+      - plan: starter
+      - charge_type: overage
+
+  - sku: DOCSPRING-PROFESSIONAL
+    name: Professional Plan
+    description: Base subscription for up to 1,000 live PDF submissions per month
+    unit_price: 99.00
+    unit: month
+    included_units: 1000
+    included_unit_type: live PDF submissions
+    tags:
+      - plan: professional
+      - tier: mid
+
+  - sku: DOCSPRING-PROFESSIONAL-OVERAGE
+    name: Professional Overage
+    description: Per-PDF charge above the 1,000 included live submissions on Professional
+    unit_price: 0.10
+    unit: PDF
+    tags:
+      - plan: professional
+      - charge_type: overage
+
+  - sku: DOCSPRING-BUSINESS
+    name: Business Plan
+    description: Base subscription for up to 5,000 live PDF submissions per month
+    unit_price: 249.00
+    unit: month
+    included_units: 5000
+    included_unit_type: live PDF submissions
+    tags:
+      - plan: business
+      - tier: high
+
+  - sku: DOCSPRING-BUSINESS-OVERAGE
+    name: Business Overage
+    description: Per-PDF charge above the 5,000 included live submissions on Business
+    unit_price: 0.05
+    unit: PDF
+    tags:
+      - plan: business
+      - charge_type: overage
+
+  - sku: DOCSPRING-TEST-SUBMISSIONS
+    name: Test Submissions
+    description: >-
+      Unlimited watermarked test PDF submissions. Free on all plans for
+      development and QA use.
+    unit_price: 0.00
+    unit: PDF
+    tags:
+      - charge_type: free
+      - environment: test
+
+cost_optimization:
+  recommendations:
+    - name: Use Test Mode During Development
+      description: >-
+        Always use test mode (test: true) during development and staging to
+        avoid consuming live submission quota. Test PDFs are free and
+        unlimited.
+      impact: high
+
+    - name: Batch Submissions
+      description: >-
+        Use the batch endpoint (POST /api/v1/submissions/batches) to submit
+        up to 50 PDFs per API call, reducing overhead and improving
+        throughput efficiency.
+      impact: medium
+
+    - name: Right-Size Plan to Volume
+      description: >-
+        Monitor monthly live submission counts. The break-even for upgrading
+        from Starter ($49) to Professional ($99) is at 250 PDFs/month
+        (50 included + 200 overages at $0.25 = $99). Upgrading from
+        Professional to Business breaks even at 1,500 PDFs/month.
+      impact: high
+
+    - name: Asynchronous Mode for Bulk Workloads
+      description: >-
+        Use asynchronous submission mode with webhooks for bulk generation
+        jobs to avoid blocking API calls and improve throughput.
+      impact: medium
+
+  break_even_analysis:
+    - from_plan: Starter
+      to_plan: Professional
+      break_even_volume: 250
+      unit: live PDFs per month
+      notes: >-
+        At 250 PDFs, Starter cost is $49 + (200 * $0.25) = $99, equal to
+        Professional base price.
+    - from_plan: Professional
+      to_plan: Business
+      break_even_volume: 1500
+      unit: live PDFs per month
+      notes: >-
+        At 1,500 PDFs, Professional cost is $99 + (500 * $0.10) = $149,
+        while Business at $249 becomes cheaper at approximately 2,500 PDFs/month
+        ($99 + 1500 * $0.10 = $249).

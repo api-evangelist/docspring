@@ -1,0 +1,100 @@
+name: DocSpring Plans and Pricing
+description: >-
+  DocSpring offers three monthly subscription tiers based on PDF generation
+  volume, with unlimited test PDFs available on all plans. A 14-day free trial
+  is available with no credit card required. Enterprise and on-premise options
+  are available by contacting DocSpring directly.
+specificationVersion: "0.1"
+url: https://docspring.com/pricing
+
+plans:
+  - name: Starter
+    description: >-
+      Entry-level plan for small teams or low-volume PDF generation use cases.
+      Includes API access and unlimited templates, test PDFs, and users.
+    monthly_price: 49
+    currency: USD
+    billing_period: monthly
+    included_pdfs: 50
+    overage_per_pdf: 0.25
+    features:
+      - API access
+      - Unlimited test PDFs
+      - Unlimited templates
+      - Unlimited users
+      - PDF template editor
+      - Data validation
+      - QR codes and barcodes
+      - Image and signature fields
+      - Web-based PDF forms
+    rate_limits:
+      notes: No published API rate limits for this plan
+
+  - name: Professional
+    description: >-
+      Mid-tier plan for growing teams needing higher PDF volumes with SLA
+      guarantees and lower per-PDF overage costs.
+    monthly_price: 99
+    currency: USD
+    billing_period: monthly
+    included_pdfs: 1000
+    overage_per_pdf: 0.10
+    features:
+      - API access
+      - Unlimited test PDFs
+      - Unlimited templates
+      - Unlimited users
+      - PDF template editor
+      - Data validation
+      - QR codes and barcodes
+      - Image and signature fields
+      - Web-based PDF forms
+      - "99.99% uptime SLA"
+    rate_limits:
+      notes: No published API rate limits for this plan
+
+  - name: Business
+    description: >-
+      High-volume plan for enterprises requiring large-scale PDF generation with
+      the lowest per-PDF overage rate and SLA guarantees.
+    monthly_price: 249
+    currency: USD
+    billing_period: monthly
+    included_pdfs: 5000
+    overage_per_pdf: 0.05
+    features:
+      - API access
+      - Unlimited test PDFs
+      - Unlimited templates
+      - Unlimited users
+      - PDF template editor
+      - Data validation
+      - QR codes and barcodes
+      - Image and signature fields
+      - Web-based PDF forms
+      - "99.99% uptime SLA"
+    rate_limits:
+      notes: No published API rate limits for this plan
+
+  - name: Enterprise
+    description: >-
+      Custom pricing for very high volumes or organizations requiring on-premise
+      deployment. Contact DocSpring for a custom quote.
+    monthly_price: custom
+    currency: USD
+    billing_period: monthly
+    included_pdfs: custom
+    features:
+      - All Business plan features
+      - On-premise hosting option
+      - Custom PDF volume
+      - Dedicated support
+
+trial:
+  available: true
+  duration_days: 14
+  credit_card_required: false
+  notes: >-
+    14-day free trial available on any plan. Extended sandbox access available
+    upon request. Test PDFs are free and unlimited on all plans and include a
+    watermark.

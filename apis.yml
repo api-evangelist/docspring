@@ -1,0 +1,73 @@
+aid: docspring
+name: DocSpring
+description: >-
+  DocSpring is a PDF generation platform with a REST API for filling PDF
+  templates with dynamic data, generating documents programmatically, and
+  managing template libraries. It supports synchronous and asynchronous PDF
+  generation, batch submissions, combined PDF merging, data request workflows,
+  e-signatures, and HTML-to-PDF conversion.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/docspring/refs/heads/main/apis.yml
+created: "2026-06-13"
+modified: "2026-06-13"
+specificationVersion: "0.19"
+tags:
+  - PDF
+  - Document Generation
+  - PDF Templates
+  - E-Signatures
+  - Forms
+  - HTML to PDF
+  - Document Automation
+
+apis:
+  - name: DocSpring API
+    description: >-
+      REST API for programmatically filling out PDF forms, converting HTML to
+      PDFs, merging PDFs, generating documents from templates, and requesting
+      legally binding e-signatures. Supports both synchronous and asynchronous
+      processing modes.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docspring.com/docs/
+    baseURL: https://sync.api.docspring.com/api/v1
+    tags:
+      - PDF Generation
+      - Document Templates
+      - E-Signatures
+      - Forms
+    properties:
+      - type: Documentation
+        url: https://docspring.com/docs/
+      - type: OpenAPI
+        url: https://docspring.com/api-docs/v1/openapi.json
+      - type: Authentication
+        url: https://docspring.com/docs/api-guide/authentication/
+
+common:
+  - type: Website
+    url: https://docspring.com/
+  - type: Documentation
+    url: https://docspring.com/docs/
+  - type: GitHubOrg
+    url: https://github.com/DocSpring
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/docspring
+  - type: Blog
+    url: https://docspring.com/blog/
+  - type: Pricing
+    url: https://docspring.com/pricing
+  - type: StatusPage
+    url: https://status.docspring.com/
+  - type: X
+    url: https://x.com/DocSpring
+  - type: Plans
+    url: plans/docspring-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/docspring-rate-limits.yml
+  - type: FinOps
+    url: finops/docspring-finops.yml
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
