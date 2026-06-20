@@ -7,7 +7,7 @@ description: >-
   generation, batch submissions, combined PDF merging, data request workflows,
   e-signatures, and HTML-to-PDF conversion.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/docspring/refs/heads/main/apis.yml
 created: "2026-06-13"
 modified: "2026-06-13"
@@ -28,7 +28,7 @@ apis:
       PDFs, merging PDFs, generating documents from templates, and requesting
       legally binding e-signatures. Supports both synchronous and asynchronous
       processing modes.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docspring.com/docs/
     baseURL: https://sync.api.docspring.com/api/v1
     tags:
