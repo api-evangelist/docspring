@@ -45,6 +45,14 @@ apis:
         url: https://docspring.com/docs/api-guide/authentication/
 
 common:
+  - type: TrustCenter
+    url: security/docspring-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/docspring-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/docspring-domain-security.yml
+  - type: Authentication
+    url: authentication/docspring-authentication.yml
   - type: Website
     url: https://docspring.com/
   - type: Documentation

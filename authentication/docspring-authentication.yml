@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/docspring-docspring-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: 'Username: API Token ID, Password: API Token Secret'
+  sources:
+  - openapi/docspring-docspring-api-openapi.yml
