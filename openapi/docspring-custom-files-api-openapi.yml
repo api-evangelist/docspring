@@ -1,0 +1,221 @@
+openapi: 3.0.3
+info:
+  title: DocSpring Authentication Custom Files API
+  description: Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.
+  version: v1
+  contact:
+    url: https://docspring.com/docs/
+  license:
+    name: Proprietary
+servers:
+- url: https://sync.api.docspring.com/api/v1
+  description: DocSpring API
+security:
+- basicAuth: []
+tags:
+- name: Custom Files
+paths:
+  /custom_files:
+    post:
+      operationId: createCustomFileFromUpload
+      summary: Create a new custom file from a cached S3 upload
+      tags:
+      - Custom Files
+      responses:
+        '201':
+          description: returns the custom file
+          content:
+            application/json:
+              schema:
+                type: object
+                title: create_custom_file_response
+                properties:
+                  status:
+                    type: string
+                    enum:
+                    - success
+                    - error
+                  custom_file:
+                    $ref: '#/components/schemas/custom_file'
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                required:
+                - status
+                - custom_file
+                additionalProperties: false
+              example:
+                status: success
+                custom_file:
+                  id: cfi_1234567890abcdef01
+                  url: https://docspring-s3-example.s3.amazonaws.com/store/acc_1234567890abcdef01/custom_files/cfi_1234567890abcdef01.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=docspring-s3-example%2F20210101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210101T090000Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=abcdef0123456789
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+      description: 'The Custom Files API endpoint allows you to upload PDFs to DocSpring and then
+
+        merge them with other PDFs. First upload your file using the presigned URL endpoint,
+
+        then use the returned cache_id to create the custom file.
+
+        '
+      externalDocs:
+        url: https://docspring.com/docs/api-guide/combine-pdfs/
+        description: Learn how to merge custom files with other PDFs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                cache_id:
+                  minLength: 1
+                  type: string
+              required:
+              - cache_id
+              title: create_custom_file_data
+              type: object
+              example:
+                cache_id: cfi_1234567890abcdef01.pdf
+        required: true
+      security:
+      - basicAuth: []
+  /uploads/presign:
+    get:
+      operationId: getPresignUrl
+      summary: Get a presigned S3 URL for direct file upload
+      tags:
+      - Custom Files
+      responses:
+        '200':
+          description: presign URL generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/upload_presign_response'
+              example:
+                fields:
+                  key: ed9424dccf185f3835df4e9e1da0ca0b
+                  policy: eyJleHBpcmF0aW9uIjoiMjAxOS0xMC0wNVQxNDowMDowMFoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJ0ZXN0LWJ1Y2tldCJ9LHsia2V5IjoiZWQ5NDI0ZGNjZjE4NWYzODM1ZGY0ZTllMWRhMGNhMGIifSx7IngtYW16LWNyZWRlbnRpYWwiOiIxMjM0NTY3ODkvMjAxOTEwMDUvdXMtZWFzdC0xL3MzL2F3czRfcmVxdWVzdCJ9LHsieC1hbXotYWxnb3JpdGhtIjoiQVdTNC1ITUFDLVNIQTI1NiJ9LHsieC1hbXotZGF0ZSI6IjIwMTkxMDA1VDEzMDAwMFoifV19
+                  x-amz-credential: 123456789/20191005/us-east-1/s3/aws4_request
+                  x-amz-algorithm: AWS4-HMAC-SHA256
+                  x-amz-date: 20191005T130000Z
+                  x-amz-signature: 6b715e441bd7ea5beec87f8415230a600be6dfd76b8f89103137618dca959fac
+                headers: {}
+                method: post
+                url: https://test-bucket.s3.amazonaws.com
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+      description: 'Returns a presigned S3 URL for uploading files directly to our S3 bucket. Use this
+
+        endpoint to upload large files before creating templates or custom files. S3 will
+
+        respond with a JSON object that you can include in your DocSpring API request.
+
+
+        Uploaded files can be used to:
+
+        - [Create templates](https://docspring.com/docs/api/#tag/templates/post/templates?endpoint_variant=create_template_from_cached_upload)
+
+        - [Update templates](https://docspring.com/docs/api/#tag/templates/put/templates/{template_id}?endpoint_variant=update_template_pdf_with_cached_upload)
+
+        - [Create custom files](https://docspring.com/docs/api/#tag/custom-files/post/custom_files) and then [merge them with other PDFs](https://docspring.com/docs/api/#tag/combine-pdfs/post/combined_submissions)
+
+        '
+      externalDocs:
+        url: https://docspring.com/docs/api-guide/combine-pdfs/
+        description: Learn about uploading custom files for PDF combining
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    error_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+        error:
+          type: string
+      required:
+      - status
+      - error
+      additionalProperties: false
+      title: error_response
+    upload_presign_response:
+      type: object
+      properties:
+        fields:
+          type: object
+          properties:
+            key:
+              type: string
+            policy:
+              type: string
+            x-amz-algorithm:
+              type: string
+            x-amz-credential:
+              type: string
+            x-amz-date:
+              type: string
+            x-amz-signature:
+              type: string
+          required:
+          - key
+          - policy
+          - x-amz-algorithm
+          - x-amz-credential
+          - x-amz-date
+          - x-amz-signature
+          additionalProperties: false
+        headers:
+          type: object
+        url:
+          type: string
+        method:
+          type: string
+          enum:
+          - post
+      required:
+      - fields
+      - headers
+      - url
+      additionalProperties: false
+      title: upload_presign_response
+    custom_file:
+      title: custom_file
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        url:
+          type: string
+          nullable: true
+      required:
+      - id
+      - url
+      additionalProperties: false
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: 'Username: API Token ID, Password: API Token Secret'
+externalDocs:
+  url: https://docspring.com/docs/
+  description: DocSpring API Documentation

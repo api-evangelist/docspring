@@ -1,0 +1,710 @@
+openapi: 3.0.3
+info:
+  title: DocSpring Authentication Data Requests API
+  description: Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.
+  version: v1
+  contact:
+    url: https://docspring.com/docs/
+  license:
+    name: Proprietary
+servers:
+- url: https://sync.api.docspring.com/api/v1
+  description: DocSpring API
+security:
+- basicAuth: []
+tags:
+- name: Data Requests
+paths:
+  /data_requests/{data_request_id}/events:
+    post:
+      operationId: createDataRequestEvent
+      summary: Create a new event for emailing a signee a request for signature
+      tags:
+      - Data Requests
+      responses:
+        '201':
+          description: event created
+          content:
+            application/json:
+              schema:
+                type: object
+                title: create_submission_data_request_event_response
+                properties:
+                  status:
+                    type: string
+                    enum:
+                    - success
+                    - error
+                  event:
+                    $ref: '#/components/schemas/submission_data_request_event'
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                required:
+                - status
+                - event
+                additionalProperties: false
+              example:
+                status: success
+                event:
+                  id: dre_1234567890abcdef01
+                  submission_id: sub_1234567890abcdef01
+                  submission_data_request_id: drq_1234567890abcdef01
+                  event_type: send_request
+                  message_type: email
+                  message_recipient: test@test.com
+                  occurred_at: '2018-10-20T13:00:00Z'
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+        '422':
+          description: message recipient must not be blank
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/multiple_errors_response'
+              example:
+                status: error
+                errors:
+                - Message type can't be blank
+                - Message recipient can't be blank
+      description: 'Records user notification events for data requests. Use this to create an audit trail
+
+        showing when and how users were notified about data request forms. Supports email, SMS,
+
+        and other notification types. Records the notification time for compliance tracking.
+
+
+        See also:
+
+        - [Embedded Data Requests Guide](https://docspring.com/docs/guides/embedded-forms/embedded-data-requests/) - User notification workflow
+
+        '
+      externalDocs:
+        url: https://docspring.com/docs/guides/embedded-forms/embedded-data-requests/#2-notify-the-user
+        description: Track user notification events for audit trail logging
+      parameters:
+      - name: data_request_id
+        in: path
+        type: string
+        required: true
+        x-example: drq_1234567890abcdef01
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                event_type:
+                  enum:
+                  - send_request
+                  - view_request
+                  - accepted_terms
+                  - decline_request
+                  - sign_request
+                  - all_completed
+                  type: string
+                message_recipient:
+                  type:
+                  - string
+                  - 'null'
+                message_type:
+                  enum:
+                  - email
+                  - sms
+                  - fax
+                  - mail
+                  - slack
+                  - msteams
+                  - discord
+                  - telegram
+                  - whatsapp
+                  type: string
+                  nullable: true
+                occurred_at:
+                  type:
+                  - string
+                  - 'null'
+              required:
+              - event_type
+              title: create_submission_data_request_event_request
+              type: object
+              example:
+                event_type: send_request
+                message_type: email
+                message_recipient: test@test.com
+        required: true
+      security:
+      - basicAuth: []
+  /data_requests/{data_request_id}/tokens:
+    post:
+      operationId: createDataRequestToken
+      summary: Create a new data request token for form authentication
+      tags:
+      - Data Requests
+      responses:
+        '201':
+          description: token created
+          content:
+            application/json:
+              schema:
+                type: object
+                title: create_submission_data_request_token_response
+                properties:
+                  status:
+                    type: string
+                    enum:
+                    - success
+                    - error
+                  token:
+                    $ref: '#/components/schemas/submission_data_request_token'
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                required:
+                - status
+                - token
+                additionalProperties: false
+              example:
+                status: success
+                token:
+                  id: 1234567890abcdef01
+                  secret: ABCDEF01234567890
+                  expires_at: '2018-10-20T14:00:00Z'
+                  data_request_url: https://app.docspring.com/data_requests/drq_1234567890abcdef01?token_id=1234567890abcdef01&token_secret=ABCDEF01234567890
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+        '422':
+          description: invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Invalid token type: invalid. Must be one of: api (expiration: 1 hour), email (expiration: 30 days)'
+      description: 'Creates an authentication token for accessing a data request form. Tokens can be created
+
+        for API access (1 hour expiration) or email links (30 day expiration). Returns a token
+
+        and a pre-authenticated URL for the data request form.
+
+
+        See also:
+
+        - [Embedded Data Requests Guide](https://docspring.com/docs/guides/embedded-forms/embedded-data-requests/)
+
+        '
+      externalDocs:
+        url: https://docspring.com/docs/guides/embedded-forms/embedded-data-requests/#3-request-an-authentication-token
+        description: Generate authentication tokens for embedded data requests
+      parameters:
+      - name: data_request_id
+        in: path
+        type: string
+        required: true
+        x-example: drq_1234567890abcdef01
+      - name: type
+        in: query
+        type: string
+        enum:
+        - api
+        - email
+        required: false
+        x-example: api
+      security:
+      - basicAuth: []
+  /data_requests/{data_request_id}:
+    get:
+      operationId: getDataRequest
+      summary: Look up a submission data request
+      tags:
+      - Data Requests
+      responses:
+        '200':
+          description: completed submission data request found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/submission_data_request_show'
+              example:
+                id: drq_1234567890abcdef01
+                email: jdoe@example.com
+                name: John Doe
+                order: 1
+                sort_order: 0
+                fields:
+                - last_name
+                metadata:
+                  user_id: 42
+                state: pending
+                viewed_at: null
+                completed_at: null
+                data:
+                  last_name: Smithers
+                auth_type: password
+                auth_second_factor_type: phone_number
+                auth_provider: null
+                auth_session_started_at: '2018-10-23T13:00:00Z'
+                auth_session_id_hash: null
+                auth_user_id_hash: 8ae0e445664ca53407906db8638d8ba07a2383f656383a4427bed1ab645ca29a
+                auth_username_hash: b7c141423f7030a6a771563ee0731192ea871146653a3d0cf8f8b78ca8f9699b
+                auth_phone_number_hash: fdcc3985b0698d655137019b1e776171081369f0aad125b8c7f57af2b8225490
+                ip_address: 1.1.1.1
+                user_agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36
+                submission_id: sub_1234567890abcdef01
+        '404':
+          description: submission data request not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: Data request not found.
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+      description: 'Retrieves the details and status of a data request. Returns information about the request
+
+        state (pending, viewed, completed), authentication details, and metadata.
+
+        Includes audit information like IP address, browseruser agent, and timestamps.
+
+
+        See also:
+
+        - [Embedded Data Requests Guide](https://docspring.com/docs/guides/embedded-forms/embedded-data-requests/) - Complete guide to data request workflow
+
+        '
+      parameters:
+      - name: data_request_id
+        in: path
+        type: string
+        required: true
+        x-example: drq_1234567890abcdef01
+      security:
+      - basicAuth: []
+    put:
+      operationId: updateDataRequest
+      summary: Update a submission data request
+      tags:
+      - Data Requests
+      responses:
+        '200':
+          description: submission data request updated
+          content:
+            application/json:
+              schema:
+                type: object
+                title: create_submission_data_request_response
+                properties:
+                  status:
+                    type: string
+                    enum:
+                    - success
+                    - error
+                  data_request:
+                    $ref: '#/components/schemas/submission_data_request_show'
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                required:
+                - status
+                - data_request
+                additionalProperties: false
+              example:
+                status: success
+                data_request:
+                  id: drq_1234567890abcdef01
+                  email: jdoe@example.com
+                  name: John Doe
+                  order: 1
+                  sort_order: 0
+                  fields:
+                  - last_name
+                  metadata:
+                    user_id: 123
+                  state: pending
+                  viewed_at: null
+                  completed_at: null
+                  data:
+                    last_name: Smithers
+                  auth_type: oauth
+                  auth_second_factor_type: none
+                  auth_provider: google
+                  auth_session_started_at: '2018-10-23T13:00:00Z'
+                  auth_session_id_hash: 8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92
+                  auth_user_id_hash: null
+                  auth_username_hash: null
+                  auth_phone_number_hash: null
+                  ip_address: 1.1.1.1
+                  user_agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36
+                  submission_id: sub_1234567890abcdef01
+        '422':
+          description: invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/multiple_errors_response'
+              example:
+                status: error
+                errors:
+                - Data requests cannot be updated after they have been completed.
+        '404':
+          description: submission data request not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: Data request not found.
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+      description: 'Updates authentication details for a data request. Use this when a user logs in to record
+
+        their authentication method, provider, session information, and hashed identifiers. Updates
+
+        metadata and tracks authentication state changes for auditing and compliance.
+
+        '
+      externalDocs:
+        url: https://docspring.com/docs/guides/embedded-forms/embedded-data-requests/#4-update-authentication-details
+        description: Update authentication details after user sign-in
+      parameters:
+      - name: data_request_id
+        in: path
+        type: string
+        required: true
+        x-example: drq_1234567890abcdef01
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                auth_phone_number_hash:
+                  type:
+                  - string
+                  - 'null'
+                auth_provider:
+                  type:
+                  - string
+                  - 'null'
+                auth_second_factor_type:
+                  enum:
+                  - none
+                  - phone_number
+                  - totp
+                  - mobile_push
+                  - security_key
+                  - fingerprint
+                  - ''
+                  type:
+                  - string
+                  - 'null'
+                auth_session_id_hash:
+                  type:
+                  - string
+                  - 'null'
+                auth_session_started_at:
+                  type:
+                  - string
+                  - 'null'
+                auth_type:
+                  enum:
+                  - none
+                  - password
+                  - oauth
+                  - email_link
+                  - phone_number
+                  - ldap
+                  - saml
+                  type: string
+                auth_user_id_hash:
+                  type:
+                  - string
+                  - 'null'
+                auth_username_hash:
+                  type:
+                  - string
+                  - 'null'
+                email:
+                  type:
+                  - string
+                  - 'null'
+                fields:
+                  items:
+                    type: string
+                  type: array
+                metadata:
+                  type: object
+                name:
+                  type:
+                  - string
+                  - 'null'
+                order:
+                  type: integer
+              title: update_submission_data_request_data
+              type: object
+              example:
+                metadata:
+                  user_id: 123
+                auth_type: oauth
+                auth_provider: google
+                auth_session_started_at: 2018-10-23 09:00:00 -0400
+                auth_session_id_hash: 8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92
+        required: true
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    multiple_errors_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+        errors:
+          type: array
+          items:
+            type: string
+      required:
+      - status
+      - errors
+      additionalProperties: false
+      title: multiple_errors_response
+    submission_data_request_token:
+      title: submission_data_request_token
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        secret:
+          type: string
+        expires_at:
+          type: string
+          nullable: true
+        data_request_url:
+          type: string
+          nullable: true
+      required:
+      - data_request_url
+      - expires_at
+      - id
+      - secret
+      additionalProperties: false
+    submission_data_request_show:
+      title: submission_data_request_show
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        order:
+          type: integer
+          nullable: true
+        sort_order:
+          type: integer
+        fields:
+          type: array
+          items:
+            type: string
+          nullable: true
+        metadata:
+          type: object
+          nullable: true
+        state:
+          type: string
+          enum:
+          - pending
+          - completed
+        viewed_at:
+          type: string
+          nullable: true
+        completed_at:
+          type: string
+          nullable: true
+        data:
+          type: object
+          nullable: true
+        auth_type:
+          type: string
+          enum:
+          - none
+          - password
+          - oauth
+          - email_link
+          - phone_number
+          - ldap
+          - saml
+        auth_second_factor_type:
+          type: string
+          enum:
+          - none
+          - phone_number
+          - totp
+          - mobile_push
+          - security_key
+          - fingerprint
+        auth_provider:
+          type: string
+          nullable: true
+        auth_session_started_at:
+          type: string
+          nullable: true
+        auth_session_id_hash:
+          type: string
+          nullable: true
+        auth_user_id_hash:
+          type: string
+          nullable: true
+        auth_username_hash:
+          type: string
+          nullable: true
+        auth_phone_number_hash:
+          type: string
+          nullable: true
+        ip_address:
+          type: string
+          nullable: true
+        user_agent:
+          type: string
+          nullable: true
+        submission_id:
+          type: string
+          nullable: true
+      required:
+      - auth_phone_number_hash
+      - auth_provider
+      - auth_second_factor_type
+      - auth_session_id_hash
+      - auth_session_started_at
+      - auth_type
+      - auth_user_id_hash
+      - auth_username_hash
+      - completed_at
+      - data
+      - email
+      - fields
+      - id
+      - ip_address
+      - metadata
+      - name
+      - order
+      - sort_order
+      - state
+      - submission_id
+      - user_agent
+      - viewed_at
+      additionalProperties: false
+    error_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+        error:
+          type: string
+      required:
+      - status
+      - error
+      additionalProperties: false
+      title: error_response
+    submission_data_request_event:
+      title: submission_data_request_event
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        submission_id:
+          type: string
+          nullable: true
+        submission_data_request_id:
+          type: string
+          nullable: true
+        event_type:
+          type: string
+          enum:
+          - send_request
+          - view_request
+          - accepted_terms
+          - decline_request
+          - sign_request
+          - all_completed
+        message_type:
+          type: string
+          enum:
+          - email
+          - sms
+          - fax
+          - mail
+          - slack
+          - msteams
+          - discord
+          - telegram
+          - whatsapp
+          nullable: true
+        message_recipient:
+          type: string
+          nullable: true
+        occurred_at:
+          type: string
+          nullable: true
+      required:
+      - event_type
+      - id
+      - message_recipient
+      - message_type
+      - occurred_at
+      - submission_data_request_id
+      - submission_id
+      additionalProperties: false
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: 'Username: API Token ID, Password: API Token Secret'
+externalDocs:
+  url: https://docspring.com/docs/
+  description: DocSpring API Documentation

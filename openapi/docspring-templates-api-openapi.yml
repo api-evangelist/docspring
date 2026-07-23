@@ -1,0 +1,1933 @@
+openapi: 3.0.3
+info:
+  title: DocSpring Authentication Templates API
+  description: Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.
+  version: v1
+  contact:
+    url: https://docspring.com/docs/
+  license:
+    name: Proprietary
+servers:
+- url: https://sync.api.docspring.com/api/v1
+  description: DocSpring API
+security:
+- basicAuth: []
+tags:
+- name: Templates
+paths:
+  /templates:
+    get:
+      operationId: listTemplates
+      summary: Get a list of all templates
+      tags:
+      - Templates
+      responses:
+        '200':
+          description: enumerate all templates
+          content:
+            application/json:
+              schema:
+                title: list_templates
+                type: array
+                items:
+                  $ref: '#/components/schemas/template_preview'
+                additionalProperties: false
+              example:
+              - add_data_request_submission_id_footers: true
+                allow_additional_properties: false
+                description: null
+                document_filename: test-document.pdf
+                document_md5: null
+                document_parse_error: false
+                document_processed: true
+                document_state: pending
+                document_url: https://docspring-s3-example.s3.amazonaws.com/store/templates/test/test-document.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=docspring-s3-example%2F20210101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210101T090000Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=abcdef0123456789
+                editable_submissions: false
+                embed_domains: null
+                encrypt_pdfs_password: null
+                encrypt_pdfs: false
+                expiration_interval: days
+                expire_after: 7
+                expire_submissions: true
+                external_predefined_fields_template_id: null
+                external_predefined_fields_template_name: null
+                first_template: false
+                id: tpl_1234567890abcdef04
+                locked: false
+                merge_audit_trail_pdf: true
+                name: Sub Template 1
+                page_count: 3
+                page_dimensions:
+                - - 612
+                  - 792
+                - - 792
+                  - 612
+                - - 612
+                  - 792
+                parent_folder_id: fld_1234567890abcdef01
+                path: /Folder
+                permanent_document_url: https://app.docspring.com/templates/tpl_1234567890abcdef04/original_pdf?token=123456789abcdef
+                public_submissions: false
+                public_web_form: false
+                redirect_url: null
+                slack_webhook_url: null
+                template_type: pdf
+                updated_at: '2018-10-20T09:00:00.000-04:00'
+                version_published_at: null
+                version: null
+                webhook_url: null
+                demo: false
+                latest_version: null
+                last_changed_at: null
+                last_changed_by_type: null
+                last_changed_by_id: null
+              - add_data_request_submission_id_footers: true
+                allow_additional_properties: false
+                description: null
+                document_filename: null
+                document_md5: null
+                document_parse_error: false
+                document_processed: false
+                document_state: pending
+                document_url: null
+                editable_submissions: false
+                embed_domains: null
+                encrypt_pdfs_password: null
+                encrypt_pdfs: false
+                expiration_interval: days
+                expire_after: 7
+                expire_submissions: true
+                external_predefined_fields_template_id: null
+                external_predefined_fields_template_name: null
+                first_template: false
+                id: tpl_1234567890abcdef03
+                locked: false
+                merge_audit_trail_pdf: true
+                name: Template 3
+                page_count: 1
+                page_dimensions: null
+                parent_folder_id: null
+                path: /
+                permanent_document_url: null
+                public_submissions: false
+                public_web_form: false
+                redirect_url: null
+                slack_webhook_url: null
+                template_type: html
+                updated_at: '2018-10-20T09:00:00.000-04:00'
+                version_published_at: null
+                version: null
+                webhook_url: null
+                demo: false
+                latest_version: null
+                last_changed_at: null
+                last_changed_by_type: null
+                last_changed_by_id: null
+              - add_data_request_submission_id_footers: true
+                allow_additional_properties: false
+                description: null
+                document_filename: test-document.pdf
+                document_md5: null
+                document_parse_error: false
+                document_processed: true
+                document_state: pending
+                document_url: https://docspring-s3-example.s3.amazonaws.com/store/templates/test/test-document.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=docspring-s3-example%2F20210101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210101T090000Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=abcdef0123456789
+                editable_submissions: false
+                embed_domains: null
+                encrypt_pdfs_password: null
+                encrypt_pdfs: false
+                expiration_interval: days
+                expire_after: 7
+                expire_submissions: true
+                external_predefined_fields_template_id: null
+                external_predefined_fields_template_name: null
+                first_template: false
+                id: tpl_1234567890abcdef02
+                locked: false
+                merge_audit_trail_pdf: true
+                name: Template 2
+                page_count: 3
+                page_dimensions:
+                - - 612
+                  - 792
+                - - 792
+                  - 612
+                - - 612
+                  - 792
+                parent_folder_id: null
+                path: /
+                permanent_document_url: https://app.docspring.com/templates/tpl_1234567890abcdef02/original_pdf?token=123456789abcdef
+                public_submissions: false
+                public_web_form: false
+                redirect_url: null
+                slack_webhook_url: null
+                template_type: pdf
+                updated_at: '2018-10-20T09:00:00.000-04:00'
+                version_published_at: null
+                version: null
+                webhook_url: null
+                demo: false
+                latest_version: null
+                last_changed_at: null
+                last_changed_by_type: null
+                last_changed_by_id: null
+              - add_data_request_submission_id_footers: true
+                allow_additional_properties: false
+                description: null
+                document_filename: blank_pdf.pdf
+                document_md5: 1c32d785398e3a7eaab0e9b876903cc6
+                document_parse_error: false
+                document_processed: true
+                document_state: processed
+                document_url: https://docspring-s3-example.s3.amazonaws.com/store/acc_1234567890abcdef01/templates/tpl_1234567890abcdef01/draft/document/original-0000000000.abcdef1234567890abcd.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=docspring-s3-example%2F20210101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210101T090000Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=abcdef0123456789
+                editable_submissions: false
+                embed_domains: null
+                encrypt_pdfs_password: null
+                encrypt_pdfs: false
+                expiration_interval: days
+                expire_after: 7
+                expire_submissions: true
+                external_predefined_fields_template_id: null
+                external_predefined_fields_template_name: null
+                first_template: false
+                id: tpl_1234567890abcdef01
+                locked: false
+                merge_audit_trail_pdf: true
+                name: Template 1
+                page_count: 1
+                page_dimensions:
+                - - 612
+                  - 792
+                parent_folder_id: null
+                path: /
+                permanent_document_url: https://app.docspring.com/templates/tpl_1234567890abcdef01/original_pdf?token=123456789abcdef
+                public_submissions: false
+                public_web_form: false
+                redirect_url: null
+                slack_webhook_url: null
+                template_type: pdf
+                updated_at: '2018-10-20T09:00:00.000-04:00'
+                version_published_at: null
+                version: null
+                webhook_url: null
+                demo: false
+                latest_version: null
+                last_changed_at: null
+                last_changed_by_type: null
+                last_changed_by_id: null
+        '404':
+          description: filter templates by invalid folder id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+      description: 'Retrieves a list of your templates with search, filtering, and pagination options. Returns
+
+        basic template information including ID, name, type (PDF or HTML), and folder location.
+
+        Supports text search by name and filtering by parent folder.
+
+        '
+      parameters:
+      - name: query
+        in: query
+        type: string
+        required: false
+        description: Search By Name
+        x-example: '2'
+      - name: parent_folder_id
+        in: query
+        type: string
+        required: false
+        description: Filter By Folder Id
+        x-example: fld_1234567890abcdef01
+      - name: page
+        in: query
+        type: integer
+        minimum: 1
+        required: false
+        description: 'Default: 1'
+        x-example: 2
+      - name: per_page
+        in: query
+        type: integer
+        minimum: 1
+        maximum: 50
+        required: false
+        description: 'Default: 50'
+        x-example: 1
+      security:
+      - basicAuth: []
+    post:
+      operationId: createPdfTemplate
+      summary: Create a new PDF template with a form POST file upload
+      tags:
+      - Templates
+      responses:
+        '201':
+          description: returns a pending template
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/template_preview'
+              example:
+                add_data_request_submission_id_footers: true
+                allow_additional_properties: false
+                description: null
+                document_filename: fw8ben.pdf
+                document_md5: ca6fdfed355b9e89f9a94ee54688a231
+                document_parse_error: false
+                document_processed: false
+                document_state: pending
+                document_url: /cache/cached_upload.pdf
+                editable_submissions: false
+                embed_domains: null
+                encrypt_pdfs_password: null
+                encrypt_pdfs: false
+                expiration_interval: days
+                expire_after: 7
+                expire_submissions: false
+                external_predefined_fields_template_id: null
+                external_predefined_fields_template_name: null
+                first_template: true
+                id: tpl_1234567890abcdef01
+                locked: false
+                merge_audit_trail_pdf: true
+                name: Test Template
+                page_count: 0
+                page_dimensions: null
+                parent_folder_id: fld_1234567890abcdef01
+                path: /Folder
+                permanent_document_url: null
+                public_submissions: false
+                public_web_form: false
+                redirect_url: null
+                slack_webhook_url: null
+                template_type: pdf
+                updated_at: '2018-10-20T09:00:00.000-04:00'
+                version_published_at: null
+                version: null
+                webhook_url: null
+                demo: false
+                latest_version: null
+                last_changed_at: '2018-10-20T09:00:00.000-04:00'
+                last_changed_by_type: null
+                last_changed_by_id: usr_1234567890abcdef01
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+      description: 'Creates a new PDF template by uploading a PDF file. The uploaded PDF becomes the foundation
+
+        for your template, and you can then add fillable fields using the template editor. Use the
+
+        wait parameter to control whether the request waits for document processing to complete.
+
+        '
+      parameters:
+      - name: wait
+        in: query
+        type: boolean
+        default: true
+        required: false
+        description: 'Wait for template document to be processed before returning. Set to false to return immediately. Default: true (on sync.* subdomain)'
+        x-example: true
+      - name: template[document]
+        in: formData
+        type: file
+        required: true
+        x-example: <Uploaded File>
+      - name: template[name]
+        in: formData
+        type: string
+        required: true
+        x-example: Test Template
+      - name: template[description]
+        in: formData
+        type: string
+        required: false
+      - name: template[parent_folder_id]
+        in: formData
+        type: string
+        required: false
+        x-example: fld_1234567890abcdef01
+      security:
+      - basicAuth: []
+  /templates/{template_id}:
+    get:
+      operationId: getTemplate
+      summary: Check the status of an uploaded template
+      tags:
+      - Templates
+      responses:
+        '200':
+          description: template found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/template_preview'
+              example:
+                add_data_request_submission_id_footers: true
+                allow_additional_properties: false
+                description: null
+                document_filename: blank_pdf.pdf
+                document_md5: 1c32d785398e3a7eaab0e9b876903cc6
+                document_parse_error: false
+                document_processed: true
+                document_state: processed
+                document_url: https://docspring-s3-example.s3.amazonaws.com/store/acc_1234567890abcdef01/templates/tpl_1234567890abcdef01/draft/document/original-0000000000.abcdef1234567890abcd.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=docspring-s3-example%2F20210101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210101T090000Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=abcdef0123456789
+                editable_submissions: false
+                embed_domains: null
+                encrypt_pdfs_password: null
+                encrypt_pdfs: false
+                expiration_interval: days
+                expire_after: 7
+                expire_submissions: true
+                external_predefined_fields_template_id: null
+                external_predefined_fields_template_name: null
+                first_template: false
+                id: tpl_1234567890abcdef01
+                locked: false
+                merge_audit_trail_pdf: true
+                name: Template 1
+                page_count: 1
+                page_dimensions:
+                - - 612
+                  - 792
+                parent_folder_id: null
+                path: /
+                permanent_document_url: https://app.docspring.com/templates/tpl_1234567890abcdef01/original_pdf?token=123456789abcdef
+                public_submissions: false
+                public_web_form: false
+                redirect_url: null
+                slack_webhook_url: null
+                template_type: pdf
+                updated_at: '2018-10-20T09:00:00.000-04:00'
+                version_published_at: null
+                version: null
+                webhook_url: null
+                demo: false
+                latest_version: null
+                last_changed_at: null
+                last_changed_by_type: null
+                last_changed_by_id: null
+        '404':
+          description: template not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: Template not found
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+      description: 'Retrieves information about a template including processing status and document URL.
+
+        Use this to check if template is ready to view in the template editor or generate PDFs.
+
+        '
+      parameters:
+      - name: template_id
+        in: path
+        type: string
+        required: true
+        x-example: tpl_1234567890abcdef01
+      security:
+      - basicAuth: []
+    put:
+      operationId: updateTemplate
+      summary: Update a Template
+      tags:
+      - Templates
+      responses:
+        '200':
+          description: update template success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/success_multiple_errors_response'
+              example:
+                status: success
+      description: 'Updates template content and properties. For HTML templates, you can modify the HTML,
+
+        SCSS, headers, footers, name, and description. Changes are applied to your draft
+
+        template and do not affect published template versions.
+
+        '
+      parameters:
+      - name: template_id
+        in: path
+        type: string
+        required: true
+        x-example: tpl_1234567890abcdef03
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                template:
+                  additionalProperties: false
+                  properties:
+                    add_data_request_submission_id_footers:
+                      type: boolean
+                    allow_additional_properties:
+                      type: boolean
+                    defaults:
+                      additionalProperties: false
+                      properties:
+                        alignment:
+                          enum:
+                          - left
+                          - center
+                          - right
+                          type: string
+                        backgroundColor:
+                          type:
+                          - string
+                          - 'null'
+                        bold:
+                          type: boolean
+                        characterSpacing:
+                          type: number
+                        checkBackgroundColor:
+                          type:
+                          - string
+                          - 'null'
+                        checkCharacter:
+                          type:
+                          - string
+                          - 'null'
+                        checkColor:
+                          type:
+                          - string
+                          - 'null'
+                        color:
+                          type:
+                          - string
+                          - 'null'
+                        dateFormat:
+                          type:
+                          - string
+                          - 'null'
+                        dateTimeFormat:
+                          type:
+                          - string
+                          - 'null'
+                        falseText:
+                          type:
+                          - string
+                          - 'null'
+                        fontSize:
+                          type: number
+                        opacity:
+                          type: number
+                        shapeBorderColor:
+                          type:
+                          - string
+                          - 'null'
+                        shapeBorderWidth:
+                          type: number
+                        shapeFillColor:
+                          type:
+                          - string
+                          - 'null'
+                        textColor:
+                          type:
+                          - string
+                          - 'null'
+                        trueText:
+                          type:
+                          - string
+                          - 'null'
+                        typeface:
+                          type:
+                          - string
+                          - 'null'
+                        uppercase:
+                          type: boolean
+                      required:
+                      - color
+                      - fontSize
+                      - typeface
+                      type: object
+                    description:
+                      type:
+                      - string
+                      - 'null'
+                    editable_submissions:
+                      type: boolean
+                    embed_domains:
+                      type:
+                      - string
+                      - 'null'
+                    encrypt_pdfs:
+                      type: boolean
+                    encrypt_pdfs_password:
+                      type:
+                      - string
+                      - 'null'
+                    expiration_interval:
+                      enum:
+                      - minutes
+                      - hours
+                      - days
+                      type: string
+                    expire_after:
+                      type: number
+                    expire_submissions:
+                      type: boolean
+                    external_predefined_fields_template_id:
+                      type:
+                      - string
+                      - 'null'
+                    external_predefined_fields_template_name:
+                      type:
+                      - string
+                      - 'null'
+                    field_order:
+                      items:
+                        items:
+                          type: number
+                        type: array
+                      type: array
+                    fields:
+                      type: object
+                    fields_patch:
+                      description: Array of field updates to apply
+                      items:
+                        type: object
+                      type: array
+                    footer_html:
+                      type:
+                      - string
+                      - 'null'
+                    header_html:
+                      type:
+                      - string
+                      - 'null'
+                    html:
+                      type:
+                      - string
+                      - 'null'
+                    html_engine_options:
+                      type: object
+                    locked:
+                      type: boolean
+                    merge_audit_trail_pdf:
+                      type: boolean
+                    name:
+                      type:
+                      - string
+                      - 'null'
+                    parent_folder_id:
+                      type:
+                      - string
+                      - 'null'
+                    predefined_fields:
+                      items:
+                        type: object
+                      type: array
+                    predefined_fields_sample_data:
+                      description: Sample data for predefined fields. Can be a string when sent with multipart form upload.
+                      type:
+                      - object
+                      - string
+                    public_submissions:
+                      type: boolean
+                    public_web_form:
+                      type: boolean
+                    redirect_url:
+                      type:
+                      - string
+                      - 'null'
+                    scss:
+                      type:
+                      - string
+                      - 'null'
+                    shared_field_data:
+                      type: object
+                    shared_field_data_patch:
+                      description: Array of shared field data updates to apply
+                      items:
+                        type: object
+                      type: array
+                    slack_webhook_url:
+                      type:
+                      - string
+                      - 'null'
+                    template_type:
+                      enum:
+                      - pdf
+                      - html
+                      type: string
+                    webhook_options:
+                      properties:
+                        exclude_data:
+                          type: boolean
+                      type:
+                      - object
+                      - 'null'
+                    webhook_url:
+                      type:
+                      - string
+                      - 'null'
+                  title: update_html_template_data
+                  type: object
+              required:
+              - template
+              title: update_html_template
+              type: object
+              example:
+                template:
+                  html: updated html
+                  scss: updated scss
+                  header_html: updated header
+                  footer_html: updated footer
+                  webhook_options:
+                    exclude_data: true
+        required: true
+      security:
+      - basicAuth: []
+    delete:
+      operationId: deleteTemplate
+      summary: Delete a template
+      tags:
+      - Templates
+      responses:
+        '200':
+          description: template version deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/template_delete_response'
+              example:
+                status: success
+                latest_version: 1.0.1
+                versions:
+                - version: 1.0.1
+                  description: null
+                  published_at: '2018-10-20T09:00:02.000-04:00'
+                  published_by_id: usr_1234567890abcdef01
+                - version: 1.0.0
+                  description: null
+                  published_at: '2018-10-20T09:00:01.000-04:00'
+                  published_by_id: usr_1234567890abcdef01
+        '404':
+          description: template not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: Template not found
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+      description: 'Deletes a template or a specific template version. When no version is specified, deletes
+
+        the entire template including all versions. When a version is specified, deletes only
+
+        that version while preserving others. Returns remaining version information.
+
+        '
+      parameters:
+      - name: template_id
+        in: path
+        type: string
+        required: true
+        x-example: tpl_1234567890abcdef01
+      - name: version
+        in: query
+        type: string
+        required: false
+        x-example: 0.1.0
+      security:
+      - basicAuth: []
+  /templates/{template_id}/publish_version:
+    post:
+      operationId: publishTemplateVersion
+      summary: Publish a template version
+      tags:
+      - Templates
+      responses:
+        '200':
+          description: version published successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/template_publish_version_response'
+              example:
+                status: success
+                result:
+                  version: 0.1.0
+                  description: Added new fields
+                  published_by_id: usr_1234567890abcdef01
+                  published_at: '2018-10-20T09:00:00.000-04:00'
+        '422':
+          description: invalid version type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/success_multiple_errors_response'
+              example:
+                status: error
+                errors:
+                - 'Invalid version type! Must be one of: major, minor, patch'
+        '404':
+          description: template not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: Template not found
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+      description: 'Publishes the current draft version of a template and creates a new immutable version
+
+        with semantic versioning (major.minor.patch).
+
+        '
+      parameters:
+      - name: template_id
+        in: path
+        type: string
+        required: true
+        x-example: tpl_1234567890abcdef01
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                description:
+                  type: string
+                version_type:
+                  type: string
+              required:
+              - version_type
+              title: publish_version_data
+              type: object
+              example:
+                version_type: minor
+                description: Added new fields
+        required: true
+      security:
+      - basicAuth: []
+  /templates/{template_id}/restore_version:
+    post:
+      operationId: restoreTemplateVersion
+      summary: Restore a template version
+      tags:
+      - Templates
+      responses:
+        '200':
+          description: version restored successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/success_error_response'
+              example:
+                status: success
+        '422':
+          description: draft version not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/success_multiple_errors_response'
+              example:
+                status: error
+                errors:
+                - Version is required!
+        '404':
+          description: template version not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/success_multiple_errors_response'
+              example:
+                status: error
+                errors:
+                - Couldn't find published template for tpl_1234567890abcdef01 version 999.999.999
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+      description: 'Restores your template to a previously published version, copying that version''s content
+
+        and configuration to the current draft. Use this to revert changes or recover from
+
+        an unwanted modification.
+
+        '
+      parameters:
+      - name: template_id
+        in: path
+        type: string
+        required: true
+        x-example: tpl_1234567890abcdef01
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                version:
+                  type: string
+              required:
+              - version
+              title: restore_version_data
+              type: object
+              example:
+                version: 1.0.0
+        required: true
+      security:
+      - basicAuth: []
+  /templates/{template_id}/add_fields:
+    put:
+      operationId: addFieldsToTemplate
+      summary: Add new fields to a Template
+      tags:
+      - Templates
+      responses:
+        '200':
+          description: add fields success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/template_add_fields_response'
+              example:
+                status: success
+                new_field_ids:
+                - 4
+                - 5
+                - 6
+                - 7
+                - 99
+                - 8
+        '422':
+          description: add fields error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/template_add_fields_response'
+              example:
+                status: error
+                errors:
+                - The property '#/fields/0' did not contain a required property of 'page'
+                - The property '#/fields/1/page' did not have a minimum value of 1, inclusively
+                - The property '#/fields/5' contains additional properties ["unknown_property"] outside of the schema when none are allowed
+                - 'The property ''#/fields/6/displayType'' value "unknown display type" did not match one of the following values: text, check, qrcode, barcode, image, shape'
+                - 'The property ''#/fields/6/type'' value "unknown type" did not match one of the following values: string, number, boolean, date, address, country, email, url, image, signature, initials, barcode, combined'
+                - The property '#/fields/6' did not contain a required property of 'page'
+                - 'The property ''#/fields/7/width'' of type string did not match the following type: number'
+                - The property '#/fields/8/height' did not have a minimum value of 0, inclusively
+                - The property '#/fields/8/width' did not have a minimum value of 0, inclusively
+                - The property '#/fields/8/x' did not have a minimum value of 0, inclusively
+                - The property '#/fields/8/y' did not have a minimum value of 0, inclusively
+                - The property '#/fields/2/id' value "1" is already taken by another field
+                - The property '#/fields/2/page' value "5" did not have a maximum value of 3, inclusively (Template has 3 pages)
+                - The property '#/fields/3/page' value "4" did not have a maximum value of 3, inclusively (Template has 3 pages)
+      description: 'Adds fields to a PDF template. Configure field types, positions,
+
+        defaults, and formatting options.
+
+        '
+      externalDocs:
+        url: https://docspring.com/docs/reference/field-schema/
+        description: View the field schema to see all available properties and types
+      parameters:
+      - name: template_id
+        in: path
+        type: string
+        required: true
+        x-example: tpl_1234567890abcdef02
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                fields:
+                  items:
+                    additionalProperties: false
+                    properties:
+                      alignment:
+                        enum:
+                        - left
+                        - center
+                        - right
+                        type: string
+                      autoCalculateMaxLength:
+                        type: boolean
+                      backgroundColor:
+                        type: string
+                      backgroundColorFieldName:
+                        type: string
+                      backgroundColorFieldRequired:
+                        type: boolean
+                      barcodeSymbology:
+                        type: string
+                      bold:
+                        type: boolean
+                      characterSpacing:
+                        type: number
+                      checkCharacter:
+                        enum:
+                        - '&#10003;'
+                        - '&#10004;'
+                        - '&#10006;'
+                        - '&#10007;'
+                        - '&#10008;'
+                        type: string
+                      checkColor:
+                        type: string
+                      checkColorFieldName:
+                        type: string
+                      checkColorFieldRequired:
+                        type: boolean
+                      color:
+                        type: string
+                      colorFieldName:
+                        type: string
+                      colorFieldRequired:
+                        type: boolean
+                      comb:
+                        type: boolean
+                      combNumberOfCells:
+                        minimum: 0
+                        type: number
+                      combValueOffset:
+                        type: number
+                      combinedFieldFormat:
+                        type: string
+                      combinedFieldNames:
+                        type: string
+                      combinedFieldSeparator:
+                        type: string
+                      combinedFieldType:
+                        type: string
+                      condition:
+                        type: string
+                      currency:
+                        type: boolean
+                      dateTimeFormat:
+                        type: string
+                      decimalPlaces:
+                        minimum: 0
+                        type: number
+                      default:
+                        type: string
+                      description:
+                        type: string
+                      displayType:
+                        enum:
+                        - text
+                        - check
+                        - qrcode
+                        - barcode
+                        - image
+                        - shape
+                        type: string
+                      exclusiveMaximum:
+                        type: boolean
+                      exclusiveMinimum:
+                        type: boolean
+                      falseText:
+                        type: string
+                      fontSize:
+                        minimum: 0
+                        type: number
+                      height:
+                        minimum: 0
+                        type: number
+                      hidden:
+                        type: boolean
+                      id:
+                        minimum: 0
+                        type: number
+                      imageGravity:
+                        enum:
+                        - NorthWest
+                        - North
+                        - NorthEast
+                        - West
+                        - Center
+                        - East
+                        - SouthWest
+                        - South
+                        - SouthEast
+                        type: string
+                      imageScaleType:
+                        enum:
+                        - fit
+                        - fill
+                        - stretch
+                        type: string
+                      includeTime:
+                        type: boolean
+                      integer:
+                        type: boolean
+                      invertBooleanCondition:
+                        type: boolean
+                      maxLength:
+                        type: number
+                      maximum:
+                        type: number
+                      metadata:
+                        type: string
+                      minLength:
+                        type: number
+                      minimum:
+                        type: number
+                      multiline:
+                        type: boolean
+                      multilineLines:
+                        minimum: 0
+                        type: number
+                      name:
+                        type: string
+                      numberConditionRangeExclusiveMax:
+                        type: boolean
+                      numberConditionRangeExclusiveMin:
+                        type: boolean
+                      numberConditionRangeMax:
+                        type: number
+                      numberConditionRangeMin:
+                        type: number
+                      numberConditionType:
+                        enum:
+                        - equals
+                        - range
+                        - gte
+                        - gt
+                        - lte
+                        - lt
+                        type: string
+                      opacity:
+                        maximum: 1
+                        minimum: 0
+                        type: number
+                      optionList:
+                        type: string
+                      overflow:
+                        enum:
+                        - shrink_to_fit
+                        - truncate
+                        type: string
+                      page:
+                        minimum: 1
+                        type: number
+                      placeholder:
+                        type: string
+                      qrcodeColor:
+                        type: string
+                      qrcodeColorFieldName:
+                        type: string
+                      qrcodeColorFieldRequired:
+                        type: boolean
+                      required:
+                        type: boolean
+                      rotation:
+                        maximum: 360
+                        minimum: 0
+                        type: number
+                      shapeBorderColor:
+                        type: string
+                      shapeBorderColorFieldName:
+                        type: string
+                      shapeBorderColorFieldRequired:
+                        type: boolean
+                      shapeBorderWidth:
+                        minimum: 0
+                        type: number
+                      shapeFillColor:
+                        type: string
+                      shapeFillColorFieldName:
+                        type: string
+                      shapeFillColorFieldRequired:
+                        type: boolean
+                      shapeType:
+                        enum:
+                        - square
+                        - rectangle
+                        - circle
+                        - ellipse
+                        type: string
+                      signatureAllowDraw:
+                        type: boolean
+                      signatureAllowType:
+                        type: boolean
+                      static:
+                        type: boolean
+                      strikethrough:
+                        type: boolean
+                      stringConditionType:
+                        enum:
+                        - equals
+                        - contains
+                        - starts_with
+                        - ends_with
+                        - regex
+                        type: string
+                      title:
+                        type: string
+                      trueText:
+                        type: string
+                      type:
+                        enum:
+                        - string
+                        - number
+                        - boolean
+                        - date
+                        - address
+                        - country
+                        - email
+                        - url
+                        - image
+                        - signature
+                        - initials
+                        - barcode
+                        - combined
+                        type: string
+                      typeface:
+                        type: string
+                      uppercase:
+                        type: boolean
+                      vAlignment:
+                        enum:
+                        - bottom
+                        - center
+                        - top
+                        type: string
+                      width:
+                        minimum: 0
+                        type: number
+                      x:
+                        minimum: 0
+                        type: number
+                      y:
+                        minimum: 0
+                        type: number
+                    required:
+                    - name
+                    - page
+                    type: object
+                  type: array
+              required:
+              - fields
+              title: add_fields_data
+              type: object
+              example:
+                fields:
+                - name: new_field1
+                  page: 1
+                - name: new_field2
+                  page: 1
+                  type: string
+                  displayType: text
+                  rotation: 10
+                  overflow: truncate
+                  default: default text
+                - name: new_field3
+                  page: 2
+                  type: number
+                  integer: true
+                  displayType: text
+                  rotation: 0
+                - name: new_field4
+                  page: 3
+                  type: number
+                  integer: true
+                  displayType: text
+                  rotation: 0
+                - name: new_field5
+                  id: 99
+                  page: 2
+                  x: 20
+                  y: 60
+                  width: 150
+                  height: 50
+                  type: number
+                  integer: true
+                  displayType: text
+                  rotation: 0
+                - name: first_name
+                  page: 1
+                  x: 40
+                  y: 60
+                  width: 150
+                  height: 50
+                  type: number
+                  integer: true
+                  displayType: text
+                  rotation: 0
+                  minimum: 10
+                  maximum: 100
+                  description: updated description for existing field
+        required: true
+      security:
+      - basicAuth: []
+  /templates/{template_id}/move:
+    post:
+      operationId: moveTemplateToFolder
+      summary: Move Template to folder
+      tags:
+      - Templates
+      responses:
+        '200':
+          description: move template success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/template_preview'
+              example:
+                add_data_request_submission_id_footers: true
+                allow_additional_properties: false
+                description: null
+                document_filename: blank_pdf.pdf
+                document_md5: 1c32d785398e3a7eaab0e9b876903cc6
+                document_parse_error: false
+                document_processed: true
+                document_state: processed
+                document_url: https://docspring-s3-example.s3.amazonaws.com/store/acc_1234567890abcdef01/templates/tpl_1234567890abcdef01/draft/document/original-0000000000.abcdef1234567890abcd.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=docspring-s3-example%2F20210101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210101T090000Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=abcdef0123456789
+                editable_submissions: false
+                embed_domains: null
+                encrypt_pdfs_password: null
+                encrypt_pdfs: false
+                expiration_interval: days
+                expire_after: 7
+                expire_submissions: true
+                external_predefined_fields_template_id: null
+                external_predefined_fields_template_name: null
+                first_template: false
+                id: tpl_1234567890abcdef01
+                locked: false
+                merge_audit_trail_pdf: true
+                name: Template 1
+                page_count: 1
+                page_dimensions:
+                - - 612
+                  - 792
+                parent_folder_id: fld_1234567890abcdef01
+                path: /Folder
+                permanent_document_url: https://app.docspring.com/templates/tpl_1234567890abcdef01/original_pdf?token=123456789abcdef
+                public_submissions: false
+                public_web_form: false
+                redirect_url: null
+                slack_webhook_url: null
+                template_type: pdf
+                updated_at: '2018-10-20T09:00:00.000-04:00'
+                version_published_at: null
+                version: null
+                webhook_url: null
+                demo: false
+                latest_version: null
+                last_changed_at: null
+                last_changed_by_type: null
+                last_changed_by_id: null
+        '404':
+          description: folder not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: Could not find parent folder MISSING_ID
+      description: 'Moves a template to a different folder or to the root level. Use this to organize
+
+        templates within your folders. Provide a folder ID to move to a specific
+
+        folder, or `null` to move to the root level.
+
+        '
+      parameters:
+      - name: template_id
+        in: path
+        type: string
+        required: true
+        x-example: tpl_1234567890abcdef01
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                parent_folder_id:
+                  type: string
+              required:
+              - parent_folder_id
+              title: move_template_data
+              type: object
+              example:
+                parent_folder_id: fld_1234567890abcdef01
+        required: true
+      security:
+      - basicAuth: []
+  /templates/{template_id}/copy:
+    post:
+      operationId: copyTemplate
+      summary: Copy a template
+      tags:
+      - Templates
+      responses:
+        '200':
+          description: copy template success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/template_preview'
+              example:
+                add_data_request_submission_id_footers: true
+                allow_additional_properties: false
+                description: null
+                document_filename: blank_pdf.pdf
+                document_md5: 1c32d785398e3a7eaab0e9b876903cc6
+                document_parse_error: false
+                document_processed: true
+                document_state: processed
+                document_url: https://docspring-s3-example.s3.amazonaws.com/store/acc_1234567890abcdef01/templates/tpl_1234567890abcdef05/draft/document/original-0000000000.abcdef1234567890abcd.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=docspring-s3-example%2F20210101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210101T090000Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=abcdef0123456789
+                editable_submissions: false
+                embed_domains: null
+                encrypt_pdfs_password: null
+                encrypt_pdfs: false
+                expiration_interval: days
+                expire_after: 7
+                expire_submissions: true
+                external_predefined_fields_template_id: null
+                external_predefined_fields_template_name: null
+                first_template: false
+                id: tpl_1234567890abcdef05
+                locked: false
+                merge_audit_trail_pdf: true
+                name: Copied Template Name
+                page_count: 1
+                page_dimensions:
+                - - 612
+                  - 792
+                parent_folder_id: fld_1234567890abcdef01
+                path: /Folder
+                permanent_document_url: https://app.docspring.com/templates/tpl_1234567890abcdef05/original_pdf?token=123456789abcdef
+                public_submissions: false
+                public_web_form: false
+                redirect_url: null
+                slack_webhook_url: null
+                template_type: pdf
+                updated_at: '2018-10-20T09:00:00.000-04:00'
+                version_published_at: null
+                version: null
+                webhook_url: null
+                demo: false
+                latest_version: null
+                last_changed_at: null
+                last_changed_by_type: null
+                last_changed_by_id: null
+        '404':
+          description: folder not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: Could not find parent folder MISSING_ID
+      description: 'Creates a copy of an existing template with all its fields and configuration.
+
+        Optionally specify a new name and target folder. The copied template starts as a new
+
+        draft that can be modified independently of the original.
+
+        '
+      parameters:
+      - name: template_id
+        in: path
+        type: string
+        required: true
+        x-example: tpl_1234567890abcdef01
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                name:
+                  type: string
+                parent_folder_id:
+                  type: string
+              required:
+              - parent_folder_id
+              title: copy_template_options
+              type: object
+              example:
+                parent_folder_id: fld_1234567890abcdef01
+                name: Copied Template Name
+      security:
+      - basicAuth: []
+  /templates/{template_id}/schema:
+    get:
+      operationId: getTemplateSchema
+      summary: Fetch the JSON schema for a template
+      tags:
+      - Templates
+      responses:
+        '200':
+          description: template found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/json_schema'
+              example:
+                $schema: http://json-schema.org/draft-04/schema#
+                id: https://api.docspring.com/api/v1/templates/tpl_1234567890abcdef01/schema.json
+                title: Template 1
+                description: JSON Schema generated by DocSpring.com
+                definitions: {}
+                type: object
+                properties:
+                  first_name:
+                    type: string
+                    title: First Name
+                  last_name:
+                    type: string
+                    title: Last Name
+                  phone_number:
+                    type:
+                    - string
+                    - 'null'
+                    title: Phone Number
+                required:
+                - first_name
+                - last_name
+                additionalProperties: false
+        '404':
+          description: template not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: Template not found
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+      description: 'Retrieves the JSON Schema definition for a template''s fields. Use this to validate
+
+        data before submitting it for PDF generation, or to build dynamic forms that match
+
+        the template''s field structure and validation requirements.
+
+
+        See also:
+
+        - [Generate PDFs Guide](https://docspring.com/docs/api-guide/generate-pdfs/generate-pdfs-via-api/) - Use schema to validate submission data
+
+        '
+      parameters:
+      - name: template_id
+        in: path
+        type: string
+        required: true
+        x-example: tpl_1234567890abcdef01
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    success_error_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - error
+        error:
+          type: string
+      required:
+      - status
+      additionalProperties: false
+      title: success_error_response
+    success_multiple_errors_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - error
+        errors:
+          type: array
+          items:
+            type: string
+      required:
+      - status
+      additionalProperties: false
+      title: success_multiple_errors_response
+    template_add_fields_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - error
+        errors:
+          type: array
+          items:
+            type: string
+        new_field_ids:
+          type: array
+          items:
+            type: integer
+      required:
+      - status
+      additionalProperties: false
+      title: template_add_fields_response
+    template_delete_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - error
+        errors:
+          type: array
+          items:
+            type: string
+        latest_version:
+          type: string
+          nullable: true
+        versions:
+          type: array
+          items:
+            type: object
+            properties:
+              version:
+                type: string
+              description:
+                type: string
+                nullable: true
+              published_at:
+                type: string
+              published_by_id:
+                type: string
+            required:
+            - version
+            - published_at
+            - published_by_id
+            additionalProperties: false
+      required:
+      - status
+      additionalProperties: false
+      title: template_delete_response
+    json_schema:
+      type: object
+      properties:
+        $schema:
+          type: string
+          format: uri
+        id:
+          type: string
+          format: uri-reference
+        title:
+          type: string
+        description:
+          type: string
+        definitions:
+          type: object
+          default: {}
+        type:
+          type: string
+        properties:
+          type: object
+        additionalProperties:
+          type: boolean
+        required:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+      title: json_schema
+    template_publish_version_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - error
+        result:
+          type: object
+          additionalProperties: false
+          properties:
+            version:
+              type: string
+            description:
+              type: string
+              nullable: true
+            published_by_id:
+              type: string
+            published_at:
+              type: string
+              format: date-time
+          required:
+          - version
+          - published_by_id
+          - published_at
+        errors:
+          type: array
+          items:
+            type: string
+      required:
+      - status
+      - result
+      additionalProperties: false
+      title: template_publish_version_response
+    error_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+        error:
+          type: string
+      required:
+      - status
+      - error
+      additionalProperties: false
+      title: error_response
+    template_preview:
+      title: template_preview
+      type: object
+      properties:
+        add_data_request_submission_id_footers:
+          type: boolean
+        allow_additional_properties:
+          type: boolean
+        description:
+          type: string
+          nullable: true
+        document_filename:
+          type: string
+          nullable: true
+        document_md5:
+          type: string
+          nullable: true
+        document_parse_error:
+          type: boolean
+        document_processed:
+          type: boolean
+        document_state:
+          type: string
+          enum:
+          - pending
+          - processed
+          - password_required
+          - malformed_pdf
+          - unknown_error
+        document_url:
+          type: string
+          nullable: true
+        editable_submissions:
+          type: boolean
+        embed_domains:
+          type: string
+          nullable: true
+        encrypt_pdfs_password:
+          type: string
+          nullable: true
+        encrypt_pdfs:
+          type: boolean
+        expiration_interval:
+          type: string
+        expire_after:
+          type: integer
+        expire_submissions:
+          type: boolean
+        external_predefined_fields_template_id:
+          type: string
+          nullable: true
+        external_predefined_fields_template_name:
+          type: string
+          nullable: true
+        first_template:
+          type: boolean
+        id:
+          type: string
+          nullable: true
+        locked:
+          type: boolean
+        merge_audit_trail_pdf:
+          type: boolean
+        name:
+          type: string
+          nullable: true
+        page_count:
+          type: integer
+        page_dimensions:
+          type: array
+          items:
+            type: array
+            minItems: 2
+            maxItems: 2
+            items:
+              type: number
+          nullable: true
+        parent_folder_id:
+          type: string
+          nullable: true
+        path:
+          type: string
+          nullable: true
+        permanent_document_url:
+          type: string
+          nullable: true
+        public_submissions:
+          type: boolean
+        public_web_form:
+          type: boolean
+        redirect_url:
+          type: string
+          nullable: true
+        slack_webhook_url:
+          type: string
+          nullable: true
+        template_type:
+          type: string
+          enum:
+          - pdf
+          - html
+        updated_at:
+          type: string
+          nullable: true
+        version_published_at:
+          type: string
+          nullable: true
+        version:
+          type: string
+          nullable: true
+        webhook_url:
+          type: string
+          nullable: true
+        demo:
+          type: boolean
+        latest_version:
+          type: string
+          nullable: true
+        last_changed_at:
+          type: string
+          nullable: true
+        last_changed_by_type:
+          type: string
+          enum:
+          - user
+          - api
+          nullable: true
+        last_changed_by_id:
+          type: string
+          nullable: true
+      required:
+      - add_data_request_submission_id_footers
+      - allow_additional_properties
+      - demo
+      - description
+      - document_filename
+      - document_md5
+      - document_parse_error
+      - document_processed
+      - document_state
+      - document_url
+      - editable_submissions
+      - embed_domains
+      - encrypt_pdfs
+      - encrypt_pdfs_password
+      - expiration_interval
+      - expire_after
+      - expire_submissions
+      - external_predefined_fields_template_id
+      - external_predefined_fields_template_name
+      - first_template
+      - id
+      - last_changed_at
+      - last_changed_by_id
+      - last_changed_by_type
+      - latest_version
+      - locked
+      - merge_audit_trail_pdf
+      - name
+      - page_count
+      - page_dimensions
+      - parent_folder_id
+      - path
+      - permanent_document_url
+      - public_submissions
+      - public_web_form
+      - redirect_url
+      - slack_webhook_url
+      - template_type
+      - updated_at
+      - version
+      - version_published_at
+      - webhook_url
+      additionalProperties: false
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: 'Username: API Token ID, Password: API Token Secret'
+externalDocs:
+  url: https://docspring.com/docs/
+  description: DocSpring API Documentation

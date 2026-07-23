@@ -1,0 +1,372 @@
+openapi: 3.0.3
+info:
+  title: DocSpring Authentication Folders API
+  description: Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.
+  version: v1
+  contact:
+    url: https://docspring.com/docs/
+  license:
+    name: Proprietary
+servers:
+- url: https://sync.api.docspring.com/api/v1
+  description: DocSpring API
+security:
+- basicAuth: []
+tags:
+- name: Folders
+paths:
+  /folders/:
+    get:
+      operationId: listFolders
+      summary: Get a list of all folders
+      tags:
+      - Folders
+      responses:
+        '200':
+          description: enumerate all folders
+          content:
+            application/json:
+              schema:
+                title: list_folders
+                type: array
+                items:
+                  $ref: '#/components/schemas/folder'
+                additionalProperties: false
+              example:
+              - id: fld_1234567890abcdef03
+                name: nested folder 1
+                path: /Folder 2
+                parent_folder_id: fld_1234567890abcdef02
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+      description: 'Returns a list of folders in your account. Can be filtered by parent folder ID to retrieve
+
+        subfolders. Folders help organize templates and maintain a hierarchical structure.
+
+        '
+      parameters:
+      - name: parent_folder_id
+        in: query
+        type: string
+        required: false
+        description: Filter By Folder Id
+        x-example: fld_1234567890abcdef02
+      security:
+      - basicAuth: []
+    post:
+      operationId: createFolder
+      summary: Create a folder
+      tags:
+      - Folders
+      responses:
+        '422':
+          description: name already exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/multiple_errors_response'
+        '404':
+          description: parent folder doesn't exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '200':
+          description: folder created inside another folder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/folder'
+              example:
+                id: fld_1234567890abcdef05
+                name: Folder 3
+                path: /Folder 1
+                parent_folder_id: fld_1234567890abcdef01
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+      description: 'Creates a new folder for organizing templates. Folders can be nested within other folders
+
+        by providing a `parent_folder_id`. Folder names must be unique within the same parent.
+
+        '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                folder:
+                  additionalProperties: false
+                  properties:
+                    name:
+                      type: string
+                    parent_folder_id:
+                      type: string
+                  required:
+                  - name
+                  title: create_folder_attributes
+                  type: object
+              required:
+              - folder
+              title: create_folder_data
+              type: object
+              example:
+                folder:
+                  name: Folder 3
+        required: true
+      security:
+      - basicAuth: []
+  /folders/{folder_id}/move:
+    post:
+      operationId: moveFolderToFolder
+      summary: Move a folder
+      tags:
+      - Folders
+      responses:
+        '404':
+          description: parent folder doesn't exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '200':
+          description: move to root folder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/folder'
+              example:
+                id: fld_1234567890abcdef01
+                name: Folder 1
+                path: /Folder 2
+                parent_folder_id: fld_1234567890abcdef02
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+      description: 'Moves a folder to a new parent folder or to the root level. All templates and subfolders
+
+        within the folder are moved together. Cannot move a folder into one of its own subfolders.
+
+        '
+      parameters:
+      - name: folder_id
+        in: path
+        type: string
+        required: true
+        x-example: fld_1234567890abcdef01
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                parent_folder_id:
+                  type: string
+              title: move_folder_data
+              type: object
+              example:
+                parent_folder_id: fld_1234567890abcdef02
+        required: true
+      security:
+      - basicAuth: []
+  /folders/{folder_id}/rename:
+    post:
+      operationId: renameFolder
+      summary: Rename a folder
+      tags:
+      - Folders
+      responses:
+        '422':
+          description: name already exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/multiple_errors_response'
+        '404':
+          description: folder doesn't belong to me
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '200':
+          description: successful rename
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/folder'
+              example:
+                id: fld_1234567890abcdef01
+                name: Folder 3
+                path: /
+                parent_folder_id: null
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+      description: 'Renames an existing folder. The new name must be unique within the same parent folder.
+
+        This operation only changes the folder name, not its location or contents.
+
+        '
+      parameters:
+      - name: folder_id
+        in: path
+        type: string
+        required: true
+        x-example: fld_1234567890abcdef01
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+              title: rename_folder_data
+              type: object
+              example:
+                name: Folder 3
+        required: true
+      security:
+      - basicAuth: []
+  /folders/{folder_id}:
+    delete:
+      operationId: deleteFolder
+      summary: Delete a folder
+      tags:
+      - Folders
+      responses:
+        '404':
+          description: folder doesn't exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '422':
+          description: folder has contents
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '200':
+          description: folder is empty
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/folder'
+              example:
+                id: fld_1234567890abcdef01
+                name: Folder 1
+                path: /
+                parent_folder_id: null
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+      description: 'Deletes an empty folder. The folder must not contain any templates or subfolders.
+
+        Move or delete all contents before attempting to delete the folder.
+
+        '
+      parameters:
+      - name: folder_id
+        in: path
+        type: string
+        required: true
+        x-example: fld_1234567890abcdef01
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    error_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+        error:
+          type: string
+      required:
+      - status
+      - error
+      additionalProperties: false
+      title: error_response
+    multiple_errors_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+        errors:
+          type: array
+          items:
+            type: string
+      required:
+      - status
+      - errors
+      additionalProperties: false
+      title: multiple_errors_response
+    folder:
+      title: folder
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        path:
+          type: string
+          nullable: true
+        parent_folder_id:
+          type: string
+          nullable: true
+      required:
+      - id
+      - name
+      - parent_folder_id
+      - path
+      additionalProperties: false
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: 'Username: API Token ID, Password: API Token Secret'
+externalDocs:
+  url: https://docspring.com/docs/
+  description: DocSpring API Documentation

@@ -1,0 +1,77 @@
+openapi: 3.0.3
+info:
+  title: DocSpring Authentication API
+  description: Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.
+  version: v1
+  contact:
+    url: https://docspring.com/docs/
+  license:
+    name: Proprietary
+servers:
+- url: https://sync.api.docspring.com/api/v1
+  description: DocSpring API
+security:
+- basicAuth: []
+tags:
+- name: Authentication
+paths:
+  /authentication:
+    get:
+      operationId: testAuthentication
+      summary: Test authentication
+      tags:
+      - Authentication
+      responses:
+        '200':
+          description: authentication succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/success_error_response'
+              example:
+                status: success
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/success_error_response'
+              example:
+                status: error
+                error: 'Could not find API token with ID: missing_api_token'
+      description: 'Checks whether your API token is valid by making an authenticated request.
+
+        Returns a success response if authentication passes. This endpoint is useful for
+
+        verifying credentials during setup or troubleshooting issues.
+
+        '
+      externalDocs:
+        url: https://docspring.com/docs/api-guide/authentication/
+        description: Learn how to authenticate with the DocSpring API
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    success_error_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - error
+        error:
+          type: string
+      required:
+      - status
+      additionalProperties: false
+      title: success_error_response
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: 'Username: API Token ID, Password: API Token Secret'
+externalDocs:
+  url: https://docspring.com/docs/
+  description: DocSpring API Documentation

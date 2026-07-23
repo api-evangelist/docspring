@@ -1,0 +1,687 @@
+openapi: 3.0.3
+info:
+  title: DocSpring Authentication Combine PDFs API
+  description: Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.
+  version: v1
+  contact:
+    url: https://docspring.com/docs/
+  license:
+    name: Proprietary
+servers:
+- url: https://sync.api.docspring.com/api/v1
+  description: DocSpring API
+security:
+- basicAuth: []
+tags:
+- name: Combine PDFs
+paths:
+  /combined_submissions:
+    get:
+      operationId: listCombinedSubmissions
+      summary: Get a list of all combined submissions
+      tags:
+      - Combine PDFs
+      responses:
+        '200':
+          description: enumerate all combined submissions
+          content:
+            application/json:
+              schema:
+                title: list_combined_submissions
+                type: array
+                items:
+                  $ref: '#/components/schemas/combined_submission'
+                additionalProperties: false
+              example:
+              - id: com_1234567890abcdef01
+                state: processed
+                expired: false
+                expires_in: 300
+                expires_at: '2018-10-20T13:05:00Z'
+                processed_at: '2020-05-14T02:00:00Z'
+                error_message: null
+                submission_ids:
+                - sub_1234567890abcdef01
+                - sub_1234567890abcdef02
+                source_pdfs: []
+                metadata:
+                  qux: abc
+                  user_id: 42
+                password: password123
+                pdf_hash: 12342342471442006963e3244a1b43610e066165c09770978221f91bd7ace8f5
+                download_url: https://docspring-s3-example.s3.amazonaws.com/store/submissions/sub_1234567890abcdef01/20171002192229.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=docspring-s3-example%2F20210101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210101T090000Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=abcdef0123456789
+                actions:
+                - id: csa_1234567890abcdef01
+                  integration_id: aci_1234567890abcdef01
+                  state: processed
+                  action_type: aws_s3_upload
+                  action_category: file_upload
+                  result_data:
+                    s3_key: acc_1234/2018/combined_submissions/20181005090010-com_1234.pdf
+                    s3_url: https://docspring-s3-example.s3.amazonaws.com/acc_1234/2018/combined_submissions/20181005090010-com_1234.pdf
+                    s3_bucket: docspring-s3-example
+                    s3_region: us-east-1
+                  error_message: null
+              - id: com_1234567890abcdef02
+                state: pending
+                expired: false
+                expires_in: null
+                expires_at: null
+                processed_at: null
+                error_message: null
+                submission_ids: []
+                source_pdfs: []
+                metadata: {}
+                password: null
+                pdf_hash: null
+                download_url: null
+                actions: []
+              - id: com_1234567890abcdef03
+                state: processed
+                expired: false
+                expires_in: null
+                expires_at: null
+                processed_at: '2023-01-05T14:00:00Z'
+                error_message: null
+                submission_ids: []
+                source_pdfs: []
+                metadata: {}
+                password: null
+                pdf_hash: 225fb2676adc8f382aba3916d7b7a2088cb7f75ab62ec5c7f4543c5abf8ce4da
+                download_url: https://docspring-s3-example.s3.amazonaws.com/store/acc_1234567890abcdef01/combined_submissions/com_1234567890abcdef03.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=docspring-s3-example%2F20210101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210101T090000Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=abcdef0123456789
+                actions:
+                - id: csa_1234567890abcdef02
+                  integration_id: aci_1234567890abcdef01
+                  state: processed
+                  action_type: aws_s3_upload
+                  action_category: file_upload
+                  result_data:
+                    s3_key: acc_1234/2018/combined_submissions/20181005090010-com_1234.pdf
+                    s3_url: https://docspring-s3-example.s3.amazonaws.com/acc_1234/2018/combined_submissions/20181005090010-com_1234.pdf
+                    s3_bucket: docspring-s3-example
+                    s3_region: us-east-1
+                  error_message: null
+              - id: com_1234567890abcdef04
+                state: error
+                expired: false
+                expires_in: 123
+                expires_at: null
+                processed_at: null
+                error_message: Something went wrong
+                submission_ids: []
+                source_pdfs: []
+                metadata: {}
+                password: null
+                pdf_hash: null
+                download_url: null
+                actions: []
+              - id: com_1234567890abcdef05
+                state: processed
+                expired: true
+                expires_in: 345
+                expires_at: '2023-01-05T14:05:00Z'
+                processed_at: '2023-01-05T14:00:00Z'
+                error_message: null
+                submission_ids: []
+                source_pdfs: []
+                metadata: {}
+                password: null
+                pdf_hash: 0622971147486e1900037eff229d921d14f5b51aac7171729b2b66f81cdf6585
+                download_url: null
+                actions:
+                - id: csa_1234567890abcdef03
+                  integration_id: aci_1234567890abcdef01
+                  state: processed
+                  action_type: aws_s3_upload
+                  action_category: file_upload
+                  result_data:
+                    s3_key: acc_1234/2018/combined_submissions/20181005090010-com_1234.pdf
+                    s3_url: https://docspring-s3-example.s3.amazonaws.com/acc_1234/2018/combined_submissions/20181005090010-com_1234.pdf
+                    s3_bucket: docspring-s3-example
+                    s3_region: us-east-1
+                  error_message: null
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+      description: 'Returns a paginated list of combined submissions (merged PDFs) for your account.
+
+        Includes processing status, expiration details, and download URLs for processed PDFs.
+
+        '
+      externalDocs:
+        url: https://docspring.com/docs/api-guide/combine-pdfs/
+        description: Complete guide to combining PDFs with DocSpring
+      parameters:
+      - name: page
+        in: query
+        type: integer
+        minimum: 1
+        required: false
+        description: 'Default: 1'
+        x-example: 3
+      - name: per_page
+        in: query
+        type: integer
+        minimum: 1
+        maximum: 50
+        required: false
+        description: 'Default: 50'
+        x-example: 1
+      security:
+      - basicAuth: []
+    post:
+      operationId: combinePdfs
+      summary: Merge submission PDFs, template PDFs, or custom files
+      tags:
+      - Combine PDFs
+      responses:
+        '201':
+          description: combined submission created
+          content:
+            application/json:
+              schema:
+                type: object
+                title: create_combined_submission_response
+                properties:
+                  status:
+                    type: string
+                    enum:
+                    - success
+                    - error
+                  combined_submission:
+                    $ref: '#/components/schemas/combined_submission'
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                required:
+                - status
+                - combined_submission
+                additionalProperties: false
+              example:
+                status: success
+                combined_submission:
+                  id: com_1234567890abcdef02
+                  state: pending
+                  expired: false
+                  expires_in: 300
+                  expires_at: null
+                  processed_at: null
+                  error_message: null
+                  submission_ids:
+                  - sub_1234567890abcdef01
+                  - sub_1234567890abcdef02
+                  source_pdfs:
+                  - type: submission
+                    id: sub_1234567890abcdef01
+                  - type: template
+                    id: tpl_1234567890abcdef01
+                    template_version: 1.0.0
+                  - type: template
+                    id: tpl_1234567890abcdef01
+                  - type: submission
+                    id: sub_1234567890abcdef02
+                  - type: custom_file
+                    id: cfi_1234567890abcdef01
+                  - type: combined_submission
+                    id: com_1234567890abcdef01
+                  - type: url
+                    url: http://example.com/test-pdf.pdf
+                  metadata:
+                    foo: 123
+                    bar: baz
+                  password: null
+                  pdf_hash: null
+                  download_url: null
+                  actions: []
+        '422':
+          description: invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/multiple_errors_response'
+              example:
+                status: error
+                errors:
+                - 'source_pdfs: Could not find Submission with ID: MISSING_SUBMISSION_ID'
+                - 'source_pdfs: Template document is not processed: tpl_1234567890abcdef01 (state: pending)'
+                - 'source_pdfs: Invalid template version: ''x.y.z'' for template: tpl_1234567890abcdef01'
+                - 'source_pdfs: Could not find Template with version 3.4.5: tpl_1234567890abcdef01'
+                - 'source_pdfs: Could not find Template with ID: MISSING_TEMPLATE_ID'
+                - 'source_pdfs: Could not find Custom File with ID: MISSING_CUSTOM_FILE_ID'
+                - 'source_pdfs: Could not find Combined Submission with ID: MISSING_COMBINED_SUBMISSION_ID'
+        '400':
+          description: invalid JSON
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'There was a problem with the JSON you submitted: unexpected character at line 1, column 34 in ''{ "source_pdfs": ["123", "345"], metadata: { "user_id": "@#*&%)(@*#%&(@#!" }}'
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+      description: 'Combines multiple PDFs from various sources into a single PDF file. Supports merging
+
+        submission PDFs, template PDFs, custom files, other merged PDFs,
+
+        and PDFs from URLs. Merges the PDFs in the order provided.
+
+        '
+      externalDocs:
+        url: https://docspring.com/docs/api-guide/combine-pdfs/
+        description: Complete guide to combining PDFs with DocSpring
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                delete_custom_files:
+                  type: boolean
+                expires_in:
+                  type: integer
+                metadata:
+                  type: object
+                password:
+                  type: string
+                source_pdfs:
+                  items:
+                    additionalProperties: false
+                    properties:
+                      id:
+                        type: string
+                      template_version:
+                        type: string
+                      type:
+                        enum:
+                        - submission
+                        - combined_submission
+                        - template
+                        - custom_file
+                        - url
+                        type: string
+                      url:
+                        format: uri
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  type: array
+                test:
+                  type: boolean
+              required:
+              - source_pdfs
+              title: combine_pdfs_data
+              type: object
+              example:
+                source_pdfs:
+                - type: submission
+                  id: sub_1234567890abcdef01
+                - type: template
+                  id: tpl_1234567890abcdef01
+                  template_version: 1.0.0
+                - type: template
+                  id: tpl_1234567890abcdef01
+                - type: submission
+                  id: sub_1234567890abcdef02
+                - type: custom_file
+                  id: cfi_1234567890abcdef01
+                - type: combined_submission
+                  id: com_1234567890abcdef01
+                - type: url
+                  url: http://example.com/test-pdf.pdf
+                metadata:
+                  foo: 123
+                  bar: baz
+                expires_in: 300
+                delete_custom_files: true
+        required: true
+      security:
+      - basicAuth: []
+  /combined_submissions/{combined_submission_id}:
+    get:
+      operationId: getCombinedSubmission
+      summary: Check the status of a combined submission (merged PDFs)
+      tags:
+      - Combine PDFs
+      responses:
+        '200':
+          description: processed combined submission found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/combined_submission'
+              example:
+                id: com_1234567890abcdef01
+                state: processed
+                expired: false
+                expires_in: 300
+                expires_at: '2018-10-20T13:05:00Z'
+                processed_at: '2020-05-14T02:00:00Z'
+                error_message: null
+                submission_ids:
+                - sub_1234567890abcdef01
+                - sub_1234567890abcdef02
+                source_pdfs: []
+                metadata:
+                  qux: abc
+                  user_id: 42
+                password: password123
+                pdf_hash: 12342342471442006963e3244a1b43610e066165c09770978221f91bd7ace8f5
+                download_url: https://docspring-s3-example.s3.amazonaws.com/store/submissions/sub_1234567890abcdef01/20171002192229.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=docspring-s3-example%2F20210101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210101T090000Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=abcdef0123456789
+                actions:
+                - id: csa_1234567890abcdef01
+                  integration_id: aci_1234567890abcdef01
+                  state: processed
+                  action_type: aws_s3_upload
+                  action_category: file_upload
+                  result_data:
+                    s3_key: acc_1234/2018/combined_submissions/20181005090010-com_1234.pdf
+                    s3_url: https://docspring-s3-example.s3.amazonaws.com/acc_1234/2018/combined_submissions/20181005090010-com_1234.pdf
+                    s3_bucket: docspring-s3-example
+                    s3_region: us-east-1
+                  error_message: null
+        '404':
+          description: combined submission not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: Combined submission not found.
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+      description: 'Retrieves the details and status of a combined submission. Returns processing state,
+
+        download URL (if processed), metadata, and information about any integrated actions
+
+        (e.g., S3 uploads).
+
+        '
+      externalDocs:
+        url: https://docspring.com/docs/api-guide/combine-pdfs/
+        description: Complete guide to combining PDFs with DocSpring
+      parameters:
+      - name: combined_submission_id
+        in: path
+        type: string
+        required: true
+        x-example: com_1234567890abcdef01
+      security:
+      - basicAuth: []
+    delete:
+      operationId: expireCombinedSubmission
+      summary: Expire a combined submission
+      tags:
+      - Combine PDFs
+      responses:
+        '200':
+          description: submission was expired
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/combined_submission'
+              example:
+                id: com_1234567890abcdef01
+                state: processed
+                expired: true
+                expires_in: 300
+                expires_at: '2018-10-20T13:00:00Z'
+                processed_at: '2020-05-14T02:00:00Z'
+                error_message: null
+                submission_ids:
+                - sub_1234567890abcdef01
+                - sub_1234567890abcdef02
+                source_pdfs: []
+                metadata:
+                  qux: abc
+                  user_id: 42
+                password: password123
+                pdf_hash: 12342342471442006963e3244a1b43610e066165c09770978221f91bd7ace8f5
+                download_url: null
+                actions:
+                - id: csa_1234567890abcdef01
+                  integration_id: aci_1234567890abcdef01
+                  state: processed
+                  action_type: aws_s3_upload
+                  action_category: file_upload
+                  result_data:
+                    s3_key: acc_1234/2018/combined_submissions/20181005090010-com_1234.pdf
+                    s3_url: https://docspring-s3-example.s3.amazonaws.com/acc_1234/2018/combined_submissions/20181005090010-com_1234.pdf
+                    s3_bucket: docspring-s3-example
+                    s3_region: us-east-1
+                  error_message: null
+        '404':
+          description: combined submission not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: Combined submission not found.
+        '403':
+          description: test API token used
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: You must use a live API token to expire a combined submission.
+        '401':
+          description: authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              example:
+                status: error
+                error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
+      description: 'Expiring a combined submission deletes the PDF from our system.
+
+        This is useful for invalidating sensitive documents.
+
+        '
+      externalDocs:
+        url: https://docspring.com/docs/api-guide/combine-pdfs/
+        description: Complete guide to combining PDFs with DocSpring
+      parameters:
+      - name: combined_submission_id
+        in: path
+        type: string
+        required: true
+        x-example: com_1234567890abcdef01
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    error_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+        error:
+          type: string
+      required:
+      - status
+      - error
+      additionalProperties: false
+      title: error_response
+    combined_submission_action:
+      title: combined_submission_action
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        integration_id:
+          type: string
+          nullable: true
+        state:
+          type: string
+          enum:
+          - pending
+          - processed
+          - failed
+          - error
+        action_type:
+          type: string
+          enum:
+          - webhook
+          - slack_webhook
+          - email
+          - aws_s3_upload
+          nullable: true
+        action_category:
+          type: string
+          enum:
+          - notification
+          - file_upload
+        result_data:
+          type: object
+        error_message:
+          type: string
+          nullable: true
+      required:
+      - action_category
+      - action_type
+      - error_message
+      - id
+      - integration_id
+      - result_data
+      - state
+      additionalProperties: false
+    multiple_errors_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+        errors:
+          type: array
+          items:
+            type: string
+      required:
+      - status
+      - errors
+      additionalProperties: false
+      title: multiple_errors_response
+    combined_submission:
+      title: combined_submission
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        state:
+          type: string
+          enum:
+          - pending
+          - processed
+          - error
+        expired:
+          type: boolean
+        expires_in:
+          type: integer
+          nullable: true
+        expires_at:
+          type: string
+          nullable: true
+        processed_at:
+          type: string
+          nullable: true
+        error_message:
+          type: string
+          nullable: true
+        submission_ids:
+          type: array
+          items:
+            type: string
+        source_pdfs:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              type:
+                type: string
+                enum:
+                - combined_submission
+                - custom_file
+                - submission
+                - template
+                - url
+              template_version:
+                type: string
+              url:
+                type: string
+                format: uri
+            required:
+            - type
+            additionalProperties: false
+        metadata:
+          type: object
+        password:
+          type: string
+          nullable: true
+        pdf_hash:
+          type: string
+          nullable: true
+        download_url:
+          type: string
+          nullable: true
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/combined_submission_action'
+      required:
+      - actions
+      - download_url
+      - error_message
+      - expired
+      - expires_at
+      - expires_in
+      - id
+      - metadata
+      - password
+      - pdf_hash
+      - processed_at
+      - source_pdfs
+      - state
+      - submission_ids
+      additionalProperties: false
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: 'Username: API Token ID, Password: API Token Secret'
+externalDocs:
+  url: https://docspring.com/docs/
+  description: DocSpring API Documentation
