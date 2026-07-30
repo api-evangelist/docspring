@@ -7,7 +7,20 @@ description: >-
   generation, batch submissions, combined PDF merging, data request workflows,
   e-signatures, and HTML-to-PDF conversion.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: open
+  trial: true
+  try_now: true
+  public: true
+  label: Paid (free trial) · Open access
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/docspring.png
 url: https://raw.githubusercontent.com/api-evangelist/docspring/refs/heads/main/apis.yml
 created: "2026-06-13"
 modified: "2026-06-13"
@@ -22,28 +35,118 @@ tags:
   - Document Automation
 
 apis:
-  - name: DocSpring API
-    description: >-
-      REST API for programmatically filling out PDF forms, converting HTML to
-      PDFs, merging PDFs, generating documents from templates, and requesting
-      legally binding e-signatures. Supports both synchronous and asynchronous
-      processing modes.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docspring.com/docs/
-    baseURL: https://sync.api.docspring.com/api/v1
-    tags:
-      - PDF Generation
-      - Document Templates
-      - E-Signatures
-      - Forms
-    properties:
-      - type: Documentation
-        url: https://docspring.com/docs/
-      - type: OpenAPI
-        url: https://docspring.com/api-docs/v1/openapi.json
-      - type: Authentication
-        url: https://docspring.com/docs/api-guide/authentication/
-
+- aid: docspring:docspring-authentication-api
+  name: DocSpring Authentication API
+  description: The Authentication API from DocSpring — 1 operation(s) for authentication.
+  humanURL: https://docspring.com/docs/
+  baseURL: https://sync.api.docspring.com/api/v1
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/docspring-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://docspring.com/docs/
+  - type: Authentication
+    url: https://docspring.com/docs/api-guide/authentication/
+- aid: docspring:docspring-combine-pdfs-api
+  name: DocSpring Combine PDFs API
+  description: The Combine PDFs API from DocSpring — 2 operation(s) for combine pdfs.
+  humanURL: https://docspring.com/docs/
+  baseURL: https://sync.api.docspring.com/api/v1
+  tags:
+  - Combine PDFs
+  properties:
+  - type: OpenAPI
+    url: openapi/docspring-combine-pdfs-api-openapi.yml
+  - type: Documentation
+    url: https://docspring.com/docs/
+  - type: Authentication
+    url: https://docspring.com/docs/api-guide/authentication/
+- aid: docspring:docspring-custom-files-api
+  name: DocSpring Custom Files API
+  description: The Custom Files API from DocSpring — 2 operation(s) for custom files.
+  humanURL: https://docspring.com/docs/
+  baseURL: https://sync.api.docspring.com/api/v1
+  tags:
+  - Custom Files
+  properties:
+  - type: OpenAPI
+    url: openapi/docspring-custom-files-api-openapi.yml
+  - type: Documentation
+    url: https://docspring.com/docs/
+  - type: Authentication
+    url: https://docspring.com/docs/api-guide/authentication/
+- aid: docspring:docspring-data-requests-api
+  name: DocSpring Data Requests API
+  description: The Data Requests API from DocSpring — 3 operation(s) for data requests.
+  humanURL: https://docspring.com/docs/
+  baseURL: https://sync.api.docspring.com/api/v1
+  tags:
+  - Data Requests
+  properties:
+  - type: OpenAPI
+    url: openapi/docspring-data-requests-api-openapi.yml
+  - type: Documentation
+    url: https://docspring.com/docs/
+  - type: Authentication
+    url: https://docspring.com/docs/api-guide/authentication/
+- aid: docspring:docspring-folders-api
+  name: DocSpring Folders API
+  description: The Folders API from DocSpring — 4 operation(s) for folders.
+  humanURL: https://docspring.com/docs/
+  baseURL: https://sync.api.docspring.com/api/v1
+  tags:
+  - Folders
+  properties:
+  - type: OpenAPI
+    url: openapi/docspring-folders-api-openapi.yml
+  - type: Documentation
+    url: https://docspring.com/docs/
+  - type: Authentication
+    url: https://docspring.com/docs/api-guide/authentication/
+- aid: docspring:docspring-pdf-submissions-api
+  name: DocSpring PDF Submissions API
+  description: The PDF Submissions API from DocSpring — 4 operation(s) for pdf submissions.
+  humanURL: https://docspring.com/docs/
+  baseURL: https://sync.api.docspring.com/api/v1
+  tags:
+  - PDF Submissions
+  properties:
+  - type: OpenAPI
+    url: openapi/docspring-pdf-submissions-api-openapi.yml
+  - type: Documentation
+    url: https://docspring.com/docs/
+  - type: Authentication
+    url: https://docspring.com/docs/api-guide/authentication/
+- aid: docspring:docspring-submission-batches-api
+  name: DocSpring Submission Batches API
+  description: The Submission Batches API from DocSpring — 2 operation(s) for submission batches.
+  humanURL: https://docspring.com/docs/
+  baseURL: https://sync.api.docspring.com/api/v1
+  tags:
+  - Submission Batches
+  properties:
+  - type: OpenAPI
+    url: openapi/docspring-submission-batches-api-openapi.yml
+  - type: Documentation
+    url: https://docspring.com/docs/
+  - type: Authentication
+    url: https://docspring.com/docs/api-guide/authentication/
+- aid: docspring:docspring-templates-api
+  name: DocSpring Templates API
+  description: The Templates API from DocSpring — 8 operation(s) for templates.
+  humanURL: https://docspring.com/docs/
+  baseURL: https://sync.api.docspring.com/api/v1
+  tags:
+  - Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/docspring-templates-api-openapi.yml
+  - type: Documentation
+    url: https://docspring.com/docs/
+  - type: Authentication
+    url: https://docspring.com/docs/api-guide/authentication/
 common:
   - type: AgenticAccess
     url: agentic-access/docspring-agentic-access.yml
