@@ -1,0 +1,30 @@
+{
+  "provider": "docspring",
+  "sources": [
+    "docspring-authentication-api-openapi.yml",
+    "docspring-combine-pdfs-api-openapi.yml",
+    "docspring-custom-files-api-openapi.yml",
+    "docspring-data-requests-api-openapi.yml",
+    "docspring-folders-api-openapi.yml",
+    "docspring-pdf-submissions-api-openapi.yml",
+    "docspring-submission-batches-api-openapi.yml",
+    "docspring-templates-api-openapi.yml"
+  ],
+  "outputs": [
+    "docspring-authentication-api-openapi.yml",
+    "docspring-combine-pdfs-api-openapi.yml",
+    "docspring-custom-files-api-openapi.yml",
+    "docspring-data-requests-api-openapi.yml",
+    "docspring-folders-api-openapi.yml",
+    "docspring-pdf-submissions-api-openapi.yml",
+    "docspring-submission-batches-api-openapi.yml",
+    "docspring-templates-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [
+    "docspring-pdf-submissions-api-openapi.yml: dangling $ref: #/definitions/submission_preview"
+  ],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
