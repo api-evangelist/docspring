@@ -1,0 +1,2454 @@
+{
+  "item": [
+    {
+      "id": "340535ef-5079-42de-89be-2ac21497305c",
+      "name": "Templates",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "30ed3c59-7305-4e4f-9f66-cb1a7b68b47e",
+          "name": "Get a list of all templates",
+          "request": {
+            "name": "Get a list of all templates",
+            "description": {
+              "content": "Retrieves a list of your templates with search, filtering, and pagination options. Returns\nbasic template information including ID, name, type (PDF or HTML), and folder location.\nSupports text search by name and filtering by parent folder.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Search By Name",
+                    "type": "text/plain"
+                  },
+                  "key": "query",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter By Folder Id",
+                    "type": "text/plain"
+                  },
+                  "key": "parent_folder_id",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Default: 1",
+                    "type": "text/plain"
+                  },
+                  "key": "page",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Default: 50",
+                    "type": "text/plain"
+                  },
+                  "key": "per_page",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c69c5d7b-729e-4889-854f-6c697c429c2b",
+              "name": "enumerate all templates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": ""
+                    },
+                    {
+                      "key": "parent_folder_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "page",
+                      "value": ""
+                    },
+                    {
+                      "key": "per_page",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"add_data_request_submission_id_footers\": true,\n    \"allow_additional_properties\": false,\n    \"description\": null,\n    \"document_filename\": \"test-document.pdf\",\n    \"document_md5\": null,\n    \"document_parse_error\": false,\n    \"document_processed\": true,\n    \"document_state\": \"pending\",\n    \"document_url\": \"https://docspring-s3-example.s3.amazonaws.com/store/templates/test/test-document.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=docspring-s3-example%2F20210101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210101T090000Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=abcdef0123456789\",\n    \"editable_submissions\": false,\n    \"embed_domains\": null,\n    \"encrypt_pdfs_password\": null,\n    \"encrypt_pdfs\": false,\n    \"expiration_interval\": \"days\",\n    \"expire_after\": 7,\n    \"expire_submissions\": true,\n    \"external_predefined_fields_template_id\": null,\n    \"external_predefined_fields_template_name\": null,\n    \"first_template\": false,\n    \"id\": \"tpl_1234567890abcdef04\",\n    \"locked\": false,\n    \"merge_audit_trail_pdf\": true,\n    \"name\": \"Sub Template 1\",\n    \"page_count\": 3,\n    \"page_dimensions\": [\n      [\n        612,\n        792\n      ],\n      [\n        792,\n        612\n      ],\n      [\n        612,\n        792\n      ]\n    ],\n    \"parent_folder_id\": \"fld_1234567890abcdef01\",\n    \"path\": \"/Folder\",\n    \"permanent_document_url\": \"https://app.docspring.com/templates/tpl_1234567890abcdef04/original_pdf?token=123456789abcdef\",\n    \"public_submissions\": false,\n    \"public_web_form\": false,\n    \"redirect_url\": null,\n    \"slack_webhook_url\": null,\n    \"template_type\": \"pdf\",\n    \"updated_at\": \"2018-10-20T09:00:00.000-04:00\",\n    \"version_published_at\": null,\n    \"version\": null,\n    \"webhook_url\": null,\n    \"demo\": false,\n    \"latest_version\": null,\n    \"last_changed_at\": null,\n    \"last_changed_by_type\": null,\n    \"last_changed_by_id\": null\n  },\n  {\n    \"add_data_request_submission_id_footers\": true,\n    \"allow_additional_properties\": false,\n    \"description\": null,\n    \"document_filename\": null,\n    \"document_md5\": null,\n    \"document_parse_error\": false,\n    \"document_processed\": false,\n    \"document_state\": \"pending\",\n    \"document_url\": null,\n    \"editable_submissions\": false,\n    \"embed_domains\": null,\n    \"encrypt_pdfs_password\": null,\n    \"encrypt_pdfs\": false,\n    \"expiration_interval\": \"days\",\n    \"expire_after\": 7,\n    \"expire_submissions\": true,\n    \"external_predefined_fields_template_id\": null,\n    \"external_predefined_fields_template_name\": null,\n    \"first_template\": false,\n    \"id\": \"tpl_1234567890abcdef03\",\n    \"locked\": false,\n    \"merge_audit_trail_pdf\": true,\n    \"name\": \"Template 3\",\n    \"page_count\": 1,\n    \"page_dimensions\": null,\n    \"parent_folder_id\": null,\n    \"path\": \"/\",\n    \"permanent_document_url\": null,\n    \"public_submissions\": false,\n    \"public_web_form\": false,\n    \"redirect_url\": null,\n    \"slack_webhook_url\": null,\n    \"template_type\": \"html\",\n    \"updated_at\": \"2018-10-20T09:00:00.000-04:00\",\n    \"version_published_at\": null,\n    \"version\": null,\n    \"webhook_url\": null,\n    \"demo\": false,\n    \"latest_version\": null,\n    \"last_changed_at\": null,\n    \"last_changed_by_type\": null,\n    \"last_changed_by_id\": null\n  },\n  {\n    \"add_data_request_submission_id_footers\": true,\n    \"allow_additional_properties\": false,\n    \"description\": null,\n    \"document_filename\": \"test-document.pdf\",\n    \"document_md5\": null,\n    \"document_parse_error\": false,\n    \"document_processed\": true,\n    \"document_state\": \"pending\",\n    \"document_url\": \"https://docspring-s3-example.s3.amazonaws.com/store/templates/test/test-document.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=docspring-s3-example%2F20210101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210101T090000Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=abcdef0123456789\",\n    \"editable_submissions\": false,\n    \"embed_domains\": null,\n    \"encrypt_pdfs_password\": null,\n    \"encrypt_pdfs\": false,\n    \"expiration_interval\": \"days\",\n    \"expire_after\": 7,\n    \"expire_submissions\": true,\n    \"external_predefined_fields_template_id\": null,\n    \"external_predefined_fields_template_name\": null,\n    \"first_template\": false,\n    \"id\": \"tpl_1234567890abcdef02\",\n    \"locked\": false,\n    \"merge_audit_trail_pdf\": true,\n    \"name\": \"Template 2\",\n    \"page_count\": 3,\n    \"page_dimensions\": [\n      [\n        612,\n        792\n      ],\n      [\n        792,\n        612\n      ],\n      [\n        612,\n        792\n      ]\n    ],\n    \"parent_folder_id\": null,\n    \"path\": \"/\",\n    \"permanent_document_url\": \"https://app.docspring.com/templates/tpl_1234567890abcdef02/original_pdf?token=123456789abcdef\",\n    \"public_submissions\": false,\n    \"public_web_form\": false,\n    \"redirect_url\": null,\n    \"slack_webhook_url\": null,\n    \"template_type\": \"pdf\",\n    \"updated_at\": \"2018-10-20T09:00:00.000-04:00\",\n    \"version_published_at\": null,\n    \"version\": null,\n    \"webhook_url\": null,\n    \"demo\": false,\n    \"latest_version\": null,\n    \"last_changed_at\": null,\n    \"last_changed_by_type\": null,\n    \"last_changed_by_id\": null\n  },\n  {\n    \"add_data_request_submission_id_footers\": true,\n    \"allow_additional_properties\": false,\n    \"description\": null,\n    \"document_filename\": \"blank_pdf.pdf\",\n    \"document_md5\": \"1c32d785398e3a7eaab0e9b876903cc6\",\n    \"document_parse_error\": false,\n    \"document_processed\": true,\n    \"document_state\": \"processed\",\n    \"document_url\": \"https://docspring-s3-example.s3.amazonaws.com/store/acc_1234567890abcdef01/templates/tpl_1234567890abcdef01/draft/document/original-0000000000.abcdef1234567890abcd.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=docspring-s3-example%2F20210101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210101T090000Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=abcdef0123456789\",\n    \"editable_submissions\": false,\n    \"embed_domains\": null,\n    \"encrypt_pdfs_password\": null,\n    \"encrypt_pdfs\": false,\n    \"expiration_interval\": \"days\",\n    \"expire_after\": 7,\n    \"expire_submissions\": true,\n    \"external_predefined_fields_template_id\": null,\n    \"external_predefined_fields_template_name\": null,\n    \"first_template\": false,\n    \"id\": \"tpl_1234567890abcdef01\",\n    \"locked\": false,\n    \"merge_audit_trail_pdf\": true,\n    \"name\": \"Template 1\",\n    \"page_count\": 1,\n    \"page_dimensions\": [\n      [\n        612,\n        792\n      ]\n    ],\n    \"parent_folder_id\": null,\n    \"path\": \"/\",\n    \"permanent_document_url\": \"https://app.docspring.com/templates/tpl_1234567890abcdef01/original_pdf?token=123456789abcdef\",\n    \"public_submissions\": false,\n    \"public_web_form\": false,\n    \"redirect_url\": null,\n    \"slack_webhook_url\": null,\n    \"template_type\": \"pdf\",\n    \"updated_at\": \"2018-10-20T09:00:00.000-04:00\",\n    \"version_published_at\": null,\n    \"version\": null,\n    \"webhook_url\": null,\n    \"demo\": false,\n    \"latest_version\": null,\n    \"last_changed_at\": null,\n    \"last_changed_by_type\": null,\n    \"last_changed_by_id\": null\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "507ad082-b1d0-4d0d-829e-344d04962c75",
+              "name": "authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": ""
+                    },
+                    {
+                      "key": "parent_folder_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "page",
+                      "value": ""
+                    },
+                    {
+                      "key": "per_page",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a8165f0-d931-41e8-8526-476962a7b671",
+              "name": "filter templates by invalid folder id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": ""
+                    },
+                    {
+                      "key": "parent_folder_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "page",
+                      "value": ""
+                    },
+                    {
+                      "key": "per_page",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e37f5068-5ddc-4a52-9b1e-58c131c7a1a0",
+          "name": "Create a new PDF template with a form POST file upload",
+          "request": {
+            "name": "Create a new PDF template with a form POST file upload",
+            "description": {
+              "content": "Creates a new PDF template by uploading a PDF file. The uploaded PDF becomes the foundation\nfor your template, and you can then add fillable fields using the template editor. Use the\nwait parameter to control whether the request waits for document processing to complete.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Wait for template document to be processed before returning. Set to false to return immediately. Default: true (on sync.* subdomain)",
+                    "type": "text/plain"
+                  },
+                  "key": "wait",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b6745201-544f-4f3c-9d3a-a7420579cc24",
+              "name": "returns a pending template",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "wait",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"add_data_request_submission_id_footers\": true,\n  \"allow_additional_properties\": false,\n  \"description\": null,\n  \"document_filename\": \"fw8ben.pdf\",\n  \"document_md5\": \"ca6fdfed355b9e89f9a94ee54688a231\",\n  \"document_parse_error\": false,\n  \"document_processed\": false,\n  \"document_state\": \"pending\",\n  \"document_url\": \"/cache/cached_upload.pdf\",\n  \"editable_submissions\": false,\n  \"embed_domains\": null,\n  \"encrypt_pdfs_password\": null,\n  \"encrypt_pdfs\": false,\n  \"expiration_interval\": \"days\",\n  \"expire_after\": 7,\n  \"expire_submissions\": false,\n  \"external_predefined_fields_template_id\": null,\n  \"external_predefined_fields_template_name\": null,\n  \"first_template\": true,\n  \"id\": \"tpl_1234567890abcdef01\",\n  \"locked\": false,\n  \"merge_audit_trail_pdf\": true,\n  \"name\": \"Test Template\",\n  \"page_count\": 0,\n  \"page_dimensions\": null,\n  \"parent_folder_id\": \"fld_1234567890abcdef01\",\n  \"path\": \"/Folder\",\n  \"permanent_document_url\": null,\n  \"public_submissions\": false,\n  \"public_web_form\": false,\n  \"redirect_url\": null,\n  \"slack_webhook_url\": null,\n  \"template_type\": \"pdf\",\n  \"updated_at\": \"2018-10-20T09:00:00.000-04:00\",\n  \"version_published_at\": null,\n  \"version\": null,\n  \"webhook_url\": null,\n  \"demo\": false,\n  \"latest_version\": null,\n  \"last_changed_at\": \"2018-10-20T09:00:00.000-04:00\",\n  \"last_changed_by_type\": null,\n  \"last_changed_by_id\": \"usr_1234567890abcdef01\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd8a0877-4d9e-4dcc-8430-f8189a48aff8",
+              "name": "authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "wait",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4582e1c5-a036-4f9b-97e9-75cd1570c002",
+          "name": "Check the status of an uploaded template",
+          "request": {
+            "name": "Check the status of an uploaded template",
+            "description": {
+              "content": "Retrieves information about a template including processing status and document URL.\nUse this to check if template is ready to view in the template editor or generate PDFs.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":template_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "template_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b4993fd5-8df3-46f6-a54a-0caf8fa40b22",
+              "name": "template found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"add_data_request_submission_id_footers\": true,\n  \"allow_additional_properties\": false,\n  \"description\": null,\n  \"document_filename\": \"blank_pdf.pdf\",\n  \"document_md5\": \"1c32d785398e3a7eaab0e9b876903cc6\",\n  \"document_parse_error\": false,\n  \"document_processed\": true,\n  \"document_state\": \"processed\",\n  \"document_url\": \"https://docspring-s3-example.s3.amazonaws.com/store/acc_1234567890abcdef01/templates/tpl_1234567890abcdef01/draft/document/original-0000000000.abcdef1234567890abcd.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=docspring-s3-example%2F20210101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210101T090000Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=abcdef0123456789\",\n  \"editable_submissions\": false,\n  \"embed_domains\": null,\n  \"encrypt_pdfs_password\": null,\n  \"encrypt_pdfs\": false,\n  \"expiration_interval\": \"days\",\n  \"expire_after\": 7,\n  \"expire_submissions\": true,\n  \"external_predefined_fields_template_id\": null,\n  \"external_predefined_fields_template_name\": null,\n  \"first_template\": false,\n  \"id\": \"tpl_1234567890abcdef01\",\n  \"locked\": false,\n  \"merge_audit_trail_pdf\": true,\n  \"name\": \"Template 1\",\n  \"page_count\": 1,\n  \"page_dimensions\": [\n    [\n      612,\n      792\n    ]\n  ],\n  \"parent_folder_id\": null,\n  \"path\": \"/\",\n  \"permanent_document_url\": \"https://app.docspring.com/templates/tpl_1234567890abcdef01/original_pdf?token=123456789abcdef\",\n  \"public_submissions\": false,\n  \"public_web_form\": false,\n  \"redirect_url\": null,\n  \"slack_webhook_url\": null,\n  \"template_type\": \"pdf\",\n  \"updated_at\": \"2018-10-20T09:00:00.000-04:00\",\n  \"version_published_at\": null,\n  \"version\": null,\n  \"webhook_url\": null,\n  \"demo\": false,\n  \"latest_version\": null,\n  \"last_changed_at\": null,\n  \"last_changed_by_type\": null,\n  \"last_changed_by_id\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "485b5ee3-7930-4cf7-80da-8c05eab27ad9",
+              "name": "authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "948cebc2-dd31-493d-9706-c8ae2ab2c6fc",
+              "name": "template not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Template not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7eb15a64-f111-454c-b780-e97e0059a2b3",
+          "name": "Update a Template",
+          "request": {
+            "name": "Update a Template",
+            "description": {
+              "content": "Updates template content and properties. For HTML templates, you can modify the HTML,\nSCSS, headers, footers, name, and description. Changes are applied to your draft\ntemplate and do not affect published template versions.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":template_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "template_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"template\": {\n    \"add_data_request_submission_id_footers\": \"<boolean>\",\n    \"allow_additional_properties\": \"<boolean>\",\n    \"defaults\": {\n      \"color\": \"<string,null>\",\n      \"fontSize\": \"<number>\",\n      \"typeface\": \"<string,null>\",\n      \"alignment\": \"<string>\",\n      \"backgroundColor\": \"<string,null>\",\n      \"bold\": \"<boolean>\",\n      \"characterSpacing\": \"<number>\",\n      \"checkBackgroundColor\": \"<string,null>\",\n      \"checkCharacter\": \"<string,null>\",\n      \"checkColor\": \"<string,null>\",\n      \"dateFormat\": \"<string,null>\",\n      \"dateTimeFormat\": \"<string,null>\",\n      \"falseText\": \"<string,null>\",\n      \"opacity\": \"<number>\",\n      \"shapeBorderColor\": \"<string,null>\",\n      \"shapeBorderWidth\": \"<number>\",\n      \"shapeFillColor\": \"<string,null>\",\n      \"textColor\": \"<string,null>\",\n      \"trueText\": \"<string,null>\",\n      \"uppercase\": \"<boolean>\"\n    },\n    \"description\": \"<string,null>\",\n    \"editable_submissions\": \"<boolean>\",\n    \"embed_domains\": \"<string,null>\",\n    \"encrypt_pdfs\": \"<boolean>\",\n    \"encrypt_pdfs_password\": \"<string,null>\",\n    \"expiration_interval\": \"<string>\",\n    \"expire_after\": \"<number>\",\n    \"expire_submissions\": \"<boolean>\",\n    \"external_predefined_fields_template_id\": \"<string,null>\",\n    \"external_predefined_fields_template_name\": \"<string,null>\",\n    \"field_order\": [\n      [\n        \"<number>\",\n        \"<number>\"\n      ],\n      [\n        \"<number>\",\n        \"<number>\"\n      ]\n    ],\n    \"fields\": \"<object>\",\n    \"fields_patch\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"footer_html\": \"<string,null>\",\n    \"header_html\": \"<string,null>\",\n    \"html\": \"<string,null>\",\n    \"html_engine_options\": \"<object>\",\n    \"locked\": \"<boolean>\",\n    \"merge_audit_trail_pdf\": \"<boolean>\",\n    \"name\": \"<string,null>\",\n    \"parent_folder_id\": \"<string,null>\",\n    \"predefined_fields\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"predefined_fields_sample_data\": \"<object,string>\",\n    \"public_submissions\": \"<boolean>\",\n    \"public_web_form\": \"<boolean>\",\n    \"redirect_url\": \"<string,null>\",\n    \"scss\": \"<string,null>\",\n    \"shared_field_data\": \"<object>\",\n    \"shared_field_data_patch\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"slack_webhook_url\": \"<string,null>\",\n    \"template_type\": \"<string>\",\n    \"webhook_options\": {\n      \"exclude_data\": \"<boolean>\"\n    },\n    \"webhook_url\": \"<string,null>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "05c6cfbf-1680-422e-91ef-170a1db606e4",
+              "name": "update template success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"template\": {\n    \"html\": \"updated html\",\n    \"scss\": \"updated scss\",\n    \"header_html\": \"updated header\",\n    \"footer_html\": \"updated footer\",\n    \"webhook_options\": {\n      \"exclude_data\": true\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b89bb0b-fc1b-448f-9452-d37f7123dc52",
+          "name": "Delete a template",
+          "request": {
+            "name": "Delete a template",
+            "description": {
+              "content": "Deletes a template or a specific template version. When no version is specified, deletes\nthe entire template including all versions. When a version is specified, deletes only\nthat version while preserving others. Returns remaining version information.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":template_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "version",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "template_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e9f3c0c1-8a01-4fc7-96ea-a5caddd254bb",
+              "name": "template version deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"latest_version\": \"1.0.1\",\n  \"versions\": [\n    {\n      \"version\": \"1.0.1\",\n      \"description\": null,\n      \"published_at\": \"2018-10-20T09:00:02.000-04:00\",\n      \"published_by_id\": \"usr_1234567890abcdef01\"\n    },\n    {\n      \"version\": \"1.0.0\",\n      \"description\": null,\n      \"published_at\": \"2018-10-20T09:00:01.000-04:00\",\n      \"published_by_id\": \"usr_1234567890abcdef01\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea48eb6c-4f9c-49d8-95dc-e4d165a13235",
+              "name": "authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3d1f243-5413-4783-af8f-54ce3e36ffce",
+              "name": "template not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Template not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6eff4467-54e7-454c-923d-02c54dc764e0",
+          "name": "Publish a template version",
+          "request": {
+            "name": "Publish a template version",
+            "description": {
+              "content": "Publishes the current draft version of a template and creates a new immutable version\nwith semantic versioning (major.minor.patch).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":template_id",
+                "publish_version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "template_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"version_type\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fb60a71b-b988-4a57-982a-5337e09bf67f",
+              "name": "version published successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id",
+                    "publish_version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version_type\": \"minor\",\n  \"description\": \"Added new fields\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"result\": {\n    \"version\": \"0.1.0\",\n    \"description\": \"Added new fields\",\n    \"published_by_id\": \"usr_1234567890abcdef01\",\n    \"published_at\": \"2018-10-20T09:00:00.000-04:00\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3baead88-c27c-43ef-a546-0b455d3e1998",
+              "name": "authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id",
+                    "publish_version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version_type\": \"minor\",\n  \"description\": \"Added new fields\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32a1222c-425c-486b-95b9-01a20427dee9",
+              "name": "template not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id",
+                    "publish_version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version_type\": \"minor\",\n  \"description\": \"Added new fields\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Template not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "915cd2a2-b071-4d62-8454-ac3e0ff04c7d",
+              "name": "invalid version type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id",
+                    "publish_version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version_type\": \"minor\",\n  \"description\": \"Added new fields\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"errors\": [\n    \"Invalid version type! Must be one of: major, minor, patch\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37370c84-cabd-4871-8992-b782ef40902c",
+          "name": "Restore a template version",
+          "request": {
+            "name": "Restore a template version",
+            "description": {
+              "content": "Restores your template to a previously published version, copying that version's content\nand configuration to the current draft. Use this to revert changes or recover from\nan unwanted modification.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":template_id",
+                "restore_version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "template_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"version\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cb1719b7-03e5-4ff7-bf01-5efeb186baa9",
+              "name": "version restored successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id",
+                    "restore_version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version\": \"1.0.0\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06bf878d-60bd-486d-ba60-136f65e823c7",
+              "name": "authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id",
+                    "restore_version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version\": \"1.0.0\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51eedd18-2c41-4535-8edf-346df79cc885",
+              "name": "template version not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id",
+                    "restore_version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version\": \"1.0.0\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"errors\": [\n    \"Couldn't find published template for tpl_1234567890abcdef01 version 999.999.999\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1357fae-06c1-4e98-a342-109a04506925",
+              "name": "draft version not allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id",
+                    "restore_version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version\": \"1.0.0\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"errors\": [\n    \"Version is required!\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "312d5e8d-ae3e-4be7-b32b-a412abc4024e",
+          "name": "Add new fields to a Template",
+          "request": {
+            "name": "Add new fields to a Template",
+            "description": {
+              "content": "Adds fields to a PDF template. Configure field types, positions,\ndefaults, and formatting options.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":template_id",
+                "add_fields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "template_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fields\": [\n    {\n      \"name\": \"<string>\",\n      \"page\": \"<number>\",\n      \"alignment\": \"<string>\",\n      \"autoCalculateMaxLength\": \"<boolean>\",\n      \"backgroundColor\": \"<string>\",\n      \"backgroundColorFieldName\": \"<string>\",\n      \"backgroundColorFieldRequired\": \"<boolean>\",\n      \"barcodeSymbology\": \"<string>\",\n      \"bold\": \"<boolean>\",\n      \"characterSpacing\": \"<number>\",\n      \"checkCharacter\": \"<string>\",\n      \"checkColor\": \"<string>\",\n      \"checkColorFieldName\": \"<string>\",\n      \"checkColorFieldRequired\": \"<boolean>\",\n      \"color\": \"<string>\",\n      \"colorFieldName\": \"<string>\",\n      \"colorFieldRequired\": \"<boolean>\",\n      \"comb\": \"<boolean>\",\n      \"combNumberOfCells\": \"<number>\",\n      \"combValueOffset\": \"<number>\",\n      \"combinedFieldFormat\": \"<string>\",\n      \"combinedFieldNames\": \"<string>\",\n      \"combinedFieldSeparator\": \"<string>\",\n      \"combinedFieldType\": \"<string>\",\n      \"condition\": \"<string>\",\n      \"currency\": \"<boolean>\",\n      \"dateTimeFormat\": \"<string>\",\n      \"decimalPlaces\": \"<number>\",\n      \"default\": \"<string>\",\n      \"description\": \"<string>\",\n      \"displayType\": \"<string>\",\n      \"exclusiveMaximum\": \"<boolean>\",\n      \"exclusiveMinimum\": \"<boolean>\",\n      \"falseText\": \"<string>\",\n      \"fontSize\": \"<number>\",\n      \"height\": \"<number>\",\n      \"hidden\": \"<boolean>\",\n      \"id\": \"<number>\",\n      \"imageGravity\": \"<string>\",\n      \"imageScaleType\": \"<string>\",\n      \"includeTime\": \"<boolean>\",\n      \"integer\": \"<boolean>\",\n      \"invertBooleanCondition\": \"<boolean>\",\n      \"maxLength\": \"<number>\",\n      \"maximum\": \"<number>\",\n      \"metadata\": \"<string>\",\n      \"minLength\": \"<number>\",\n      \"minimum\": \"<number>\",\n      \"multiline\": \"<boolean>\",\n      \"multilineLines\": \"<number>\",\n      \"numberConditionRangeExclusiveMax\": \"<boolean>\",\n      \"numberConditionRangeExclusiveMin\": \"<boolean>\",\n      \"numberConditionRangeMax\": \"<number>\",\n      \"numberConditionRangeMin\": \"<number>\",\n      \"numberConditionType\": \"<string>\",\n      \"opacity\": \"<number>\",\n      \"optionList\": \"<string>\",\n      \"overflow\": \"<string>\",\n      \"placeholder\": \"<string>\",\n      \"qrcodeColor\": \"<string>\",\n      \"qrcodeColorFieldName\": \"<string>\",\n      \"qrcodeColorFieldRequired\": \"<boolean>\",\n      \"required\": \"<boolean>\",\n      \"rotation\": \"<number>\",\n      \"shapeBorderColor\": \"<string>\",\n      \"shapeBorderColorFieldName\": \"<string>\",\n      \"shapeBorderColorFieldRequired\": \"<boolean>\",\n      \"shapeBorderWidth\": \"<number>\",\n      \"shapeFillColor\": \"<string>\",\n      \"shapeFillColorFieldName\": \"<string>\",\n      \"shapeFillColorFieldRequired\": \"<boolean>\",\n      \"shapeType\": \"<string>\",\n      \"signatureAllowDraw\": \"<boolean>\",\n      \"signatureAllowType\": \"<boolean>\",\n      \"static\": \"<boolean>\",\n      \"strikethrough\": \"<boolean>\",\n      \"stringConditionType\": \"<string>\",\n      \"title\": \"<string>\",\n      \"trueText\": \"<string>\",\n      \"type\": \"<string>\",\n      \"typeface\": \"<string>\",\n      \"uppercase\": \"<boolean>\",\n      \"vAlignment\": \"<string>\",\n      \"width\": \"<number>\",\n      \"x\": \"<number>\",\n      \"y\": \"<number>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"page\": \"<number>\",\n      \"alignment\": \"<string>\",\n      \"autoCalculateMaxLength\": \"<boolean>\",\n      \"backgroundColor\": \"<string>\",\n      \"backgroundColorFieldName\": \"<string>\",\n      \"backgroundColorFieldRequired\": \"<boolean>\",\n      \"barcodeSymbology\": \"<string>\",\n      \"bold\": \"<boolean>\",\n      \"characterSpacing\": \"<number>\",\n      \"checkCharacter\": \"<string>\",\n      \"checkColor\": \"<string>\",\n      \"checkColorFieldName\": \"<string>\",\n      \"checkColorFieldRequired\": \"<boolean>\",\n      \"color\": \"<string>\",\n      \"colorFieldName\": \"<string>\",\n      \"colorFieldRequired\": \"<boolean>\",\n      \"comb\": \"<boolean>\",\n      \"combNumberOfCells\": \"<number>\",\n      \"combValueOffset\": \"<number>\",\n      \"combinedFieldFormat\": \"<string>\",\n      \"combinedFieldNames\": \"<string>\",\n      \"combinedFieldSeparator\": \"<string>\",\n      \"combinedFieldType\": \"<string>\",\n      \"condition\": \"<string>\",\n      \"currency\": \"<boolean>\",\n      \"dateTimeFormat\": \"<string>\",\n      \"decimalPlaces\": \"<number>\",\n      \"default\": \"<string>\",\n      \"description\": \"<string>\",\n      \"displayType\": \"<string>\",\n      \"exclusiveMaximum\": \"<boolean>\",\n      \"exclusiveMinimum\": \"<boolean>\",\n      \"falseText\": \"<string>\",\n      \"fontSize\": \"<number>\",\n      \"height\": \"<number>\",\n      \"hidden\": \"<boolean>\",\n      \"id\": \"<number>\",\n      \"imageGravity\": \"<string>\",\n      \"imageScaleType\": \"<string>\",\n      \"includeTime\": \"<boolean>\",\n      \"integer\": \"<boolean>\",\n      \"invertBooleanCondition\": \"<boolean>\",\n      \"maxLength\": \"<number>\",\n      \"maximum\": \"<number>\",\n      \"metadata\": \"<string>\",\n      \"minLength\": \"<number>\",\n      \"minimum\": \"<number>\",\n      \"multiline\": \"<boolean>\",\n      \"multilineLines\": \"<number>\",\n      \"numberConditionRangeExclusiveMax\": \"<boolean>\",\n      \"numberConditionRangeExclusiveMin\": \"<boolean>\",\n      \"numberConditionRangeMax\": \"<number>\",\n      \"numberConditionRangeMin\": \"<number>\",\n      \"numberConditionType\": \"<string>\",\n      \"opacity\": \"<number>\",\n      \"optionList\": \"<string>\",\n      \"overflow\": \"<string>\",\n      \"placeholder\": \"<string>\",\n      \"qrcodeColor\": \"<string>\",\n      \"qrcodeColorFieldName\": \"<string>\",\n      \"qrcodeColorFieldRequired\": \"<boolean>\",\n      \"required\": \"<boolean>\",\n      \"rotation\": \"<number>\",\n      \"shapeBorderColor\": \"<string>\",\n      \"shapeBorderColorFieldName\": \"<string>\",\n      \"shapeBorderColorFieldRequired\": \"<boolean>\",\n      \"shapeBorderWidth\": \"<number>\",\n      \"shapeFillColor\": \"<string>\",\n      \"shapeFillColorFieldName\": \"<string>\",\n      \"shapeFillColorFieldRequired\": \"<boolean>\",\n      \"shapeType\": \"<string>\",\n      \"signatureAllowDraw\": \"<boolean>\",\n      \"signatureAllowType\": \"<boolean>\",\n      \"static\": \"<boolean>\",\n      \"strikethrough\": \"<boolean>\",\n      \"stringConditionType\": \"<string>\",\n      \"title\": \"<string>\",\n      \"trueText\": \"<string>\",\n      \"type\": \"<string>\",\n      \"typeface\": \"<string>\",\n      \"uppercase\": \"<boolean>\",\n      \"vAlignment\": \"<string>\",\n      \"width\": \"<number>\",\n      \"x\": \"<number>\",\n      \"y\": \"<number>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ace901f4-3d38-4905-bf0e-e1391ea71982",
+              "name": "add fields success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id",
+                    "add_fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fields\": [\n    {\n      \"name\": \"<string>\",\n      \"page\": \"<number>\",\n      \"alignment\": \"<string>\",\n      \"autoCalculateMaxLength\": \"<boolean>\",\n      \"backgroundColor\": \"<string>\",\n      \"backgroundColorFieldName\": \"<string>\",\n      \"backgroundColorFieldRequired\": \"<boolean>\",\n      \"barcodeSymbology\": \"<string>\",\n      \"bold\": \"<boolean>\",\n      \"characterSpacing\": \"<number>\",\n      \"checkCharacter\": \"<string>\",\n      \"checkColor\": \"<string>\",\n      \"checkColorFieldName\": \"<string>\",\n      \"checkColorFieldRequired\": \"<boolean>\",\n      \"color\": \"<string>\",\n      \"colorFieldName\": \"<string>\",\n      \"colorFieldRequired\": \"<boolean>\",\n      \"comb\": \"<boolean>\",\n      \"combNumberOfCells\": \"<number>\",\n      \"combValueOffset\": \"<number>\",\n      \"combinedFieldFormat\": \"<string>\",\n      \"combinedFieldNames\": \"<string>\",\n      \"combinedFieldSeparator\": \"<string>\",\n      \"combinedFieldType\": \"<string>\",\n      \"condition\": \"<string>\",\n      \"currency\": \"<boolean>\",\n      \"dateTimeFormat\": \"<string>\",\n      \"decimalPlaces\": \"<number>\",\n      \"default\": \"<string>\",\n      \"description\": \"<string>\",\n      \"displayType\": \"<string>\",\n      \"exclusiveMaximum\": \"<boolean>\",\n      \"exclusiveMinimum\": \"<boolean>\",\n      \"falseText\": \"<string>\",\n      \"fontSize\": \"<number>\",\n      \"height\": \"<number>\",\n      \"hidden\": \"<boolean>\",\n      \"id\": \"<number>\",\n      \"imageGravity\": \"<string>\",\n      \"imageScaleType\": \"<string>\",\n      \"includeTime\": \"<boolean>\",\n      \"integer\": \"<boolean>\",\n      \"invertBooleanCondition\": \"<boolean>\",\n      \"maxLength\": \"<number>\",\n      \"maximum\": \"<number>\",\n      \"metadata\": \"<string>\",\n      \"minLength\": \"<number>\",\n      \"minimum\": \"<number>\",\n      \"multiline\": \"<boolean>\",\n      \"multilineLines\": \"<number>\",\n      \"numberConditionRangeExclusiveMax\": \"<boolean>\",\n      \"numberConditionRangeExclusiveMin\": \"<boolean>\",\n      \"numberConditionRangeMax\": \"<number>\",\n      \"numberConditionRangeMin\": \"<number>\",\n      \"numberConditionType\": \"<string>\",\n      \"opacity\": \"<number>\",\n      \"optionList\": \"<string>\",\n      \"overflow\": \"<string>\",\n      \"placeholder\": \"<string>\",\n      \"qrcodeColor\": \"<string>\",\n      \"qrcodeColorFieldName\": \"<string>\",\n      \"qrcodeColorFieldRequired\": \"<boolean>\",\n      \"required\": \"<boolean>\",\n      \"rotation\": \"<number>\",\n      \"shapeBorderColor\": \"<string>\",\n      \"shapeBorderColorFieldName\": \"<string>\",\n      \"shapeBorderColorFieldRequired\": \"<boolean>\",\n      \"shapeBorderWidth\": \"<number>\",\n      \"shapeFillColor\": \"<string>\",\n      \"shapeFillColorFieldName\": \"<string>\",\n      \"shapeFillColorFieldRequired\": \"<boolean>\",\n      \"shapeType\": \"<string>\",\n      \"signatureAllowDraw\": \"<boolean>\",\n      \"signatureAllowType\": \"<boolean>\",\n      \"static\": \"<boolean>\",\n      \"strikethrough\": \"<boolean>\",\n      \"stringConditionType\": \"<string>\",\n      \"title\": \"<string>\",\n      \"trueText\": \"<string>\",\n      \"type\": \"<string>\",\n      \"typeface\": \"<string>\",\n      \"uppercase\": \"<boolean>\",\n      \"vAlignment\": \"<string>\",\n      \"width\": \"<number>\",\n      \"x\": \"<number>\",\n      \"y\": \"<number>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"page\": \"<number>\",\n      \"alignment\": \"<string>\",\n      \"autoCalculateMaxLength\": \"<boolean>\",\n      \"backgroundColor\": \"<string>\",\n      \"backgroundColorFieldName\": \"<string>\",\n      \"backgroundColorFieldRequired\": \"<boolean>\",\n      \"barcodeSymbology\": \"<string>\",\n      \"bold\": \"<boolean>\",\n      \"characterSpacing\": \"<number>\",\n      \"checkCharacter\": \"<string>\",\n      \"checkColor\": \"<string>\",\n      \"checkColorFieldName\": \"<string>\",\n      \"checkColorFieldRequired\": \"<boolean>\",\n      \"color\": \"<string>\",\n      \"colorFieldName\": \"<string>\",\n      \"colorFieldRequired\": \"<boolean>\",\n      \"comb\": \"<boolean>\",\n      \"combNumberOfCells\": \"<number>\",\n      \"combValueOffset\": \"<number>\",\n      \"combinedFieldFormat\": \"<string>\",\n      \"combinedFieldNames\": \"<string>\",\n      \"combinedFieldSeparator\": \"<string>\",\n      \"combinedFieldType\": \"<string>\",\n      \"condition\": \"<string>\",\n      \"currency\": \"<boolean>\",\n      \"dateTimeFormat\": \"<string>\",\n      \"decimalPlaces\": \"<number>\",\n      \"default\": \"<string>\",\n      \"description\": \"<string>\",\n      \"displayType\": \"<string>\",\n      \"exclusiveMaximum\": \"<boolean>\",\n      \"exclusiveMinimum\": \"<boolean>\",\n      \"falseText\": \"<string>\",\n      \"fontSize\": \"<number>\",\n      \"height\": \"<number>\",\n      \"hidden\": \"<boolean>\",\n      \"id\": \"<number>\",\n      \"imageGravity\": \"<string>\",\n      \"imageScaleType\": \"<string>\",\n      \"includeTime\": \"<boolean>\",\n      \"integer\": \"<boolean>\",\n      \"invertBooleanCondition\": \"<boolean>\",\n      \"maxLength\": \"<number>\",\n      \"maximum\": \"<number>\",\n      \"metadata\": \"<string>\",\n      \"minLength\": \"<number>\",\n      \"minimum\": \"<number>\",\n      \"multiline\": \"<boolean>\",\n      \"multilineLines\": \"<number>\",\n      \"numberConditionRangeExclusiveMax\": \"<boolean>\",\n      \"numberConditionRangeExclusiveMin\": \"<boolean>\",\n      \"numberConditionRangeMax\": \"<number>\",\n      \"numberConditionRangeMin\": \"<number>\",\n      \"numberConditionType\": \"<string>\",\n      \"opacity\": \"<number>\",\n      \"optionList\": \"<string>\",\n      \"overflow\": \"<string>\",\n      \"placeholder\": \"<string>\",\n      \"qrcodeColor\": \"<string>\",\n      \"qrcodeColorFieldName\": \"<string>\",\n      \"qrcodeColorFieldRequired\": \"<boolean>\",\n      \"required\": \"<boolean>\",\n      \"rotation\": \"<number>\",\n      \"shapeBorderColor\": \"<string>\",\n      \"shapeBorderColorFieldName\": \"<string>\",\n      \"shapeBorderColorFieldRequired\": \"<boolean>\",\n      \"shapeBorderWidth\": \"<number>\",\n      \"shapeFillColor\": \"<string>\",\n      \"shapeFillColorFieldName\": \"<string>\",\n      \"shapeFillColorFieldRequired\": \"<boolean>\",\n      \"shapeType\": \"<string>\",\n      \"signatureAllowDraw\": \"<boolean>\",\n      \"signatureAllowType\": \"<boolean>\",\n      \"static\": \"<boolean>\",\n      \"strikethrough\": \"<boolean>\",\n      \"stringConditionType\": \"<string>\",\n      \"title\": \"<string>\",\n      \"trueText\": \"<string>\",\n      \"type\": \"<string>\",\n      \"typeface\": \"<string>\",\n      \"uppercase\": \"<boolean>\",\n      \"vAlignment\": \"<string>\",\n      \"width\": \"<number>\",\n      \"x\": \"<number>\",\n      \"y\": \"<number>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"new_field_ids\": [\n    4,\n    5,\n    6,\n    7,\n    99,\n    8\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ef0aa6a-04b4-4342-b109-5126463084ba",
+              "name": "add fields error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id",
+                    "add_fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fields\": [\n    {\n      \"name\": \"<string>\",\n      \"page\": \"<number>\",\n      \"alignment\": \"<string>\",\n      \"autoCalculateMaxLength\": \"<boolean>\",\n      \"backgroundColor\": \"<string>\",\n      \"backgroundColorFieldName\": \"<string>\",\n      \"backgroundColorFieldRequired\": \"<boolean>\",\n      \"barcodeSymbology\": \"<string>\",\n      \"bold\": \"<boolean>\",\n      \"characterSpacing\": \"<number>\",\n      \"checkCharacter\": \"<string>\",\n      \"checkColor\": \"<string>\",\n      \"checkColorFieldName\": \"<string>\",\n      \"checkColorFieldRequired\": \"<boolean>\",\n      \"color\": \"<string>\",\n      \"colorFieldName\": \"<string>\",\n      \"colorFieldRequired\": \"<boolean>\",\n      \"comb\": \"<boolean>\",\n      \"combNumberOfCells\": \"<number>\",\n      \"combValueOffset\": \"<number>\",\n      \"combinedFieldFormat\": \"<string>\",\n      \"combinedFieldNames\": \"<string>\",\n      \"combinedFieldSeparator\": \"<string>\",\n      \"combinedFieldType\": \"<string>\",\n      \"condition\": \"<string>\",\n      \"currency\": \"<boolean>\",\n      \"dateTimeFormat\": \"<string>\",\n      \"decimalPlaces\": \"<number>\",\n      \"default\": \"<string>\",\n      \"description\": \"<string>\",\n      \"displayType\": \"<string>\",\n      \"exclusiveMaximum\": \"<boolean>\",\n      \"exclusiveMinimum\": \"<boolean>\",\n      \"falseText\": \"<string>\",\n      \"fontSize\": \"<number>\",\n      \"height\": \"<number>\",\n      \"hidden\": \"<boolean>\",\n      \"id\": \"<number>\",\n      \"imageGravity\": \"<string>\",\n      \"imageScaleType\": \"<string>\",\n      \"includeTime\": \"<boolean>\",\n      \"integer\": \"<boolean>\",\n      \"invertBooleanCondition\": \"<boolean>\",\n      \"maxLength\": \"<number>\",\n      \"maximum\": \"<number>\",\n      \"metadata\": \"<string>\",\n      \"minLength\": \"<number>\",\n      \"minimum\": \"<number>\",\n      \"multiline\": \"<boolean>\",\n      \"multilineLines\": \"<number>\",\n      \"numberConditionRangeExclusiveMax\": \"<boolean>\",\n      \"numberConditionRangeExclusiveMin\": \"<boolean>\",\n      \"numberConditionRangeMax\": \"<number>\",\n      \"numberConditionRangeMin\": \"<number>\",\n      \"numberConditionType\": \"<string>\",\n      \"opacity\": \"<number>\",\n      \"optionList\": \"<string>\",\n      \"overflow\": \"<string>\",\n      \"placeholder\": \"<string>\",\n      \"qrcodeColor\": \"<string>\",\n      \"qrcodeColorFieldName\": \"<string>\",\n      \"qrcodeColorFieldRequired\": \"<boolean>\",\n      \"required\": \"<boolean>\",\n      \"rotation\": \"<number>\",\n      \"shapeBorderColor\": \"<string>\",\n      \"shapeBorderColorFieldName\": \"<string>\",\n      \"shapeBorderColorFieldRequired\": \"<boolean>\",\n      \"shapeBorderWidth\": \"<number>\",\n      \"shapeFillColor\": \"<string>\",\n      \"shapeFillColorFieldName\": \"<string>\",\n      \"shapeFillColorFieldRequired\": \"<boolean>\",\n      \"shapeType\": \"<string>\",\n      \"signatureAllowDraw\": \"<boolean>\",\n      \"signatureAllowType\": \"<boolean>\",\n      \"static\": \"<boolean>\",\n      \"strikethrough\": \"<boolean>\",\n      \"stringConditionType\": \"<string>\",\n      \"title\": \"<string>\",\n      \"trueText\": \"<string>\",\n      \"type\": \"<string>\",\n      \"typeface\": \"<string>\",\n      \"uppercase\": \"<boolean>\",\n      \"vAlignment\": \"<string>\",\n      \"width\": \"<number>\",\n      \"x\": \"<number>\",\n      \"y\": \"<number>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"page\": \"<number>\",\n      \"alignment\": \"<string>\",\n      \"autoCalculateMaxLength\": \"<boolean>\",\n      \"backgroundColor\": \"<string>\",\n      \"backgroundColorFieldName\": \"<string>\",\n      \"backgroundColorFieldRequired\": \"<boolean>\",\n      \"barcodeSymbology\": \"<string>\",\n      \"bold\": \"<boolean>\",\n      \"characterSpacing\": \"<number>\",\n      \"checkCharacter\": \"<string>\",\n      \"checkColor\": \"<string>\",\n      \"checkColorFieldName\": \"<string>\",\n      \"checkColorFieldRequired\": \"<boolean>\",\n      \"color\": \"<string>\",\n      \"colorFieldName\": \"<string>\",\n      \"colorFieldRequired\": \"<boolean>\",\n      \"comb\": \"<boolean>\",\n      \"combNumberOfCells\": \"<number>\",\n      \"combValueOffset\": \"<number>\",\n      \"combinedFieldFormat\": \"<string>\",\n      \"combinedFieldNames\": \"<string>\",\n      \"combinedFieldSeparator\": \"<string>\",\n      \"combinedFieldType\": \"<string>\",\n      \"condition\": \"<string>\",\n      \"currency\": \"<boolean>\",\n      \"dateTimeFormat\": \"<string>\",\n      \"decimalPlaces\": \"<number>\",\n      \"default\": \"<string>\",\n      \"description\": \"<string>\",\n      \"displayType\": \"<string>\",\n      \"exclusiveMaximum\": \"<boolean>\",\n      \"exclusiveMinimum\": \"<boolean>\",\n      \"falseText\": \"<string>\",\n      \"fontSize\": \"<number>\",\n      \"height\": \"<number>\",\n      \"hidden\": \"<boolean>\",\n      \"id\": \"<number>\",\n      \"imageGravity\": \"<string>\",\n      \"imageScaleType\": \"<string>\",\n      \"includeTime\": \"<boolean>\",\n      \"integer\": \"<boolean>\",\n      \"invertBooleanCondition\": \"<boolean>\",\n      \"maxLength\": \"<number>\",\n      \"maximum\": \"<number>\",\n      \"metadata\": \"<string>\",\n      \"minLength\": \"<number>\",\n      \"minimum\": \"<number>\",\n      \"multiline\": \"<boolean>\",\n      \"multilineLines\": \"<number>\",\n      \"numberConditionRangeExclusiveMax\": \"<boolean>\",\n      \"numberConditionRangeExclusiveMin\": \"<boolean>\",\n      \"numberConditionRangeMax\": \"<number>\",\n      \"numberConditionRangeMin\": \"<number>\",\n      \"numberConditionType\": \"<string>\",\n      \"opacity\": \"<number>\",\n      \"optionList\": \"<string>\",\n      \"overflow\": \"<string>\",\n      \"placeholder\": \"<string>\",\n      \"qrcodeColor\": \"<string>\",\n      \"qrcodeColorFieldName\": \"<string>\",\n      \"qrcodeColorFieldRequired\": \"<boolean>\",\n      \"required\": \"<boolean>\",\n      \"rotation\": \"<number>\",\n      \"shapeBorderColor\": \"<string>\",\n      \"shapeBorderColorFieldName\": \"<string>\",\n      \"shapeBorderColorFieldRequired\": \"<boolean>\",\n      \"shapeBorderWidth\": \"<number>\",\n      \"shapeFillColor\": \"<string>\",\n      \"shapeFillColorFieldName\": \"<string>\",\n      \"shapeFillColorFieldRequired\": \"<boolean>\",\n      \"shapeType\": \"<string>\",\n      \"signatureAllowDraw\": \"<boolean>\",\n      \"signatureAllowType\": \"<boolean>\",\n      \"static\": \"<boolean>\",\n      \"strikethrough\": \"<boolean>\",\n      \"stringConditionType\": \"<string>\",\n      \"title\": \"<string>\",\n      \"trueText\": \"<string>\",\n      \"type\": \"<string>\",\n      \"typeface\": \"<string>\",\n      \"uppercase\": \"<boolean>\",\n      \"vAlignment\": \"<string>\",\n      \"width\": \"<number>\",\n      \"x\": \"<number>\",\n      \"y\": \"<number>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"errors\": [\n    \"The property '#/fields/0' did not contain a required property of 'page'\",\n    \"The property '#/fields/1/page' did not have a minimum value of 1, inclusively\",\n    \"The property '#/fields/5' contains additional properties [\\\"unknown_property\\\"] outside of the schema when none are allowed\",\n    \"The property '#/fields/6/displayType' value \\\"unknown display type\\\" did not match one of the following values: text, check, qrcode, barcode, image, shape\",\n    \"The property '#/fields/6/type' value \\\"unknown type\\\" did not match one of the following values: string, number, boolean, date, address, country, email, url, image, signature, initials, barcode, combined\",\n    \"The property '#/fields/6' did not contain a required property of 'page'\",\n    \"The property '#/fields/7/width' of type string did not match the following type: number\",\n    \"The property '#/fields/8/height' did not have a minimum value of 0, inclusively\",\n    \"The property '#/fields/8/width' did not have a minimum value of 0, inclusively\",\n    \"The property '#/fields/8/x' did not have a minimum value of 0, inclusively\",\n    \"The property '#/fields/8/y' did not have a minimum value of 0, inclusively\",\n    \"The property '#/fields/2/id' value \\\"1\\\" is already taken by another field\",\n    \"The property '#/fields/2/page' value \\\"5\\\" did not have a maximum value of 3, inclusively (Template has 3 pages)\",\n    \"The property '#/fields/3/page' value \\\"4\\\" did not have a maximum value of 3, inclusively (Template has 3 pages)\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "620b3c0f-ec0b-4015-a0a3-4b93fa9ed637",
+          "name": "Move Template to folder",
+          "request": {
+            "name": "Move Template to folder",
+            "description": {
+              "content": "Moves a template to a different folder or to the root level. Use this to organize\ntemplates within your folders. Provide a folder ID to move to a specific\nfolder, or `null` to move to the root level.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":template_id",
+                "move"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "template_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parent_folder_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d09cfaac-3b00-46af-bcbe-41ca71a8042b",
+              "name": "move template success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id",
+                    "move"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"parent_folder_id\": \"fld_1234567890abcdef01\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"add_data_request_submission_id_footers\": true,\n  \"allow_additional_properties\": false,\n  \"description\": null,\n  \"document_filename\": \"blank_pdf.pdf\",\n  \"document_md5\": \"1c32d785398e3a7eaab0e9b876903cc6\",\n  \"document_parse_error\": false,\n  \"document_processed\": true,\n  \"document_state\": \"processed\",\n  \"document_url\": \"https://docspring-s3-example.s3.amazonaws.com/store/acc_1234567890abcdef01/templates/tpl_1234567890abcdef01/draft/document/original-0000000000.abcdef1234567890abcd.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=docspring-s3-example%2F20210101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210101T090000Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=abcdef0123456789\",\n  \"editable_submissions\": false,\n  \"embed_domains\": null,\n  \"encrypt_pdfs_password\": null,\n  \"encrypt_pdfs\": false,\n  \"expiration_interval\": \"days\",\n  \"expire_after\": 7,\n  \"expire_submissions\": true,\n  \"external_predefined_fields_template_id\": null,\n  \"external_predefined_fields_template_name\": null,\n  \"first_template\": false,\n  \"id\": \"tpl_1234567890abcdef01\",\n  \"locked\": false,\n  \"merge_audit_trail_pdf\": true,\n  \"name\": \"Template 1\",\n  \"page_count\": 1,\n  \"page_dimensions\": [\n    [\n      612,\n      792\n    ]\n  ],\n  \"parent_folder_id\": \"fld_1234567890abcdef01\",\n  \"path\": \"/Folder\",\n  \"permanent_document_url\": \"https://app.docspring.com/templates/tpl_1234567890abcdef01/original_pdf?token=123456789abcdef\",\n  \"public_submissions\": false,\n  \"public_web_form\": false,\n  \"redirect_url\": null,\n  \"slack_webhook_url\": null,\n  \"template_type\": \"pdf\",\n  \"updated_at\": \"2018-10-20T09:00:00.000-04:00\",\n  \"version_published_at\": null,\n  \"version\": null,\n  \"webhook_url\": null,\n  \"demo\": false,\n  \"latest_version\": null,\n  \"last_changed_at\": null,\n  \"last_changed_by_type\": null,\n  \"last_changed_by_id\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "836962d2-e8c3-4207-9796-0682a3ec5a2b",
+              "name": "folder not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id",
+                    "move"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"parent_folder_id\": \"fld_1234567890abcdef01\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Could not find parent folder MISSING_ID\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e4ed482-6d04-4dba-9e44-cdf21a09a31d",
+          "name": "Copy a template",
+          "request": {
+            "name": "Copy a template",
+            "description": {
+              "content": "Creates a copy of an existing template with all its fields and configuration.\nOptionally specify a new name and target folder. The copied template starts as a new\ndraft that can be modified independently of the original.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":template_id",
+                "copy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "template_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parent_folder_id\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "62cf9e0a-f9fd-477b-ae01-5d4b81315b91",
+              "name": "copy template success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"parent_folder_id\": \"fld_1234567890abcdef01\",\n  \"name\": \"Copied Template Name\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"add_data_request_submission_id_footers\": true,\n  \"allow_additional_properties\": false,\n  \"description\": null,\n  \"document_filename\": \"blank_pdf.pdf\",\n  \"document_md5\": \"1c32d785398e3a7eaab0e9b876903cc6\",\n  \"document_parse_error\": false,\n  \"document_processed\": true,\n  \"document_state\": \"processed\",\n  \"document_url\": \"https://docspring-s3-example.s3.amazonaws.com/store/acc_1234567890abcdef01/templates/tpl_1234567890abcdef05/draft/document/original-0000000000.abcdef1234567890abcd.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=docspring-s3-example%2F20210101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210101T090000Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=abcdef0123456789\",\n  \"editable_submissions\": false,\n  \"embed_domains\": null,\n  \"encrypt_pdfs_password\": null,\n  \"encrypt_pdfs\": false,\n  \"expiration_interval\": \"days\",\n  \"expire_after\": 7,\n  \"expire_submissions\": true,\n  \"external_predefined_fields_template_id\": null,\n  \"external_predefined_fields_template_name\": null,\n  \"first_template\": false,\n  \"id\": \"tpl_1234567890abcdef05\",\n  \"locked\": false,\n  \"merge_audit_trail_pdf\": true,\n  \"name\": \"Copied Template Name\",\n  \"page_count\": 1,\n  \"page_dimensions\": [\n    [\n      612,\n      792\n    ]\n  ],\n  \"parent_folder_id\": \"fld_1234567890abcdef01\",\n  \"path\": \"/Folder\",\n  \"permanent_document_url\": \"https://app.docspring.com/templates/tpl_1234567890abcdef05/original_pdf?token=123456789abcdef\",\n  \"public_submissions\": false,\n  \"public_web_form\": false,\n  \"redirect_url\": null,\n  \"slack_webhook_url\": null,\n  \"template_type\": \"pdf\",\n  \"updated_at\": \"2018-10-20T09:00:00.000-04:00\",\n  \"version_published_at\": null,\n  \"version\": null,\n  \"webhook_url\": null,\n  \"demo\": false,\n  \"latest_version\": null,\n  \"last_changed_at\": null,\n  \"last_changed_by_type\": null,\n  \"last_changed_by_id\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7fbc085-d9bd-4e4c-85b7-4d3f9cccc72d",
+              "name": "folder not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"parent_folder_id\": \"fld_1234567890abcdef01\",\n  \"name\": \"Copied Template Name\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Could not find parent folder MISSING_ID\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b8d9e39-49ee-464a-8992-a08d5d2398e3",
+          "name": "Fetch the JSON schema for a template",
+          "request": {
+            "name": "Fetch the JSON schema for a template",
+            "description": {
+              "content": "Retrieves the JSON Schema definition for a template's fields. Use this to validate\ndata before submitting it for PDF generation, or to build dynamic forms that match\nthe template's field structure and validation requirements.\n\nSee also:\n- [Generate PDFs Guide](https://docspring.com/docs/api-guide/generate-pdfs/generate-pdfs-via-api/) - Use schema to validate submission data\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":template_id",
+                "schema"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "template_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f592c902-0755-4a66-a671-354f4bd0dc77",
+              "name": "template found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id",
+                    "schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"id\": \"https://api.docspring.com/api/v1/templates/tpl_1234567890abcdef01/schema.json\",\n  \"title\": \"Template 1\",\n  \"description\": \"JSON Schema generated by DocSpring.com\",\n  \"definitions\": {},\n  \"type\": \"object\",\n  \"properties\": {\n    \"first_name\": {\n      \"type\": \"string\",\n      \"title\": \"First Name\"\n    },\n    \"last_name\": {\n      \"type\": \"string\",\n      \"title\": \"Last Name\"\n    },\n    \"phone_number\": {\n      \"type\": [\n        \"string\",\n        \"null\"\n      ],\n      \"title\": \"Phone Number\"\n    }\n  },\n  \"required\": [\n    \"first_name\",\n    \"last_name\"\n  ],\n  \"additionalProperties\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ef3dddc-2d6b-4ea1-8d86-a994dec8becb",
+              "name": "authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id",
+                    "schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "846cc609-188f-4536-be24-c41363ef436d",
+              "name": "template not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id",
+                    "schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Template not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sync.api.docspring.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "04e0f598-0c58-4e73-b9b0-f74cdd02be68",
+    "name": "DocSpring Authentication Templates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DocSpring Authentication Folders API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Folders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of all folders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sync.api.docspring.com/api/v1/folders/",
+            "params": [
+              {
+                "name": "parent_folder_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter By Folder Id"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Returns a list of folders in your account. Can be filtered by parent folder ID to retrieve\nsubfolders. Folders help organize templates and maintain a hierarchical structure.\n"
+        },
+        {
+          "info": {
+            "name": "Create a folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sync.api.docspring.com/api/v1/folders/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Creates a new folder for organizing templates. Folders can be nested within other folders\nby providing a `parent_folder_id`. Folder names must be unique within the same parent.\n"
+        },
+        {
+          "info": {
+            "name": "Move a folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sync.api.docspring.com/api/v1/folders/:folder_id/move",
+            "params": [
+              {
+                "name": "folder_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Moves a folder to a new parent folder or to the root level. All templates and subfolders\nwithin the folder are moved together. Cannot move a folder into one of its own subfolders.\n"
+        },
+        {
+          "info": {
+            "name": "Rename a folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sync.api.docspring.com/api/v1/folders/:folder_id/rename",
+            "params": [
+              {
+                "name": "folder_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Renames an existing folder. The new name must be unique within the same parent folder.\nThis operation only changes the folder name, not its location or contents.\n"
+        },
+        {
+          "info": {
+            "name": "Delete a folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sync.api.docspring.com/api/v1/folders/:folder_id",
+            "params": [
+              {
+                "name": "folder_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Deletes an empty folder. The folder must not contain any templates or subfolders.\nMove or delete all contents before attempting to delete the folder.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

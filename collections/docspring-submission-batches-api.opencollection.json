@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DocSpring Authentication Submission Batches API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Submission Batches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate multiple PDFs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sync.api.docspring.com/api/v1/submissions/batches",
+            "params": [
+              {
+                "name": "wait",
+                "value": "",
+                "type": "query",
+                "description": "Wait for submission batch to be processed before returning. Set to false to return immediately. Default: true (on sync.* subdomain)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Generates up to 50 PDFs in a single request. Each submission can use a different template\nand data. Supports both synchronous (wait for all PDFs) and asynchronous processing. More\nefficient than individual requests when creating multiple PDFs.\n\nSee also:\n- [Batch and Combine PDFs](https://docspring.com/docs/api-guide/generate-pdfs/batch-generate-pdfs/) - Generate and merge PDFs in one request\n"
+        },
+        {
+          "info": {
+            "name": "Check the status of a submission batch job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sync.api.docspring.com/api/v1/submissions/batches/:submission_batch_id",
+            "params": [
+              {
+                "name": "submission_batch_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include_submissions",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieves the status and results of a batch PDF generation job. Returns processing state,\ncompletion statistics, and optionally includes all individual submission details. Use this\nto poll for completion when using asynchronous batch processing.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

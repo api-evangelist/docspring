@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DocSpring Authentication Combine PDFs API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Combine PDFs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of all combined submissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sync.api.docspring.com/api/v1/combined_submissions",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Default: 1"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Default: 50"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Returns a paginated list of combined submissions (merged PDFs) for your account.\nIncludes processing status, expiration details, and download URLs for processed PDFs.\n"
+        },
+        {
+          "info": {
+            "name": "Merge submission PDFs, template PDFs, or custom files",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sync.api.docspring.com/api/v1/combined_submissions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Combines multiple PDFs from various sources into a single PDF file. Supports merging\nsubmission PDFs, template PDFs, custom files, other merged PDFs,\nand PDFs from URLs. Merges the PDFs in the order provided.\n"
+        },
+        {
+          "info": {
+            "name": "Check the status of a combined submission (merged PDFs)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sync.api.docspring.com/api/v1/combined_submissions/:combined_submission_id",
+            "params": [
+              {
+                "name": "combined_submission_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieves the details and status of a combined submission. Returns processing state,\ndownload URL (if processed), metadata, and information about any integrated actions\n(e.g., S3 uploads).\n"
+        },
+        {
+          "info": {
+            "name": "Expire a combined submission",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sync.api.docspring.com/api/v1/combined_submissions/:combined_submission_id",
+            "params": [
+              {
+                "name": "combined_submission_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Expiring a combined submission deletes the PDF from our system.\nThis is useful for invalidating sensitive documents.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

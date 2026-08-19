@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DocSpring Authentication Custom Files API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Custom Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new custom file from a cached S3 upload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sync.api.docspring.com/api/v1/custom_files",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "The Custom Files API endpoint allows you to upload PDFs to DocSpring and then\nmerge them with other PDFs. First upload your file using the presigned URL endpoint,\nthen use the returned cache_id to create the custom file.\n"
+        },
+        {
+          "info": {
+            "name": "Get a presigned S3 URL for direct file upload",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sync.api.docspring.com/api/v1/uploads/presign",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Returns a presigned S3 URL for uploading files directly to our S3 bucket. Use this\nendpoint to upload large files before creating templates or custom files. S3 will\nrespond with a JSON object that you can include in your DocSpring API request.\n\nUploaded files can be used to:\n- [Create templates](https://docspring.com/docs/api/#tag/templates/post/templates?endpoint_variant=create_template_from_cached_upload)\n- [Update templates](https://docspring.com/docs/api/#tag/templates/put/templates/{templat"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

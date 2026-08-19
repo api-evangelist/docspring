@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DocSpring Authentication API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Test authentication",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sync.api.docspring.com/api/v1/authentication",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Checks whether your API token is valid by making an authenticated request.\nReturns a success response if authentication passes. This endpoint is useful for\nverifying credentials during setup or troubleshooting issues.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

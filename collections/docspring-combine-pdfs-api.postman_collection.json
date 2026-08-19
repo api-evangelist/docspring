@@ -1,0 +1,953 @@
+{
+  "item": [
+    {
+      "id": "808276c2-57f3-4dd0-af0e-fe4af7f3534c",
+      "name": "Combine PDFs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1f66c8b0-6eef-4dbd-8143-d54037ea176c",
+          "name": "Get a list of all combined submissions",
+          "request": {
+            "name": "Get a list of all combined submissions",
+            "description": {
+              "content": "Returns a paginated list of combined submissions (merged PDFs) for your account.\nIncludes processing status, expiration details, and download URLs for processed PDFs.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "combined_submissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Default: 1",
+                    "type": "text/plain"
+                  },
+                  "key": "page",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Default: 50",
+                    "type": "text/plain"
+                  },
+                  "key": "per_page",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4b3d8806-b970-4077-b83c-f23fecdfdda2",
+              "name": "enumerate all combined submissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "combined_submissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": ""
+                    },
+                    {
+                      "key": "per_page",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"com_1234567890abcdef01\",\n    \"state\": \"processed\",\n    \"expired\": false,\n    \"expires_in\": 300,\n    \"expires_at\": \"2018-10-20T13:05:00Z\",\n    \"processed_at\": \"2020-05-14T02:00:00Z\",\n    \"error_message\": null,\n    \"submission_ids\": [\n      \"sub_1234567890abcdef01\",\n      \"sub_1234567890abcdef02\"\n    ],\n    \"source_pdfs\": [],\n    \"metadata\": {\n      \"qux\": \"abc\",\n      \"user_id\": 42\n    },\n    \"password\": \"password123\",\n    \"pdf_hash\": \"12342342471442006963e3244a1b43610e066165c09770978221f91bd7ace8f5\",\n    \"download_url\": \"https://docspring-s3-example.s3.amazonaws.com/store/submissions/sub_1234567890abcdef01/20171002192229.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=docspring-s3-example%2F20210101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210101T090000Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=abcdef0123456789\",\n    \"actions\": [\n      {\n        \"id\": \"csa_1234567890abcdef01\",\n        \"integration_id\": \"aci_1234567890abcdef01\",\n        \"state\": \"processed\",\n        \"action_type\": \"aws_s3_upload\",\n        \"action_category\": \"file_upload\",\n        \"result_data\": {\n          \"s3_key\": \"acc_1234/2018/combined_submissions/20181005090010-com_1234.pdf\",\n          \"s3_url\": \"https://docspring-s3-example.s3.amazonaws.com/acc_1234/2018/combined_submissions/20181005090010-com_1234.pdf\",\n          \"s3_bucket\": \"docspring-s3-example\",\n          \"s3_region\": \"us-east-1\"\n        },\n        \"error_message\": null\n      }\n    ]\n  },\n  {\n    \"id\": \"com_1234567890abcdef02\",\n    \"state\": \"pending\",\n    \"expired\": false,\n    \"expires_in\": null,\n    \"expires_at\": null,\n    \"processed_at\": null,\n    \"error_message\": null,\n    \"submission_ids\": [],\n    \"source_pdfs\": [],\n    \"metadata\": {},\n    \"password\": null,\n    \"pdf_hash\": null,\n    \"download_url\": null,\n    \"actions\": []\n  },\n  {\n    \"id\": \"com_1234567890abcdef03\",\n    \"state\": \"processed\",\n    \"expired\": false,\n    \"expires_in\": null,\n    \"expires_at\": null,\n    \"processed_at\": \"2023-01-05T14:00:00Z\",\n    \"error_message\": null,\n    \"submission_ids\": [],\n    \"source_pdfs\": [],\n    \"metadata\": {},\n    \"password\": null,\n    \"pdf_hash\": \"225fb2676adc8f382aba3916d7b7a2088cb7f75ab62ec5c7f4543c5abf8ce4da\",\n    \"download_url\": \"https://docspring-s3-example.s3.amazonaws.com/store/acc_1234567890abcdef01/combined_submissions/com_1234567890abcdef03.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=docspring-s3-example%2F20210101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210101T090000Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=abcdef0123456789\",\n    \"actions\": [\n      {\n        \"id\": \"csa_1234567890abcdef02\",\n        \"integration_id\": \"aci_1234567890abcdef01\",\n        \"state\": \"processed\",\n        \"action_type\": \"aws_s3_upload\",\n        \"action_category\": \"file_upload\",\n        \"result_data\": {\n          \"s3_key\": \"acc_1234/2018/combined_submissions/20181005090010-com_1234.pdf\",\n          \"s3_url\": \"https://docspring-s3-example.s3.amazonaws.com/acc_1234/2018/combined_submissions/20181005090010-com_1234.pdf\",\n          \"s3_bucket\": \"docspring-s3-example\",\n          \"s3_region\": \"us-east-1\"\n        },\n        \"error_message\": null\n      }\n    ]\n  },\n  {\n    \"id\": \"com_1234567890abcdef04\",\n    \"state\": \"error\",\n    \"expired\": false,\n    \"expires_in\": 123,\n    \"expires_at\": null,\n    \"processed_at\": null,\n    \"error_message\": \"Something went wrong\",\n    \"submission_ids\": [],\n    \"source_pdfs\": [],\n    \"metadata\": {},\n    \"password\": null,\n    \"pdf_hash\": null,\n    \"download_url\": null,\n    \"actions\": []\n  },\n  {\n    \"id\": \"com_1234567890abcdef05\",\n    \"state\": \"processed\",\n    \"expired\": true,\n    \"expires_in\": 345,\n    \"expires_at\": \"2023-01-05T14:05:00Z\",\n    \"processed_at\": \"2023-01-05T14:00:00Z\",\n    \"error_message\": null,\n    \"submission_ids\": [],\n    \"source_pdfs\": [],\n    \"metadata\": {},\n    \"password\": null,\n    \"pdf_hash\": \"0622971147486e1900037eff229d921d14f5b51aac7171729b2b66f81cdf6585\",\n    \"download_url\": null,\n    \"actions\": [\n      {\n        \"id\": \"csa_1234567890abcdef03\",\n        \"integration_id\": \"aci_1234567890abcdef01\",\n        \"state\": \"processed\",\n        \"action_type\": \"aws_s3_upload\",\n        \"action_category\": \"file_upload\",\n        \"result_data\": {\n          \"s3_key\": \"acc_1234/2018/combined_submissions/20181005090010-com_1234.pdf\",\n          \"s3_url\": \"https://docspring-s3-example.s3.amazonaws.com/acc_1234/2018/combined_submissions/20181005090010-com_1234.pdf\",\n          \"s3_bucket\": \"docspring-s3-example\",\n          \"s3_region\": \"us-east-1\"\n        },\n        \"error_message\": null\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65ca06f8-0379-496e-80eb-35c354509d9e",
+              "name": "authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "combined_submissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": ""
+                    },
+                    {
+                      "key": "per_page",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09ebe74b-f3b4-472d-a3ca-c2b4ec4ee44c",
+          "name": "Merge submission PDFs, template PDFs, or custom files",
+          "request": {
+            "name": "Merge submission PDFs, template PDFs, or custom files",
+            "description": {
+              "content": "Combines multiple PDFs from various sources into a single PDF file. Supports merging\nsubmission PDFs, template PDFs, custom files, other merged PDFs,\nand PDFs from URLs. Merges the PDFs in the order provided.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "combined_submissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"source_pdfs\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"template_version\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"template_version\": \"<string>\",\n      \"url\": \"<uri>\"\n    }\n  ],\n  \"delete_custom_files\": \"<boolean>\",\n  \"expires_in\": \"<integer>\",\n  \"metadata\": \"<object>\",\n  \"password\": \"<string>\",\n  \"test\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "10f52c6d-36f8-48f8-875e-7d765b4e6e17",
+              "name": "combined submission created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "combined_submissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source_pdfs\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"template_version\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"template_version\": \"<string>\",\n      \"url\": \"<uri>\"\n    }\n  ],\n  \"delete_custom_files\": \"<boolean>\",\n  \"expires_in\": \"<integer>\",\n  \"metadata\": \"<object>\",\n  \"password\": \"<string>\",\n  \"test\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"combined_submission\": {\n    \"id\": \"com_1234567890abcdef02\",\n    \"state\": \"pending\",\n    \"expired\": false,\n    \"expires_in\": 300,\n    \"expires_at\": null,\n    \"processed_at\": null,\n    \"error_message\": null,\n    \"submission_ids\": [\n      \"sub_1234567890abcdef01\",\n      \"sub_1234567890abcdef02\"\n    ],\n    \"source_pdfs\": [\n      {\n        \"type\": \"submission\",\n        \"id\": \"sub_1234567890abcdef01\"\n      },\n      {\n        \"type\": \"template\",\n        \"id\": \"tpl_1234567890abcdef01\",\n        \"template_version\": \"1.0.0\"\n      },\n      {\n        \"type\": \"template\",\n        \"id\": \"tpl_1234567890abcdef01\"\n      },\n      {\n        \"type\": \"submission\",\n        \"id\": \"sub_1234567890abcdef02\"\n      },\n      {\n        \"type\": \"custom_file\",\n        \"id\": \"cfi_1234567890abcdef01\"\n      },\n      {\n        \"type\": \"combined_submission\",\n        \"id\": \"com_1234567890abcdef01\"\n      },\n      {\n        \"type\": \"url\",\n        \"url\": \"http://example.com/test-pdf.pdf\"\n      }\n    ],\n    \"metadata\": {\n      \"foo\": 123,\n      \"bar\": \"baz\"\n    },\n    \"password\": null,\n    \"pdf_hash\": null,\n    \"download_url\": null,\n    \"actions\": []\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48deefb8-a73e-46fe-8d19-47e5eb1c1f9e",
+              "name": "invalid JSON",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "combined_submissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source_pdfs\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"template_version\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"template_version\": \"<string>\",\n      \"url\": \"<uri>\"\n    }\n  ],\n  \"delete_custom_files\": \"<boolean>\",\n  \"expires_in\": \"<integer>\",\n  \"metadata\": \"<object>\",\n  \"password\": \"<string>\",\n  \"test\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"There was a problem with the JSON you submitted: unexpected character at line 1, column 34 in '{ \\\"source_pdfs\\\": [\\\"123\\\", \\\"345\\\"], metadata: { \\\"user_id\\\": \\\"@#*&%)(@*#%&(@#!\\\" }}\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce8dd81f-178b-4f72-9874-c045a5a0d05a",
+              "name": "authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "combined_submissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source_pdfs\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"template_version\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"template_version\": \"<string>\",\n      \"url\": \"<uri>\"\n    }\n  ],\n  \"delete_custom_files\": \"<boolean>\",\n  \"expires_in\": \"<integer>\",\n  \"metadata\": \"<object>\",\n  \"password\": \"<string>\",\n  \"test\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19ff07d2-dd08-456e-885e-ded5a1f8257f",
+              "name": "invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "combined_submissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source_pdfs\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"template_version\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"template_version\": \"<string>\",\n      \"url\": \"<uri>\"\n    }\n  ],\n  \"delete_custom_files\": \"<boolean>\",\n  \"expires_in\": \"<integer>\",\n  \"metadata\": \"<object>\",\n  \"password\": \"<string>\",\n  \"test\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"errors\": [\n    \"source_pdfs: Could not find Submission with ID: MISSING_SUBMISSION_ID\",\n    \"source_pdfs: Template document is not processed: tpl_1234567890abcdef01 (state: pending)\",\n    \"source_pdfs: Invalid template version: 'x.y.z' for template: tpl_1234567890abcdef01\",\n    \"source_pdfs: Could not find Template with version 3.4.5: tpl_1234567890abcdef01\",\n    \"source_pdfs: Could not find Template with ID: MISSING_TEMPLATE_ID\",\n    \"source_pdfs: Could not find Custom File with ID: MISSING_CUSTOM_FILE_ID\",\n    \"source_pdfs: Could not find Combined Submission with ID: MISSING_COMBINED_SUBMISSION_ID\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "139c5460-6aa2-45c9-98ba-908de5b9433c",
+          "name": "Check the status of a combined submission (merged PDFs)",
+          "request": {
+            "name": "Check the status of a combined submission (merged PDFs)",
+            "description": {
+              "content": "Retrieves the details and status of a combined submission. Returns processing state,\ndownload URL (if processed), metadata, and information about any integrated actions\n(e.g., S3 uploads).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "combined_submissions",
+                ":combined_submission_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "combined_submission_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7eb5124d-5b82-41d9-93f5-361d582cacbd",
+              "name": "processed combined submission found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "combined_submissions",
+                    ":combined_submission_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "combined_submission_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"com_1234567890abcdef01\",\n  \"state\": \"processed\",\n  \"expired\": false,\n  \"expires_in\": 300,\n  \"expires_at\": \"2018-10-20T13:05:00Z\",\n  \"processed_at\": \"2020-05-14T02:00:00Z\",\n  \"error_message\": null,\n  \"submission_ids\": [\n    \"sub_1234567890abcdef01\",\n    \"sub_1234567890abcdef02\"\n  ],\n  \"source_pdfs\": [],\n  \"metadata\": {\n    \"qux\": \"abc\",\n    \"user_id\": 42\n  },\n  \"password\": \"password123\",\n  \"pdf_hash\": \"12342342471442006963e3244a1b43610e066165c09770978221f91bd7ace8f5\",\n  \"download_url\": \"https://docspring-s3-example.s3.amazonaws.com/store/submissions/sub_1234567890abcdef01/20171002192229.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=docspring-s3-example%2F20210101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210101T090000Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=abcdef0123456789\",\n  \"actions\": [\n    {\n      \"id\": \"csa_1234567890abcdef01\",\n      \"integration_id\": \"aci_1234567890abcdef01\",\n      \"state\": \"processed\",\n      \"action_type\": \"aws_s3_upload\",\n      \"action_category\": \"file_upload\",\n      \"result_data\": {\n        \"s3_key\": \"acc_1234/2018/combined_submissions/20181005090010-com_1234.pdf\",\n        \"s3_url\": \"https://docspring-s3-example.s3.amazonaws.com/acc_1234/2018/combined_submissions/20181005090010-com_1234.pdf\",\n        \"s3_bucket\": \"docspring-s3-example\",\n        \"s3_region\": \"us-east-1\"\n      },\n      \"error_message\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "782b6d61-c6af-4814-9449-991003343e8a",
+              "name": "authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "combined_submissions",
+                    ":combined_submission_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "combined_submission_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a2d28be-3763-4dc5-bcd8-36fb38ffa1b4",
+              "name": "combined submission not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "combined_submissions",
+                    ":combined_submission_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "combined_submission_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Combined submission not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0603f4e0-17f4-48e2-b4e5-642894a8a89c",
+          "name": "Expire a combined submission",
+          "request": {
+            "name": "Expire a combined submission",
+            "description": {
+              "content": "Expiring a combined submission deletes the PDF from our system.\nThis is useful for invalidating sensitive documents.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "combined_submissions",
+                ":combined_submission_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "combined_submission_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7d74d2aa-6d78-4093-ac2f-1a3faab06212",
+              "name": "submission was expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "combined_submissions",
+                    ":combined_submission_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "combined_submission_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"com_1234567890abcdef01\",\n  \"state\": \"processed\",\n  \"expired\": true,\n  \"expires_in\": 300,\n  \"expires_at\": \"2018-10-20T13:00:00Z\",\n  \"processed_at\": \"2020-05-14T02:00:00Z\",\n  \"error_message\": null,\n  \"submission_ids\": [\n    \"sub_1234567890abcdef01\",\n    \"sub_1234567890abcdef02\"\n  ],\n  \"source_pdfs\": [],\n  \"metadata\": {\n    \"qux\": \"abc\",\n    \"user_id\": 42\n  },\n  \"password\": \"password123\",\n  \"pdf_hash\": \"12342342471442006963e3244a1b43610e066165c09770978221f91bd7ace8f5\",\n  \"download_url\": null,\n  \"actions\": [\n    {\n      \"id\": \"csa_1234567890abcdef01\",\n      \"integration_id\": \"aci_1234567890abcdef01\",\n      \"state\": \"processed\",\n      \"action_type\": \"aws_s3_upload\",\n      \"action_category\": \"file_upload\",\n      \"result_data\": {\n        \"s3_key\": \"acc_1234/2018/combined_submissions/20181005090010-com_1234.pdf\",\n        \"s3_url\": \"https://docspring-s3-example.s3.amazonaws.com/acc_1234/2018/combined_submissions/20181005090010-com_1234.pdf\",\n        \"s3_bucket\": \"docspring-s3-example\",\n        \"s3_region\": \"us-east-1\"\n      },\n      \"error_message\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07d31350-2d46-4b18-88ef-b904a143f25e",
+              "name": "authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "combined_submissions",
+                    ":combined_submission_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "combined_submission_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "458a47e3-98bc-4253-b7fc-68f6fc10a576",
+              "name": "test API token used",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "combined_submissions",
+                    ":combined_submission_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "combined_submission_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"You must use a live API token to expire a combined submission.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e7e2795-ab55-4ed2-b832-9091edf9dd7d",
+              "name": "combined submission not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "combined_submissions",
+                    ":combined_submission_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "combined_submission_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Combined submission not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sync.api.docspring.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c09fff75-2dc3-4207-ae99-225989f706b4",
+    "name": "DocSpring Authentication Combine PDFs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,640 @@
+{
+  "item": [
+    {
+      "id": "a1b5927c-ffdb-435a-970e-22a34bc7d4f8",
+      "name": "Submission Batches",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "73a0467e-65a1-4d49-90ee-2700f2bcd609",
+          "name": "Generate multiple PDFs",
+          "request": {
+            "name": "Generate multiple PDFs",
+            "description": {
+              "content": "Generates up to 50 PDFs in a single request. Each submission can use a different template\nand data. Supports both synchronous (wait for all PDFs) and asynchronous processing. More\nefficient than individual requests when creating multiple PDFs.\n\nSee also:\n- [Batch and Combine PDFs](https://docspring.com/docs/api-guide/generate-pdfs/batch-generate-pdfs/) - Generate and merge PDFs in one request\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "submissions",
+                "batches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Wait for submission batch to be processed before returning. Set to false to return immediately. Default: true (on sync.* subdomain)",
+                    "type": "text/plain"
+                  },
+                  "key": "wait",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"submissions\": [\n    {\n      \"css\": \"<string>\",\n      \"data\": \"<object>\",\n      \"html\": \"<string>\",\n      \"metadata\": \"<object>\",\n      \"template_id\": \"<string,null>\",\n      \"template_version\": \"<string,null>\",\n      \"test\": \"<boolean>\"\n    },\n    {\n      \"css\": \"<string>\",\n      \"data\": \"<object>\",\n      \"html\": \"<string>\",\n      \"metadata\": \"<object>\",\n      \"template_id\": \"<string,null>\",\n      \"template_version\": \"<string,null>\",\n      \"test\": \"<boolean>\"\n    }\n  ],\n  \"metadata\": \"<object>\",\n  \"template_id\": \"<string,null>\",\n  \"template_version\": \"<string,null>\",\n  \"test\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4147f15e-e52f-46b0-8aba-744dcf0b98e7",
+              "name": "some PDFs with invalid data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "submissions",
+                    "batches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "wait",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadata\": {\n    \"job_id\": 54321\n  },\n  \"test\": true,\n  \"template_id\": null,\n  \"template_version\": null,\n  \"submissions\": [\n    {\n      \"test\": false,\n      \"template_id\": \"tpl_1234567890abcdef01\",\n      \"template_version\": \"draft\",\n      \"data\": {\n        \"first_name\": \"Johnny\",\n        \"last_name\": \"Smith\"\n      },\n      \"metadata\": {\n        \"submission_number\": 1\n      }\n    },\n    {\n      \"template_id\": \"tpl_1234567890abcdef01\",\n      \"template_version\": \"latest\",\n      \"data\": {\n        \"first_name\": \"Jane\",\n        \"last_name\": \"Doe\"\n      },\n      \"metadata\": {\n        \"submission_number\": 2\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"submission_batch\": {\n    \"id\": \"sbb_1234567890abcdef01\",\n    \"state\": \"error\",\n    \"metadata\": {\n      \"job_id\": 54321\n    },\n    \"processed_at\": null,\n    \"total_count\": 2,\n    \"pending_count\": 0,\n    \"error_count\": 1,\n    \"completion_percentage\": 100\n  },\n  \"submissions\": [\n    {\n      \"status\": \"valid_but_not_saved\",\n      \"errors\": []\n    },\n    {\n      \"status\": \"error\",\n      \"submission\": {\n        \"batch_id\": \"sbb_1234567890abcdef01\",\n        \"data_requests\": [],\n        \"editable\": null,\n        \"error_message\": null,\n        \"expired\": false,\n        \"expires_at\": null,\n        \"id\": \"sub_1234567890abcdef02\",\n        \"json_schema_errors\": [\n          \"The object did not contain a required property of 'first_name'\"\n        ],\n        \"metadata\": {\n          \"submission_number\": 2\n        },\n        \"password\": null,\n        \"processed_at\": null,\n        \"state\": \"invalid_data\",\n        \"template_id\": \"tpl_1234567890abcdef01\",\n        \"template_type\": \"pdf\",\n        \"template_version\": null,\n        \"test\": true,\n        \"truncated_text\": {},\n        \"pdf_hash\": null,\n        \"download_url\": null,\n        \"permanent_download_url\": null,\n        \"preview_download_url\": null,\n        \"preview_generated_at\": null,\n        \"audit_trail_download_url\": null,\n        \"actions\": []\n      },\n      \"errors\": [\n        \"The object did not contain a required property of 'first_name'\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2b968a7-600a-4f57-b949-d925a52443e9",
+              "name": "submissions created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "submissions",
+                    "batches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "wait",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadata\": {\n    \"job_id\": 54321\n  },\n  \"test\": true,\n  \"template_id\": null,\n  \"template_version\": null,\n  \"submissions\": [\n    {\n      \"test\": false,\n      \"template_id\": \"tpl_1234567890abcdef01\",\n      \"template_version\": \"draft\",\n      \"data\": {\n        \"first_name\": \"Johnny\",\n        \"last_name\": \"Smith\"\n      },\n      \"metadata\": {\n        \"submission_number\": 1\n      }\n    },\n    {\n      \"template_id\": \"tpl_1234567890abcdef01\",\n      \"template_version\": \"latest\",\n      \"data\": {\n        \"first_name\": \"Jane\",\n        \"last_name\": \"Doe\"\n      },\n      \"metadata\": {\n        \"submission_number\": 2\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"submission_batch\": {\n    \"id\": \"sbb_1234567890abcdef01\",\n    \"state\": \"pending\",\n    \"metadata\": {\n      \"job_id\": 54321\n    },\n    \"processed_at\": null,\n    \"total_count\": 2,\n    \"pending_count\": 2,\n    \"error_count\": 0,\n    \"completion_percentage\": 0\n  },\n  \"submissions\": [\n    {\n      \"status\": \"success\",\n      \"submission\": {\n        \"batch_id\": \"sbb_1234567890abcdef01\",\n        \"data_requests\": [],\n        \"editable\": null,\n        \"error_message\": null,\n        \"expired\": false,\n        \"expires_at\": null,\n        \"id\": \"sub_1234567890abcdef01\",\n        \"json_schema_errors\": [],\n        \"metadata\": {\n          \"submission_number\": 1\n        },\n        \"password\": null,\n        \"processed_at\": null,\n        \"state\": \"pending\",\n        \"template_id\": \"tpl_1234567890abcdef01\",\n        \"template_type\": \"pdf\",\n        \"template_version\": null,\n        \"test\": false,\n        \"truncated_text\": {},\n        \"pdf_hash\": null,\n        \"download_url\": null,\n        \"permanent_download_url\": null,\n        \"preview_download_url\": null,\n        \"preview_generated_at\": null,\n        \"audit_trail_download_url\": null,\n        \"actions\": []\n      }\n    },\n    {\n      \"status\": \"success\",\n      \"submission\": {\n        \"batch_id\": \"sbb_1234567890abcdef01\",\n        \"data_requests\": [],\n        \"editable\": null,\n        \"error_message\": null,\n        \"expired\": false,\n        \"expires_at\": null,\n        \"id\": \"sub_1234567890abcdef02\",\n        \"json_schema_errors\": [],\n        \"metadata\": {\n          \"submission_number\": 2\n        },\n        \"password\": null,\n        \"processed_at\": null,\n        \"state\": \"pending\",\n        \"template_id\": \"tpl_1234567890abcdef01\",\n        \"template_type\": \"pdf\",\n        \"template_version\": null,\n        \"test\": true,\n        \"truncated_text\": {},\n        \"pdf_hash\": null,\n        \"download_url\": null,\n        \"permanent_download_url\": null,\n        \"preview_download_url\": null,\n        \"preview_generated_at\": null,\n        \"audit_trail_download_url\": null,\n        \"actions\": []\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9fd0d7d-7efb-45e4-acb7-493eea0ca2de",
+              "name": "invalid JSON",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "submissions",
+                    "batches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "wait",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadata\": {\n    \"job_id\": 54321\n  },\n  \"test\": true,\n  \"template_id\": null,\n  \"template_version\": null,\n  \"submissions\": [\n    {\n      \"test\": false,\n      \"template_id\": \"tpl_1234567890abcdef01\",\n      \"template_version\": \"draft\",\n      \"data\": {\n        \"first_name\": \"Johnny\",\n        \"last_name\": \"Smith\"\n      },\n      \"metadata\": {\n        \"submission_number\": 1\n      }\n    },\n    {\n      \"template_id\": \"tpl_1234567890abcdef01\",\n      \"template_version\": \"latest\",\n      \"data\": {\n        \"first_name\": \"Jane\",\n        \"last_name\": \"Doe\"\n      },\n      \"metadata\": {\n        \"submission_number\": 2\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"There was a problem with the JSON you submitted: unexpected character at line 1, column 25 in '{ \\\"first_name\\\": \\\"John\\\", last_name: \\\"Smith\\\" }\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab991417-18b8-4dbd-b051-8ef4d3dabcf0",
+              "name": "authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "submissions",
+                    "batches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "wait",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadata\": {\n    \"job_id\": 54321\n  },\n  \"test\": true,\n  \"template_id\": null,\n  \"template_version\": null,\n  \"submissions\": [\n    {\n      \"test\": false,\n      \"template_id\": \"tpl_1234567890abcdef01\",\n      \"template_version\": \"draft\",\n      \"data\": {\n        \"first_name\": \"Johnny\",\n        \"last_name\": \"Smith\"\n      },\n      \"metadata\": {\n        \"submission_number\": 1\n      }\n    },\n    {\n      \"template_id\": \"tpl_1234567890abcdef01\",\n      \"template_version\": \"latest\",\n      \"data\": {\n        \"first_name\": \"Jane\",\n        \"last_name\": \"Doe\"\n      },\n      \"metadata\": {\n        \"submission_number\": 2\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Invalid API token secret\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c47ddc4-296c-4c5d-9792-624319815cc6",
+              "name": "array of arrays",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "submissions",
+                    "batches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "wait",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadata\": {\n    \"job_id\": 54321\n  },\n  \"test\": true,\n  \"template_id\": null,\n  \"template_version\": null,\n  \"submissions\": [\n    {\n      \"test\": false,\n      \"template_id\": \"tpl_1234567890abcdef01\",\n      \"template_version\": \"draft\",\n      \"data\": {\n        \"first_name\": \"Johnny\",\n        \"last_name\": \"Smith\"\n      },\n      \"metadata\": {\n        \"submission_number\": 1\n      }\n    },\n    {\n      \"template_id\": \"tpl_1234567890abcdef01\",\n      \"template_version\": \"latest\",\n      \"data\": {\n        \"first_name\": \"Jane\",\n        \"last_name\": \"Doe\"\n      },\n      \"metadata\": {\n        \"submission_number\": 2\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"You can only generate up to 50 PDFs per batch request. You requested: 51\",\n  \"errors\": [\n    \"The property '#/submissions/0' of type array did not match the following type: object\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bbed7c61-65e6-4381-9ac6-9fda355231fd",
+          "name": "Check the status of a submission batch job",
+          "request": {
+            "name": "Check the status of a submission batch job",
+            "description": {
+              "content": "Retrieves the status and results of a batch PDF generation job. Returns processing state,\ncompletion statistics, and optionally includes all individual submission details. Use this\nto poll for completion when using asynchronous batch processing.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "submissions",
+                "batches",
+                ":submission_batch_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "include_submissions",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "submission_batch_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2dc68087-428d-4b10-8243-74bea3910e71",
+              "name": "processed submission batch found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "submissions",
+                    "batches",
+                    ":submission_batch_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_submissions",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "submission_batch_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"sbb_1234567890abcdef01\",\n  \"state\": \"error\",\n  \"metadata\": {\n    \"qux\": \"abc\"\n  },\n  \"processed_at\": null,\n  \"total_count\": 10,\n  \"pending_count\": 1,\n  \"error_count\": 2,\n  \"completion_percentage\": 90,\n  \"submissions\": [\n    {\n      \"batch_id\": \"sbb_1234567890abcdef01\",\n      \"data_requests\": [],\n      \"editable\": false,\n      \"error_message\": null,\n      \"expired\": false,\n      \"expires_at\": null,\n      \"id\": \"sub_1234567890abcdef01\",\n      \"json_schema_errors\": [],\n      \"metadata\": {},\n      \"password\": null,\n      \"processed_at\": null,\n      \"state\": \"processed\",\n      \"template_id\": \"tpl_1234567890abcdef01\",\n      \"template_type\": \"pdf\",\n      \"template_version\": null,\n      \"test\": false,\n      \"truncated_text\": {},\n      \"pdf_hash\": \"bbc369dd471442006963e3244a1b43610e066165c09770978221f91bd7ace8f5\",\n      \"download_url\": \"https://example.com/submissions/submission.pdf\",\n      \"permanent_download_url\": \"https://app.docspring.com/submissions/sub_1234567890abcdef01/download\",\n      \"preview_download_url\": null,\n      \"preview_generated_at\": null,\n      \"audit_trail_download_url\": null,\n      \"actions\": []\n    },\n    {\n      \"batch_id\": \"sbb_1234567890abcdef01\",\n      \"data_requests\": [],\n      \"editable\": false,\n      \"error_message\": null,\n      \"expired\": false,\n      \"expires_at\": null,\n      \"id\": \"sub_1234567890abcdef02\",\n      \"json_schema_errors\": [],\n      \"metadata\": {},\n      \"password\": null,\n      \"processed_at\": null,\n      \"state\": \"processed\",\n      \"template_id\": \"tpl_1234567890abcdef01\",\n      \"template_type\": \"pdf\",\n      \"template_version\": null,\n      \"test\": false,\n      \"truncated_text\": {},\n      \"pdf_hash\": \"bbc369dd471442006963e3244a1b43610e066165c09770978221f91bd7ace8f5\",\n      \"download_url\": \"https://example.com/submissions/submission.pdf\",\n      \"permanent_download_url\": \"https://app.docspring.com/submissions/sub_1234567890abcdef02/download\",\n      \"preview_download_url\": null,\n      \"preview_generated_at\": null,\n      \"audit_trail_download_url\": null,\n      \"actions\": []\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b59b7cba-af9c-422c-a58e-ddba2bbe40a1",
+              "name": "authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "submissions",
+                    "batches",
+                    ":submission_batch_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_submissions",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "submission_batch_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40589553-5228-4e59-aea8-4eb0c64ebf00",
+              "name": "submission batch not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "submissions",
+                    "batches",
+                    ":submission_batch_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_submissions",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "submission_batch_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Submission batch not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sync.api.docspring.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d382359a-4ce2-4620-bfac-cbdc1bc4d9b3",
+    "name": "DocSpring Authentication Submission Batches API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.",
+      "type": "text/plain"
+    }
+  }
+}

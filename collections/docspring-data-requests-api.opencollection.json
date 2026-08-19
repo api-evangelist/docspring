@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DocSpring Authentication Data Requests API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new event for emailing a signee a request for signature",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sync.api.docspring.com/api/v1/data_requests/:data_request_id/events",
+            "params": [
+              {
+                "name": "data_request_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Records user notification events for data requests. Use this to create an audit trail\nshowing when and how users were notified about data request forms. Supports email, SMS,\nand other notification types. Records the notification time for compliance tracking.\n\nSee also:\n- [Embedded Data Requests Guide](https://docspring.com/docs/guides/embedded-forms/embedded-data-requests/) - User notification workflow\n"
+        },
+        {
+          "info": {
+            "name": "Create a new data request token for form authentication",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sync.api.docspring.com/api/v1/data_requests/:data_request_id/tokens",
+            "params": [
+              {
+                "name": "data_request_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Creates an authentication token for accessing a data request form. Tokens can be created\nfor API access (1 hour expiration) or email links (30 day expiration). Returns a token\nand a pre-authenticated URL for the data request form.\n\nSee also:\n- [Embedded Data Requests Guide](https://docspring.com/docs/guides/embedded-forms/embedded-data-requests/)\n"
+        },
+        {
+          "info": {
+            "name": "Look up a submission data request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sync.api.docspring.com/api/v1/data_requests/:data_request_id",
+            "params": [
+              {
+                "name": "data_request_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieves the details and status of a data request. Returns information about the request\nstate (pending, viewed, completed), authentication details, and metadata.\nIncludes audit information like IP address, browseruser agent, and timestamps.\n\nSee also:\n- [Embedded Data Requests Guide](https://docspring.com/docs/guides/embedded-forms/embedded-data-requests/) - Complete guide to data request workflow\n"
+        },
+        {
+          "info": {
+            "name": "Update a submission data request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sync.api.docspring.com/api/v1/data_requests/:data_request_id",
+            "params": [
+              {
+                "name": "data_request_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Updates authentication details for a data request. Use this when a user logs in to record\ntheir authentication method, provider, session information, and hashed identifiers. Updates\nmetadata and tracks authentication state changes for auditing and compliance.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

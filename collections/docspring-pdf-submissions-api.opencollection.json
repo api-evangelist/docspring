@@ -1,0 +1,233 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DocSpring Authentication PDF Submissions API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PDF Submissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all submissions for a given template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sync.api.docspring.com/api/v1/templates/:template_id/submissions",
+            "params": [
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created_after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created_before",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include_data",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Returns a paginated list of all submissions for a specific template. Can be filtered by\ndate range, submission type (test/live), and optionally include submission data. Supports\ncursor-based pagination for efficient retrieval of large result sets.\n"
+        },
+        {
+          "info": {
+            "name": "Generate a PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sync.api.docspring.com/api/v1/templates/:template_id/submissions",
+            "params": [
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "wait",
+                "value": "",
+                "type": "query",
+                "description": "Wait for submission to be processed before returning. Set to false to return immediately. Default: true (on sync.* subdomain)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Creates a PDF submission by filling in a template with data. Supports both synchronous (default) and\nasynchronous processing. Set `wait: false` to return immediately.\n\nSee also:\n- [Customize the PDF Title and Filename](https://docspring.com/docs/api-guide/generate-pdfs/customize-pdf-title-and-filename/) - Set custom metadata\n- [Handling Truncated Text](https://docspring.com/docs/api-guide/generate-pdfs/handle-truncated-text/) - Handle text that doesn't fit in fields\n"
+        },
+        {
+          "info": {
+            "name": "Check the status of a PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sync.api.docspring.com/api/v1/submissions/:submission_id",
+            "params": [
+              {
+                "name": "submission_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include_data",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieves the details and status of a PDF submission. Returns processing state, download\nURL (if processed), metadata, submission data (optional), and information about any\nintegrated actions. Use this to poll for completion when using asynchronous processing.\n"
+        },
+        {
+          "info": {
+            "name": "Expire a PDF submission",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sync.api.docspring.com/api/v1/submissions/:submission_id",
+            "params": [
+              {
+                "name": "submission_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Expiring a PDF submission deletes the PDF and removes the data from our database.\nThis is useful for invalidating sensitive documents after they've been downloaded.\nYou can also [configure a data retention policy for your submissions](https://docspring.com/docs/template-editor/settings/#expire-submissions)\nso that they automatically expire.\n"
+        },
+        {
+          "info": {
+            "name": "Generate a preview PDF for partially completed data requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sync.api.docspring.com/api/v1/submissions/:submission_id/generate_preview",
+            "params": [
+              {
+                "name": "submission_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Generates a preview PDF for a submission with partially completed data requests. Useful\nfor showing users what the final document will look like before all signatures or data\nhave been collected. The preview includes any data collected so far.\n"
+        },
+        {
+          "info": {
+            "name": "List all submissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sync.api.docspring.com/api/v1/submissions",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created_after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created_before",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include_data",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Returns a paginated list of all PDF submissions across all templates in your account.\nCan be filtered by date range and submission type (test/live). Supports cursor-based\npagination and optionally includes submission data for each result.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,327 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DocSpring Authentication Templates API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of all templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sync.api.docspring.com/api/v1/templates",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search By Name"
+              },
+              {
+                "name": "parent_folder_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter By Folder Id"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Default: 1"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Default: 50"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieves a list of your templates with search, filtering, and pagination options. Returns\nbasic template information including ID, name, type (PDF or HTML), and folder location.\nSupports text search by name and filtering by parent folder.\n"
+        },
+        {
+          "info": {
+            "name": "Create a new PDF template with a form POST file upload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sync.api.docspring.com/api/v1/templates",
+            "params": [
+              {
+                "name": "wait",
+                "value": "",
+                "type": "query",
+                "description": "Wait for template document to be processed before returning. Set to false to return immediately. Default: true (on sync.* subdomain)"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Creates a new PDF template by uploading a PDF file. The uploaded PDF becomes the foundation\nfor your template, and you can then add fillable fields using the template editor. Use the\nwait parameter to control whether the request waits for document processing to complete.\n"
+        },
+        {
+          "info": {
+            "name": "Check the status of an uploaded template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sync.api.docspring.com/api/v1/templates/:template_id",
+            "params": [
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieves information about a template including processing status and document URL.\nUse this to check if template is ready to view in the template editor or generate PDFs.\n"
+        },
+        {
+          "info": {
+            "name": "Update a Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sync.api.docspring.com/api/v1/templates/:template_id",
+            "params": [
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Updates template content and properties. For HTML templates, you can modify the HTML,\nSCSS, headers, footers, name, and description. Changes are applied to your draft\ntemplate and do not affect published template versions.\n"
+        },
+        {
+          "info": {
+            "name": "Delete a template",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sync.api.docspring.com/api/v1/templates/:template_id",
+            "params": [
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Deletes a template or a specific template version. When no version is specified, deletes\nthe entire template including all versions. When a version is specified, deletes only\nthat version while preserving others. Returns remaining version information.\n"
+        },
+        {
+          "info": {
+            "name": "Publish a template version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sync.api.docspring.com/api/v1/templates/:template_id/publish_version",
+            "params": [
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Publishes the current draft version of a template and creates a new immutable version\nwith semantic versioning (major.minor.patch).\n"
+        },
+        {
+          "info": {
+            "name": "Restore a template version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sync.api.docspring.com/api/v1/templates/:template_id/restore_version",
+            "params": [
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Restores your template to a previously published version, copying that version's content\nand configuration to the current draft. Use this to revert changes or recover from\nan unwanted modification.\n"
+        },
+        {
+          "info": {
+            "name": "Add new fields to a Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sync.api.docspring.com/api/v1/templates/:template_id/add_fields",
+            "params": [
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Adds fields to a PDF template. Configure field types, positions,\ndefaults, and formatting options.\n"
+        },
+        {
+          "info": {
+            "name": "Move Template to folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sync.api.docspring.com/api/v1/templates/:template_id/move",
+            "params": [
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Moves a template to a different folder or to the root level. Use this to organize\ntemplates within your folders. Provide a folder ID to move to a specific\nfolder, or `null` to move to the root level.\n"
+        },
+        {
+          "info": {
+            "name": "Copy a template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sync.api.docspring.com/api/v1/templates/:template_id/copy",
+            "params": [
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Creates a copy of an existing template with all its fields and configuration.\nOptionally specify a new name and target folder. The copied template starts as a new\ndraft that can be modified independently of the original.\n"
+        },
+        {
+          "info": {
+            "name": "Fetch the JSON schema for a template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sync.api.docspring.com/api/v1/templates/:template_id/schema",
+            "params": [
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieves the JSON Schema definition for a template's fields. Use this to validate\ndata before submitting it for PDF generation, or to build dynamic forms that match\nthe template's field structure and validation requirements.\n\nSee also:\n- [Generate PDFs Guide](https://docspring.com/docs/api-guide/generate-pdfs/generate-pdfs-via-api/) - Use schema to validate submission data\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
