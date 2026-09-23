@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: DocSpring Authentication Data Requests API
+  title: DocSpring Data Requests API
   description: Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.
   version: v1
   contact:
@@ -84,9 +84,7 @@ paths:
 
         See also:
 
-        - [Embedded Data Requests Guide](https://docspring.com/docs/guides/embedded-forms/embedded-data-requests/) - User notification workflow
-
-        '
+        - Embedded Data Requests Guide - User notification workflow'
       externalDocs:
         url: https://docspring.com/docs/guides/embedded-forms/embedded-data-requests/#2-notify-the-user
         description: Track user notification events for audit trail logging
@@ -126,8 +124,9 @@ paths:
                   - discord
                   - telegram
                   - whatsapp
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                 occurred_at:
                   type:
                   - string
@@ -207,9 +206,7 @@ paths:
 
         See also:
 
-        - [Embedded Data Requests Guide](https://docspring.com/docs/guides/embedded-forms/embedded-data-requests/)
-
-        '
+        - Embedded Data Requests Guide'
       externalDocs:
         url: https://docspring.com/docs/guides/embedded-forms/embedded-data-requests/#3-request-an-authentication-token
         description: Generate authentication tokens for embedded data requests
@@ -295,9 +292,7 @@ paths:
 
         See also:
 
-        - [Embedded Data Requests Guide](https://docspring.com/docs/guides/embedded-forms/embedded-data-requests/) - Complete guide to data request workflow
-
-        '
+        - Embedded Data Requests Guide - Complete guide to data request workflow'
       parameters:
       - name: data_request_id
         in: path
@@ -395,9 +390,7 @@ paths:
 
         their authentication method, provider, session information, and hashed identifiers. Updates
 
-        metadata and tracks authentication state changes for auditing and compliance.
-
-        '
+        metadata and tracks authentication state changes for auditing and compliance.'
       externalDocs:
         url: https://docspring.com/docs/guides/embedded-forms/embedded-data-requests/#4-update-authentication-details
         description: Update authentication details after user sign-in
@@ -489,37 +482,94 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    multiple_errors_response:
+    error_response:
       type: object
       properties:
         status:
           type: string
           enum:
           - error
-        errors:
-          type: array
-          items:
-            type: string
+        error:
+          type: string
       required:
       - status
-      - errors
+      - error
       additionalProperties: false
-      title: multiple_errors_response
+      title: error_response
+    submission_data_request_event:
+      title: submission_data_request_event
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+        submission_id:
+          type:
+          - string
+          - 'null'
+        submission_data_request_id:
+          type:
+          - string
+          - 'null'
+        event_type:
+          type: string
+          enum:
+          - send_request
+          - view_request
+          - accepted_terms
+          - decline_request
+          - sign_request
+          - all_completed
+        message_type:
+          type:
+          - string
+          - 'null'
+          enum:
+          - email
+          - sms
+          - fax
+          - mail
+          - slack
+          - msteams
+          - discord
+          - telegram
+          - whatsapp
+        message_recipient:
+          type:
+          - string
+          - 'null'
+        occurred_at:
+          type:
+          - string
+          - 'null'
+      required:
+      - event_type
+      - id
+      - message_recipient
+      - message_type
+      - occurred_at
+      - submission_data_request_id
+      - submission_id
+      additionalProperties: false
     submission_data_request_token:
       title: submission_data_request_token
       type: object
       properties:
         id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         secret:
           type: string
         expires_at:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         data_request_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       required:
       - data_request_url
       - expires_at
@@ -531,41 +581,50 @@ components:
       type: object
       properties:
         id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         email:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         order:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         sort_order:
           type: integer
         fields:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             type: string
-          nullable: true
         metadata:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
         state:
           type: string
           enum:
           - pending
           - completed
         viewed_at:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         completed_at:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         data:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
         auth_type:
           type: string
           enum:
@@ -586,32 +645,41 @@ components:
           - security_key
           - fingerprint
         auth_provider:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         auth_session_started_at:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         auth_session_id_hash:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         auth_user_id_hash:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         auth_username_hash:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         auth_phone_number_hash:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         ip_address:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         user_agent:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         submission_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       required:
       - auth_phone_number_hash
       - auth_provider
@@ -636,70 +704,22 @@ components:
       - user_agent
       - viewed_at
       additionalProperties: false
-    error_response:
+    multiple_errors_response:
       type: object
       properties:
         status:
           type: string
           enum:
           - error
-        error:
-          type: string
+        errors:
+          type: array
+          items:
+            type: string
       required:
       - status
-      - error
+      - errors
       additionalProperties: false
-      title: error_response
-    submission_data_request_event:
-      title: submission_data_request_event
-      type: object
-      properties:
-        id:
-          type: string
-          nullable: true
-        submission_id:
-          type: string
-          nullable: true
-        submission_data_request_id:
-          type: string
-          nullable: true
-        event_type:
-          type: string
-          enum:
-          - send_request
-          - view_request
-          - accepted_terms
-          - decline_request
-          - sign_request
-          - all_completed
-        message_type:
-          type: string
-          enum:
-          - email
-          - sms
-          - fax
-          - mail
-          - slack
-          - msteams
-          - discord
-          - telegram
-          - whatsapp
-          nullable: true
-        message_recipient:
-          type: string
-          nullable: true
-        occurred_at:
-          type: string
-          nullable: true
-      required:
-      - event_type
-      - id
-      - message_recipient
-      - message_type
-      - occurred_at
-      - submission_data_request_id
-      - submission_id
-      additionalProperties: false
+      title: multiple_errors_response
   securitySchemes:
     basicAuth:
       type: http

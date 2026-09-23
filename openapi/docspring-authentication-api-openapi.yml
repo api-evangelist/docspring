@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: DocSpring Authentication API
   description: Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.
@@ -43,9 +43,7 @@ paths:
 
         Returns a success response if authentication passes. This endpoint is useful for
 
-        verifying credentials during setup or troubleshooting issues.
-
-        '
+        verifying credentials during setup or troubleshooting issues.'
       externalDocs:
         url: https://docspring.com/docs/api-guide/authentication/
         description: Learn how to authenticate with the DocSpring API

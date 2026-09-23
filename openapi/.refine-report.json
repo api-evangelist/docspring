@@ -1,14 +1,7 @@
 {
   "provider": "docspring",
   "sources": [
-    "docspring-authentication-api-openapi.yml",
-    "docspring-combine-pdfs-api-openapi.yml",
-    "docspring-custom-files-api-openapi.yml",
-    "docspring-data-requests-api-openapi.yml",
-    "docspring-folders-api-openapi.yml",
-    "docspring-pdf-submissions-api-openapi.yml",
-    "docspring-submission-batches-api-openapi.yml",
-    "docspring-templates-api-openapi.yml"
+    "_original/docspring-docspring-api-openapi.yml"
   ],
   "outputs": [
     "docspring-authentication-api-openapi.yml",
@@ -22,9 +15,30 @@
   ],
   "archived": [],
   "errors": [
-    "docspring-pdf-submissions-api-openapi.yml: dangling $ref: #/definitions/submission_preview"
+    "docspring-docspring-api-openapi.yml: dangling $ref: #/definitions/submission_preview"
   ],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "docspring-docspring-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "docspring-docspring-api-openapi.yml: declared missing tag: Authentication",
+    "docspring-docspring-api-openapi.yml: declared missing tag: Combine PDFs",
+    "docspring-docspring-api-openapi.yml: declared missing tag: Custom Files",
+    "docspring-docspring-api-openapi.yml: declared missing tag: Data Requests",
+    "docspring-docspring-api-openapi.yml: declared missing tag: Folders",
+    "docspring-docspring-api-openapi.yml: declared missing tag: PDF Submissions",
+    "docspring-docspring-api-openapi.yml: declared missing tag: Submission Batches",
+    "docspring-docspring-api-openapi.yml: declared missing tag: Templates",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "docspring-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "docspring-combine-pdfs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "docspring-custom-files-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "docspring-data-requests-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "docspring-folders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "docspring-pdf-submissions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "docspring-submission-batches-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "docspring-templates-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

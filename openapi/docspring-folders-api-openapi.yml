@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: DocSpring Authentication Folders API
+  title: DocSpring Folders API
   description: Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.
   version: v1
   contact:
@@ -48,9 +48,7 @@ paths:
                 error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
       description: 'Returns a list of folders in your account. Can be filtered by parent folder ID to retrieve
 
-        subfolders. Folders help organize templates and maintain a hierarchical structure.
-
-        '
+        subfolders. Folders help organize templates and maintain a hierarchical structure.'
       parameters:
       - name: parent_folder_id
         in: query
@@ -100,9 +98,7 @@ paths:
                 error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
       description: 'Creates a new folder for organizing templates. Folders can be nested within other folders
 
-        by providing a `parent_folder_id`. Folder names must be unique within the same parent.
-
-        '
+        by providing a `parent_folder_id`. Folder names must be unique within the same parent.'
       requestBody:
         content:
           application/json:
@@ -165,9 +161,7 @@ paths:
                 error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
       description: 'Moves a folder to a new parent folder or to the root level. All templates and subfolders
 
-        within the folder are moved together. Cannot move a folder into one of its own subfolders.
-
-        '
+        within the folder are moved together. Cannot move a folder into one of its own subfolders.'
       parameters:
       - name: folder_id
         in: path
@@ -230,9 +224,7 @@ paths:
                 error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
       description: 'Renames an existing folder. The new name must be unique within the same parent folder.
 
-        This operation only changes the folder name, not its location or contents.
-
-        '
+        This operation only changes the folder name, not its location or contents.'
       parameters:
       - name: folder_id
         in: path
@@ -297,9 +289,7 @@ paths:
                 error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
       description: 'Deletes an empty folder. The folder must not contain any templates or subfolders.
 
-        Move or delete all contents before attempting to delete the folder.
-
-        '
+        Move or delete all contents before attempting to delete the folder.'
       parameters:
       - name: folder_id
         in: path
@@ -345,17 +335,21 @@ components:
       type: object
       properties:
         id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         path:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         parent_folder_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       required:
       - id
       - name

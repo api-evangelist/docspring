@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: DocSpring Authentication PDF Submissions API
+  title: DocSpring PDF Submissions API
   description: Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.
   version: v1
   contact:
@@ -168,11 +168,9 @@ paths:
 
         See also:
 
-        - [Customize the PDF Title and Filename](https://docspring.com/docs/api-guide/generate-pdfs/customize-pdf-title-and-filename/) - Set custom metadata
+        - Customize the PDF Title and Filename - Set custom metadata
 
-        - [Handling Truncated Text](https://docspring.com/docs/api-guide/generate-pdfs/handle-truncated-text/) - Handle text that doesn''t fit in fields
-
-        '
+        - Handling Truncated Text - Handle text that doesn''t fit in fields'
       externalDocs:
         url: https://docspring.com/docs/api-guide/generate-pdfs/generate-pdfs-via-api/
         description: Complete guide to generating PDFs with DocSpring
@@ -324,8 +322,9 @@ paths:
                   limit:
                     type: integer
                   next_cursor:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                 required:
                 - submissions
                 - limit
@@ -481,9 +480,7 @@ paths:
 
         date range, submission type (test/live), and optionally include submission data. Supports
 
-        cursor-based pagination for efficient retrieval of large result sets.
-
-        '
+        cursor-based pagination for efficient retrieval of large result sets.'
       parameters:
       - name: template_id
         in: path
@@ -597,9 +594,7 @@ paths:
 
         URL (if processed), metadata, submission data (optional), and information about any
 
-        integrated actions. Use this to poll for completion when using asynchronous processing.
-
-        '
+        integrated actions. Use this to poll for completion when using asynchronous processing.'
       parameters:
       - name: submission_id
         in: path
@@ -695,11 +690,9 @@ paths:
 
         This is useful for invalidating sensitive documents after they''ve been downloaded.
 
-        You can also [configure a data retention policy for your submissions](https://docspring.com/docs/template-editor/settings/#expire-submissions)
+        You can also configure a data retention policy for your submissions
 
-        so that they automatically expire.
-
-        '
+        so that they automatically expire.'
       parameters:
       - name: submission_id
         in: path
@@ -745,9 +738,7 @@ paths:
 
         for showing users what the final document will look like before all signatures or data
 
-        have been collected. The preview includes any data collected so far.
-
-        '
+        have been collected. The preview includes any data collected so far.'
       parameters:
       - name: submission_id
         in: path
@@ -778,8 +769,9 @@ paths:
                   limit:
                     type: integer
                   next_cursor:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                 required:
                 - submissions
                 - limit
@@ -913,9 +905,7 @@ paths:
 
         Can be filtered by date range and submission type (test/live). Supports cursor-based
 
-        pagination and optionally includes submission data for each result.
-
-        '
+        pagination and optionally includes submission data for each result.'
       parameters:
       - name: cursor
         in: query
@@ -950,164 +940,52 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    success_error_response:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - success
-          - error
-        error:
-          type: string
-      required:
-      - status
-      additionalProperties: false
-      title: success_error_response
-    submission_data_request:
-      title: submission_data_request
-      type: object
-      properties:
-        id:
-          type: string
-          nullable: true
-        email:
-          type: string
-          nullable: true
-        name:
-          type: string
-          nullable: true
-        order:
-          type: integer
-          nullable: true
-        sort_order:
-          type: integer
-        fields:
-          type: array
-          items:
-            type: string
-          nullable: true
-        metadata:
-          type: object
-          nullable: true
-        state:
-          type: string
-          enum:
-          - pending
-          - completed
-        viewed_at:
-          type: string
-          nullable: true
-        completed_at:
-          type: string
-          nullable: true
-        data:
-          type: object
-          nullable: true
-        auth_type:
-          type: string
-          enum:
-          - none
-          - password
-          - oauth
-          - email_link
-          - phone_number
-          - ldap
-          - saml
-        auth_second_factor_type:
-          type: string
-          enum:
-          - none
-          - phone_number
-          - totp
-          - mobile_push
-          - security_key
-          - fingerprint
-        auth_provider:
-          type: string
-          nullable: true
-        auth_session_started_at:
-          type: string
-          nullable: true
-        auth_session_id_hash:
-          type: string
-          nullable: true
-        auth_user_id_hash:
-          type: string
-          nullable: true
-        auth_username_hash:
-          type: string
-          nullable: true
-        auth_phone_number_hash:
-          type: string
-          nullable: true
-        ip_address:
-          type: string
-          nullable: true
-        user_agent:
-          type: string
-          nullable: true
-      required:
-      - auth_phone_number_hash
-      - auth_provider
-      - auth_second_factor_type
-      - auth_session_id_hash
-      - auth_session_started_at
-      - auth_type
-      - auth_user_id_hash
-      - auth_username_hash
-      - completed_at
-      - data
-      - email
-      - fields
-      - id
-      - ip_address
-      - metadata
-      - name
-      - order
-      - sort_order
-      - state
-      - user_agent
-      - viewed_at
-      additionalProperties: false
     submission_preview:
       title: submission_preview
       type: object
       properties:
         batch_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         data_requests:
           type: array
           items:
             $ref: '#/components/schemas/submission_data_request'
         editable:
-          type: boolean
-          nullable: true
+          type:
+          - boolean
+          - 'null'
         error_message:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         expired:
           type: boolean
         expires_at:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         json_schema_errors:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             type: string
-          nullable: true
         metadata:
           type: object
         password:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         processed_at:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         state:
           type: string
           enum:
@@ -1123,39 +1001,48 @@ components:
           - license_revoked
           - accidental
         template_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         template_type:
           type: string
           enum:
           - pdf
           - html
         template_version:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         test:
           type: boolean
         truncated_text:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
         pdf_hash:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         download_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         permanent_download_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         preview_download_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         preview_generated_at:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         audit_trail_download_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         actions:
           type: array
           items:
@@ -1191,39 +1078,47 @@ components:
       type: object
       properties:
         batch_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         data_requests:
           type: array
           items:
             $ref: '#/components/schemas/submission_data_request'
         editable:
-          type: boolean
-          nullable: true
+          type:
+          - boolean
+          - 'null'
         error_message:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         expired:
           type: boolean
         expires_at:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         json_schema_errors:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             type: string
-          nullable: true
         metadata:
           type: object
         password:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         processed_at:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         state:
           type: string
           enum:
@@ -1239,39 +1134,48 @@ components:
           - license_revoked
           - accidental
         template_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         template_type:
           type: string
           enum:
           - pdf
           - html
         template_version:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         test:
           type: boolean
         truncated_text:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
         pdf_hash:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         download_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         permanent_download_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         preview_download_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         preview_generated_at:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         audit_trail_download_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         actions:
           type: array
           items:
@@ -1284,11 +1188,13 @@ components:
           - reprocess
           - webhook
         referrer:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         data:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
       required:
       - actions
       - audit_trail_download_url
@@ -1318,16 +1224,32 @@ components:
       - test
       - truncated_text
       additionalProperties: false
+    error_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+        error:
+          type: string
+      required:
+      - status
+      - error
+      additionalProperties: false
+      title: error_response
     submission_action:
       title: submission_action
       type: object
       properties:
         id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         integration_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         state:
           type: string
           enum:
@@ -1350,8 +1272,9 @@ components:
         result_data:
           type: object
         error_message:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       required:
       - action_category
       - action_type
@@ -1383,20 +1306,143 @@ components:
       required:
       - status
       additionalProperties: false
-    error_response:
+    success_error_response:
       type: object
       properties:
         status:
           type: string
           enum:
+          - success
           - error
         error:
           type: string
       required:
       - status
-      - error
       additionalProperties: false
-      title: error_response
+      title: success_error_response
+    submission_data_request:
+      title: submission_data_request
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+        order:
+          type:
+          - integer
+          - 'null'
+        sort_order:
+          type: integer
+        fields:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        metadata:
+          type:
+          - object
+          - 'null'
+        state:
+          type: string
+          enum:
+          - pending
+          - completed
+        viewed_at:
+          type:
+          - string
+          - 'null'
+        completed_at:
+          type:
+          - string
+          - 'null'
+        data:
+          type:
+          - object
+          - 'null'
+        auth_type:
+          type: string
+          enum:
+          - none
+          - password
+          - oauth
+          - email_link
+          - phone_number
+          - ldap
+          - saml
+        auth_second_factor_type:
+          type: string
+          enum:
+          - none
+          - phone_number
+          - totp
+          - mobile_push
+          - security_key
+          - fingerprint
+        auth_provider:
+          type:
+          - string
+          - 'null'
+        auth_session_started_at:
+          type:
+          - string
+          - 'null'
+        auth_session_id_hash:
+          type:
+          - string
+          - 'null'
+        auth_user_id_hash:
+          type:
+          - string
+          - 'null'
+        auth_username_hash:
+          type:
+          - string
+          - 'null'
+        auth_phone_number_hash:
+          type:
+          - string
+          - 'null'
+        ip_address:
+          type:
+          - string
+          - 'null'
+        user_agent:
+          type:
+          - string
+          - 'null'
+      required:
+      - auth_phone_number_hash
+      - auth_provider
+      - auth_second_factor_type
+      - auth_session_id_hash
+      - auth_session_started_at
+      - auth_type
+      - auth_user_id_hash
+      - auth_username_hash
+      - completed_at
+      - data
+      - email
+      - fields
+      - id
+      - ip_address
+      - metadata
+      - name
+      - order
+      - sort_order
+      - state
+      - user_agent
+      - viewed_at
+      additionalProperties: false
   securitySchemes:
     basicAuth:
       type: http

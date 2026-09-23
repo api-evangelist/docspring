@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: DocSpring Authentication Templates API
+  title: DocSpring Templates API
   description: Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.
   version: v1
   contact:
@@ -234,9 +234,7 @@ paths:
 
         basic template information including ID, name, type (PDF or HTML), and folder location.
 
-        Supports text search by name and filtering by parent folder.
-
-        '
+        Supports text search by name and filtering by parent folder.'
       parameters:
       - name: query
         in: query
@@ -335,9 +333,7 @@ paths:
 
         for your template, and you can then add fillable fields using the template editor. Use the
 
-        wait parameter to control whether the request waits for document processing to complete.
-
-        '
+        wait parameter to control whether the request waits for document processing to complete.'
       parameters:
       - name: wait
         in: query
@@ -445,9 +441,7 @@ paths:
                 error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
       description: 'Retrieves information about a template including processing status and document URL.
 
-        Use this to check if template is ready to view in the template editor or generate PDFs.
-
-        '
+        Use this to check if template is ready to view in the template editor or generate PDFs.'
       parameters:
       - name: template_id
         in: path
@@ -474,9 +468,7 @@ paths:
 
         SCSS, headers, footers, name, and description. Changes are applied to your draft
 
-        template and do not affect published template versions.
-
-        '
+        template and do not affect published template versions.'
       parameters:
       - name: template_id
         in: path
@@ -758,9 +750,7 @@ paths:
 
         the entire template including all versions. When a version is specified, deletes only
 
-        that version while preserving others. Returns remaining version information.
-
-        '
+        that version while preserving others. Returns remaining version information.'
       parameters:
       - name: template_id
         in: path
@@ -824,9 +814,7 @@ paths:
                 error: 'Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/'
       description: 'Publishes the current draft version of a template and creates a new immutable version
 
-        with semantic versioning (major.minor.patch).
-
-        '
+        with semantic versioning (major.minor.patch).'
       parameters:
       - name: template_id
         in: path
@@ -901,9 +889,7 @@ paths:
 
         and configuration to the current draft. Use this to revert changes or recover from
 
-        an unwanted modification.
-
-        '
+        an unwanted modification.'
       parameters:
       - name: template_id
         in: path
@@ -974,9 +960,7 @@ paths:
                 - The property '#/fields/3/page' value "4" did not have a maximum value of 3, inclusively (Template has 3 pages)
       description: 'Adds fields to a PDF template. Configure field types, positions,
 
-        defaults, and formatting options.
-
-        '
+        defaults, and formatting options.'
       externalDocs:
         url: https://docspring.com/docs/reference/field-schema/
         description: View the field schema to see all available properties and types
@@ -1383,9 +1367,7 @@ paths:
 
         templates within your folders. Provide a folder ID to move to a specific
 
-        folder, or `null` to move to the root level.
-
-        '
+        folder, or `null` to move to the root level.'
       parameters:
       - name: template_id
         in: path
@@ -1480,9 +1462,7 @@ paths:
 
         Optionally specify a new name and target folder. The copied template starts as a new
 
-        draft that can be modified independently of the original.
-
-        '
+        draft that can be modified independently of the original.'
       parameters:
       - name: template_id
         in: path
@@ -1571,9 +1551,7 @@ paths:
 
         See also:
 
-        - [Generate PDFs Guide](https://docspring.com/docs/api-guide/generate-pdfs/generate-pdfs-via-api/) - Use schema to validate submission data
-
-        '
+        - Generate PDFs Guide - Use schema to validate submission data'
       parameters:
       - name: template_id
         in: path
@@ -1584,36 +1562,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    success_error_response:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - success
-          - error
-        error:
-          type: string
-      required:
-      - status
-      additionalProperties: false
-      title: success_error_response
-    success_multiple_errors_response:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - success
-          - error
-        errors:
-          type: array
-          items:
-            type: string
-      required:
-      - status
-      additionalProperties: false
-      title: success_multiple_errors_response
     template_add_fields_response:
       type: object
       properties:
@@ -1634,7 +1582,21 @@ components:
       - status
       additionalProperties: false
       title: template_add_fields_response
-    template_delete_response:
+    error_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+        error:
+          type: string
+      required:
+      - status
+      - error
+      additionalProperties: false
+      title: error_response
+    success_multiple_errors_response:
       type: object
       properties:
         status:
@@ -1646,32 +1608,46 @@ components:
           type: array
           items:
             type: string
-        latest_version:
-          type: string
-          nullable: true
-        versions:
-          type: array
-          items:
-            type: object
-            properties:
-              version:
-                type: string
-              description:
-                type: string
-                nullable: true
-              published_at:
-                type: string
-              published_by_id:
-                type: string
-            required:
-            - version
-            - published_at
-            - published_by_id
-            additionalProperties: false
       required:
       - status
       additionalProperties: false
-      title: template_delete_response
+      title: success_multiple_errors_response
+    template_publish_version_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - error
+        result:
+          type: object
+          additionalProperties: false
+          properties:
+            version:
+              type: string
+            description:
+              type:
+              - string
+              - 'null'
+            published_by_id:
+              type: string
+            published_at:
+              type: string
+              format: date-time
+          required:
+          - version
+          - published_by_id
+          - published_at
+        errors:
+          type: array
+          items:
+            type: string
+      required:
+      - status
+      - result
+      additionalProperties: false
+      title: template_publish_version_response
     json_schema:
       type: object
       properties:
@@ -1700,7 +1676,7 @@ components:
             type: string
       additionalProperties: false
       title: json_schema
-    template_publish_version_response:
+    success_error_response:
       type: object
       properties:
         status:
@@ -1708,47 +1684,52 @@ components:
           enum:
           - success
           - error
-        result:
-          type: object
-          additionalProperties: false
-          properties:
-            version:
-              type: string
-            description:
-              type: string
-              nullable: true
-            published_by_id:
-              type: string
-            published_at:
-              type: string
-              format: date-time
-          required:
-          - version
-          - published_by_id
-          - published_at
-        errors:
-          type: array
-          items:
-            type: string
+        error:
+          type: string
       required:
       - status
-      - result
       additionalProperties: false
-      title: template_publish_version_response
-    error_response:
+      title: success_error_response
+    template_delete_response:
       type: object
       properties:
         status:
           type: string
           enum:
+          - success
           - error
-        error:
-          type: string
+        errors:
+          type: array
+          items:
+            type: string
+        latest_version:
+          type:
+          - string
+          - 'null'
+        versions:
+          type: array
+          items:
+            type: object
+            properties:
+              version:
+                type: string
+              description:
+                type:
+                - string
+                - 'null'
+              published_at:
+                type: string
+              published_by_id:
+                type: string
+            required:
+            - version
+            - published_at
+            - published_by_id
+            additionalProperties: false
       required:
       - status
-      - error
       additionalProperties: false
-      title: error_response
+      title: template_delete_response
     template_preview:
       title: template_preview
       type: object
@@ -1758,14 +1739,17 @@ components:
         allow_additional_properties:
           type: boolean
         description:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         document_filename:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         document_md5:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         document_parse_error:
           type: boolean
         document_processed:
@@ -1779,16 +1763,19 @@ components:
           - malformed_pdf
           - unknown_error
         document_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         editable_submissions:
           type: boolean
         embed_domains:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         encrypt_pdfs_password:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         encrypt_pdfs:
           type: boolean
         expiration_interval:
@@ -1798,87 +1785,105 @@ components:
         expire_submissions:
           type: boolean
         external_predefined_fields_template_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         external_predefined_fields_template_name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         first_template:
           type: boolean
         id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         locked:
           type: boolean
         merge_audit_trail_pdf:
           type: boolean
         name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         page_count:
           type: integer
         page_dimensions:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             type: array
             minItems: 2
             maxItems: 2
             items:
               type: number
-          nullable: true
         parent_folder_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         path:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         permanent_document_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         public_submissions:
           type: boolean
         public_web_form:
           type: boolean
         redirect_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         slack_webhook_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         template_type:
           type: string
           enum:
           - pdf
           - html
         updated_at:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         version_published_at:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         version:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         webhook_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         demo:
           type: boolean
         latest_version:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         last_changed_at:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         last_changed_by_type:
-          type: string
+          type:
+          - string
+          - 'null'
           enum:
           - user
           - api
-          nullable: true
         last_changed_by_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       required:
       - add_data_request_submission_id_footers
       - allow_additional_properties
