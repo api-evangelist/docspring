@@ -139,20 +139,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    error_response:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - error
-        error:
-          type: string
-      required:
-      - status
-      - error
-      additionalProperties: false
-      title: error_response
     upload_presign_response:
       type: object
       properties:
@@ -193,6 +179,20 @@ components:
       - url
       additionalProperties: false
       title: upload_presign_response
+    error_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+        error:
+          type: string
+      required:
+      - status
+      - error
+      additionalProperties: false
+      title: error_response
     custom_file:
       title: custom_file
       type: object

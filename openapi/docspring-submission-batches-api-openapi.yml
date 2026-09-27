@@ -454,8 +454,8 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    submission_batch_with_submissions:
-      title: submission_preview
+    submission_batch:
+      title: submission_batch
       type: object
       properties:
         id:
@@ -482,10 +482,6 @@ components:
           type: integer
         completion_percentage:
           type: number
-        submissions:
-          type: array
-          items:
-            $ref: '#/components/schemas/submission_preview'
       required:
       - completion_percentage
       - error_count
@@ -495,6 +491,52 @@ components:
       - processed_at
       - state
       - total_count
+      additionalProperties: false
+    submission_action:
+      title: submission_action
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+        integration_id:
+          type:
+          - string
+          - 'null'
+        state:
+          type: string
+          enum:
+          - pending
+          - processed
+          - failed
+          - error
+        action_type:
+          type: string
+          enum:
+          - webhook
+          - slack_webhook
+          - email
+          - aws_s3_upload
+        action_category:
+          type: string
+          enum:
+          - notification
+          - file_upload
+        result_data:
+          type: object
+        error_message:
+          type:
+          - string
+          - 'null'
+      required:
+      - action_category
+      - action_type
+      - error_message
+      - id
+      - integration_id
+      - result_data
+      - state
       additionalProperties: false
     submission_preview:
       title: submission_preview
@@ -629,123 +671,6 @@ components:
       - test
       - truncated_text
       additionalProperties: false
-    error_response:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - error
-        error:
-          type: string
-      required:
-      - status
-      - error
-      additionalProperties: false
-      title: error_response
-    error_or_multiple_errors_response:
-      type: object
-      title: error_or_multiple_errors_response
-      properties:
-        status:
-          type: string
-          enum:
-          - error
-        error:
-          type: string
-          description: Single error message (when only one error occurred)
-        errors:
-          type: array
-          items:
-            type: string
-          description: Array of error messages (when multiple validation errors occurred)
-      required:
-      - status
-      additionalProperties: false
-    submission_action:
-      title: submission_action
-      type: object
-      properties:
-        id:
-          type:
-          - string
-          - 'null'
-        integration_id:
-          type:
-          - string
-          - 'null'
-        state:
-          type: string
-          enum:
-          - pending
-          - processed
-          - failed
-          - error
-        action_type:
-          type: string
-          enum:
-          - webhook
-          - slack_webhook
-          - email
-          - aws_s3_upload
-        action_category:
-          type: string
-          enum:
-          - notification
-          - file_upload
-        result_data:
-          type: object
-        error_message:
-          type:
-          - string
-          - 'null'
-      required:
-      - action_category
-      - action_type
-      - error_message
-      - id
-      - integration_id
-      - result_data
-      - state
-      additionalProperties: false
-    submission_batch:
-      title: submission_batch
-      type: object
-      properties:
-        id:
-          type:
-          - string
-          - 'null'
-        state:
-          type: string
-          enum:
-          - pending
-          - processed
-          - error
-        metadata:
-          type: object
-        processed_at:
-          type:
-          - string
-          - 'null'
-        total_count:
-          type: integer
-        pending_count:
-          type: integer
-        error_count:
-          type: integer
-        completion_percentage:
-          type: number
-      required:
-      - completion_percentage
-      - error_count
-      - id
-      - metadata
-      - pending_count
-      - processed_at
-      - state
-      - total_count
-      additionalProperties: false
     submission_data_request:
       title: submission_data_request
       type: object
@@ -868,6 +793,81 @@ components:
       - state
       - user_agent
       - viewed_at
+      additionalProperties: false
+    error_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+        error:
+          type: string
+      required:
+      - status
+      - error
+      additionalProperties: false
+      title: error_response
+    error_or_multiple_errors_response:
+      type: object
+      title: error_or_multiple_errors_response
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+        error:
+          type: string
+          description: Single error message (when only one error occurred)
+        errors:
+          type: array
+          items:
+            type: string
+          description: Array of error messages (when multiple validation errors occurred)
+      required:
+      - status
+      additionalProperties: false
+    submission_batch_with_submissions:
+      title: submission_preview
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+        state:
+          type: string
+          enum:
+          - pending
+          - processed
+          - error
+        metadata:
+          type: object
+        processed_at:
+          type:
+          - string
+          - 'null'
+        total_count:
+          type: integer
+        pending_count:
+          type: integer
+        error_count:
+          type: integer
+        completion_percentage:
+          type: number
+        submissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/submission_preview'
+      required:
+      - completion_percentage
+      - error_count
+      - id
+      - metadata
+      - pending_count
+      - processed_at
+      - state
+      - total_count
       additionalProperties: false
   securitySchemes:
     basicAuth:

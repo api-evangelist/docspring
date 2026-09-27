@@ -482,20 +482,22 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    error_response:
+    multiple_errors_response:
       type: object
       properties:
         status:
           type: string
           enum:
           - error
-        error:
-          type: string
+        errors:
+          type: array
+          items:
+            type: string
       required:
       - status
-      - error
+      - errors
       additionalProperties: false
-      title: error_response
+      title: multiple_errors_response
     submission_data_request_event:
       title: submission_data_request_event
       type: object
@@ -551,30 +553,6 @@ components:
       - occurred_at
       - submission_data_request_id
       - submission_id
-      additionalProperties: false
-    submission_data_request_token:
-      title: submission_data_request_token
-      type: object
-      properties:
-        id:
-          type:
-          - string
-          - 'null'
-        secret:
-          type: string
-        expires_at:
-          type:
-          - string
-          - 'null'
-        data_request_url:
-          type:
-          - string
-          - 'null'
-      required:
-      - data_request_url
-      - expires_at
-      - id
-      - secret
       additionalProperties: false
     submission_data_request_show:
       title: submission_data_request_show
@@ -704,22 +682,44 @@ components:
       - user_agent
       - viewed_at
       additionalProperties: false
-    multiple_errors_response:
+    error_response:
       type: object
       properties:
         status:
           type: string
           enum:
           - error
-        errors:
-          type: array
-          items:
-            type: string
+        error:
+          type: string
       required:
       - status
-      - errors
+      - error
       additionalProperties: false
-      title: multiple_errors_response
+      title: error_response
+    submission_data_request_token:
+      title: submission_data_request_token
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+        secret:
+          type: string
+        expires_at:
+          type:
+          - string
+          - 'null'
+        data_request_url:
+          type:
+          - string
+          - 'null'
+      required:
+      - data_request_url
+      - expires_at
+      - id
+      - secret
+      additionalProperties: false
   securitySchemes:
     basicAuth:
       type: http
