@@ -1614,6 +1614,122 @@ components:
       - status
       additionalProperties: false
       title: success_multiple_errors_response
+    json_schema:
+      type: object
+      properties:
+        $schema:
+          type: string
+          format: uri
+        id:
+          type: string
+          format: uri-reference
+        title:
+          type: string
+        description:
+          type: string
+        definitions:
+          type: object
+          default: {}
+        type:
+          type: string
+        properties:
+          type: object
+        additionalProperties:
+          type: boolean
+        required:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+      title: json_schema
+    template_add_fields_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - error
+        errors:
+          type: array
+          items:
+            type: string
+        new_field_ids:
+          type: array
+          items:
+            type: integer
+      required:
+      - status
+      additionalProperties: false
+      title: template_add_fields_response
+    error_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+        error:
+          type: string
+      required:
+      - status
+      - error
+      additionalProperties: false
+      title: error_response
+    success_error_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - error
+        error:
+          type: string
+      required:
+      - status
+      additionalProperties: false
+      title: success_error_response
+    template_delete_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - error
+        errors:
+          type: array
+          items:
+            type: string
+        latest_version:
+          type:
+          - string
+          - 'null'
+        versions:
+          type: array
+          items:
+            type: object
+            properties:
+              version:
+                type: string
+              description:
+                type:
+                - string
+                - 'null'
+              published_at:
+                type: string
+              published_by_id:
+                type: string
+            required:
+            - version
+            - published_at
+            - published_by_id
+            additionalProperties: false
+      required:
+      - status
+      additionalProperties: false
+      title: template_delete_response
     template_preview:
       title: template_preview
       type: object
@@ -1812,122 +1928,6 @@ components:
       - version_published_at
       - webhook_url
       additionalProperties: false
-    error_response:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - error
-        error:
-          type: string
-      required:
-      - status
-      - error
-      additionalProperties: false
-      title: error_response
-    json_schema:
-      type: object
-      properties:
-        $schema:
-          type: string
-          format: uri
-        id:
-          type: string
-          format: uri-reference
-        title:
-          type: string
-        description:
-          type: string
-        definitions:
-          type: object
-          default: {}
-        type:
-          type: string
-        properties:
-          type: object
-        additionalProperties:
-          type: boolean
-        required:
-          type: array
-          items:
-            type: string
-      additionalProperties: false
-      title: json_schema
-    template_add_fields_response:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - success
-          - error
-        errors:
-          type: array
-          items:
-            type: string
-        new_field_ids:
-          type: array
-          items:
-            type: integer
-      required:
-      - status
-      additionalProperties: false
-      title: template_add_fields_response
-    success_error_response:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - success
-          - error
-        error:
-          type: string
-      required:
-      - status
-      additionalProperties: false
-      title: success_error_response
-    template_delete_response:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - success
-          - error
-        errors:
-          type: array
-          items:
-            type: string
-        latest_version:
-          type:
-          - string
-          - 'null'
-        versions:
-          type: array
-          items:
-            type: object
-            properties:
-              version:
-                type: string
-              description:
-                type:
-                - string
-                - 'null'
-              published_at:
-                type: string
-              published_by_id:
-                type: string
-            required:
-            - version
-            - published_at
-            - published_by_id
-            additionalProperties: false
-      required:
-      - status
-      additionalProperties: false
-      title: template_delete_response
   securitySchemes:
     basicAuth:
       type: http

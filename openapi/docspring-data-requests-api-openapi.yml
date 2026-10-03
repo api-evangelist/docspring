@@ -482,22 +482,44 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    multiple_errors_response:
+    submission_data_request_token:
+      title: submission_data_request_token
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+        secret:
+          type: string
+        expires_at:
+          type:
+          - string
+          - 'null'
+        data_request_url:
+          type:
+          - string
+          - 'null'
+      required:
+      - data_request_url
+      - expires_at
+      - id
+      - secret
+      additionalProperties: false
+    error_response:
       type: object
       properties:
         status:
           type: string
           enum:
           - error
-        errors:
-          type: array
-          items:
-            type: string
+        error:
+          type: string
       required:
       - status
-      - errors
+      - error
       additionalProperties: false
-      title: multiple_errors_response
+      title: error_response
     submission_data_request_event:
       title: submission_data_request_event
       type: object
@@ -554,6 +576,22 @@ components:
       - submission_data_request_id
       - submission_id
       additionalProperties: false
+    multiple_errors_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+        errors:
+          type: array
+          items:
+            type: string
+      required:
+      - status
+      - errors
+      additionalProperties: false
+      title: multiple_errors_response
     submission_data_request_show:
       title: submission_data_request_show
       type: object
@@ -681,44 +719,6 @@ components:
       - submission_id
       - user_agent
       - viewed_at
-      additionalProperties: false
-    error_response:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - error
-        error:
-          type: string
-      required:
-      - status
-      - error
-      additionalProperties: false
-      title: error_response
-    submission_data_request_token:
-      title: submission_data_request_token
-      type: object
-      properties:
-        id:
-          type:
-          - string
-          - 'null'
-        secret:
-          type: string
-        expires_at:
-          type:
-          - string
-          - 'null'
-        data_request_url:
-          type:
-          - string
-          - 'null'
-      required:
-      - data_request_url
-      - expires_at
-      - id
-      - secret
       additionalProperties: false
   securitySchemes:
     basicAuth:

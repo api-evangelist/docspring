@@ -300,6 +300,20 @@ paths:
       - basicAuth: []
 components:
   schemas:
+    error_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+        error:
+          type: string
+      required:
+      - status
+      - error
+      additionalProperties: false
+      title: error_response
     multiple_errors_response:
       type: object
       properties:
@@ -316,20 +330,6 @@ components:
       - errors
       additionalProperties: false
       title: multiple_errors_response
-    error_response:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - error
-        error:
-          type: string
-      required:
-      - status
-      - error
-      additionalProperties: false
-      title: error_response
     folder:
       title: folder
       type: object

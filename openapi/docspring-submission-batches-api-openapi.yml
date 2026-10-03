@@ -454,223 +454,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    submission_batch:
-      title: submission_batch
-      type: object
-      properties:
-        id:
-          type:
-          - string
-          - 'null'
-        state:
-          type: string
-          enum:
-          - pending
-          - processed
-          - error
-        metadata:
-          type: object
-        processed_at:
-          type:
-          - string
-          - 'null'
-        total_count:
-          type: integer
-        pending_count:
-          type: integer
-        error_count:
-          type: integer
-        completion_percentage:
-          type: number
-      required:
-      - completion_percentage
-      - error_count
-      - id
-      - metadata
-      - pending_count
-      - processed_at
-      - state
-      - total_count
-      additionalProperties: false
-    submission_action:
-      title: submission_action
-      type: object
-      properties:
-        id:
-          type:
-          - string
-          - 'null'
-        integration_id:
-          type:
-          - string
-          - 'null'
-        state:
-          type: string
-          enum:
-          - pending
-          - processed
-          - failed
-          - error
-        action_type:
-          type: string
-          enum:
-          - webhook
-          - slack_webhook
-          - email
-          - aws_s3_upload
-        action_category:
-          type: string
-          enum:
-          - notification
-          - file_upload
-        result_data:
-          type: object
-        error_message:
-          type:
-          - string
-          - 'null'
-      required:
-      - action_category
-      - action_type
-      - error_message
-      - id
-      - integration_id
-      - result_data
-      - state
-      additionalProperties: false
-    submission_preview:
-      title: submission_preview
-      type: object
-      properties:
-        batch_id:
-          type:
-          - string
-          - 'null'
-        data_requests:
-          type: array
-          items:
-            $ref: '#/components/schemas/submission_data_request'
-        editable:
-          type:
-          - boolean
-          - 'null'
-        error_message:
-          type:
-          - string
-          - 'null'
-        expired:
-          type: boolean
-        expires_at:
-          type:
-          - string
-          - 'null'
-        id:
-          type:
-          - string
-          - 'null'
-        json_schema_errors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-        metadata:
-          type: object
-        password:
-          type:
-          - string
-          - 'null'
-        processed_at:
-          type:
-          - string
-          - 'null'
-        state:
-          type: string
-          enum:
-          - pending
-          - processed
-          - invalid_data
-          - error
-          - image_download_failed
-          - image_processing_failed
-          - waiting_for_data_requests
-          - syntax_error
-          - account_suspended
-          - license_revoked
-          - accidental
-        template_id:
-          type:
-          - string
-          - 'null'
-        template_type:
-          type: string
-          enum:
-          - pdf
-          - html
-        template_version:
-          type:
-          - string
-          - 'null'
-        test:
-          type: boolean
-        truncated_text:
-          type:
-          - object
-          - 'null'
-        pdf_hash:
-          type:
-          - string
-          - 'null'
-        download_url:
-          type:
-          - string
-          - 'null'
-        permanent_download_url:
-          type:
-          - string
-          - 'null'
-        preview_download_url:
-          type:
-          - string
-          - 'null'
-        preview_generated_at:
-          type:
-          - string
-          - 'null'
-        audit_trail_download_url:
-          type:
-          - string
-          - 'null'
-        actions:
-          type: array
-          items:
-            $ref: '#/components/schemas/submission_action'
-      required:
-      - actions
-      - audit_trail_download_url
-      - batch_id
-      - data_requests
-      - download_url
-      - editable
-      - error_message
-      - expired
-      - expires_at
-      - id
-      - json_schema_errors
-      - metadata
-      - password
-      - pdf_hash
-      - permanent_download_url
-      - preview_download_url
-      - preview_generated_at
-      - processed_at
-      - state
-      - template_id
-      - template_type
-      - template_version
-      - test
-      - truncated_text
-      additionalProperties: false
     submission_data_request:
       title: submission_data_request
       type: object
@@ -808,6 +591,223 @@ components:
       - error
       additionalProperties: false
       title: error_response
+    submission_batch:
+      title: submission_batch
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+        state:
+          type: string
+          enum:
+          - pending
+          - processed
+          - error
+        metadata:
+          type: object
+        processed_at:
+          type:
+          - string
+          - 'null'
+        total_count:
+          type: integer
+        pending_count:
+          type: integer
+        error_count:
+          type: integer
+        completion_percentage:
+          type: number
+      required:
+      - completion_percentage
+      - error_count
+      - id
+      - metadata
+      - pending_count
+      - processed_at
+      - state
+      - total_count
+      additionalProperties: false
+    submission_preview:
+      title: submission_preview
+      type: object
+      properties:
+        batch_id:
+          type:
+          - string
+          - 'null'
+        data_requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/submission_data_request'
+        editable:
+          type:
+          - boolean
+          - 'null'
+        error_message:
+          type:
+          - string
+          - 'null'
+        expired:
+          type: boolean
+        expires_at:
+          type:
+          - string
+          - 'null'
+        id:
+          type:
+          - string
+          - 'null'
+        json_schema_errors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        metadata:
+          type: object
+        password:
+          type:
+          - string
+          - 'null'
+        processed_at:
+          type:
+          - string
+          - 'null'
+        state:
+          type: string
+          enum:
+          - pending
+          - processed
+          - invalid_data
+          - error
+          - image_download_failed
+          - image_processing_failed
+          - waiting_for_data_requests
+          - syntax_error
+          - account_suspended
+          - license_revoked
+          - accidental
+        template_id:
+          type:
+          - string
+          - 'null'
+        template_type:
+          type: string
+          enum:
+          - pdf
+          - html
+        template_version:
+          type:
+          - string
+          - 'null'
+        test:
+          type: boolean
+        truncated_text:
+          type:
+          - object
+          - 'null'
+        pdf_hash:
+          type:
+          - string
+          - 'null'
+        download_url:
+          type:
+          - string
+          - 'null'
+        permanent_download_url:
+          type:
+          - string
+          - 'null'
+        preview_download_url:
+          type:
+          - string
+          - 'null'
+        preview_generated_at:
+          type:
+          - string
+          - 'null'
+        audit_trail_download_url:
+          type:
+          - string
+          - 'null'
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/submission_action'
+      required:
+      - actions
+      - audit_trail_download_url
+      - batch_id
+      - data_requests
+      - download_url
+      - editable
+      - error_message
+      - expired
+      - expires_at
+      - id
+      - json_schema_errors
+      - metadata
+      - password
+      - pdf_hash
+      - permanent_download_url
+      - preview_download_url
+      - preview_generated_at
+      - processed_at
+      - state
+      - template_id
+      - template_type
+      - template_version
+      - test
+      - truncated_text
+      additionalProperties: false
+    submission_action:
+      title: submission_action
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+        integration_id:
+          type:
+          - string
+          - 'null'
+        state:
+          type: string
+          enum:
+          - pending
+          - processed
+          - failed
+          - error
+        action_type:
+          type: string
+          enum:
+          - webhook
+          - slack_webhook
+          - email
+          - aws_s3_upload
+        action_category:
+          type: string
+          enum:
+          - notification
+          - file_upload
+        result_data:
+          type: object
+        error_message:
+          type:
+          - string
+          - 'null'
+      required:
+      - action_category
+      - action_type
+      - error_message
+      - id
+      - integration_id
+      - result_data
+      - state
+      additionalProperties: false
     error_or_multiple_errors_response:
       type: object
       title: error_or_multiple_errors_response
