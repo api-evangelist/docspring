@@ -482,116 +482,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    submission_data_request_token:
-      title: submission_data_request_token
-      type: object
-      properties:
-        id:
-          type:
-          - string
-          - 'null'
-        secret:
-          type: string
-        expires_at:
-          type:
-          - string
-          - 'null'
-        data_request_url:
-          type:
-          - string
-          - 'null'
-      required:
-      - data_request_url
-      - expires_at
-      - id
-      - secret
-      additionalProperties: false
-    error_response:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - error
-        error:
-          type: string
-      required:
-      - status
-      - error
-      additionalProperties: false
-      title: error_response
-    submission_data_request_event:
-      title: submission_data_request_event
-      type: object
-      properties:
-        id:
-          type:
-          - string
-          - 'null'
-        submission_id:
-          type:
-          - string
-          - 'null'
-        submission_data_request_id:
-          type:
-          - string
-          - 'null'
-        event_type:
-          type: string
-          enum:
-          - send_request
-          - view_request
-          - accepted_terms
-          - decline_request
-          - sign_request
-          - all_completed
-        message_type:
-          type:
-          - string
-          - 'null'
-          enum:
-          - email
-          - sms
-          - fax
-          - mail
-          - slack
-          - msteams
-          - discord
-          - telegram
-          - whatsapp
-        message_recipient:
-          type:
-          - string
-          - 'null'
-        occurred_at:
-          type:
-          - string
-          - 'null'
-      required:
-      - event_type
-      - id
-      - message_recipient
-      - message_type
-      - occurred_at
-      - submission_data_request_id
-      - submission_id
-      additionalProperties: false
-    multiple_errors_response:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - error
-        errors:
-          type: array
-          items:
-            type: string
-      required:
-      - status
-      - errors
-      additionalProperties: false
-      title: multiple_errors_response
     submission_data_request_show:
       title: submission_data_request_show
       type: object
@@ -719,6 +609,116 @@ components:
       - submission_id
       - user_agent
       - viewed_at
+      additionalProperties: false
+    submission_data_request_token:
+      title: submission_data_request_token
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+        secret:
+          type: string
+        expires_at:
+          type:
+          - string
+          - 'null'
+        data_request_url:
+          type:
+          - string
+          - 'null'
+      required:
+      - data_request_url
+      - expires_at
+      - id
+      - secret
+      additionalProperties: false
+    error_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+        error:
+          type: string
+      required:
+      - status
+      - error
+      additionalProperties: false
+      title: error_response
+    multiple_errors_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+        errors:
+          type: array
+          items:
+            type: string
+      required:
+      - status
+      - errors
+      additionalProperties: false
+      title: multiple_errors_response
+    submission_data_request_event:
+      title: submission_data_request_event
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+        submission_id:
+          type:
+          - string
+          - 'null'
+        submission_data_request_id:
+          type:
+          - string
+          - 'null'
+        event_type:
+          type: string
+          enum:
+          - send_request
+          - view_request
+          - accepted_terms
+          - decline_request
+          - sign_request
+          - all_completed
+        message_type:
+          type:
+          - string
+          - 'null'
+          enum:
+          - email
+          - sms
+          - fax
+          - mail
+          - slack
+          - msteams
+          - discord
+          - telegram
+          - whatsapp
+        message_recipient:
+          type:
+          - string
+          - 'null'
+        occurred_at:
+          type:
+          - string
+          - 'null'
+      required:
+      - event_type
+      - id
+      - message_recipient
+      - message_type
+      - occurred_at
+      - submission_data_request_id
+      - submission_id
       additionalProperties: false
   securitySchemes:
     basicAuth:

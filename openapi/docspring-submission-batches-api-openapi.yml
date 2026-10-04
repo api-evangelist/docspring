@@ -577,58 +577,6 @@ components:
       - user_agent
       - viewed_at
       additionalProperties: false
-    error_response:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - error
-        error:
-          type: string
-      required:
-      - status
-      - error
-      additionalProperties: false
-      title: error_response
-    submission_batch:
-      title: submission_batch
-      type: object
-      properties:
-        id:
-          type:
-          - string
-          - 'null'
-        state:
-          type: string
-          enum:
-          - pending
-          - processed
-          - error
-        metadata:
-          type: object
-        processed_at:
-          type:
-          - string
-          - 'null'
-        total_count:
-          type: integer
-        pending_count:
-          type: integer
-        error_count:
-          type: integer
-        completion_percentage:
-          type: number
-      required:
-      - completion_percentage
-      - error_count
-      - id
-      - metadata
-      - pending_count
-      - processed_at
-      - state
-      - total_count
-      additionalProperties: false
     submission_preview:
       title: submission_preview
       type: object
@@ -827,6 +775,58 @@ components:
       required:
       - status
       additionalProperties: false
+    submission_batch:
+      title: submission_batch
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+        state:
+          type: string
+          enum:
+          - pending
+          - processed
+          - error
+        metadata:
+          type: object
+        processed_at:
+          type:
+          - string
+          - 'null'
+        total_count:
+          type: integer
+        pending_count:
+          type: integer
+        error_count:
+          type: integer
+        completion_percentage:
+          type: number
+      required:
+      - completion_percentage
+      - error_count
+      - id
+      - metadata
+      - pending_count
+      - processed_at
+      - state
+      - total_count
+      additionalProperties: false
+    error_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+        error:
+          type: string
+      required:
+      - status
+      - error
+      additionalProperties: false
+      title: error_response
     submission_batch_with_submissions:
       title: submission_preview
       type: object
