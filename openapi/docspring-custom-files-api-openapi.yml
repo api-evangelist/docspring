@@ -139,22 +139,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    custom_file:
-      title: custom_file
-      type: object
-      properties:
-        id:
-          type:
-          - string
-          - 'null'
-        url:
-          type:
-          - string
-          - 'null'
-      required:
-      - id
-      - url
-      additionalProperties: false
     upload_presign_response:
       type: object
       properties:
@@ -195,6 +179,22 @@ components:
       - url
       additionalProperties: false
       title: upload_presign_response
+    custom_file:
+      title: custom_file
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+        url:
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - url
+      additionalProperties: false
     error_response:
       type: object
       properties:

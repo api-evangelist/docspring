@@ -610,44 +610,6 @@ components:
       - user_agent
       - viewed_at
       additionalProperties: false
-    submission_data_request_token:
-      title: submission_data_request_token
-      type: object
-      properties:
-        id:
-          type:
-          - string
-          - 'null'
-        secret:
-          type: string
-        expires_at:
-          type:
-          - string
-          - 'null'
-        data_request_url:
-          type:
-          - string
-          - 'null'
-      required:
-      - data_request_url
-      - expires_at
-      - id
-      - secret
-      additionalProperties: false
-    error_response:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - error
-        error:
-          type: string
-      required:
-      - status
-      - error
-      additionalProperties: false
-      title: error_response
     multiple_errors_response:
       type: object
       properties:
@@ -720,6 +682,44 @@ components:
       - submission_data_request_id
       - submission_id
       additionalProperties: false
+    submission_data_request_token:
+      title: submission_data_request_token
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+        secret:
+          type: string
+        expires_at:
+          type:
+          - string
+          - 'null'
+        data_request_url:
+          type:
+          - string
+          - 'null'
+      required:
+      - data_request_url
+      - expires_at
+      - id
+      - secret
+      additionalProperties: false
+    error_response:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - error
+        error:
+          type: string
+      required:
+      - status
+      - error
+      additionalProperties: false
+      title: error_response
   securitySchemes:
     basicAuth:
       type: http
