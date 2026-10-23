@@ -2,6 +2,7 @@ generated: '2026-10-20'
 method: searched
 checked:
 - eclipse/integrations/eclipse-integration-edges.yml
+- bubble/integrations/bubble-integration-edges.yml
 source:
 - eclipse/integrations/eclipse-integration-edges.yml
 edges:
@@ -24,3 +25,20 @@ edges:
   category: IDE / developer extension marketplace listing
   badges:
   - Verified namespace
+- partner_name: Bubble (own)
+  partner: bubble
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://bubble.io/plugin/docspring---fill-and-generate-pdfs-1573478783306x235198545630593020
+  mirror_of: bubble/integrations/bubble-integration-edges.yml
+  apps:
+  - DocSpring - Fill and Generate PDFs
+  listing_count: 1
+  detected: '2026-10-23'
+  detected_by: mirror-platform-listings.py
+  category: Background Services

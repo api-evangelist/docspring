@@ -16,3 +16,16 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: docspring-bubble-own
+  label: Bubble (own)
+  partner: bubble
+  partner_name: Bubble (own)
+  category: Background Services
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://bubble.io/plugin/docspring---fill-and-generate-pdfs-1573478783306x235198545630593020
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
