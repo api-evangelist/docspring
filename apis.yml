@@ -168,6 +168,8 @@ apis:
   - type: Authentication
     url: https://docspring.com/docs/api-guide/authentication/
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/docspring/overview
   - type: AgenticAccess
     url: agentic-access/docspring-agentic-access.yml
   - type: TrustCenter
