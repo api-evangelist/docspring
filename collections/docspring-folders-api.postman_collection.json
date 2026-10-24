@@ -1,188 +1,1050 @@
 {
+  "info": {
+    "_postman_id": "3a08f946-2461-40f8-b0fa-06539e0640ce",
+    "name": "DocSpring Folders API",
+    "description": "Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:40:30.000Z",
+    "updatedAt": "2026-10-22T01:40:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3a08f946-2461-40f8-b0fa-06539e0640ce"
+  },
   "item": [
     {
-      "id": "780c019d-27fd-4ca6-882a-67468aeaa95b",
-      "name": "Folders",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "folders",
       "item": [
         {
-          "id": "e4f3562c-5c34-4e7c-b0b5-b171a8e35d96",
-          "name": "Get a list of all folders",
-          "request": {
-            "name": "Get a list of all folders",
-            "description": {
-              "content": "Returns a list of folders in your account. Can be filtered by parent folder ID to retrieve\nsubfolders. Folders help organize templates and maintain a hierarchical structure.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "folders",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
+          "name": "{folder_id}",
+          "item": [
+            {
+              "name": "move",
+              "item": [
                 {
-                  "description": {
-                    "content": "Filter By Folder Id",
-                    "type": "text/plain"
+                  "name": "Move a folder",
+                  "id": "8a3d96f6-539c-4b43-a27b-813ffb9e9f68",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  "key": "parent_folder_id",
-                  "value": ""
+                  "request": {
+                    "auth": {
+                      "type": "basic",
+                      "basic": [
+                        {
+                          "key": "username",
+                          "value": "{{basicAuthUsername}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{basicAuthPassword}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"parent_folder_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/folders/:folder_id/move",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "folders",
+                        ":folder_id",
+                        "move"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3b748e0c-294c-4b0f-9bd7-bb96bc8fcece",
+                          "key": "folder_id",
+                          "value": "",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Moves a folder to a new parent folder or to the root level. All templates and subfolders\nwithin the folder are moved together. Cannot move a folder into one of its own subfolders."
+                  },
+                  "response": [
+                    {
+                      "id": "05c11654-d466-4647-bac3-e99b3fb604f0",
+                      "name": "move to root folder",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"parent_folder_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/folders/:folder_id/move",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "folders",
+                            ":folder_id",
+                            "move"
+                          ],
+                          "variable": [
+                            {
+                              "key": "folder_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string,null>\",\n  \"name\": \"<string,null>\",\n  \"parent_folder_id\": \"<string,null>\",\n  \"path\": \"<string,null>\"\n}",
+                      "createdAt": "2026-10-22T01:40:31.000Z",
+                      "updatedAt": "2026-10-22T01:40:31.000Z",
+                      "uid": "35240-05c11654-d466-4647-bac3-e99b3fb604f0"
+                    },
+                    {
+                      "id": "7943665d-bebc-4524-9c04-a8e38de2aeb7",
+                      "name": "authentication failed",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"parent_folder_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/folders/:folder_id/move",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "folders",
+                            ":folder_id",
+                            "move"
+                          ],
+                          "variable": [
+                            {
+                              "key": "folder_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:31.000Z",
+                      "updatedAt": "2026-10-22T01:40:31.000Z",
+                      "uid": "35240-7943665d-bebc-4524-9c04-a8e38de2aeb7"
+                    },
+                    {
+                      "id": "fa2b158c-a98e-4a84-acba-82e8291ecf08",
+                      "name": "parent folder doesn't exist",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"parent_folder_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/folders/:folder_id/move",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "folders",
+                            ":folder_id",
+                            "move"
+                          ],
+                          "variable": [
+                            {
+                              "key": "folder_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:31.000Z",
+                      "updatedAt": "2026-10-22T01:40:31.000Z",
+                      "uid": "35240-fa2b158c-a98e-4a84-acba-82e8291ecf08"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:40:31.000Z",
+                  "updatedAt": "2026-10-22T01:40:31.000Z",
+                  "uid": "35240-8a3d96f6-539c-4b43-a27b-813ffb9e9f68"
                 }
               ],
-              "variable": []
+              "id": "7221d5ad-79fd-4b82-a762-9a5b3c9e13d9",
+              "createdAt": "2026-10-22T01:40:31.000Z",
+              "updatedAt": "2026-10-22T01:40:31.000Z",
+              "uid": "35240-7221d5ad-79fd-4b82-a762-9a5b3c9e13d9"
             },
+            {
+              "name": "rename",
+              "item": [
+                {
+                  "name": "Rename a folder",
+                  "id": "89a0e9a9-bccf-4f32-a6b1-78c8ae9368a9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "basic",
+                      "basic": [
+                        {
+                          "key": "username",
+                          "value": "{{basicAuthUsername}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{basicAuthPassword}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/folders/:folder_id/rename",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "folders",
+                        ":folder_id",
+                        "rename"
+                      ],
+                      "variable": [
+                        {
+                          "id": "51b014a7-c7f3-45a3-aab5-36ada0ccdb6e",
+                          "key": "folder_id",
+                          "value": "",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Renames an existing folder. The new name must be unique within the same parent folder.\nThis operation only changes the folder name, not its location or contents."
+                  },
+                  "response": [
+                    {
+                      "id": "818ae2f5-28a6-4ee0-9529-bf68d79fcc3f",
+                      "name": "successful rename",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/folders/:folder_id/rename",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "folders",
+                            ":folder_id",
+                            "rename"
+                          ],
+                          "variable": [
+                            {
+                              "key": "folder_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string,null>\",\n  \"name\": \"<string,null>\",\n  \"parent_folder_id\": \"<string,null>\",\n  \"path\": \"<string,null>\"\n}",
+                      "createdAt": "2026-10-22T01:40:31.000Z",
+                      "updatedAt": "2026-10-22T01:40:31.000Z",
+                      "uid": "35240-818ae2f5-28a6-4ee0-9529-bf68d79fcc3f"
+                    },
+                    {
+                      "id": "94b4a7dc-db1b-4cdf-9452-a51f6f4bd139",
+                      "name": "authentication failed",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/folders/:folder_id/rename",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "folders",
+                            ":folder_id",
+                            "rename"
+                          ],
+                          "variable": [
+                            {
+                              "key": "folder_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:31.000Z",
+                      "updatedAt": "2026-10-22T01:40:31.000Z",
+                      "uid": "35240-94b4a7dc-db1b-4cdf-9452-a51f6f4bd139"
+                    },
+                    {
+                      "id": "8c299f11-e3c3-460d-8d39-98e95d0c088b",
+                      "name": "folder doesn't belong to me",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/folders/:folder_id/rename",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "folders",
+                            ":folder_id",
+                            "rename"
+                          ],
+                          "variable": [
+                            {
+                              "key": "folder_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:31.000Z",
+                      "updatedAt": "2026-10-22T01:40:31.000Z",
+                      "uid": "35240-8c299f11-e3c3-460d-8d39-98e95d0c088b"
+                    },
+                    {
+                      "id": "37924c0f-71aa-4f36-a7ed-9080029fcc7f",
+                      "name": "name already exist",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/folders/:folder_id/rename",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "folders",
+                            ":folder_id",
+                            "rename"
+                          ],
+                          "variable": [
+                            {
+                              "key": "folder_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"error\",\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-10-22T01:40:31.000Z",
+                      "updatedAt": "2026-10-22T01:40:31.000Z",
+                      "uid": "35240-37924c0f-71aa-4f36-a7ed-9080029fcc7f"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:40:31.000Z",
+                  "updatedAt": "2026-10-22T01:40:31.000Z",
+                  "uid": "35240-89a0e9a9-bccf-4f32-a6b1-78c8ae9368a9"
+                }
+              ],
+              "id": "b3a25b6d-7475-4af4-8ae1-f73f203cc4d8",
+              "createdAt": "2026-10-22T01:40:31.000Z",
+              "updatedAt": "2026-10-22T01:40:31.000Z",
+              "uid": "35240-b3a25b6d-7475-4af4-8ae1-f73f203cc4d8"
+            },
+            {
+              "name": "Delete a folder",
+              "id": "86f44122-4b4d-40f4-8bfb-4b2ca9eb4618",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "username",
+                      "value": "{{basicAuthUsername}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{basicAuthPassword}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/folders/:folder_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "folders",
+                    ":folder_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "7c7ef1fe-7dce-40c9-ba66-6d78f3a6f895",
+                      "key": "folder_id",
+                      "value": "",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Deletes an empty folder. The folder must not contain any templates or subfolders.\nMove or delete all contents before attempting to delete the folder."
+              },
+              "response": [
+                {
+                  "id": "951b12d7-ec3a-4ebc-88e1-097e91dd7fb4",
+                  "name": "folder is empty",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/folders/:folder_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "folders",
+                        ":folder_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "folder_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string,null>\",\n  \"name\": \"<string,null>\",\n  \"parent_folder_id\": \"<string,null>\",\n  \"path\": \"<string,null>\"\n}",
+                  "createdAt": "2026-10-22T01:40:31.000Z",
+                  "updatedAt": "2026-10-22T01:40:31.000Z",
+                  "uid": "35240-951b12d7-ec3a-4ebc-88e1-097e91dd7fb4"
+                },
+                {
+                  "id": "a8124cb5-9be5-4bdf-9d35-66b388750664",
+                  "name": "authentication failed",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/folders/:folder_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "folders",
+                        ":folder_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "folder_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:31.000Z",
+                  "updatedAt": "2026-10-22T01:40:31.000Z",
+                  "uid": "35240-a8124cb5-9be5-4bdf-9d35-66b388750664"
+                },
+                {
+                  "id": "b8ca6a85-ea64-40f6-ac4f-9d68db38c441",
+                  "name": "folder doesn't exist",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/folders/:folder_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "folders",
+                        ":folder_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "folder_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:31.000Z",
+                  "updatedAt": "2026-10-22T01:40:31.000Z",
+                  "uid": "35240-b8ca6a85-ea64-40f6-ac4f-9d68db38c441"
+                },
+                {
+                  "id": "453bcd16-d253-4707-8b80-5e531cc7831a",
+                  "name": "folder has contents",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/folders/:folder_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "folders",
+                        ":folder_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "folder_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:31.000Z",
+                  "updatedAt": "2026-10-22T01:40:31.000Z",
+                  "uid": "35240-453bcd16-d253-4707-8b80-5e531cc7831a"
+                }
+              ],
+              "createdAt": "2026-10-22T01:40:31.000Z",
+              "updatedAt": "2026-10-22T01:40:31.000Z",
+              "uid": "35240-86f44122-4b4d-40f4-8bfb-4b2ca9eb4618"
+            }
+          ],
+          "id": "7acd06e4-4d0f-464d-affd-4abfd2ffc111",
+          "createdAt": "2026-10-22T01:40:31.000Z",
+          "updatedAt": "2026-10-22T01:40:31.000Z",
+          "uid": "35240-7acd06e4-4d0f-464d-affd-4abfd2ffc111"
+        },
+        {
+          "name": "Get a list of all folders",
+          "id": "fd66fe51-7ed6-4cef-bef5-9cc06fee2c4f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/folders/?parent_folder_id=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "folders",
+                ""
+              ],
+              "query": [
+                {
+                  "description": "Filter By Folder Id",
+                  "key": "parent_folder_id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Returns a list of folders in your account. Can be filtered by parent folder ID to retrieve\nsubfolders. Folders help organize templates and maintain a hierarchical structure."
+          },
+          "response": [
+            {
+              "id": "de88507c-032d-4784-b036-e06cd86329ad",
+              "name": "enumerate all folders",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/folders/?parent_folder_id=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "folders",
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter By Folder Id",
+                      "key": "parent_folder_id",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<string,null>\",\n    \"name\": \"<string,null>\",\n    \"parent_folder_id\": \"<string,null>\",\n    \"path\": \"<string,null>\"\n  },\n  {\n    \"id\": \"<string,null>\",\n    \"name\": \"<string,null>\",\n    \"parent_folder_id\": \"<string,null>\",\n    \"path\": \"<string,null>\"\n  }\n]",
+              "createdAt": "2026-10-22T01:40:31.000Z",
+              "updatedAt": "2026-10-22T01:40:31.000Z",
+              "uid": "35240-de88507c-032d-4784-b036-e06cd86329ad"
+            },
+            {
+              "id": "b063e7c7-5f40-42b9-9ddf-a36a35f4da4e",
+              "name": "authentication failed",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/folders/?parent_folder_id=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "folders",
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter By Folder Id",
+                      "key": "parent_folder_id",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:40:31.000Z",
+              "updatedAt": "2026-10-22T01:40:31.000Z",
+              "uid": "35240-b063e7c7-5f40-42b9-9ddf-a36a35f4da4e"
+            }
+          ],
+          "createdAt": "2026-10-22T01:40:31.000Z",
+          "updatedAt": "2026-10-22T01:40:31.000Z",
+          "uid": "35240-fd66fe51-7ed6-4cef-bef5-9cc06fee2c4f"
+        },
+        {
+          "name": "Create a folder",
+          "id": "0dd88e9b-22fa-40ea-a240-64b5c9062dc6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
             "auth": {
               "type": "basic",
               "basic": [
                 {
                   "key": "username",
-                  "value": "{{basicAuthUsername}}"
+                  "value": "{{basicAuthUsername}}",
+                  "type": "string"
                 },
                 {
                   "key": "password",
-                  "value": "{{basicAuthPassword}}"
+                  "value": "{{basicAuthPassword}}",
+                  "type": "string"
                 }
               ]
-            }
-          },
-          "response": [
-            {
-              "id": "dc780163-3f31-4afe-995b-220193380a20",
-              "name": "enumerate all folders",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "folders",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "parent_folder_id",
-                      "value": ""
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"id\": \"fld_1234567890abcdef03\",\n    \"name\": \"nested folder 1\",\n    \"path\": \"/Folder 2\",\n    \"parent_folder_id\": \"fld_1234567890abcdef02\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
             },
-            {
-              "id": "3eacd281-6ada-4911-93a6-955a30f26a4b",
-              "name": "authentication failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "folders",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "parent_folder_id",
-                      "value": ""
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "3ef87267-b641-48eb-9f9c-08acd3b89104",
-          "name": "Create a folder",
-          "request": {
-            "name": "Create a folder",
-            "description": {
-              "content": "Creates a new folder for organizing templates. Folders can be nested within other folders\nby providing a `parent_folder_id`. Folder names must be unique within the same parent.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "folders",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -193,1086 +1055,267 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": {
-              "type": "basic",
-              "basic": [
-                {
-                  "key": "username",
-                  "value": "{{basicAuthUsername}}"
-                },
-                {
-                  "key": "password",
-                  "value": "{{basicAuthPassword}}"
-                }
-              ]
-            },
             "body": {
               "mode": "raw",
               "raw": "{\n  \"folder\": {\n    \"name\": \"<string>\",\n    \"parent_folder_id\": \"<string>\"\n  }\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/folders/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "folders",
+                ""
+              ]
+            },
+            "description": "Creates a new folder for organizing templates. Folders can be nested within other folders\nby providing a `parent_folder_id`. Folder names must be unique within the same parent."
           },
           "response": [
             {
-              "id": "5ee5d443-4f39-415d-aa71-5356aa660287",
+              "id": "2714b172-037e-4c67-bcb4-f4286e4cd790",
               "name": "folder created inside another folder",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "folders",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"folder\": {\n    \"name\": \"Folder 3\"\n  }\n}",
+                  "raw": "{\n  \"folder\": {\n    \"name\": \"<string>\",\n    \"parent_folder_id\": \"<string>\"\n  }\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/folders/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "folders",
+                    ""
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"fld_1234567890abcdef05\",\n  \"name\": \"Folder 3\",\n  \"path\": \"/Folder 1\",\n  \"parent_folder_id\": \"fld_1234567890abcdef01\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string,null>\",\n  \"name\": \"<string,null>\",\n  \"parent_folder_id\": \"<string,null>\",\n  \"path\": \"<string,null>\"\n}",
+              "createdAt": "2026-10-22T01:40:31.000Z",
+              "updatedAt": "2026-10-22T01:40:31.000Z",
+              "uid": "35240-2714b172-037e-4c67-bcb4-f4286e4cd790"
             },
             {
-              "id": "a2691c96-b620-419b-9a07-23cefe00e5f6",
+              "id": "5f5a9e46-96ea-46b1-9b1e-5c3d05e7e74d",
               "name": "authentication failed",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "folders",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"folder\": {\n    \"name\": \"Folder 3\"\n  }\n}",
+                  "raw": "{\n  \"folder\": {\n    \"name\": \"<string>\",\n    \"parent_folder_id\": \"<string>\"\n  }\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/folders/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "folders",
+                    ""
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:40:31.000Z",
+              "updatedAt": "2026-10-22T01:40:31.000Z",
+              "uid": "35240-5f5a9e46-96ea-46b1-9b1e-5c3d05e7e74d"
             },
             {
-              "id": "042a24a3-bbb9-4907-975d-db01b91efd85",
+              "id": "24a4d5fa-9302-4bc9-b887-be0f88bbb662",
               "name": "parent folder doesn't exist",
               "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"folder\": {\n    \"name\": \"<string>\",\n    \"parent_folder_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/folders/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "folders",
                     ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"folder\": {\n    \"name\": \"Folder 3\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
+                  ]
                 }
               },
               "status": "Not Found",
               "code": 404,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:40:31.000Z",
+              "updatedAt": "2026-10-22T01:40:31.000Z",
+              "uid": "35240-24a4d5fa-9302-4bc9-b887-be0f88bbb662"
             },
             {
-              "id": "5330790f-05f4-4c1b-a6cc-cac7db85b340",
+              "id": "52b2b128-c32e-480e-bee5-25b9723c98fe",
               "name": "name already exist",
               "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"folder\": {\n    \"name\": \"<string>\",\n    \"parent_folder_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/folders/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "folders",
                     ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"folder\": {\n    \"name\": \"Folder 3\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
+                  ]
                 }
               },
               "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
               "code": 422,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"error\",\n  \"errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"status\": \"error\",\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-10-22T01:40:31.000Z",
+              "updatedAt": "2026-10-22T01:40:31.000Z",
+              "uid": "35240-52b2b128-c32e-480e-bee5-25b9723c98fe"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "951af5fe-728f-43bb-bf23-0da0d4bcb51e",
-          "name": "Move a folder",
-          "request": {
-            "name": "Move a folder",
-            "description": {
-              "content": "Moves a folder to a new parent folder or to the root level. All templates and subfolders\nwithin the folder are moved together. Cannot move a folder into one of its own subfolders.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "folders",
-                ":folder_id",
-                "move"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "folder_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "basic",
-              "basic": [
-                {
-                  "key": "username",
-                  "value": "{{basicAuthUsername}}"
-                },
-                {
-                  "key": "password",
-                  "value": "{{basicAuthPassword}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"parent_folder_id\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "8c67159b-8539-41d4-9c41-d13c483e1f76",
-              "name": "move to root folder",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "folders",
-                    ":folder_id",
-                    "move"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "folder_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"parent_folder_id\": \"fld_1234567890abcdef02\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"fld_1234567890abcdef01\",\n  \"name\": \"Folder 1\",\n  \"path\": \"/Folder 2\",\n  \"parent_folder_id\": \"fld_1234567890abcdef02\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "431864f1-0f97-4c4f-8991-d39b9e1d3e96",
-              "name": "authentication failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "folders",
-                    ":folder_id",
-                    "move"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "folder_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"parent_folder_id\": \"fld_1234567890abcdef02\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "126d72f4-fad2-4a73-8cfd-6978dcde47e0",
-              "name": "parent folder doesn't exist",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "folders",
-                    ":folder_id",
-                    "move"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "folder_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"parent_folder_id\": \"fld_1234567890abcdef02\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f9bf6913-08a6-4bb1-bd01-03123d2cfa2d",
-          "name": "Rename a folder",
-          "request": {
-            "name": "Rename a folder",
-            "description": {
-              "content": "Renames an existing folder. The new name must be unique within the same parent folder.\nThis operation only changes the folder name, not its location or contents.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "folders",
-                ":folder_id",
-                "rename"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "folder_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "basic",
-              "basic": [
-                {
-                  "key": "username",
-                  "value": "{{basicAuthUsername}}"
-                },
-                {
-                  "key": "password",
-                  "value": "{{basicAuthPassword}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "c74181fd-503c-4ddd-a212-621f6a483d8d",
-              "name": "successful rename",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "folders",
-                    ":folder_id",
-                    "rename"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "folder_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"Folder 3\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"fld_1234567890abcdef01\",\n  \"name\": \"Folder 3\",\n  \"path\": \"/\",\n  \"parent_folder_id\": null\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "95dbfd3b-9387-4444-a9d4-3e86360b4aa3",
-              "name": "authentication failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "folders",
-                    ":folder_id",
-                    "rename"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "folder_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"Folder 3\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7d613437-f824-4d41-9c7a-4a089e811070",
-              "name": "folder doesn't belong to me",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "folders",
-                    ":folder_id",
-                    "rename"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "folder_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"Folder 3\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a7e1e8b0-9ba0-4864-9e8a-4c8447f064b4",
-              "name": "name already exist",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "folders",
-                    ":folder_id",
-                    "rename"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "folder_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"Folder 3\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ee4e97b6-2d39-4b9e-9e22-31f20b48a3ce",
-          "name": "Delete a folder",
-          "request": {
-            "name": "Delete a folder",
-            "description": {
-              "content": "Deletes an empty folder. The folder must not contain any templates or subfolders.\nMove or delete all contents before attempting to delete the folder.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "folders",
-                ":folder_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "folder_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": {
-              "type": "basic",
-              "basic": [
-                {
-                  "key": "username",
-                  "value": "{{basicAuthUsername}}"
-                },
-                {
-                  "key": "password",
-                  "value": "{{basicAuthPassword}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "64ae2d3d-dddd-4cbb-86c1-a3122a7d8383",
-              "name": "folder is empty",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "folders",
-                    ":folder_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "folder_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"fld_1234567890abcdef01\",\n  \"name\": \"Folder 1\",\n  \"path\": \"/\",\n  \"parent_folder_id\": null\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "81c075d2-6a14-47f3-b176-8bfc9fbd9a41",
-              "name": "authentication failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "folders",
-                    ":folder_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "folder_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "0036c74e-6b69-4706-8799-76210c83bf76",
-              "name": "folder doesn't exist",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "folders",
-                    ":folder_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "folder_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b9dbe375-1d94-4e67-95b0-91cd356fa935",
-              "name": "folder has contents",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "folders",
-                    ":folder_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "folder_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:40:31.000Z",
+          "updatedAt": "2026-10-22T01:40:31.000Z",
+          "uid": "35240-0dd88e9b-22fa-40ea-a240-64b5c9062dc6"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://sync.api.docspring.com/api/v1",
-      "key": "baseUrl"
+      "id": "5c821d32-d6c5-4eb7-acdc-6217c175565b",
+      "createdAt": "2026-10-22T01:40:31.000Z",
+      "updatedAt": "2026-10-22T01:40:31.000Z",
+      "uid": "35240-5c821d32-d6c5-4eb7-acdc-6217c175565b"
     }
   ],
   "auth": {
@@ -1280,21 +1323,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "d88d2648-7370-4c42-b2b6-9b182aafcbf9",
-    "name": "DocSpring Authentication Folders API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sync.api.docspring.com/api/v1"
     }
-  }
+  ]
 }

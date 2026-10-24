@@ -1,32 +1,41 @@
 {
+  "info": {
+    "_postman_id": "9c4eba2f-3ea0-4b2c-b9fe-77f177cc46f5",
+    "name": "DocSpring Custom Files API",
+    "description": "Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:40:18.000Z",
+    "updatedAt": "2026-10-22T01:40:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9c4eba2f-3ea0-4b2c-b9fe-77f177cc46f5"
+  },
   "item": [
     {
-      "id": "7d9ff70b-6112-4a5c-ba0c-d5e0d159a4d4",
-      "name": "Custom Files",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "custom_files",
       "item": [
         {
-          "id": "ee639c9c-0fcd-4ef4-a1db-0fd0667f9598",
           "name": "Create a new custom file from a cached S3 upload",
+          "id": "2fee4bbf-af8a-419c-8c8b-6675da2aaa66",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Create a new custom file from a cached S3 upload",
-            "description": {
-              "content": "The Custom Files API endpoint allows you to upload PDFs to DocSpring and then\nmerge them with other PDFs. First upload your file using the presigned URL endpoint,\nthen use the returned cache_id to create the custom file.\n",
-              "type": "text/plain"
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}",
+                  "type": "string"
+                }
+              ]
             },
-            "url": {
-              "path": [
-                "custom_files"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -37,285 +46,301 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": {
-              "type": "basic",
-              "basic": [
-                {
-                  "key": "username",
-                  "value": "{{basicAuthUsername}}"
-                },
-                {
-                  "key": "password",
-                  "value": "{{basicAuthPassword}}"
-                }
-              ]
-            },
             "body": {
               "mode": "raw",
               "raw": "{\n  \"cache_id\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/custom_files",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "custom_files"
+              ]
+            },
+            "description": "The Custom Files API endpoint allows you to upload PDFs to DocSpring and then\nmerge them with other PDFs. First upload your file using the presigned URL endpoint,\nthen use the returned cache_id to create the custom file."
           },
           "response": [
             {
-              "id": "ad88c1eb-674f-4081-93fc-516357be61c4",
+              "id": "32e6f59a-e823-4068-82cf-4951baa9f801",
               "name": "returns the custom file",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "custom_files"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"cache_id\": \"cfi_1234567890abcdef01.pdf\"\n}",
+                  "raw": "{\n  \"cache_id\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/custom_files",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "custom_files"
+                  ]
                 }
               },
               "status": "Created",
               "code": 201,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"success\",\n  \"custom_file\": {\n    \"id\": \"cfi_1234567890abcdef01\",\n    \"url\": \"https://docspring-s3-example.s3.amazonaws.com/store/acc_1234567890abcdef01/custom_files/cfi_1234567890abcdef01.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=docspring-s3-example%2F20210101%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210101T090000Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=abcdef0123456789\"\n  }\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"status\": \"success\",\n  \"custom_file\": {\n    \"id\": \"<string,null>\",\n    \"url\": \"<string,null>\"\n  },\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-10-22T01:40:18.000Z",
+              "updatedAt": "2026-10-22T01:40:18.000Z",
+              "uid": "35240-32e6f59a-e823-4068-82cf-4951baa9f801"
             },
             {
-              "id": "bed71ff2-9f90-4d4a-922b-a3e3b7608d8a",
+              "id": "288887f5-27a4-4d8e-ac3d-52dc5a37c387",
               "name": "authentication failed",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "custom_files"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"cache_id\": \"cfi_1234567890abcdef01.pdf\"\n}",
+                  "raw": "{\n  \"cache_id\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/custom_files",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "custom_files"
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:40:18.000Z",
+              "updatedAt": "2026-10-22T01:40:18.000Z",
+              "uid": "35240-288887f5-27a4-4d8e-ac3d-52dc5a37c387"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ce4115dc-9b64-4337-a45c-4a7539208fc2",
-          "name": "Get a presigned S3 URL for direct file upload",
-          "request": {
-            "name": "Get a presigned S3 URL for direct file upload",
-            "description": {
-              "content": "Returns a presigned S3 URL for uploading files directly to our S3 bucket. Use this\nendpoint to upload large files before creating templates or custom files. S3 will\nrespond with a JSON object that you can include in your DocSpring API request.\n\nUploaded files can be used to:\n- [Create templates](https://docspring.com/docs/api/#tag/templates/post/templates?endpoint_variant=create_template_from_cached_upload)\n- [Update templates](https://docspring.com/docs/api/#tag/templates/put/templates/{template_id}?endpoint_variant=update_template_pdf_with_cached_upload)\n- [Create custom files](https://docspring.com/docs/api/#tag/custom-files/post/custom_files) and then [merge them with other PDFs](https://docspring.com/docs/api/#tag/combine-pdfs/post/combined_submissions)\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "uploads",
-                "presign"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "basic",
-              "basic": [
-                {
-                  "key": "username",
-                  "value": "{{basicAuthUsername}}"
-                },
-                {
-                  "key": "password",
-                  "value": "{{basicAuthPassword}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "67204ea9-cbf3-4762-9a61-bb09547c5393",
-              "name": "presign URL generated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "uploads",
-                    "presign"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"fields\": {\n    \"key\": \"ed9424dccf185f3835df4e9e1da0ca0b\",\n    \"policy\": \"eyJleHBpcmF0aW9uIjoiMjAxOS0xMC0wNVQxNDowMDowMFoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJ0ZXN0LWJ1Y2tldCJ9LHsia2V5IjoiZWQ5NDI0ZGNjZjE4NWYzODM1ZGY0ZTllMWRhMGNhMGIifSx7IngtYW16LWNyZWRlbnRpYWwiOiIxMjM0NTY3ODkvMjAxOTEwMDUvdXMtZWFzdC0xL3MzL2F3czRfcmVxdWVzdCJ9LHsieC1hbXotYWxnb3JpdGhtIjoiQVdTNC1ITUFDLVNIQTI1NiJ9LHsieC1hbXotZGF0ZSI6IjIwMTkxMDA1VDEzMDAwMFoifV19\",\n    \"x-amz-credential\": \"123456789/20191005/us-east-1/s3/aws4_request\",\n    \"x-amz-algorithm\": \"AWS4-HMAC-SHA256\",\n    \"x-amz-date\": \"20191005T130000Z\",\n    \"x-amz-signature\": \"6b715e441bd7ea5beec87f8415230a600be6dfd76b8f89103137618dca959fac\"\n  },\n  \"headers\": {},\n  \"method\": \"post\",\n  \"url\": \"https://test-bucket.s3.amazonaws.com\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a58b7a5b-66c2-4171-91de-f08685b1fc4e",
-              "name": "authentication failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "uploads",
-                    "presign"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:40:18.000Z",
+          "updatedAt": "2026-10-22T01:40:18.000Z",
+          "uid": "35240-2fee4bbf-af8a-419c-8c8b-6675da2aaa66"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
+      "id": "d820bea1-3b68-44b2-a6b3-385396b736fe",
+      "createdAt": "2026-10-22T01:40:18.000Z",
+      "updatedAt": "2026-10-22T01:40:18.000Z",
+      "uid": "35240-d820bea1-3b68-44b2-a6b3-385396b736fe"
+    },
     {
-      "type": "string",
-      "value": "https://sync.api.docspring.com/api/v1",
-      "key": "baseUrl"
+      "name": "uploads",
+      "item": [
+        {
+          "name": "presign",
+          "item": [
+            {
+              "name": "Get a presigned S3 URL for direct file upload",
+              "id": "4a9e4816-4415-4862-b7a8-f36442d714d2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "username",
+                      "value": "{{basicAuthUsername}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{basicAuthPassword}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/uploads/presign",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "uploads",
+                    "presign"
+                  ]
+                },
+                "description": "Returns a presigned S3 URL for uploading files directly to our S3 bucket. Use this\nendpoint to upload large files before creating templates or custom files. S3 will\nrespond with a JSON object that you can include in your DocSpring API request.\n\nUploaded files can be used to:\n- Create templates\n- Update templates\n- Create custom files and then merge them with other PDFs"
+              },
+              "response": [
+                {
+                  "id": "24d3efa9-b20e-4887-b708-f30f9636bc10",
+                  "name": "presign URL generated",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/uploads/presign",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "uploads",
+                        "presign"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"fields\": {\n    \"key\": \"<string>\",\n    \"policy\": \"<string>\",\n    \"x-amz-algorithm\": \"<string>\",\n    \"x-amz-credential\": \"<string>\",\n    \"x-amz-date\": \"<string>\",\n    \"x-amz-signature\": \"<string>\"\n  },\n  \"headers\": {},\n  \"url\": \"<string>\",\n  \"method\": \"post\"\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-24d3efa9-b20e-4887-b708-f30f9636bc10"
+                },
+                {
+                  "id": "e01c099e-e66f-4789-93fc-5d78f892dcc9",
+                  "name": "authentication failed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/uploads/presign",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "uploads",
+                        "presign"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-e01c099e-e66f-4789-93fc-5d78f892dcc9"
+                }
+              ],
+              "createdAt": "2026-10-22T01:40:18.000Z",
+              "updatedAt": "2026-10-22T01:40:18.000Z",
+              "uid": "35240-4a9e4816-4415-4862-b7a8-f36442d714d2"
+            }
+          ],
+          "id": "1788707c-af05-4a23-801a-e8af328115d9",
+          "createdAt": "2026-10-22T01:40:18.000Z",
+          "updatedAt": "2026-10-22T01:40:18.000Z",
+          "uid": "35240-1788707c-af05-4a23-801a-e8af328115d9"
+        }
+      ],
+      "id": "ff80fbec-9d5c-47cf-816b-6c2a49e4c758",
+      "createdAt": "2026-10-22T01:40:18.000Z",
+      "updatedAt": "2026-10-22T01:40:18.000Z",
+      "uid": "35240-ff80fbec-9d5c-47cf-816b-6c2a49e4c758"
     }
   ],
   "auth": {
@@ -323,21 +348,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "5fc1a7d0-34d6-488f-8b64-8fc0c8991d90",
-    "name": "DocSpring Authentication Custom Files API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sync.api.docspring.com/api/v1"
     }
-  }
+  ]
 }

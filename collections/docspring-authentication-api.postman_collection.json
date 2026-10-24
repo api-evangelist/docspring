@@ -1,156 +1,153 @@
 {
+  "info": {
+    "_postman_id": "2651070b-c1b3-45a5-94a0-fd4b31024fd8",
+    "name": "DocSpring Authentication API",
+    "description": "Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:40:04.000Z",
+    "updatedAt": "2026-10-22T01:40:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2651070b-c1b3-45a5-94a0-fd4b31024fd8"
+  },
   "item": [
     {
-      "id": "d1f59f8c-f75f-4af7-aae7-74e552da2381",
-      "name": "Authentication",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "authentication",
       "item": [
         {
-          "id": "8ec5dce5-7b1e-4f3c-8b07-7ac67581b581",
           "name": "Test authentication",
+          "id": "c6cc3634-4e17-4c02-aa37-78633a9f6d46",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Test authentication",
-            "description": {
-              "content": "Checks whether your API token is valid by making an authenticated request.\nReturns a success response if authentication passes. This endpoint is useful for\nverifying credentials during setup or troubleshooting issues.\n",
-              "type": "text/plain"
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}",
+                  "type": "string"
+                }
+              ]
             },
-            "url": {
-              "path": [
-                "authentication"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": {
-              "type": "basic",
-              "basic": [
-                {
-                  "key": "username",
-                  "value": "{{basicAuthUsername}}"
-                },
-                {
-                  "key": "password",
-                  "value": "{{basicAuthPassword}}"
-                }
+            "url": {
+              "raw": "{{baseUrl}}/authentication",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "authentication"
               ]
-            }
+            },
+            "description": "Checks whether your API token is valid by making an authenticated request.\nReturns a success response if authentication passes. This endpoint is useful for\nverifying credentials during setup or troubleshooting issues."
           },
           "response": [
             {
-              "id": "4ec17d6e-890d-481b-8c3e-6c173e8a5930",
+              "id": "6acede35-b41d-4ce7-bb45-153578f2ed67",
               "name": "authentication succeeded",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "authentication"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/authentication",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "authentication"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"success\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"status\": \"success\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:40:05.000Z",
+              "updatedAt": "2026-10-22T01:40:05.000Z",
+              "uid": "35240-6acede35-b41d-4ce7-bb45-153578f2ed67"
             },
             {
-              "id": "d8f9bfa1-f398-476e-af34-7d3d41698048",
+              "id": "b398a845-c077-4cae-89bc-58b5b474b3e1",
               "name": "authentication failed",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "authentication"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/authentication",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "authentication"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Could not find API token with ID: missing_api_token\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"status\": \"success\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:40:05.000Z",
+              "updatedAt": "2026-10-22T01:40:05.000Z",
+              "uid": "35240-b398a845-c077-4cae-89bc-58b5b474b3e1"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:40:05.000Z",
+          "updatedAt": "2026-10-22T01:40:05.000Z",
+          "uid": "35240-c6cc3634-4e17-4c02-aa37-78633a9f6d46"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://sync.api.docspring.com/api/v1",
-      "key": "baseUrl"
+      "id": "41e0b4ef-da1e-4c7b-b3a5-12fee6c8cdfd",
+      "createdAt": "2026-10-22T01:40:05.000Z",
+      "updatedAt": "2026-10-22T01:40:05.000Z",
+      "uid": "35240-41e0b4ef-da1e-4c7b-b3a5-12fee6c8cdfd"
     }
   ],
   "auth": {
@@ -158,21 +155,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "71e33e66-f4bb-42fd-b630-07dca93b35de",
-    "name": "DocSpring Authentication API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sync.api.docspring.com/api/v1"
     }
-  }
+  ]
 }

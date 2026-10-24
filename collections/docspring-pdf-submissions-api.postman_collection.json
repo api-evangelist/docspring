@@ -1,1578 +1,1536 @@
 {
+  "info": {
+    "_postman_id": "3c24285e-669e-4cbe-aa97-077da68d031a",
+    "name": "DocSpring PDF Submissions API",
+    "description": "Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:40:37.000Z",
+    "updatedAt": "2026-10-22T01:40:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3c24285e-669e-4cbe-aa97-077da68d031a"
+  },
   "item": [
     {
-      "id": "5fd019b4-3cdd-42fe-80bd-347ea7537cfd",
-      "name": "PDF Submissions",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "templates",
       "item": [
         {
-          "id": "c6b43dc5-9505-4b8e-b4f2-a6759b98d6ae",
-          "name": "Generate a PDF",
-          "request": {
-            "name": "Generate a PDF",
-            "description": {
-              "content": "Creates a PDF submission by filling in a template with data. Supports both synchronous (default) and\nasynchronous processing. Set `wait: false` to return immediately.\n\nSee also:\n- [Customize the PDF Title and Filename](https://docspring.com/docs/api-guide/generate-pdfs/customize-pdf-title-and-filename/) - Set custom metadata\n- [Handling Truncated Text](https://docspring.com/docs/api-guide/generate-pdfs/handle-truncated-text/) - Handle text that doesn't fit in fields\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "templates",
-                ":template_id",
-                "submissions"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "description": {
-                    "content": "Wait for submission to be processed before returning. Set to false to return immediately. Default: true (on sync.* subdomain)",
-                    "type": "text/plain"
-                  },
-                  "key": "wait",
-                  "value": ""
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "template_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "basic",
-              "basic": [
-                {
-                  "key": "username",
-                  "value": "{{basicAuthUsername}}"
-                },
-                {
-                  "key": "password",
-                  "value": "{{basicAuthPassword}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"data\": \"<object>\",\n  \"data_requests\": [\n    {\n      \"auth_phone_number_hash\": \"<string,null>\",\n      \"auth_provider\": \"<string,null>\",\n      \"auth_second_factor_type\": \"<string>\",\n      \"auth_session_id_hash\": \"<string,null>\",\n      \"auth_session_started_at\": \"<string,null>\",\n      \"auth_type\": \"<string>\",\n      \"auth_user_id_hash\": \"<string,null>\",\n      \"auth_username_hash\": \"<string,null>\",\n      \"email\": \"<string,null>\",\n      \"fields\": [\n        \"<string,null>\",\n        \"<string,null>\"\n      ],\n      \"metadata\": \"<object>\",\n      \"name\": \"<string,null>\",\n      \"order\": \"<integer>\",\n      \"skipped\": \"<boolean,null>\"\n    },\n    {\n      \"auth_phone_number_hash\": \"<string,null>\",\n      \"auth_provider\": \"<string,null>\",\n      \"auth_second_factor_type\": \"<string>\",\n      \"auth_session_id_hash\": \"<string,null>\",\n      \"auth_session_started_at\": \"<string,null>\",\n      \"auth_type\": \"<string>\",\n      \"auth_user_id_hash\": \"<string,null>\",\n      \"auth_username_hash\": \"<string,null>\",\n      \"email\": \"<string,null>\",\n      \"fields\": [\n        \"<string,null>\",\n        \"<string,null>\"\n      ],\n      \"metadata\": \"<object>\",\n      \"name\": \"<string,null>\",\n      \"order\": \"<integer>\",\n      \"skipped\": \"<boolean,null>\"\n    }\n  ],\n  \"editable\": \"<boolean>\",\n  \"expires_in\": \"<integer>\",\n  \"field_overrides\": \"<object>\",\n  \"metadata\": \"<object>\",\n  \"password\": \"<string>\",\n  \"test\": \"<boolean>\",\n  \"version\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "{template_id}",
+          "item": [
             {
-              "id": "6ec03519-9113-4b04-ab21-2745cc464318",
-              "name": "submission created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "templates",
-                    ":template_id",
-                    "submissions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "wait",
-                      "value": ""
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "template_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"version\": \"draft\",\n  \"data\": {\n    \"first_name\": \"John\",\n    \"last_name\": \"Smith\",\n    \"phone_number\": \"+11234567890\"\n  },\n  \"metadata\": {\n    \"foo\": 123,\n    \"bar\": \"baz\"\n  },\n  \"expires_in\": 300\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
+              "name": "submissions",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Generate a PDF",
+                  "id": "9b8a3e4d-ef22-4e0d-a623-a20545c93eb9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "basic",
+                      "basic": [
+                        {
+                          "key": "username",
+                          "value": "{{basicAuthUsername}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{basicAuthPassword}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"data\": {},\n  \"data_requests\": [\n    null,\n    {\n      \"auth_phone_number_hash\": \"<string,null>\",\n      \"auth_provider\": \"<string,null>\",\n      \"auth_second_factor_type\": \"mobile_push\",\n      \"auth_session_id_hash\": \"<string,null>\",\n      \"auth_session_started_at\": \"<string,null>\",\n      \"auth_type\": \"none\",\n      \"auth_user_id_hash\": \"<string,null>\",\n      \"auth_username_hash\": \"<string,null>\",\n      \"email\": \"<string,null>\",\n      \"fields\": [\n        \"<string,null>\",\n        \"<string,null>\"\n      ],\n      \"metadata\": {},\n      \"name\": \"<string,null>\",\n      \"order\": \"<integer>\",\n      \"skipped\": \"<boolean,null>\"\n    }\n  ],\n  \"editable\": \"<boolean>\",\n  \"expires_in\": \"<integer>\",\n  \"field_overrides\": {},\n  \"metadata\": {},\n  \"password\": \"<string>\",\n  \"test\": \"<boolean>\",\n  \"version\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/templates/:template_id/submissions?wait=",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "templates",
+                        ":template_id",
+                        "submissions"
+                      ],
+                      "query": [
+                        {
+                          "description": "Wait for submission to be processed before returning. Set to false to return immediately. Default: true (on sync.* subdomain)",
+                          "key": "wait",
+                          "value": ""
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "4fd5ff92-c52e-4484-b42a-f5d68c53ae52",
+                          "key": "template_id",
+                          "value": "",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Creates a PDF submission by filling in a template with data. Supports both synchronous (default) and\nasynchronous processing. Set `wait: false` to return immediately.\n\nSee also:\n- Customize the PDF Title and Filename - Set custom metadata\n- Handling Truncated Text - Handle text that doesn't fit in fields"
+                  },
+                  "response": [
+                    {
+                      "id": "9514d2ec-d502-481c-b191-4c875d2e399a",
+                      "name": "submission created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"data\": {},\n  \"data_requests\": [\n    null,\n    {\n      \"auth_phone_number_hash\": \"<string,null>\",\n      \"auth_provider\": \"<string,null>\",\n      \"auth_second_factor_type\": \"mobile_push\",\n      \"auth_session_id_hash\": \"<string,null>\",\n      \"auth_session_started_at\": \"<string,null>\",\n      \"auth_type\": \"none\",\n      \"auth_user_id_hash\": \"<string,null>\",\n      \"auth_username_hash\": \"<string,null>\",\n      \"email\": \"<string,null>\",\n      \"fields\": [\n        \"<string,null>\",\n        \"<string,null>\"\n      ],\n      \"metadata\": {},\n      \"name\": \"<string,null>\",\n      \"order\": \"<integer>\",\n      \"skipped\": \"<boolean,null>\"\n    }\n  ],\n  \"editable\": \"<boolean>\",\n  \"expires_in\": \"<integer>\",\n  \"field_overrides\": {},\n  \"metadata\": {},\n  \"password\": \"<string>\",\n  \"test\": \"<boolean>\",\n  \"version\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/templates/:template_id/submissions?wait=",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "templates",
+                            ":template_id",
+                            "submissions"
+                          ],
+                          "query": [
+                            {
+                              "description": "Wait for submission to be processed before returning. Set to false to return immediately. Default: true (on sync.* subdomain)",
+                              "key": "wait",
+                              "value": ""
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "template_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"success\",\n  \"submission\": {\n    \"actions\": [\n      {\n        \"action_category\": \"file_upload\",\n        \"action_type\": \"aws_s3_upload\",\n        \"error_message\": \"<string,null>\",\n        \"id\": \"<string,null>\",\n        \"integration_id\": \"<string,null>\",\n        \"result_data\": {},\n        \"state\": \"pending\"\n      },\n      {\n        \"action_category\": \"file_upload\",\n        \"action_type\": \"email\",\n        \"error_message\": \"<string,null>\",\n        \"id\": \"<string,null>\",\n        \"integration_id\": \"<string,null>\",\n        \"result_data\": {},\n        \"state\": \"error\"\n      }\n    ],\n    \"audit_trail_download_url\": \"<string,null>\",\n    \"batch_id\": \"<string,null>\",\n    \"data_requests\": [\n      {\n        \"auth_phone_number_hash\": \"<string,null>\",\n        \"auth_provider\": \"<string,null>\",\n        \"auth_second_factor_type\": \"mobile_push\",\n        \"auth_session_id_hash\": \"<string,null>\",\n        \"auth_session_started_at\": \"<string,null>\",\n        \"auth_type\": \"none\",\n        \"auth_user_id_hash\": \"<string,null>\",\n        \"auth_username_hash\": \"<string,null>\",\n        \"completed_at\": \"<string,null>\",\n        \"data\": \"<object,null>\",\n        \"email\": \"<string,null>\",\n        \"fields\": \"<array,null>\",\n        \"id\": \"<string,null>\",\n        \"ip_address\": \"<string,null>\",\n        \"metadata\": \"<object,null>\",\n        \"name\": \"<string,null>\",\n        \"order\": \"<integer,null>\",\n        \"sort_order\": \"<integer>\",\n        \"state\": \"pending\",\n        \"user_agent\": \"<string,null>\",\n        \"viewed_at\": \"<string,null>\"\n      },\n      {\n        \"auth_phone_number_hash\": \"<string,null>\",\n        \"auth_provider\": \"<string,null>\",\n        \"auth_second_factor_type\": \"fingerprint\",\n        \"auth_session_id_hash\": \"<string,null>\",\n        \"auth_session_started_at\": \"<string,null>\",\n        \"auth_type\": \"email_link\",\n        \"auth_user_id_hash\": \"<string,null>\",\n        \"auth_username_hash\": \"<string,null>\",\n        \"completed_at\": \"<string,null>\",\n        \"data\": \"<object,null>\",\n        \"email\": \"<string,null>\",\n        \"fields\": \"<array,null>\",\n        \"id\": \"<string,null>\",\n        \"ip_address\": \"<string,null>\",\n        \"metadata\": \"<object,null>\",\n        \"name\": \"<string,null>\",\n        \"order\": \"<integer,null>\",\n        \"sort_order\": \"<integer>\",\n        \"state\": \"completed\",\n        \"user_agent\": \"<string,null>\",\n        \"viewed_at\": \"<string,null>\"\n      }\n    ],\n    \"download_url\": \"<string,null>\",\n    \"editable\": \"<boolean,null>\",\n    \"error_message\": \"<string,null>\",\n    \"expired\": \"<boolean>\",\n    \"expires_at\": \"<string,null>\",\n    \"id\": \"<string,null>\",\n    \"json_schema_errors\": \"<array,null>\",\n    \"metadata\": {},\n    \"password\": \"<string,null>\",\n    \"pdf_hash\": \"<string,null>\",\n    \"permanent_download_url\": \"<string,null>\",\n    \"preview_download_url\": \"<string,null>\",\n    \"preview_generated_at\": \"<string,null>\",\n    \"processed_at\": \"<string,null>\",\n    \"state\": \"accidental\",\n    \"template_id\": \"<string,null>\",\n    \"template_type\": \"html\",\n    \"template_version\": \"<string,null>\",\n    \"test\": \"<boolean>\",\n    \"truncated_text\": \"<object,null>\"\n  },\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-10-22T01:40:38.000Z",
+                      "updatedAt": "2026-10-22T01:40:38.000Z",
+                      "uid": "35240-9514d2ec-d502-481c-b191-4c875d2e399a"
+                    },
+                    {
+                      "id": "95dbd8ad-f17f-4833-b9eb-9127f108b213",
+                      "name": "authentication failed",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"data\": {},\n  \"data_requests\": [\n    null,\n    {\n      \"auth_phone_number_hash\": \"<string,null>\",\n      \"auth_provider\": \"<string,null>\",\n      \"auth_second_factor_type\": \"mobile_push\",\n      \"auth_session_id_hash\": \"<string,null>\",\n      \"auth_session_started_at\": \"<string,null>\",\n      \"auth_type\": \"none\",\n      \"auth_user_id_hash\": \"<string,null>\",\n      \"auth_username_hash\": \"<string,null>\",\n      \"email\": \"<string,null>\",\n      \"fields\": [\n        \"<string,null>\",\n        \"<string,null>\"\n      ],\n      \"metadata\": {},\n      \"name\": \"<string,null>\",\n      \"order\": \"<integer>\",\n      \"skipped\": \"<boolean,null>\"\n    }\n  ],\n  \"editable\": \"<boolean>\",\n  \"expires_in\": \"<integer>\",\n  \"field_overrides\": {},\n  \"metadata\": {},\n  \"password\": \"<string>\",\n  \"test\": \"<boolean>\",\n  \"version\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/templates/:template_id/submissions?wait=",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "templates",
+                            ":template_id",
+                            "submissions"
+                          ],
+                          "query": [
+                            {
+                              "description": "Wait for submission to be processed before returning. Set to false to return immediately. Default: true (on sync.* subdomain)",
+                              "key": "wait",
+                              "value": ""
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "template_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:38.000Z",
+                      "updatedAt": "2026-10-22T01:40:38.000Z",
+                      "uid": "35240-95dbd8ad-f17f-4833-b9eb-9127f108b213"
+                    },
+                    {
+                      "id": "9e3c50bc-e808-4fd1-9e2c-2118225f2cc6",
+                      "name": "invalid request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"data\": {},\n  \"data_requests\": [\n    null,\n    {\n      \"auth_phone_number_hash\": \"<string,null>\",\n      \"auth_provider\": \"<string,null>\",\n      \"auth_second_factor_type\": \"mobile_push\",\n      \"auth_session_id_hash\": \"<string,null>\",\n      \"auth_session_started_at\": \"<string,null>\",\n      \"auth_type\": \"none\",\n      \"auth_user_id_hash\": \"<string,null>\",\n      \"auth_username_hash\": \"<string,null>\",\n      \"email\": \"<string,null>\",\n      \"fields\": [\n        \"<string,null>\",\n        \"<string,null>\"\n      ],\n      \"metadata\": {},\n      \"name\": \"<string,null>\",\n      \"order\": \"<integer>\",\n      \"skipped\": \"<boolean,null>\"\n    }\n  ],\n  \"editable\": \"<boolean>\",\n  \"expires_in\": \"<integer>\",\n  \"field_overrides\": {},\n  \"metadata\": {},\n  \"password\": \"<string>\",\n  \"test\": \"<boolean>\",\n  \"version\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/templates/:template_id/submissions?wait=",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "templates",
+                            ":template_id",
+                            "submissions"
+                          ],
+                          "query": [
+                            {
+                              "description": "Wait for submission to be processed before returning. Set to false to return immediately. Default: true (on sync.* subdomain)",
+                              "key": "wait",
+                              "value": ""
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "template_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\",\n  \"submission\": {\n    \"actions\": [\n      {\n        \"action_category\": \"file_upload\",\n        \"action_type\": \"email\",\n        \"error_message\": \"<string,null>\",\n        \"id\": \"<string,null>\",\n        \"integration_id\": \"<string,null>\",\n        \"result_data\": {},\n        \"state\": \"pending\"\n      },\n      {\n        \"action_category\": \"file_upload\",\n        \"action_type\": \"slack_webhook\",\n        \"error_message\": \"<string,null>\",\n        \"id\": \"<string,null>\",\n        \"integration_id\": \"<string,null>\",\n        \"result_data\": {},\n        \"state\": \"failed\"\n      }\n    ],\n    \"audit_trail_download_url\": \"<string,null>\",\n    \"batch_id\": \"<string,null>\",\n    \"data_requests\": [\n      {\n        \"auth_phone_number_hash\": \"<string,null>\",\n        \"auth_provider\": \"<string,null>\",\n        \"auth_second_factor_type\": \"mobile_push\",\n        \"auth_session_id_hash\": \"<string,null>\",\n        \"auth_session_started_at\": \"<string,null>\",\n        \"auth_type\": \"ldap\",\n        \"auth_user_id_hash\": \"<string,null>\",\n        \"auth_username_hash\": \"<string,null>\",\n        \"completed_at\": \"<string,null>\",\n        \"data\": \"<object,null>\",\n        \"email\": \"<string,null>\",\n        \"fields\": \"<array,null>\",\n        \"id\": \"<string,null>\",\n        \"ip_address\": \"<string,null>\",\n        \"metadata\": \"<object,null>\",\n        \"name\": \"<string,null>\",\n        \"order\": \"<integer,null>\",\n        \"sort_order\": \"<integer>\",\n        \"state\": \"pending\",\n        \"user_agent\": \"<string,null>\",\n        \"viewed_at\": \"<string,null>\"\n      },\n      {\n        \"auth_phone_number_hash\": \"<string,null>\",\n        \"auth_provider\": \"<string,null>\",\n        \"auth_second_factor_type\": \"totp\",\n        \"auth_session_id_hash\": \"<string,null>\",\n        \"auth_session_started_at\": \"<string,null>\",\n        \"auth_type\": \"oauth\",\n        \"auth_user_id_hash\": \"<string,null>\",\n        \"auth_username_hash\": \"<string,null>\",\n        \"completed_at\": \"<string,null>\",\n        \"data\": \"<object,null>\",\n        \"email\": \"<string,null>\",\n        \"fields\": \"<array,null>\",\n        \"id\": \"<string,null>\",\n        \"ip_address\": \"<string,null>\",\n        \"metadata\": \"<object,null>\",\n        \"name\": \"<string,null>\",\n        \"order\": \"<integer,null>\",\n        \"sort_order\": \"<integer>\",\n        \"state\": \"completed\",\n        \"user_agent\": \"<string,null>\",\n        \"viewed_at\": \"<string,null>\"\n      }\n    ],\n    \"download_url\": \"<string,null>\",\n    \"editable\": \"<boolean,null>\",\n    \"error_message\": \"<string,null>\",\n    \"expired\": \"<boolean>\",\n    \"expires_at\": \"<string,null>\",\n    \"id\": \"<string,null>\",\n    \"json_schema_errors\": \"<array,null>\",\n    \"metadata\": {},\n    \"password\": \"<string,null>\",\n    \"pdf_hash\": \"<string,null>\",\n    \"permanent_download_url\": \"<string,null>\",\n    \"preview_download_url\": \"<string,null>\",\n    \"preview_generated_at\": \"<string,null>\",\n    \"processed_at\": \"<string,null>\",\n    \"state\": \"accidental\",\n    \"template_id\": \"<string,null>\",\n    \"template_type\": \"html\",\n    \"template_version\": \"<string,null>\",\n    \"test\": \"<boolean>\",\n    \"truncated_text\": \"<object,null>\"\n  },\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-10-22T01:40:38.000Z",
+                      "updatedAt": "2026-10-22T01:40:38.000Z",
+                      "uid": "35240-9e3c50bc-e808-4fd1-9e2c-2118225f2cc6"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:40:38.000Z",
+                  "updatedAt": "2026-10-22T01:40:38.000Z",
+                  "uid": "35240-9b8a3e4d-ef22-4e0d-a623-a20545c93eb9"
+                },
+                {
+                  "name": "List all submissions for a given template",
+                  "id": "8f6ba897-3953-42a0-ba9c-68e63e87cb9b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "basic",
+                      "basic": [
+                        {
+                          "key": "username",
+                          "value": "{{basicAuthUsername}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{basicAuthPassword}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/templates/:template_id/submissions?cursor=&limit=&created_after=&created_before=&type=&include_data=",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "templates",
+                        ":template_id",
+                        "submissions"
+                      ],
+                      "query": [
+                        {
+                          "key": "cursor",
+                          "value": ""
+                        },
+                        {
+                          "key": "limit",
+                          "value": ""
+                        },
+                        {
+                          "key": "created_after",
+                          "value": ""
+                        },
+                        {
+                          "key": "created_before",
+                          "value": ""
+                        },
+                        {
+                          "key": "type",
+                          "value": ""
+                        },
+                        {
+                          "key": "include_data",
+                          "value": ""
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "3190c96e-04d5-41c1-9615-faa2e9d4ebc8",
+                          "key": "template_id",
+                          "value": "",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns a paginated list of all submissions for a specific template. Can be filtered by\ndate range, submission type (test/live), and optionally include submission data. Supports\ncursor-based pagination for efficient retrieval of large result sets."
+                  },
+                  "response": [
+                    {
+                      "id": "23debf3c-34cf-446b-8a9d-45040ea3cb8e",
+                      "name": "listing submissions",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/templates/:template_id/submissions?cursor=&limit=&created_after=&created_before=&type=&include_data=",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "templates",
+                            ":template_id",
+                            "submissions"
+                          ],
+                          "query": [
+                            {
+                              "key": "cursor",
+                              "value": ""
+                            },
+                            {
+                              "key": "limit",
+                              "value": ""
+                            },
+                            {
+                              "key": "created_after",
+                              "value": ""
+                            },
+                            {
+                              "key": "created_before",
+                              "value": ""
+                            },
+                            {
+                              "key": "type",
+                              "value": ""
+                            },
+                            {
+                              "key": "include_data",
+                              "value": ""
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "template_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"submissions\": [\n    {\n      \"actions\": [\n        {\n          \"action_category\": \"notification\",\n          \"action_type\": \"email\",\n          \"error_message\": \"<string,null>\",\n          \"id\": \"<string,null>\",\n          \"integration_id\": \"<string,null>\",\n          \"result_data\": {},\n          \"state\": \"pending\"\n        },\n        {\n          \"action_category\": \"file_upload\",\n          \"action_type\": \"aws_s3_upload\",\n          \"error_message\": \"<string,null>\",\n          \"id\": \"<string,null>\",\n          \"integration_id\": \"<string,null>\",\n          \"result_data\": {},\n          \"state\": \"error\"\n        }\n      ],\n      \"audit_trail_download_url\": \"<string,null>\",\n      \"batch_id\": \"<string,null>\",\n      \"data\": \"<object,null>\",\n      \"data_requests\": [\n        {\n          \"auth_phone_number_hash\": \"<string,null>\",\n          \"auth_provider\": \"<string,null>\",\n          \"auth_second_factor_type\": \"none\",\n          \"auth_session_id_hash\": \"<string,null>\",\n          \"auth_session_started_at\": \"<string,null>\",\n          \"auth_type\": \"none\",\n          \"auth_user_id_hash\": \"<string,null>\",\n          \"auth_username_hash\": \"<string,null>\",\n          \"completed_at\": \"<string,null>\",\n          \"data\": \"<object,null>\",\n          \"email\": \"<string,null>\",\n          \"fields\": \"<array,null>\",\n          \"id\": \"<string,null>\",\n          \"ip_address\": \"<string,null>\",\n          \"metadata\": \"<object,null>\",\n          \"name\": \"<string,null>\",\n          \"order\": \"<integer,null>\",\n          \"sort_order\": \"<integer>\",\n          \"state\": \"completed\",\n          \"user_agent\": \"<string,null>\",\n          \"viewed_at\": \"<string,null>\"\n        },\n        {\n          \"auth_phone_number_hash\": \"<string,null>\",\n          \"auth_provider\": \"<string,null>\",\n          \"auth_second_factor_type\": \"none\",\n          \"auth_session_id_hash\": \"<string,null>\",\n          \"auth_session_started_at\": \"<string,null>\",\n          \"auth_type\": \"ldap\",\n          \"auth_user_id_hash\": \"<string,null>\",\n          \"auth_username_hash\": \"<string,null>\",\n          \"completed_at\": \"<string,null>\",\n          \"data\": \"<object,null>\",\n          \"email\": \"<string,null>\",\n          \"fields\": \"<array,null>\",\n          \"id\": \"<string,null>\",\n          \"ip_address\": \"<string,null>\",\n          \"metadata\": \"<object,null>\",\n          \"name\": \"<string,null>\",\n          \"order\": \"<integer,null>\",\n          \"sort_order\": \"<integer>\",\n          \"state\": \"pending\",\n          \"user_agent\": \"<string,null>\",\n          \"viewed_at\": \"<string,null>\"\n        }\n      ],\n      \"download_url\": \"<string,null>\",\n      \"editable\": \"<boolean,null>\",\n      \"error_message\": \"<string,null>\",\n      \"expired\": \"<boolean>\",\n      \"expires_at\": \"<string,null>\",\n      \"id\": \"<string,null>\",\n      \"json_schema_errors\": \"<array,null>\",\n      \"metadata\": {},\n      \"password\": \"<string,null>\",\n      \"pdf_hash\": \"<string,null>\",\n      \"permanent_download_url\": \"<string,null>\",\n      \"preview_download_url\": \"<string,null>\",\n      \"preview_generated_at\": \"<string,null>\",\n      \"processed_at\": \"<string,null>\",\n      \"referrer\": \"<string,null>\",\n      \"source\": \"reprocess\",\n      \"state\": \"license_revoked\",\n      \"template_id\": \"<string,null>\",\n      \"template_type\": \"html\",\n      \"template_version\": \"<string,null>\",\n      \"test\": \"<boolean>\",\n      \"truncated_text\": \"<object,null>\"\n    },\n    {\n      \"actions\": [\n        {\n          \"action_category\": \"file_upload\",\n          \"action_type\": \"email\",\n          \"error_message\": \"<string,null>\",\n          \"id\": \"<string,null>\",\n          \"integration_id\": \"<string,null>\",\n          \"result_data\": {},\n          \"state\": \"processed\"\n        },\n        {\n          \"action_category\": \"notification\",\n          \"action_type\": \"email\",\n          \"error_message\": \"<string,null>\",\n          \"id\": \"<string,null>\",\n          \"integration_id\": \"<string,null>\",\n          \"result_data\": {},\n          \"state\": \"failed\"\n        }\n      ],\n      \"audit_trail_download_url\": \"<string,null>\",\n      \"batch_id\": \"<string,null>\",\n      \"data\": \"<object,null>\",\n      \"data_requests\": [\n        {\n          \"auth_phone_number_hash\": \"<string,null>\",\n          \"auth_provider\": \"<string,null>\",\n          \"auth_second_factor_type\": \"fingerprint\",\n          \"auth_session_id_hash\": \"<string,null>\",\n          \"auth_session_started_at\": \"<string,null>\",\n          \"auth_type\": \"phone_number\",\n          \"auth_user_id_hash\": \"<string,null>\",\n          \"auth_username_hash\": \"<string,null>\",\n          \"completed_at\": \"<string,null>\",\n          \"data\": \"<object,null>\",\n          \"email\": \"<string,null>\",\n          \"fields\": \"<array,null>\",\n          \"id\": \"<string,null>\",\n          \"ip_address\": \"<string,null>\",\n          \"metadata\": \"<object,null>\",\n          \"name\": \"<string,null>\",\n          \"order\": \"<integer,null>\",\n          \"sort_order\": \"<integer>\",\n          \"state\": \"completed\",\n          \"user_agent\": \"<string,null>\",\n          \"viewed_at\": \"<string,null>\"\n        },\n        {\n          \"auth_phone_number_hash\": \"<string,null>\",\n          \"auth_provider\": \"<string,null>\",\n          \"auth_second_factor_type\": \"fingerprint\",\n          \"auth_session_id_hash\": \"<string,null>\",\n          \"auth_session_started_at\": \"<string,null>\",\n          \"auth_type\": \"password\",\n          \"auth_user_id_hash\": \"<string,null>\",\n          \"auth_username_hash\": \"<string,null>\",\n          \"completed_at\": \"<string,null>\",\n          \"data\": \"<object,null>\",\n          \"email\": \"<string,null>\",\n          \"fields\": \"<array,null>\",\n          \"id\": \"<string,null>\",\n          \"ip_address\": \"<string,null>\",\n          \"metadata\": \"<object,null>\",\n          \"name\": \"<string,null>\",\n          \"order\": \"<integer,null>\",\n          \"sort_order\": \"<integer>\",\n          \"state\": \"pending\",\n          \"user_agent\": \"<string,null>\",\n          \"viewed_at\": \"<string,null>\"\n        }\n      ],\n      \"download_url\": \"<string,null>\",\n      \"editable\": \"<boolean,null>\",\n      \"error_message\": \"<string,null>\",\n      \"expired\": \"<boolean>\",\n      \"expires_at\": \"<string,null>\",\n      \"id\": \"<string,null>\",\n      \"json_schema_errors\": \"<array,null>\",\n      \"metadata\": {},\n      \"password\": \"<string,null>\",\n      \"pdf_hash\": \"<string,null>\",\n      \"permanent_download_url\": \"<string,null>\",\n      \"preview_download_url\": \"<string,null>\",\n      \"preview_generated_at\": \"<string,null>\",\n      \"processed_at\": \"<string,null>\",\n      \"referrer\": \"<string,null>\",\n      \"source\": \"api\",\n      \"state\": \"image_processing_failed\",\n      \"template_id\": \"<string,null>\",\n      \"template_type\": \"html\",\n      \"template_version\": \"<string,null>\",\n      \"test\": \"<boolean>\",\n      \"truncated_text\": \"<object,null>\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"next_cursor\": \"<string,null>\"\n}",
+                      "createdAt": "2026-10-22T01:40:38.000Z",
+                      "updatedAt": "2026-10-22T01:40:38.000Z",
+                      "uid": "35240-23debf3c-34cf-446b-8a9d-45040ea3cb8e"
+                    },
+                    {
+                      "id": "40f9fb95-def8-45fa-91fd-a6cfa4399c61",
+                      "name": "invalid template id",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/templates/:template_id/submissions?cursor=&limit=&created_after=&created_before=&type=&include_data=",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "templates",
+                            ":template_id",
+                            "submissions"
+                          ],
+                          "query": [
+                            {
+                              "key": "cursor",
+                              "value": ""
+                            },
+                            {
+                              "key": "limit",
+                              "value": ""
+                            },
+                            {
+                              "key": "created_after",
+                              "value": ""
+                            },
+                            {
+                              "key": "created_before",
+                              "value": ""
+                            },
+                            {
+                              "key": "type",
+                              "value": ""
+                            },
+                            {
+                              "key": "include_data",
+                              "value": ""
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "template_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:38.000Z",
+                      "updatedAt": "2026-10-22T01:40:38.000Z",
+                      "uid": "35240-40f9fb95-def8-45fa-91fd-a6cfa4399c61"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:40:38.000Z",
+                  "updatedAt": "2026-10-22T01:40:38.000Z",
+                  "uid": "35240-8f6ba897-3953-42a0-ba9c-68e63e87cb9b"
                 }
               ],
-              "body": "{\n  \"status\": \"success\",\n  \"submission\": {\n    \"batch_id\": null,\n    \"data_requests\": [\n      {\n        \"id\": \"drq_1234567890abcdef01\",\n        \"email\": \"jsmith@example.com\",\n        \"name\": null,\n        \"order\": 0,\n        \"sort_order\": 0,\n        \"fields\": null,\n        \"metadata\": {},\n        \"state\": \"pending\",\n        \"viewed_at\": null,\n        \"completed_at\": null,\n        \"data\": null,\n        \"auth_type\": \"email_link\",\n        \"auth_second_factor_type\": \"none\",\n        \"auth_provider\": null,\n        \"auth_session_started_at\": null,\n        \"auth_session_id_hash\": null,\n        \"auth_user_id_hash\": null,\n        \"auth_username_hash\": null,\n        \"auth_phone_number_hash\": null,\n        \"ip_address\": null,\n        \"user_agent\": null\n      }\n    ],\n    \"editable\": null,\n    \"error_message\": null,\n    \"expired\": false,\n    \"expires_at\": null,\n    \"id\": \"sub_1234567890abcdef01\",\n    \"json_schema_errors\": [],\n    \"metadata\": {\n      \"foo\": 123,\n      \"bar\": \"baz\"\n    },\n    \"password\": null,\n    \"processed_at\": null,\n    \"state\": \"waiting_for_data_requests\",\n    \"template_id\": \"tpl_1234567890abcdef02\",\n    \"template_type\": \"pdf\",\n    \"template_version\": null,\n    \"test\": false,\n    \"truncated_text\": {},\n    \"pdf_hash\": null,\n    \"download_url\": null,\n    \"permanent_download_url\": null,\n    \"preview_download_url\": null,\n    \"preview_generated_at\": null,\n    \"audit_trail_download_url\": null,\n    \"actions\": []\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "159aecfc-68fa-45d1-9388-93f4815d02b4",
-              "name": "authentication failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "templates",
-                    ":template_id",
-                    "submissions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "wait",
-                      "value": ""
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "template_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"version\": \"draft\",\n  \"data\": {\n    \"first_name\": \"John\",\n    \"last_name\": \"Smith\",\n    \"phone_number\": \"+11234567890\"\n  },\n  \"metadata\": {\n    \"foo\": 123,\n    \"bar\": \"baz\"\n  },\n  \"expires_in\": 300\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Invalid API token secret\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7f82cb38-e1e1-4254-b94a-bd3d328be0d2",
-              "name": "invalid request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "templates",
-                    ":template_id",
-                    "submissions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "wait",
-                      "value": ""
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "template_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"version\": \"draft\",\n  \"data\": {\n    \"first_name\": \"John\",\n    \"last_name\": \"Smith\",\n    \"phone_number\": \"+11234567890\"\n  },\n  \"metadata\": {\n    \"foo\": 123,\n    \"bar\": \"baz\"\n  },\n  \"expires_in\": 300\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Invalid field_overrides. Fields do not exist for this template: 'non_existent'\",\n  \"submission\": {\n    \"batch_id\": null,\n    \"data_requests\": [],\n    \"editable\": null,\n    \"error_message\": null,\n    \"expired\": false,\n    \"expires_at\": null,\n    \"id\": \"sub_1234567890abcdef01\",\n    \"json_schema_errors\": [\n      \"The object did not contain a required property of 'last_name'\"\n    ],\n    \"metadata\": {\n      \"foo\": 123,\n      \"bar\": \"baz\"\n    },\n    \"password\": null,\n    \"processed_at\": null,\n    \"state\": \"invalid_data\",\n    \"template_id\": \"tpl_1234567890abcdef01\",\n    \"template_type\": \"pdf\",\n    \"template_version\": null,\n    \"test\": false,\n    \"truncated_text\": {},\n    \"pdf_hash\": null,\n    \"download_url\": null,\n    \"permanent_download_url\": null,\n    \"preview_download_url\": null,\n    \"preview_generated_at\": null,\n    \"audit_trail_download_url\": null,\n    \"actions\": []\n  },\n  \"errors\": [\n    \"The object did not contain a required property of 'last_name'\"\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "6b79f454-2c43-4495-b708-cbae15034da4",
-          "name": "List all submissions for a given template",
-          "request": {
-            "name": "List all submissions for a given template",
-            "description": {
-              "content": "Returns a paginated list of all submissions for a specific template. Can be filtered by\ndate range, submission type (test/live), and optionally include submission data. Supports\ncursor-based pagination for efficient retrieval of large result sets.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "templates",
-                ":template_id",
-                "submissions"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
-                  "key": "cursor",
-                  "value": ""
-                },
-                {
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
-                  "key": "limit",
-                  "value": ""
-                },
-                {
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
-                  "key": "created_after",
-                  "value": ""
-                },
-                {
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
-                  "key": "created_before",
-                  "value": ""
-                },
-                {
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
-                  "key": "type",
-                  "value": ""
-                },
-                {
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
-                  "key": "include_data",
-                  "value": ""
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "template_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "basic",
-              "basic": [
-                {
-                  "key": "username",
-                  "value": "{{basicAuthUsername}}"
-                },
-                {
-                  "key": "password",
-                  "value": "{{basicAuthPassword}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "967f2142-e450-4010-813b-f37d356e7521",
-              "name": "listing submissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "templates",
-                    ":template_id",
-                    "submissions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "cursor",
-                      "value": ""
-                    },
-                    {
-                      "key": "limit",
-                      "value": ""
-                    },
-                    {
-                      "key": "created_after",
-                      "value": ""
-                    },
-                    {
-                      "key": "created_before",
-                      "value": ""
-                    },
-                    {
-                      "key": "type",
-                      "value": ""
-                    },
-                    {
-                      "key": "include_data",
-                      "value": ""
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "template_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"submissions\": [\n    {\n      \"batch_id\": null,\n      \"data_requests\": [],\n      \"editable\": false,\n      \"error_message\": null,\n      \"expired\": false,\n      \"expires_at\": \"2020-10-27T13:00:00Z\",\n      \"id\": \"sub_1234567890abcdef11\",\n      \"json_schema_errors\": [],\n      \"metadata\": {\n        \"qux\": \"abc\",\n        \"user_id\": 42\n      },\n      \"password\": null,\n      \"processed_at\": \"2020-05-14T02:00:00Z\",\n      \"state\": \"processed\",\n      \"template_id\": \"tpl_1234567890abcdef02\",\n      \"template_type\": \"pdf\",\n      \"template_version\": null,\n      \"test\": false,\n      \"truncated_text\": {\n        \"first_name\": [\n          \"F. Scott Fitzgerald\"\n        ]\n      },\n      \"pdf_hash\": \"bbc369dd471442006963e3244a1b43610e066165c09770978221f91bd7ace8f5\",\n      \"download_url\": \"https://example.com/submissions/submission.pdf\",\n      \"permanent_download_url\": \"https://app.docspring.com/submissions/sub_1234567890abcdef11/download\",\n      \"preview_download_url\": null,\n      \"preview_generated_at\": null,\n      \"audit_trail_download_url\": null,\n      \"actions\": [],\n      \"source\": \"api\",\n      \"referrer\": null,\n      \"data\": {\n        \"first_name\": \"John C. D. Rom Laserdisk F. Scott Fitzgerald\",\n        \"last_name\": \"Smith\",\n        \"phone_number\": \"+11234567890\"\n      }\n    },\n    {\n      \"batch_id\": null,\n      \"data_requests\": [],\n      \"editable\": false,\n      \"error_message\": null,\n      \"expired\": false,\n      \"expires_at\": \"2020-10-27T13:00:00Z\",\n      \"id\": \"sub_1234567890abcdef12\",\n      \"json_schema_errors\": [],\n      \"metadata\": {\n        \"qux\": \"abc\",\n        \"user_id\": 42\n      },\n      \"password\": null,\n      \"processed_at\": \"2020-05-14T02:00:00Z\",\n      \"state\": \"processed\",\n      \"template_id\": \"tpl_1234567890abcdef02\",\n      \"template_type\": \"pdf\",\n      \"template_version\": null,\n      \"test\": false,\n      \"truncated_text\": {\n        \"first_name\": [\n          \"F. Scott Fitzgerald\"\n        ]\n      },\n      \"pdf_hash\": \"bbc369dd471442006963e3244a1b43610e066165c09770978221f91bd7ace8f5\",\n      \"download_url\": \"https://example.com/submissions/submission.pdf\",\n      \"permanent_download_url\": \"https://app.docspring.com/submissions/sub_1234567890abcdef12/download\",\n      \"preview_download_url\": null,\n      \"preview_generated_at\": null,\n      \"audit_trail_download_url\": null,\n      \"actions\": [],\n      \"source\": \"api\",\n      \"referrer\": null,\n      \"data\": {\n        \"first_name\": \"John C. D. Rom Laserdisk F. Scott Fitzgerald\",\n        \"last_name\": \"Smith\",\n        \"phone_number\": \"+11234567890\"\n      }\n    },\n    {\n      \"batch_id\": null,\n      \"data_requests\": [],\n      \"editable\": false,\n      \"error_message\": null,\n      \"expired\": false,\n      \"expires_at\": \"2020-10-27T13:00:00Z\",\n      \"id\": \"sub_1234567890abcdef13\",\n      \"json_schema_errors\": [],\n      \"metadata\": {\n        \"qux\": \"abc\",\n        \"user_id\": 42\n      },\n      \"password\": null,\n      \"processed_at\": \"2020-05-14T02:00:00Z\",\n      \"state\": \"processed\",\n      \"template_id\": \"tpl_1234567890abcdef02\",\n      \"template_type\": \"pdf\",\n      \"template_version\": null,\n      \"test\": false,\n      \"truncated_text\": {\n        \"first_name\": [\n          \"F. Scott Fitzgerald\"\n        ]\n      },\n      \"pdf_hash\": \"bbc369dd471442006963e3244a1b43610e066165c09770978221f91bd7ace8f5\",\n      \"download_url\": \"https://example.com/submissions/submission.pdf\",\n      \"permanent_download_url\": \"https://app.docspring.com/submissions/sub_1234567890abcdef13/download\",\n      \"preview_download_url\": null,\n      \"preview_generated_at\": null,\n      \"audit_trail_download_url\": null,\n      \"actions\": [],\n      \"source\": \"api\",\n      \"referrer\": null,\n      \"data\": {\n        \"first_name\": \"John C. D. Rom Laserdisk F. Scott Fitzgerald\",\n        \"last_name\": \"Smith\",\n        \"phone_number\": \"+11234567890\"\n      }\n    },\n    {\n      \"batch_id\": null,\n      \"data_requests\": [],\n      \"editable\": false,\n      \"error_message\": null,\n      \"expired\": false,\n      \"expires_at\": \"2020-10-27T13:00:00Z\",\n      \"id\": \"sub_1234567890abcdef14\",\n      \"json_schema_errors\": [],\n      \"metadata\": {\n        \"qux\": \"abc\",\n        \"user_id\": 42\n      },\n      \"password\": null,\n      \"processed_at\": \"2020-05-14T02:00:00Z\",\n      \"state\": \"processed\",\n      \"template_id\": \"tpl_1234567890abcdef02\",\n      \"template_type\": \"pdf\",\n      \"template_version\": null,\n      \"test\": false,\n      \"truncated_text\": {\n        \"first_name\": [\n          \"F. Scott Fitzgerald\"\n        ]\n      },\n      \"pdf_hash\": \"bbc369dd471442006963e3244a1b43610e066165c09770978221f91bd7ace8f5\",\n      \"download_url\": \"https://example.com/submissions/submission.pdf\",\n      \"permanent_download_url\": \"https://app.docspring.com/submissions/sub_1234567890abcdef14/download\",\n      \"preview_download_url\": null,\n      \"preview_generated_at\": null,\n      \"audit_trail_download_url\": null,\n      \"actions\": [],\n      \"source\": \"api\",\n      \"referrer\": null,\n      \"data\": {\n        \"first_name\": \"John C. D. Rom Laserdisk F. Scott Fitzgerald\",\n        \"last_name\": \"Smith\",\n        \"phone_number\": \"+11234567890\"\n      }\n    }\n  ],\n  \"next_cursor\": \"sub_1234567890abcdef14\",\n  \"limit\": 50\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "45b4206b-004c-4a1b-8c99-88d0530c3002",
-              "name": "invalid template id",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "templates",
-                    ":template_id",
-                    "submissions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "cursor",
-                      "value": ""
-                    },
-                    {
-                      "key": "limit",
-                      "value": ""
-                    },
-                    {
-                      "key": "created_after",
-                      "value": ""
-                    },
-                    {
-                      "key": "created_before",
-                      "value": ""
-                    },
-                    {
-                      "key": "type",
-                      "value": ""
-                    },
-                    {
-                      "key": "include_data",
-                      "value": ""
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "template_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "de9b8725-cf02-4790-b6a2-9aaeee26054c",
+              "createdAt": "2026-10-22T01:40:38.000Z",
+              "updatedAt": "2026-10-22T01:40:38.000Z",
+              "uid": "35240-de9b8725-cf02-4790-b6a2-9aaeee26054c"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "1e4fc039-49d5-4ed8-9d4c-3b458c536961",
-          "name": "Check the status of a PDF",
-          "request": {
-            "name": "Check the status of a PDF",
-            "description": {
-              "content": "Retrieves the details and status of a PDF submission. Returns processing state, download\nURL (if processed), metadata, submission data (optional), and information about any\nintegrated actions. Use this to poll for completion when using asynchronous processing.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "submissions",
-                ":submission_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
-                  "key": "include_data",
-                  "value": ""
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "submission_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "basic",
-              "basic": [
-                {
-                  "key": "username",
-                  "value": "{{basicAuthUsername}}"
-                },
-                {
-                  "key": "password",
-                  "value": "{{basicAuthPassword}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "12dde1c4-c525-410b-a1a5-a69a972954ae",
-              "name": "processed submission found with data",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "submissions",
-                    ":submission_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "include_data",
-                      "value": ""
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "submission_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"batch_id\": null,\n  \"data_requests\": [],\n  \"editable\": false,\n  \"error_message\": null,\n  \"expired\": false,\n  \"expires_at\": \"2018-10-27T13:00:00Z\",\n  \"id\": \"sub_1234567890abcdef01\",\n  \"json_schema_errors\": [],\n  \"metadata\": {\n    \"qux\": \"abc\",\n    \"user_id\": 42\n  },\n  \"password\": null,\n  \"processed_at\": \"2020-05-14T02:00:00Z\",\n  \"state\": \"processed\",\n  \"template_id\": \"tpl_1234567890abcdef01\",\n  \"template_type\": \"pdf\",\n  \"template_version\": null,\n  \"test\": true,\n  \"truncated_text\": {\n    \"first_name\": [\n      \"F. Scott Fitzgerald\"\n    ]\n  },\n  \"pdf_hash\": \"bbc369dd471442006963e3244a1b43610e066165c09770978221f91bd7ace8f5\",\n  \"download_url\": \"https://example.com/submissions/submission.pdf\",\n  \"permanent_download_url\": \"https://app.docspring.com/submissions/sub_1234567890abcdef01/download\",\n  \"preview_download_url\": null,\n  \"preview_generated_at\": null,\n  \"audit_trail_download_url\": null,\n  \"actions\": [\n    {\n      \"id\": \"sba_1234567890abcdef01\",\n      \"integration_id\": \"aci_1234567890abcdef01\",\n      \"state\": \"processed\",\n      \"action_type\": \"aws_s3_upload\",\n      \"action_category\": \"file_upload\",\n      \"result_data\": {\n        \"s3_key\": \"templates/tpl_eGc5CmFbPnCCmerqsx/sub_gzYpKDYFqEHxzca4kK.pdf\",\n        \"s3_url\": \"https://docspring-s3-example.s3.amazonaws.com/templates/tpl_eGc5CmFbPnCCmerqsx/sub_gzYpKDYFqEHxzca4kK.pdf\",\n        \"s3_bucket\": \"docspring-s3-example\",\n        \"s3_region\": \"us-east-1\"\n      },\n      \"error_message\": null\n    }\n  ],\n  \"source\": \"api\",\n  \"referrer\": null,\n  \"data\": {\n    \"first_name\": \"John C. D. Rom Laserdisk F. Scott Fitzgerald\",\n    \"last_name\": \"Smith\",\n    \"phone_number\": \"+11234567890\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ec147d18-35b7-41db-a7f1-196d90780add",
-              "name": "authentication failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "submissions",
-                    ":submission_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "include_data",
-                      "value": ""
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "submission_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1d6622b1-d1ae-4b02-a110-6bc2b3dc6a85",
-              "name": "submission not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "submissions",
-                    ":submission_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "include_data",
-                      "value": ""
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "submission_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Submission not found.\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "84768636-cc26-4e75-8b76-6c1d02b00e1d",
-          "name": "Expire a PDF submission",
-          "request": {
-            "name": "Expire a PDF submission",
-            "description": {
-              "content": "Expiring a PDF submission deletes the PDF and removes the data from our database.\nThis is useful for invalidating sensitive documents after they've been downloaded.\nYou can also [configure a data retention policy for your submissions](https://docspring.com/docs/template-editor/settings/#expire-submissions)\nso that they automatically expire.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "submissions",
-                ":submission_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "submission_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": {
-              "type": "basic",
-              "basic": [
-                {
-                  "key": "username",
-                  "value": "{{basicAuthUsername}}"
-                },
-                {
-                  "key": "password",
-                  "value": "{{basicAuthPassword}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "550bb233-f9b7-497a-99e0-339c06b39409",
-              "name": "submission was expired",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "submissions",
-                    ":submission_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "submission_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"batch_id\": null,\n  \"data_requests\": [],\n  \"editable\": false,\n  \"error_message\": null,\n  \"expired\": true,\n  \"expires_at\": \"2018-10-20T13:00:00Z\",\n  \"id\": \"sub_1234567890abcdef01\",\n  \"json_schema_errors\": [],\n  \"metadata\": {\n    \"qux\": \"abc\",\n    \"user_id\": 42\n  },\n  \"password\": null,\n  \"processed_at\": \"2020-05-14T02:00:00Z\",\n  \"state\": \"processed\",\n  \"template_id\": \"tpl_1234567890abcdef01\",\n  \"template_type\": \"pdf\",\n  \"template_version\": null,\n  \"test\": true,\n  \"truncated_text\": {\n    \"first_name\": [\n      \"F. Scott Fitzgerald\"\n    ]\n  },\n  \"pdf_hash\": \"bbc369dd471442006963e3244a1b43610e066165c09770978221f91bd7ace8f5\",\n  \"download_url\": null,\n  \"permanent_download_url\": null,\n  \"preview_download_url\": null,\n  \"preview_generated_at\": null,\n  \"audit_trail_download_url\": null,\n  \"actions\": [\n    {\n      \"id\": \"sba_1234567890abcdef01\",\n      \"integration_id\": \"aci_1234567890abcdef01\",\n      \"state\": \"processed\",\n      \"action_type\": \"aws_s3_upload\",\n      \"action_category\": \"file_upload\",\n      \"result_data\": {\n        \"s3_key\": \"templates/tpl_eGc5CmFbPnCCmerqsx/sub_gzYpKDYFqEHxzca4kK.pdf\",\n        \"s3_url\": \"https://docspring-s3-example.s3.amazonaws.com/templates/tpl_eGc5CmFbPnCCmerqsx/sub_gzYpKDYFqEHxzca4kK.pdf\",\n        \"s3_bucket\": \"docspring-s3-example\",\n        \"s3_region\": \"us-east-1\"\n      },\n      \"error_message\": null\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "721040a1-20b8-4372-8643-62b28e8ccce2",
-              "name": "authentication failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "submissions",
-                    ":submission_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "submission_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Invalid API token secret\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "606124a5-7818-460d-8522-d6c87277246b",
-              "name": "test API token used",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "submissions",
-                    ":submission_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "submission_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"You must use a live API token to expire a submission.\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c9ec780f-a33b-496b-b1f9-64cc19e86488",
-              "name": "submission not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "submissions",
-                    ":submission_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "submission_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Submission not found.\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "350dbccd-dfda-49d0-ac8e-0e3f1d3e0f76",
-          "name": "Generate a preview PDF for partially completed data requests",
-          "request": {
-            "name": "Generate a preview PDF for partially completed data requests",
-            "description": {
-              "content": "Generates a preview PDF for a submission with partially completed data requests. Useful\nfor showing users what the final document will look like before all signatures or data\nhave been collected. The preview includes any data collected so far.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "submissions",
-                ":submission_id",
-                "generate_preview"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "submission_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "basic",
-              "basic": [
-                {
-                  "key": "username",
-                  "value": "{{basicAuthUsername}}"
-                },
-                {
-                  "key": "password",
-                  "value": "{{basicAuthPassword}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "ec5bb19b-1685-4ec5-a662-c91b346b954a",
-              "name": "preview was successfully requested",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "submissions",
-                    ":submission_id",
-                    "generate_preview"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "submission_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"success\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "45318b4e-74d1-4ed3-a16c-fb009c6f306c",
-              "name": "submission not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "submissions",
-                    ":submission_id",
-                    "generate_preview"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "submission_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Submission not found.\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c2111b1e-c55d-42cc-9666-812b5bbc1413",
-              "name": "error requesting preview",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "submissions",
-                    ":submission_id",
-                    "generate_preview"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "submission_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Preview PDF cannot be generated when all data requests have been completed.\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "42ae07d4-2400-4dbb-8671-d475e611478f",
-          "name": "List all submissions",
-          "request": {
-            "name": "List all submissions",
-            "description": {
-              "content": "Returns a paginated list of all PDF submissions across all templates in your account.\nCan be filtered by date range and submission type (test/live). Supports cursor-based\npagination and optionally includes submission data for each result.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "submissions"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
-                  "key": "cursor",
-                  "value": ""
-                },
-                {
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
-                  "key": "limit",
-                  "value": ""
-                },
-                {
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
-                  "key": "created_after",
-                  "value": ""
-                },
-                {
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
-                  "key": "created_before",
-                  "value": ""
-                },
-                {
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
-                  "key": "type",
-                  "value": ""
-                },
-                {
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
-                  "key": "include_data",
-                  "value": ""
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "basic",
-              "basic": [
-                {
-                  "key": "username",
-                  "value": "{{basicAuthUsername}}"
-                },
-                {
-                  "key": "password",
-                  "value": "{{basicAuthPassword}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "51c0dec5-2995-446a-b494-cce69ae785b0",
-              "name": "listing submissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "submissions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "cursor",
-                      "value": ""
-                    },
-                    {
-                      "key": "limit",
-                      "value": ""
-                    },
-                    {
-                      "key": "created_after",
-                      "value": ""
-                    },
-                    {
-                      "key": "created_before",
-                      "value": ""
-                    },
-                    {
-                      "key": "type",
-                      "value": ""
-                    },
-                    {
-                      "key": "include_data",
-                      "value": ""
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"submissions\": [\n    {\n      \"batch_id\": null,\n      \"data_requests\": [],\n      \"editable\": false,\n      \"error_message\": null,\n      \"expired\": false,\n      \"expires_at\": \"2020-10-27T13:00:00Z\",\n      \"id\": \"sub_1234567890abcdef01\",\n      \"json_schema_errors\": [],\n      \"metadata\": {\n        \"qux\": \"abc\",\n        \"user_id\": 42\n      },\n      \"password\": null,\n      \"processed_at\": \"2020-05-14T02:00:00Z\",\n      \"state\": \"processed\",\n      \"template_id\": \"tpl_1234567890abcdef01\",\n      \"template_type\": \"pdf\",\n      \"template_version\": null,\n      \"test\": true,\n      \"truncated_text\": {\n        \"first_name\": [\n          \"F. Scott Fitzgerald\"\n        ]\n      },\n      \"pdf_hash\": \"bbc369dd471442006963e3244a1b43610e066165c09770978221f91bd7ace8f5\",\n      \"download_url\": \"https://example.com/submissions/submission.pdf\",\n      \"permanent_download_url\": \"https://app.docspring.com/submissions/sub_1234567890abcdef01/download\",\n      \"preview_download_url\": null,\n      \"preview_generated_at\": null,\n      \"audit_trail_download_url\": null,\n      \"actions\": [],\n      \"source\": \"api\",\n      \"referrer\": null,\n      \"data\": {\n        \"first_name\": \"John C. D. Rom Laserdisk F. Scott Fitzgerald\",\n        \"last_name\": \"Smith\",\n        \"phone_number\": \"+11234567890\"\n      }\n    },\n    {\n      \"batch_id\": null,\n      \"data_requests\": [],\n      \"editable\": false,\n      \"error_message\": null,\n      \"expired\": false,\n      \"expires_at\": \"2020-10-27T13:00:00Z\",\n      \"id\": \"sub_1234567890abcdef02\",\n      \"json_schema_errors\": [],\n      \"metadata\": {\n        \"qux\": \"abc\",\n        \"user_id\": 42\n      },\n      \"password\": null,\n      \"processed_at\": \"2020-05-14T02:00:00Z\",\n      \"state\": \"processed\",\n      \"template_id\": \"tpl_1234567890abcdef01\",\n      \"template_type\": \"pdf\",\n      \"template_version\": null,\n      \"test\": true,\n      \"truncated_text\": {\n        \"first_name\": [\n          \"F. Scott Fitzgerald\"\n        ]\n      },\n      \"pdf_hash\": \"bbc369dd471442006963e3244a1b43610e066165c09770978221f91bd7ace8f5\",\n      \"download_url\": \"https://example.com/submissions/submission.pdf\",\n      \"permanent_download_url\": \"https://app.docspring.com/submissions/sub_1234567890abcdef02/download\",\n      \"preview_download_url\": null,\n      \"preview_generated_at\": null,\n      \"audit_trail_download_url\": null,\n      \"actions\": [],\n      \"source\": \"api\",\n      \"referrer\": null,\n      \"data\": {\n        \"first_name\": \"John C. D. Rom Laserdisk F. Scott Fitzgerald\",\n        \"last_name\": \"Smith\",\n        \"phone_number\": \"+11234567890\"\n      }\n    },\n    {\n      \"batch_id\": null,\n      \"data_requests\": [],\n      \"editable\": false,\n      \"error_message\": null,\n      \"expired\": false,\n      \"expires_at\": \"2020-10-27T13:00:00Z\",\n      \"id\": \"sub_1234567890abcdef03\",\n      \"json_schema_errors\": [],\n      \"metadata\": {\n        \"qux\": \"abc\",\n        \"user_id\": 42\n      },\n      \"password\": null,\n      \"processed_at\": \"2020-05-14T02:00:00Z\",\n      \"state\": \"processed\",\n      \"template_id\": \"tpl_1234567890abcdef01\",\n      \"template_type\": \"pdf\",\n      \"template_version\": null,\n      \"test\": true,\n      \"truncated_text\": {\n        \"first_name\": [\n          \"F. Scott Fitzgerald\"\n        ]\n      },\n      \"pdf_hash\": \"bbc369dd471442006963e3244a1b43610e066165c09770978221f91bd7ace8f5\",\n      \"download_url\": \"https://example.com/submissions/submission.pdf\",\n      \"permanent_download_url\": \"https://app.docspring.com/submissions/sub_1234567890abcdef03/download\",\n      \"preview_download_url\": null,\n      \"preview_generated_at\": null,\n      \"audit_trail_download_url\": null,\n      \"actions\": [],\n      \"source\": \"api\",\n      \"referrer\": null,\n      \"data\": {\n        \"first_name\": \"John C. D. Rom Laserdisk F. Scott Fitzgerald\",\n        \"last_name\": \"Smith\",\n        \"phone_number\": \"+11234567890\"\n      }\n    }\n  ],\n  \"next_cursor\": \"sub_1234567890abcdef03\",\n  \"limit\": 3\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4769e746-e37c-4c80-a8e4-fe25e8043bb4",
-              "name": "authentication failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "submissions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "cursor",
-                      "value": ""
-                    },
-                    {
-                      "key": "limit",
-                      "value": ""
-                    },
-                    {
-                      "key": "created_after",
-                      "value": ""
-                    },
-                    {
-                      "key": "created_before",
-                      "value": ""
-                    },
-                    {
-                      "key": "type",
-                      "value": ""
-                    },
-                    {
-                      "key": "include_data",
-                      "value": ""
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "585f2c1a-e14a-4f32-aff9-39ce2fd90378",
-              "name": "invalid type",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "submissions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "cursor",
-                      "value": ""
-                    },
-                    {
-                      "key": "limit",
-                      "value": ""
-                    },
-                    {
-                      "key": "created_after",
-                      "value": ""
-                    },
-                    {
-                      "key": "created_before",
-                      "value": ""
-                    },
-                    {
-                      "key": "type",
-                      "value": ""
-                    },
-                    {
-                      "key": "include_data",
-                      "value": ""
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Invalid submission type: 'foo'\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "3ec05a85-ac31-4f9e-a476-b1b07bccb570",
+          "createdAt": "2026-10-22T01:40:38.000Z",
+          "updatedAt": "2026-10-22T01:40:38.000Z",
+          "uid": "35240-3ec05a85-ac31-4f9e-a476-b1b07bccb570"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
+      "id": "1129b11b-2544-4759-bef8-7814f46349b9",
+      "createdAt": "2026-10-22T01:40:38.000Z",
+      "updatedAt": "2026-10-22T01:40:38.000Z",
+      "uid": "35240-1129b11b-2544-4759-bef8-7814f46349b9"
+    },
     {
-      "type": "string",
-      "value": "https://sync.api.docspring.com/api/v1",
-      "key": "baseUrl"
+      "name": "submissions",
+      "item": [
+        {
+          "name": "{submission_id}",
+          "item": [
+            {
+              "name": "generate_preview",
+              "item": [
+                {
+                  "name": "Generate a preview PDF for partially completed data requests",
+                  "id": "0004eeed-2220-4653-9570-66ab8aa84eb9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "basic",
+                      "basic": [
+                        {
+                          "key": "username",
+                          "value": "{{basicAuthUsername}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{basicAuthPassword}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/submissions/:submission_id/generate_preview",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "submissions",
+                        ":submission_id",
+                        "generate_preview"
+                      ],
+                      "variable": [
+                        {
+                          "id": "8dc2fce4-56b0-4026-b7a8-9be6515c0893",
+                          "key": "submission_id",
+                          "value": "",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Generates a preview PDF for a submission with partially completed data requests. Useful\nfor showing users what the final document will look like before all signatures or data\nhave been collected. The preview includes any data collected so far."
+                  },
+                  "response": [
+                    {
+                      "id": "5a10f849-b929-47cb-b927-f192d74ecf5c",
+                      "name": "preview was successfully requested",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/submissions/:submission_id/generate_preview",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "submissions",
+                            ":submission_id",
+                            "generate_preview"
+                          ],
+                          "variable": [
+                            {
+                              "key": "submission_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:38.000Z",
+                      "updatedAt": "2026-10-22T01:40:38.000Z",
+                      "uid": "35240-5a10f849-b929-47cb-b927-f192d74ecf5c"
+                    },
+                    {
+                      "id": "ffbf27ec-733f-441c-b137-788f3e3f11a7",
+                      "name": "submission not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/submissions/:submission_id/generate_preview",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "submissions",
+                            ":submission_id",
+                            "generate_preview"
+                          ],
+                          "variable": [
+                            {
+                              "key": "submission_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:38.000Z",
+                      "updatedAt": "2026-10-22T01:40:38.000Z",
+                      "uid": "35240-ffbf27ec-733f-441c-b137-788f3e3f11a7"
+                    },
+                    {
+                      "id": "a0bf337f-aa99-40a3-8b72-2e25c5642241",
+                      "name": "error requesting preview",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/submissions/:submission_id/generate_preview",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "submissions",
+                            ":submission_id",
+                            "generate_preview"
+                          ],
+                          "variable": [
+                            {
+                              "key": "submission_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:38.000Z",
+                      "updatedAt": "2026-10-22T01:40:38.000Z",
+                      "uid": "35240-a0bf337f-aa99-40a3-8b72-2e25c5642241"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:40:38.000Z",
+                  "updatedAt": "2026-10-22T01:40:38.000Z",
+                  "uid": "35240-0004eeed-2220-4653-9570-66ab8aa84eb9"
+                }
+              ],
+              "id": "9ce0d8e7-2e33-4bb9-a6d8-0ebeb3de321c",
+              "createdAt": "2026-10-22T01:40:38.000Z",
+              "updatedAt": "2026-10-22T01:40:38.000Z",
+              "uid": "35240-9ce0d8e7-2e33-4bb9-a6d8-0ebeb3de321c"
+            },
+            {
+              "name": "Check the status of a PDF",
+              "id": "29e4f72e-ba06-4fa3-8620-b90e8017e0f1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "username",
+                      "value": "{{basicAuthUsername}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{basicAuthPassword}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/submissions/:submission_id?include_data=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "submissions",
+                    ":submission_id"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_data",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "1090d27f-b8c2-46a8-b044-037b58da6f30",
+                      "key": "submission_id",
+                      "value": "",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Retrieves the details and status of a PDF submission. Returns processing state, download\nURL (if processed), metadata, submission data (optional), and information about any\nintegrated actions. Use this to poll for completion when using asynchronous processing."
+              },
+              "response": [
+                {
+                  "id": "8589a916-0942-4a33-85d6-795e010e9a3b",
+                  "name": "processed submission found with data",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/submissions/:submission_id?include_data=",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "submissions",
+                        ":submission_id"
+                      ],
+                      "query": [
+                        {
+                          "key": "include_data",
+                          "value": ""
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "submission_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"actions\": [\n    {\n      \"action_category\": \"file_upload\",\n      \"action_type\": \"webhook\",\n      \"error_message\": \"<string,null>\",\n      \"id\": \"<string,null>\",\n      \"integration_id\": \"<string,null>\",\n      \"result_data\": {},\n      \"state\": \"processed\"\n    },\n    {\n      \"action_category\": \"notification\",\n      \"action_type\": \"webhook\",\n      \"error_message\": \"<string,null>\",\n      \"id\": \"<string,null>\",\n      \"integration_id\": \"<string,null>\",\n      \"result_data\": {},\n      \"state\": \"failed\"\n    }\n  ],\n  \"audit_trail_download_url\": \"<string,null>\",\n  \"batch_id\": \"<string,null>\",\n  \"data\": \"<object,null>\",\n  \"data_requests\": [\n    {\n      \"auth_phone_number_hash\": \"<string,null>\",\n      \"auth_provider\": \"<string,null>\",\n      \"auth_second_factor_type\": \"none\",\n      \"auth_session_id_hash\": \"<string,null>\",\n      \"auth_session_started_at\": \"<string,null>\",\n      \"auth_type\": \"phone_number\",\n      \"auth_user_id_hash\": \"<string,null>\",\n      \"auth_username_hash\": \"<string,null>\",\n      \"completed_at\": \"<string,null>\",\n      \"data\": \"<object,null>\",\n      \"email\": \"<string,null>\",\n      \"fields\": \"<array,null>\",\n      \"id\": \"<string,null>\",\n      \"ip_address\": \"<string,null>\",\n      \"metadata\": \"<object,null>\",\n      \"name\": \"<string,null>\",\n      \"order\": \"<integer,null>\",\n      \"sort_order\": \"<integer>\",\n      \"state\": \"pending\",\n      \"user_agent\": \"<string,null>\",\n      \"viewed_at\": \"<string,null>\"\n    },\n    {\n      \"auth_phone_number_hash\": \"<string,null>\",\n      \"auth_provider\": \"<string,null>\",\n      \"auth_second_factor_type\": \"phone_number\",\n      \"auth_session_id_hash\": \"<string,null>\",\n      \"auth_session_started_at\": \"<string,null>\",\n      \"auth_type\": \"none\",\n      \"auth_user_id_hash\": \"<string,null>\",\n      \"auth_username_hash\": \"<string,null>\",\n      \"completed_at\": \"<string,null>\",\n      \"data\": \"<object,null>\",\n      \"email\": \"<string,null>\",\n      \"fields\": \"<array,null>\",\n      \"id\": \"<string,null>\",\n      \"ip_address\": \"<string,null>\",\n      \"metadata\": \"<object,null>\",\n      \"name\": \"<string,null>\",\n      \"order\": \"<integer,null>\",\n      \"sort_order\": \"<integer>\",\n      \"state\": \"completed\",\n      \"user_agent\": \"<string,null>\",\n      \"viewed_at\": \"<string,null>\"\n    }\n  ],\n  \"download_url\": \"<string,null>\",\n  \"editable\": \"<boolean,null>\",\n  \"error_message\": \"<string,null>\",\n  \"expired\": \"<boolean>\",\n  \"expires_at\": \"<string,null>\",\n  \"id\": \"<string,null>\",\n  \"json_schema_errors\": \"<array,null>\",\n  \"metadata\": {},\n  \"password\": \"<string,null>\",\n  \"pdf_hash\": \"<string,null>\",\n  \"permanent_download_url\": \"<string,null>\",\n  \"preview_download_url\": \"<string,null>\",\n  \"preview_generated_at\": \"<string,null>\",\n  \"processed_at\": \"<string,null>\",\n  \"referrer\": \"<string,null>\",\n  \"source\": \"api\",\n  \"state\": \"syntax_error\",\n  \"template_id\": \"<string,null>\",\n  \"template_type\": \"html\",\n  \"template_version\": \"<string,null>\",\n  \"test\": \"<boolean>\",\n  \"truncated_text\": \"<object,null>\"\n}",
+                  "createdAt": "2026-10-22T01:40:38.000Z",
+                  "updatedAt": "2026-10-22T01:40:38.000Z",
+                  "uid": "35240-8589a916-0942-4a33-85d6-795e010e9a3b"
+                },
+                {
+                  "id": "379e9380-8475-403b-a74e-a8fa6aa5c88a",
+                  "name": "authentication failed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/submissions/:submission_id?include_data=",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "submissions",
+                        ":submission_id"
+                      ],
+                      "query": [
+                        {
+                          "key": "include_data",
+                          "value": ""
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "submission_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:38.000Z",
+                  "updatedAt": "2026-10-22T01:40:38.000Z",
+                  "uid": "35240-379e9380-8475-403b-a74e-a8fa6aa5c88a"
+                },
+                {
+                  "id": "7b074c19-70f8-46f9-894c-d87ca8211886",
+                  "name": "submission not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/submissions/:submission_id?include_data=",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "submissions",
+                        ":submission_id"
+                      ],
+                      "query": [
+                        {
+                          "key": "include_data",
+                          "value": ""
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "submission_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:38.000Z",
+                  "updatedAt": "2026-10-22T01:40:38.000Z",
+                  "uid": "35240-7b074c19-70f8-46f9-894c-d87ca8211886"
+                }
+              ],
+              "createdAt": "2026-10-22T01:40:38.000Z",
+              "updatedAt": "2026-10-22T01:40:38.000Z",
+              "uid": "35240-29e4f72e-ba06-4fa3-8620-b90e8017e0f1"
+            },
+            {
+              "name": "Expire a PDF submission",
+              "id": "bb323f57-fee9-4a50-b83d-41583af4e626",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "username",
+                      "value": "{{basicAuthUsername}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{basicAuthPassword}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/submissions/:submission_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "submissions",
+                    ":submission_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "1cb563a4-eabe-4c65-a635-e240156e269f",
+                      "key": "submission_id",
+                      "value": "",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Expiring a PDF submission deletes the PDF and removes the data from our database.\nThis is useful for invalidating sensitive documents after they've been downloaded.\nYou can also configure a data retention policy for your submissions\nso that they automatically expire."
+              },
+              "response": [
+                {
+                  "id": "96f6a960-faf9-48ea-b77b-da80f1bed8ab",
+                  "name": "submission was expired",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/submissions/:submission_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "submissions",
+                        ":submission_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "submission_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"actions\": [\n    {\n      \"action_category\": \"file_upload\",\n      \"action_type\": \"email\",\n      \"error_message\": \"<string,null>\",\n      \"id\": \"<string,null>\",\n      \"integration_id\": \"<string,null>\",\n      \"result_data\": {},\n      \"state\": \"processed\"\n    },\n    {\n      \"action_category\": \"file_upload\",\n      \"action_type\": \"webhook\",\n      \"error_message\": \"<string,null>\",\n      \"id\": \"<string,null>\",\n      \"integration_id\": \"<string,null>\",\n      \"result_data\": {},\n      \"state\": \"pending\"\n    }\n  ],\n  \"audit_trail_download_url\": \"<string,null>\",\n  \"batch_id\": \"<string,null>\",\n  \"data_requests\": [\n    {\n      \"auth_phone_number_hash\": \"<string,null>\",\n      \"auth_provider\": \"<string,null>\",\n      \"auth_second_factor_type\": \"phone_number\",\n      \"auth_session_id_hash\": \"<string,null>\",\n      \"auth_session_started_at\": \"<string,null>\",\n      \"auth_type\": \"phone_number\",\n      \"auth_user_id_hash\": \"<string,null>\",\n      \"auth_username_hash\": \"<string,null>\",\n      \"completed_at\": \"<string,null>\",\n      \"data\": \"<object,null>\",\n      \"email\": \"<string,null>\",\n      \"fields\": \"<array,null>\",\n      \"id\": \"<string,null>\",\n      \"ip_address\": \"<string,null>\",\n      \"metadata\": \"<object,null>\",\n      \"name\": \"<string,null>\",\n      \"order\": \"<integer,null>\",\n      \"sort_order\": \"<integer>\",\n      \"state\": \"completed\",\n      \"user_agent\": \"<string,null>\",\n      \"viewed_at\": \"<string,null>\"\n    },\n    {\n      \"auth_phone_number_hash\": \"<string,null>\",\n      \"auth_provider\": \"<string,null>\",\n      \"auth_second_factor_type\": \"fingerprint\",\n      \"auth_session_id_hash\": \"<string,null>\",\n      \"auth_session_started_at\": \"<string,null>\",\n      \"auth_type\": \"phone_number\",\n      \"auth_user_id_hash\": \"<string,null>\",\n      \"auth_username_hash\": \"<string,null>\",\n      \"completed_at\": \"<string,null>\",\n      \"data\": \"<object,null>\",\n      \"email\": \"<string,null>\",\n      \"fields\": \"<array,null>\",\n      \"id\": \"<string,null>\",\n      \"ip_address\": \"<string,null>\",\n      \"metadata\": \"<object,null>\",\n      \"name\": \"<string,null>\",\n      \"order\": \"<integer,null>\",\n      \"sort_order\": \"<integer>\",\n      \"state\": \"completed\",\n      \"user_agent\": \"<string,null>\",\n      \"viewed_at\": \"<string,null>\"\n    }\n  ],\n  \"download_url\": \"<string,null>\",\n  \"editable\": \"<boolean,null>\",\n  \"error_message\": \"<string,null>\",\n  \"expired\": \"<boolean>\",\n  \"expires_at\": \"<string,null>\",\n  \"id\": \"<string,null>\",\n  \"json_schema_errors\": \"<array,null>\",\n  \"metadata\": {},\n  \"password\": \"<string,null>\",\n  \"pdf_hash\": \"<string,null>\",\n  \"permanent_download_url\": \"<string,null>\",\n  \"preview_download_url\": \"<string,null>\",\n  \"preview_generated_at\": \"<string,null>\",\n  \"processed_at\": \"<string,null>\",\n  \"state\": \"image_download_failed\",\n  \"template_id\": \"<string,null>\",\n  \"template_type\": \"html\",\n  \"template_version\": \"<string,null>\",\n  \"test\": \"<boolean>\",\n  \"truncated_text\": \"<object,null>\"\n}",
+                  "createdAt": "2026-10-22T01:40:38.000Z",
+                  "updatedAt": "2026-10-22T01:40:38.000Z",
+                  "uid": "35240-96f6a960-faf9-48ea-b77b-da80f1bed8ab"
+                },
+                {
+                  "id": "58babfe1-87f2-4eb0-9987-a6d0369e38d2",
+                  "name": "authentication failed",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/submissions/:submission_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "submissions",
+                        ":submission_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "submission_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:38.000Z",
+                  "updatedAt": "2026-10-22T01:40:38.000Z",
+                  "uid": "35240-58babfe1-87f2-4eb0-9987-a6d0369e38d2"
+                },
+                {
+                  "id": "021b787b-2c3f-4c65-b4ec-dcb412b66e87",
+                  "name": "test API token used",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/submissions/:submission_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "submissions",
+                        ":submission_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "submission_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:38.000Z",
+                  "updatedAt": "2026-10-22T01:40:38.000Z",
+                  "uid": "35240-021b787b-2c3f-4c65-b4ec-dcb412b66e87"
+                },
+                {
+                  "id": "bcc54438-5318-4afe-a66a-e86c17f9bd25",
+                  "name": "submission not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/submissions/:submission_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "submissions",
+                        ":submission_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "submission_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:38.000Z",
+                  "updatedAt": "2026-10-22T01:40:38.000Z",
+                  "uid": "35240-bcc54438-5318-4afe-a66a-e86c17f9bd25"
+                }
+              ],
+              "createdAt": "2026-10-22T01:40:38.000Z",
+              "updatedAt": "2026-10-22T01:40:38.000Z",
+              "uid": "35240-bb323f57-fee9-4a50-b83d-41583af4e626"
+            }
+          ],
+          "id": "eeb470ca-83e0-4ac1-a38c-0dc9ba9cfa8f",
+          "createdAt": "2026-10-22T01:40:38.000Z",
+          "updatedAt": "2026-10-22T01:40:38.000Z",
+          "uid": "35240-eeb470ca-83e0-4ac1-a38c-0dc9ba9cfa8f"
+        },
+        {
+          "name": "List all submissions",
+          "id": "c4e70dd9-e7c9-4a02-9f2c-231f7453c6fa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/submissions?cursor=&limit=&created_after=&created_before=&type=&include_data=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "submissions"
+              ],
+              "query": [
+                {
+                  "key": "cursor",
+                  "value": ""
+                },
+                {
+                  "key": "limit",
+                  "value": ""
+                },
+                {
+                  "key": "created_after",
+                  "value": ""
+                },
+                {
+                  "key": "created_before",
+                  "value": ""
+                },
+                {
+                  "key": "type",
+                  "value": ""
+                },
+                {
+                  "key": "include_data",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Returns a paginated list of all PDF submissions across all templates in your account.\nCan be filtered by date range and submission type (test/live). Supports cursor-based\npagination and optionally includes submission data for each result."
+          },
+          "response": [
+            {
+              "id": "1c398f53-27f3-4ced-b2b0-4ac34007395f",
+              "name": "listing submissions",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/submissions?cursor=&limit=&created_after=&created_before=&type=&include_data=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "submissions"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": ""
+                    },
+                    {
+                      "key": "created_after",
+                      "value": ""
+                    },
+                    {
+                      "key": "created_before",
+                      "value": ""
+                    },
+                    {
+                      "key": "type",
+                      "value": ""
+                    },
+                    {
+                      "key": "include_data",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"submissions\": [\n    {\n      \"actions\": [\n        {\n          \"action_category\": \"notification\",\n          \"action_type\": \"email\",\n          \"error_message\": \"<string,null>\",\n          \"id\": \"<string,null>\",\n          \"integration_id\": \"<string,null>\",\n          \"result_data\": {},\n          \"state\": \"pending\"\n        },\n        {\n          \"action_category\": \"file_upload\",\n          \"action_type\": \"aws_s3_upload\",\n          \"error_message\": \"<string,null>\",\n          \"id\": \"<string,null>\",\n          \"integration_id\": \"<string,null>\",\n          \"result_data\": {},\n          \"state\": \"error\"\n        }\n      ],\n      \"audit_trail_download_url\": \"<string,null>\",\n      \"batch_id\": \"<string,null>\",\n      \"data\": \"<object,null>\",\n      \"data_requests\": [\n        {\n          \"auth_phone_number_hash\": \"<string,null>\",\n          \"auth_provider\": \"<string,null>\",\n          \"auth_second_factor_type\": \"none\",\n          \"auth_session_id_hash\": \"<string,null>\",\n          \"auth_session_started_at\": \"<string,null>\",\n          \"auth_type\": \"none\",\n          \"auth_user_id_hash\": \"<string,null>\",\n          \"auth_username_hash\": \"<string,null>\",\n          \"completed_at\": \"<string,null>\",\n          \"data\": \"<object,null>\",\n          \"email\": \"<string,null>\",\n          \"fields\": \"<array,null>\",\n          \"id\": \"<string,null>\",\n          \"ip_address\": \"<string,null>\",\n          \"metadata\": \"<object,null>\",\n          \"name\": \"<string,null>\",\n          \"order\": \"<integer,null>\",\n          \"sort_order\": \"<integer>\",\n          \"state\": \"completed\",\n          \"user_agent\": \"<string,null>\",\n          \"viewed_at\": \"<string,null>\"\n        },\n        {\n          \"auth_phone_number_hash\": \"<string,null>\",\n          \"auth_provider\": \"<string,null>\",\n          \"auth_second_factor_type\": \"none\",\n          \"auth_session_id_hash\": \"<string,null>\",\n          \"auth_session_started_at\": \"<string,null>\",\n          \"auth_type\": \"ldap\",\n          \"auth_user_id_hash\": \"<string,null>\",\n          \"auth_username_hash\": \"<string,null>\",\n          \"completed_at\": \"<string,null>\",\n          \"data\": \"<object,null>\",\n          \"email\": \"<string,null>\",\n          \"fields\": \"<array,null>\",\n          \"id\": \"<string,null>\",\n          \"ip_address\": \"<string,null>\",\n          \"metadata\": \"<object,null>\",\n          \"name\": \"<string,null>\",\n          \"order\": \"<integer,null>\",\n          \"sort_order\": \"<integer>\",\n          \"state\": \"pending\",\n          \"user_agent\": \"<string,null>\",\n          \"viewed_at\": \"<string,null>\"\n        }\n      ],\n      \"download_url\": \"<string,null>\",\n      \"editable\": \"<boolean,null>\",\n      \"error_message\": \"<string,null>\",\n      \"expired\": \"<boolean>\",\n      \"expires_at\": \"<string,null>\",\n      \"id\": \"<string,null>\",\n      \"json_schema_errors\": \"<array,null>\",\n      \"metadata\": {},\n      \"password\": \"<string,null>\",\n      \"pdf_hash\": \"<string,null>\",\n      \"permanent_download_url\": \"<string,null>\",\n      \"preview_download_url\": \"<string,null>\",\n      \"preview_generated_at\": \"<string,null>\",\n      \"processed_at\": \"<string,null>\",\n      \"referrer\": \"<string,null>\",\n      \"source\": \"reprocess\",\n      \"state\": \"license_revoked\",\n      \"template_id\": \"<string,null>\",\n      \"template_type\": \"html\",\n      \"template_version\": \"<string,null>\",\n      \"test\": \"<boolean>\",\n      \"truncated_text\": \"<object,null>\"\n    },\n    {\n      \"actions\": [\n        {\n          \"action_category\": \"file_upload\",\n          \"action_type\": \"email\",\n          \"error_message\": \"<string,null>\",\n          \"id\": \"<string,null>\",\n          \"integration_id\": \"<string,null>\",\n          \"result_data\": {},\n          \"state\": \"processed\"\n        },\n        {\n          \"action_category\": \"notification\",\n          \"action_type\": \"email\",\n          \"error_message\": \"<string,null>\",\n          \"id\": \"<string,null>\",\n          \"integration_id\": \"<string,null>\",\n          \"result_data\": {},\n          \"state\": \"failed\"\n        }\n      ],\n      \"audit_trail_download_url\": \"<string,null>\",\n      \"batch_id\": \"<string,null>\",\n      \"data\": \"<object,null>\",\n      \"data_requests\": [\n        {\n          \"auth_phone_number_hash\": \"<string,null>\",\n          \"auth_provider\": \"<string,null>\",\n          \"auth_second_factor_type\": \"fingerprint\",\n          \"auth_session_id_hash\": \"<string,null>\",\n          \"auth_session_started_at\": \"<string,null>\",\n          \"auth_type\": \"phone_number\",\n          \"auth_user_id_hash\": \"<string,null>\",\n          \"auth_username_hash\": \"<string,null>\",\n          \"completed_at\": \"<string,null>\",\n          \"data\": \"<object,null>\",\n          \"email\": \"<string,null>\",\n          \"fields\": \"<array,null>\",\n          \"id\": \"<string,null>\",\n          \"ip_address\": \"<string,null>\",\n          \"metadata\": \"<object,null>\",\n          \"name\": \"<string,null>\",\n          \"order\": \"<integer,null>\",\n          \"sort_order\": \"<integer>\",\n          \"state\": \"completed\",\n          \"user_agent\": \"<string,null>\",\n          \"viewed_at\": \"<string,null>\"\n        },\n        {\n          \"auth_phone_number_hash\": \"<string,null>\",\n          \"auth_provider\": \"<string,null>\",\n          \"auth_second_factor_type\": \"fingerprint\",\n          \"auth_session_id_hash\": \"<string,null>\",\n          \"auth_session_started_at\": \"<string,null>\",\n          \"auth_type\": \"password\",\n          \"auth_user_id_hash\": \"<string,null>\",\n          \"auth_username_hash\": \"<string,null>\",\n          \"completed_at\": \"<string,null>\",\n          \"data\": \"<object,null>\",\n          \"email\": \"<string,null>\",\n          \"fields\": \"<array,null>\",\n          \"id\": \"<string,null>\",\n          \"ip_address\": \"<string,null>\",\n          \"metadata\": \"<object,null>\",\n          \"name\": \"<string,null>\",\n          \"order\": \"<integer,null>\",\n          \"sort_order\": \"<integer>\",\n          \"state\": \"pending\",\n          \"user_agent\": \"<string,null>\",\n          \"viewed_at\": \"<string,null>\"\n        }\n      ],\n      \"download_url\": \"<string,null>\",\n      \"editable\": \"<boolean,null>\",\n      \"error_message\": \"<string,null>\",\n      \"expired\": \"<boolean>\",\n      \"expires_at\": \"<string,null>\",\n      \"id\": \"<string,null>\",\n      \"json_schema_errors\": \"<array,null>\",\n      \"metadata\": {},\n      \"password\": \"<string,null>\",\n      \"pdf_hash\": \"<string,null>\",\n      \"permanent_download_url\": \"<string,null>\",\n      \"preview_download_url\": \"<string,null>\",\n      \"preview_generated_at\": \"<string,null>\",\n      \"processed_at\": \"<string,null>\",\n      \"referrer\": \"<string,null>\",\n      \"source\": \"api\",\n      \"state\": \"image_processing_failed\",\n      \"template_id\": \"<string,null>\",\n      \"template_type\": \"html\",\n      \"template_version\": \"<string,null>\",\n      \"test\": \"<boolean>\",\n      \"truncated_text\": \"<object,null>\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"next_cursor\": \"<string,null>\"\n}",
+              "createdAt": "2026-10-22T01:40:38.000Z",
+              "updatedAt": "2026-10-22T01:40:38.000Z",
+              "uid": "35240-1c398f53-27f3-4ced-b2b0-4ac34007395f"
+            },
+            {
+              "id": "aaeb7687-cb48-4491-982f-71c41db726d6",
+              "name": "authentication failed",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/submissions?cursor=&limit=&created_after=&created_before=&type=&include_data=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "submissions"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": ""
+                    },
+                    {
+                      "key": "created_after",
+                      "value": ""
+                    },
+                    {
+                      "key": "created_before",
+                      "value": ""
+                    },
+                    {
+                      "key": "type",
+                      "value": ""
+                    },
+                    {
+                      "key": "include_data",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:40:38.000Z",
+              "updatedAt": "2026-10-22T01:40:38.000Z",
+              "uid": "35240-aaeb7687-cb48-4491-982f-71c41db726d6"
+            },
+            {
+              "id": "f98d6eb5-596e-4a97-9617-9647254b0645",
+              "name": "invalid type",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/submissions?cursor=&limit=&created_after=&created_before=&type=&include_data=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "submissions"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": ""
+                    },
+                    {
+                      "key": "created_after",
+                      "value": ""
+                    },
+                    {
+                      "key": "created_before",
+                      "value": ""
+                    },
+                    {
+                      "key": "type",
+                      "value": ""
+                    },
+                    {
+                      "key": "include_data",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:40:38.000Z",
+              "updatedAt": "2026-10-22T01:40:38.000Z",
+              "uid": "35240-f98d6eb5-596e-4a97-9617-9647254b0645"
+            }
+          ],
+          "createdAt": "2026-10-22T01:40:38.000Z",
+          "updatedAt": "2026-10-22T01:40:38.000Z",
+          "uid": "35240-c4e70dd9-e7c9-4a02-9f2c-231f7453c6fa"
+        }
+      ],
+      "id": "b2247c25-9956-45e5-b178-3fb501a20676",
+      "createdAt": "2026-10-22T01:40:38.000Z",
+      "updatedAt": "2026-10-22T01:40:38.000Z",
+      "uid": "35240-b2247c25-9956-45e5-b178-3fb501a20676"
     }
   ],
   "auth": {
@@ -1580,21 +1538,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "afa3953a-6695-462a-a088-d0d1b5edce97",
-    "name": "DocSpring Authentication PDF Submissions API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sync.api.docspring.com/api/v1"
     }
-  }
+  ]
 }

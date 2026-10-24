@@ -1,1037 +1,1056 @@
 {
+  "info": {
+    "_postman_id": "afdd264f-7330-4328-b772-27e45081b85b",
+    "name": "DocSpring Data Requests API",
+    "description": "Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:40:24.000Z",
+    "updatedAt": "2026-10-22T01:40:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-afdd264f-7330-4328-b772-27e45081b85b"
+  },
   "item": [
     {
-      "id": "7ed22970-99b5-46ba-9a56-afa7099c7550",
-      "name": "Data Requests",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "data_requests",
       "item": [
         {
-          "id": "14fe0a4a-4020-4e5d-8309-7c3797e8af7c",
-          "name": "Create a new event for emailing a signee a request for signature",
-          "request": {
-            "name": "Create a new event for emailing a signee a request for signature",
-            "description": {
-              "content": "Records user notification events for data requests. Use this to create an audit trail\nshowing when and how users were notified about data request forms. Supports email, SMS,\nand other notification types. Records the notification time for compliance tracking.\n\nSee also:\n- [Embedded Data Requests Guide](https://docspring.com/docs/guides/embedded-forms/embedded-data-requests/) - User notification workflow\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "data_requests",
-                ":data_request_id",
-                "events"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "data_request_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "basic",
-              "basic": [
-                {
-                  "key": "username",
-                  "value": "{{basicAuthUsername}}"
-                },
-                {
-                  "key": "password",
-                  "value": "{{basicAuthPassword}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"event_type\": \"<string>\",\n  \"message_recipient\": \"<string,null>\",\n  \"message_type\": \"<string>\",\n  \"occurred_at\": \"<string,null>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "{data_request_id}",
+          "item": [
             {
-              "id": "43c8c053-abd7-41d7-9e88-646245182b64",
-              "name": "event created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data_requests",
-                    ":data_request_id",
-                    "events"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+              "name": "events",
+              "item": [
+                {
+                  "name": "Create a new event for emailing a signee a request for signature",
+                  "id": "e63fbc41-b78d-4ee5-8e22-8e479f0152bb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "basic",
+                      "basic": [
+                        {
+                          "key": "username",
+                          "value": "{{basicAuthUsername}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{basicAuthPassword}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"event_type\": \"accepted_terms\",\n  \"message_recipient\": \"<string,null>\",\n  \"message_type\": \"whatsapp\",\n  \"occurred_at\": \"<string,null>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/data_requests/:data_request_id/events",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "data_requests",
+                        ":data_request_id",
+                        "events"
+                      ],
+                      "variable": [
+                        {
+                          "id": "19a56f5b-2212-4fb0-b871-e47c7d44ba43",
+                          "key": "data_request_id",
+                          "value": "",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Records user notification events for data requests. Use this to create an audit trail\nshowing when and how users were notified about data request forms. Supports email, SMS,\nand other notification types. Records the notification time for compliance tracking.\n\nSee also:\n- Embedded Data Requests Guide - User notification workflow"
+                  },
+                  "response": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "data_request_id",
-                      "description": "(Required) "
+                      "id": "f93bc124-b697-46d9-b0c4-c61de23f4d8a",
+                      "name": "event created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"event_type\": \"accepted_terms\",\n  \"message_recipient\": \"<string,null>\",\n  \"message_type\": \"whatsapp\",\n  \"occurred_at\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/data_requests/:data_request_id/events",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "data_requests",
+                            ":data_request_id",
+                            "events"
+                          ],
+                          "variable": [
+                            {
+                              "key": "data_request_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"error\",\n  \"event\": {\n    \"event_type\": \"decline_request\",\n    \"id\": \"<string,null>\",\n    \"message_recipient\": \"<string,null>\",\n    \"message_type\": \"whatsapp\",\n    \"occurred_at\": \"<string,null>\",\n    \"submission_data_request_id\": \"<string,null>\",\n    \"submission_id\": \"<string,null>\"\n  },\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-10-22T01:40:25.000Z",
+                      "updatedAt": "2026-10-22T01:40:25.000Z",
+                      "uid": "35240-f93bc124-b697-46d9-b0c4-c61de23f4d8a"
+                    },
+                    {
+                      "id": "b46087ef-a3cf-47d9-9d39-0af1c098525e",
+                      "name": "authentication failed",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"event_type\": \"accepted_terms\",\n  \"message_recipient\": \"<string,null>\",\n  \"message_type\": \"whatsapp\",\n  \"occurred_at\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/data_requests/:data_request_id/events",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "data_requests",
+                            ":data_request_id",
+                            "events"
+                          ],
+                          "variable": [
+                            {
+                              "key": "data_request_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:25.000Z",
+                      "updatedAt": "2026-10-22T01:40:25.000Z",
+                      "uid": "35240-b46087ef-a3cf-47d9-9d39-0af1c098525e"
+                    },
+                    {
+                      "id": "838ddd2b-399e-44f4-82cf-a9f8e9580349",
+                      "name": "message recipient must not be blank",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"event_type\": \"accepted_terms\",\n  \"message_recipient\": \"<string,null>\",\n  \"message_type\": \"whatsapp\",\n  \"occurred_at\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/data_requests/:data_request_id/events",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "data_requests",
+                            ":data_request_id",
+                            "events"
+                          ],
+                          "variable": [
+                            {
+                              "key": "data_request_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"error\",\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-10-22T01:40:25.000Z",
+                      "updatedAt": "2026-10-22T01:40:25.000Z",
+                      "uid": "35240-838ddd2b-399e-44f4-82cf-a9f8e9580349"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:40:25.000Z",
+                  "updatedAt": "2026-10-22T01:40:25.000Z",
+                  "uid": "35240-e63fbc41-b78d-4ee5-8e22-8e479f0152bb"
+                }
+              ],
+              "id": "8a0a3786-84e4-4b6c-9302-0bba3de3e6c5",
+              "createdAt": "2026-10-22T01:40:25.000Z",
+              "updatedAt": "2026-10-22T01:40:25.000Z",
+              "uid": "35240-8a0a3786-84e4-4b6c-9302-0bba3de3e6c5"
+            },
+            {
+              "name": "tokens",
+              "item": [
+                {
+                  "name": "Create a new data request token for form authentication",
+                  "id": "6f07b95d-fd83-4276-9b0e-f16d2b8b7c36",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "basic",
+                      "basic": [
+                        {
+                          "key": "username",
+                          "value": "{{basicAuthUsername}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{basicAuthPassword}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/data_requests/:data_request_id/tokens?type=",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "data_requests",
+                        ":data_request_id",
+                        "tokens"
+                      ],
+                      "query": [
+                        {
+                          "description": " (This can only be one of api,email)",
+                          "key": "type",
+                          "value": ""
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "fff7598f-7f87-4149-8585-97169862a2cc",
+                          "key": "data_request_id",
+                          "value": "",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Creates an authentication token for accessing a data request form. Tokens can be created\nfor API access (1 hour expiration) or email links (30 day expiration). Returns a token\nand a pre-authenticated URL for the data request form.\n\nSee also:\n- Embedded Data Requests Guide"
+                  },
+                  "response": [
+                    {
+                      "id": "9429a791-7e20-47da-a64b-e6df57c894a7",
+                      "name": "token created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/data_requests/:data_request_id/tokens?type=",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "data_requests",
+                            ":data_request_id",
+                            "tokens"
+                          ],
+                          "query": [
+                            {
+                              "description": " (This can only be one of api,email)",
+                              "key": "type",
+                              "value": ""
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "data_request_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"success\",\n  \"token\": {\n    \"data_request_url\": \"<string,null>\",\n    \"expires_at\": \"<string,null>\",\n    \"id\": \"<string,null>\",\n    \"secret\": \"<string>\"\n  },\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-10-22T01:40:25.000Z",
+                      "updatedAt": "2026-10-22T01:40:25.000Z",
+                      "uid": "35240-9429a791-7e20-47da-a64b-e6df57c894a7"
+                    },
+                    {
+                      "id": "43887614-5451-4d13-a36a-e8837caad8f1",
+                      "name": "authentication failed",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/data_requests/:data_request_id/tokens?type=",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "data_requests",
+                            ":data_request_id",
+                            "tokens"
+                          ],
+                          "query": [
+                            {
+                              "description": " (This can only be one of api,email)",
+                              "key": "type",
+                              "value": ""
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "data_request_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:25.000Z",
+                      "updatedAt": "2026-10-22T01:40:25.000Z",
+                      "uid": "35240-43887614-5451-4d13-a36a-e8837caad8f1"
+                    },
+                    {
+                      "id": "89a9364c-d8eb-4857-8d8c-1d1b3b6703e7",
+                      "name": "invalid request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/data_requests/:data_request_id/tokens?type=",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "data_requests",
+                            ":data_request_id",
+                            "tokens"
+                          ],
+                          "query": [
+                            {
+                              "description": " (This can only be one of api,email)",
+                              "key": "type",
+                              "value": ""
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "data_request_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:25.000Z",
+                      "updatedAt": "2026-10-22T01:40:25.000Z",
+                      "uid": "35240-89a9364c-d8eb-4857-8d8c-1d1b3b6703e7"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:40:25.000Z",
+                  "updatedAt": "2026-10-22T01:40:25.000Z",
+                  "uid": "35240-6f07b95d-fd83-4276-9b0e-f16d2b8b7c36"
+                }
+              ],
+              "id": "314a7ec9-10de-40f7-8202-53d2e9c6019d",
+              "createdAt": "2026-10-22T01:40:25.000Z",
+              "updatedAt": "2026-10-22T01:40:25.000Z",
+              "uid": "35240-314a7ec9-10de-40f7-8202-53d2e9c6019d"
+            },
+            {
+              "name": "Look up a submission data request",
+              "id": "41504e39-0050-4409-9c96-ac376aaa0bdb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "username",
+                      "value": "{{basicAuthUsername}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{basicAuthPassword}}",
+                      "type": "string"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"event_type\": \"send_request\",\n  \"message_type\": \"email\",\n  \"message_recipient\": \"test@test.com\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"success\",\n  \"event\": {\n    \"id\": \"dre_1234567890abcdef01\",\n    \"submission_id\": \"sub_1234567890abcdef01\",\n    \"submission_data_request_id\": \"drq_1234567890abcdef01\",\n    \"event_type\": \"send_request\",\n    \"message_type\": \"email\",\n    \"message_recipient\": \"test@test.com\",\n    \"occurred_at\": \"2018-10-20T13:00:00Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1a4c952f-07c6-4d16-8415-e425f38ceb75",
-              "name": "authentication failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data_requests",
-                    ":data_request_id",
-                    "events"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "data_request_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"event_type\": \"send_request\",\n  \"message_type\": \"email\",\n  \"message_recipient\": \"test@test.com\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1cd4ec1f-ce15-4e1f-bfbf-58e77e5a5481",
-              "name": "message recipient must not be blank",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data_requests",
-                    ":data_request_id",
-                    "events"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "data_request_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"event_type\": \"send_request\",\n  \"message_type\": \"email\",\n  \"message_recipient\": \"test@test.com\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"errors\": [\n    \"Message type can't be blank\",\n    \"Message recipient can't be blank\"\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f69a3dd0-dab1-4608-939e-a3cb63346d96",
-          "name": "Create a new data request token for form authentication",
-          "request": {
-            "name": "Create a new data request token for form authentication",
-            "description": {
-              "content": "Creates an authentication token for accessing a data request form. Tokens can be created\nfor API access (1 hour expiration) or email links (30 day expiration). Returns a token\nand a pre-authenticated URL for the data request form.\n\nSee also:\n- [Embedded Data Requests Guide](https://docspring.com/docs/guides/embedded-forms/embedded-data-requests/)\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "data_requests",
-                ":data_request_id",
-                "tokens"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "description": {
-                    "content": " (This can only be one of api,email)",
-                    "type": "text/plain"
-                  },
-                  "key": "type",
-                  "value": ""
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "data_request_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "basic",
-              "basic": [
-                {
-                  "key": "username",
-                  "value": "{{basicAuthUsername}}"
-                },
-                {
-                  "key": "password",
-                  "value": "{{basicAuthPassword}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "e495b49e-a2f2-471a-8d9d-3e38660fb65c",
-              "name": "token created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data_requests",
-                    ":data_request_id",
-                    "tokens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "type",
-                      "value": ""
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "data_request_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"success\",\n  \"token\": {\n    \"id\": \"1234567890abcdef01\",\n    \"secret\": \"ABCDEF01234567890\",\n    \"expires_at\": \"2018-10-20T14:00:00Z\",\n    \"data_request_url\": \"https://app.docspring.com/data_requests/drq_1234567890abcdef01?token_id=1234567890abcdef01&token_secret=ABCDEF01234567890\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5932c01c-2fc0-4cf5-81f1-354074a74c56",
-              "name": "authentication failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data_requests",
-                    ":data_request_id",
-                    "tokens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "type",
-                      "value": ""
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "data_request_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "dea45141-264d-4f35-a149-e539af325f68",
-              "name": "invalid request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data_requests",
-                    ":data_request_id",
-                    "tokens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "type",
-                      "value": ""
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "data_request_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Invalid token type: invalid. Must be one of: api (expiration: 1 hour), email (expiration: 30 days)\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "014015a9-317e-4220-b488-78514f35476b",
-          "name": "Look up a submission data request",
-          "request": {
-            "name": "Look up a submission data request",
-            "description": {
-              "content": "Retrieves the details and status of a data request. Returns information about the request\nstate (pending, viewed, completed), authentication details, and metadata.\nIncludes audit information like IP address, browseruser agent, and timestamps.\n\nSee also:\n- [Embedded Data Requests Guide](https://docspring.com/docs/guides/embedded-forms/embedded-data-requests/) - Complete guide to data request workflow\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "data_requests",
-                ":data_request_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "data_request_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "basic",
-              "basic": [
-                {
-                  "key": "username",
-                  "value": "{{basicAuthUsername}}"
-                },
-                {
-                  "key": "password",
-                  "value": "{{basicAuthPassword}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "21cf0153-4961-489a-8bfd-a8492b02ce42",
-              "name": "completed submission data request found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data_requests",
-                    ":data_request_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "data_request_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
                 "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"drq_1234567890abcdef01\",\n  \"email\": \"jdoe@example.com\",\n  \"name\": \"John Doe\",\n  \"order\": 1,\n  \"sort_order\": 0,\n  \"fields\": [\n    \"last_name\"\n  ],\n  \"metadata\": {\n    \"user_id\": 42\n  },\n  \"state\": \"pending\",\n  \"viewed_at\": null,\n  \"completed_at\": null,\n  \"data\": {\n    \"last_name\": \"Smithers\"\n  },\n  \"auth_type\": \"password\",\n  \"auth_second_factor_type\": \"phone_number\",\n  \"auth_provider\": null,\n  \"auth_session_started_at\": \"2018-10-23T13:00:00Z\",\n  \"auth_session_id_hash\": null,\n  \"auth_user_id_hash\": \"8ae0e445664ca53407906db8638d8ba07a2383f656383a4427bed1ab645ca29a\",\n  \"auth_username_hash\": \"b7c141423f7030a6a771563ee0731192ea871146653a3d0cf8f8b78ca8f9699b\",\n  \"auth_phone_number_hash\": \"fdcc3985b0698d655137019b1e776171081369f0aad125b8c7f57af2b8225490\",\n  \"ip_address\": \"1.1.1.1\",\n  \"user_agent\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36\",\n  \"submission_id\": \"sub_1234567890abcdef01\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d10f6d62-1105-4efc-b643-0fbe09871f3c",
-              "name": "authentication failed",
-              "originalRequest": {
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/data_requests/:data_request_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "data_requests",
                     ":data_request_id"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
+                      "id": "ea61c087-a68f-4fa6-a833-db23fa48dccf",
                       "key": "data_request_id",
+                      "value": "",
                       "description": "(Required) "
                     }
                   ]
                 },
+                "description": "Retrieves the details and status of a data request. Returns information about the request\nstate (pending, viewed, completed), authentication details, and metadata.\nIncludes audit information like IP address, browseruser agent, and timestamps.\n\nSee also:\n- Embedded Data Requests Guide - Complete guide to data request workflow"
+              },
+              "response": [
+                {
+                  "id": "2b3bc414-ffc3-420a-8627-5d76713c5cce",
+                  "name": "completed submission data request found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/data_requests/:data_request_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "data_requests",
+                        ":data_request_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "data_request_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"auth_phone_number_hash\": \"<string,null>\",\n  \"auth_provider\": \"<string,null>\",\n  \"auth_second_factor_type\": \"security_key\",\n  \"auth_session_id_hash\": \"<string,null>\",\n  \"auth_session_started_at\": \"<string,null>\",\n  \"auth_type\": \"ldap\",\n  \"auth_user_id_hash\": \"<string,null>\",\n  \"auth_username_hash\": \"<string,null>\",\n  \"completed_at\": \"<string,null>\",\n  \"data\": \"<object,null>\",\n  \"email\": \"<string,null>\",\n  \"fields\": \"<array,null>\",\n  \"id\": \"<string,null>\",\n  \"ip_address\": \"<string,null>\",\n  \"metadata\": \"<object,null>\",\n  \"name\": \"<string,null>\",\n  \"order\": \"<integer,null>\",\n  \"sort_order\": \"<integer>\",\n  \"state\": \"pending\",\n  \"submission_id\": \"<string,null>\",\n  \"user_agent\": \"<string,null>\",\n  \"viewed_at\": \"<string,null>\"\n}",
+                  "createdAt": "2026-10-22T01:40:25.000Z",
+                  "updatedAt": "2026-10-22T01:40:25.000Z",
+                  "uid": "35240-2b3bc414-ffc3-420a-8627-5d76713c5cce"
+                },
+                {
+                  "id": "f9df691f-e108-4e08-b225-b5059c3d2cb3",
+                  "name": "authentication failed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/data_requests/:data_request_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "data_requests",
+                        ":data_request_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "data_request_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:25.000Z",
+                  "updatedAt": "2026-10-22T01:40:25.000Z",
+                  "uid": "35240-f9df691f-e108-4e08-b225-b5059c3d2cb3"
+                },
+                {
+                  "id": "7457fe11-5769-41a3-960c-a0b45798de3b",
+                  "name": "submission data request not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/data_requests/:data_request_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "data_requests",
+                        ":data_request_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "data_request_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:25.000Z",
+                  "updatedAt": "2026-10-22T01:40:25.000Z",
+                  "uid": "35240-7457fe11-5769-41a3-960c-a0b45798de3b"
+                }
+              ],
+              "createdAt": "2026-10-22T01:40:25.000Z",
+              "updatedAt": "2026-10-22T01:40:25.000Z",
+              "uid": "35240-41504e39-0050-4409-9c96-ac376aaa0bdb"
+            },
+            {
+              "name": "Update a submission data request",
+              "id": "095854be-07ad-41cd-871b-00fd119e5f4f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "username",
+                      "value": "{{basicAuthUsername}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{basicAuthPassword}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ccdf2941-c61b-458b-91d0-2d70fd10895e",
-              "name": "submission data request not found",
-              "originalRequest": {
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"auth_phone_number_hash\": \"<string,null>\",\n  \"auth_provider\": \"<string,null>\",\n  \"auth_second_factor_type\": \"security_key\",\n  \"auth_session_id_hash\": \"<string,null>\",\n  \"auth_session_started_at\": \"<string,null>\",\n  \"auth_type\": \"none\",\n  \"auth_user_id_hash\": \"<string,null>\",\n  \"auth_username_hash\": \"<string,null>\",\n  \"email\": \"<string,null>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata\": {},\n  \"name\": \"<string,null>\",\n  \"order\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/data_requests/:data_request_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "data_requests",
                     ":data_request_id"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
+                      "id": "6d732cc9-765f-4751-a425-fa6fcacf4845",
                       "key": "data_request_id",
+                      "value": "",
                       "description": "(Required) "
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Updates authentication details for a data request. Use this when a user logs in to record\ntheir authentication method, provider, session information, and hashed identifiers. Updates\nmetadata and tracks authentication state changes for auditing and compliance."
               },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "cf16a98d-b0a0-472d-bb52-0ce24e56c5fd",
+                  "name": "submission data request updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"auth_phone_number_hash\": \"<string,null>\",\n  \"auth_provider\": \"<string,null>\",\n  \"auth_second_factor_type\": \"security_key\",\n  \"auth_session_id_hash\": \"<string,null>\",\n  \"auth_session_started_at\": \"<string,null>\",\n  \"auth_type\": \"none\",\n  \"auth_user_id_hash\": \"<string,null>\",\n  \"auth_username_hash\": \"<string,null>\",\n  \"email\": \"<string,null>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata\": {},\n  \"name\": \"<string,null>\",\n  \"order\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/data_requests/:data_request_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "data_requests",
+                        ":data_request_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "data_request_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"success\",\n  \"data_request\": {\n    \"auth_phone_number_hash\": \"<string,null>\",\n    \"auth_provider\": \"<string,null>\",\n    \"auth_second_factor_type\": \"fingerprint\",\n    \"auth_session_id_hash\": \"<string,null>\",\n    \"auth_session_started_at\": \"<string,null>\",\n    \"auth_type\": \"oauth\",\n    \"auth_user_id_hash\": \"<string,null>\",\n    \"auth_username_hash\": \"<string,null>\",\n    \"completed_at\": \"<string,null>\",\n    \"data\": \"<object,null>\",\n    \"email\": \"<string,null>\",\n    \"fields\": \"<array,null>\",\n    \"id\": \"<string,null>\",\n    \"ip_address\": \"<string,null>\",\n    \"metadata\": \"<object,null>\",\n    \"name\": \"<string,null>\",\n    \"order\": \"<integer,null>\",\n    \"sort_order\": \"<integer>\",\n    \"state\": \"pending\",\n    \"submission_id\": \"<string,null>\",\n    \"user_agent\": \"<string,null>\",\n    \"viewed_at\": \"<string,null>\"\n  },\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-10-22T01:40:25.000Z",
+                  "updatedAt": "2026-10-22T01:40:25.000Z",
+                  "uid": "35240-cf16a98d-b0a0-472d-bb52-0ce24e56c5fd"
+                },
+                {
+                  "id": "8b1bc148-4e89-4c25-94ec-a938aa2ba7c9",
+                  "name": "authentication failed",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"auth_phone_number_hash\": \"<string,null>\",\n  \"auth_provider\": \"<string,null>\",\n  \"auth_second_factor_type\": \"security_key\",\n  \"auth_session_id_hash\": \"<string,null>\",\n  \"auth_session_started_at\": \"<string,null>\",\n  \"auth_type\": \"none\",\n  \"auth_user_id_hash\": \"<string,null>\",\n  \"auth_username_hash\": \"<string,null>\",\n  \"email\": \"<string,null>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata\": {},\n  \"name\": \"<string,null>\",\n  \"order\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/data_requests/:data_request_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "data_requests",
+                        ":data_request_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "data_request_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:25.000Z",
+                  "updatedAt": "2026-10-22T01:40:25.000Z",
+                  "uid": "35240-8b1bc148-4e89-4c25-94ec-a938aa2ba7c9"
+                },
+                {
+                  "id": "371bf56e-c184-459a-a241-7ed8387f2d34",
+                  "name": "submission data request not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"auth_phone_number_hash\": \"<string,null>\",\n  \"auth_provider\": \"<string,null>\",\n  \"auth_second_factor_type\": \"security_key\",\n  \"auth_session_id_hash\": \"<string,null>\",\n  \"auth_session_started_at\": \"<string,null>\",\n  \"auth_type\": \"none\",\n  \"auth_user_id_hash\": \"<string,null>\",\n  \"auth_username_hash\": \"<string,null>\",\n  \"email\": \"<string,null>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata\": {},\n  \"name\": \"<string,null>\",\n  \"order\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/data_requests/:data_request_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "data_requests",
+                        ":data_request_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "data_request_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"error\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:25.000Z",
+                  "updatedAt": "2026-10-22T01:40:25.000Z",
+                  "uid": "35240-371bf56e-c184-459a-a241-7ed8387f2d34"
+                },
+                {
+                  "id": "7a586865-7097-4bf3-a572-1b6aa0be742f",
+                  "name": "invalid request",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"auth_phone_number_hash\": \"<string,null>\",\n  \"auth_provider\": \"<string,null>\",\n  \"auth_second_factor_type\": \"security_key\",\n  \"auth_session_id_hash\": \"<string,null>\",\n  \"auth_session_started_at\": \"<string,null>\",\n  \"auth_type\": \"none\",\n  \"auth_user_id_hash\": \"<string,null>\",\n  \"auth_username_hash\": \"<string,null>\",\n  \"email\": \"<string,null>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata\": {},\n  \"name\": \"<string,null>\",\n  \"order\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/data_requests/:data_request_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "data_requests",
+                        ":data_request_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "data_request_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"error\",\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-10-22T01:40:25.000Z",
+                  "updatedAt": "2026-10-22T01:40:25.000Z",
+                  "uid": "35240-7a586865-7097-4bf3-a572-1b6aa0be742f"
                 }
               ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Data request not found.\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-22T01:40:25.000Z",
+              "updatedAt": "2026-10-22T01:40:25.000Z",
+              "uid": "35240-095854be-07ad-41cd-871b-00fd119e5f4f"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b166a9c2-5795-4d6b-9903-e7c13f51df55",
-          "name": "Update a submission data request",
-          "request": {
-            "name": "Update a submission data request",
-            "description": {
-              "content": "Updates authentication details for a data request. Use this when a user logs in to record\ntheir authentication method, provider, session information, and hashed identifiers. Updates\nmetadata and tracks authentication state changes for auditing and compliance.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "data_requests",
-                ":data_request_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "data_request_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": {
-              "type": "basic",
-              "basic": [
-                {
-                  "key": "username",
-                  "value": "{{basicAuthUsername}}"
-                },
-                {
-                  "key": "password",
-                  "value": "{{basicAuthPassword}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"auth_phone_number_hash\": \"<string,null>\",\n  \"auth_provider\": \"<string,null>\",\n  \"auth_second_factor_type\": \"<string,null>\",\n  \"auth_session_id_hash\": \"<string,null>\",\n  \"auth_session_started_at\": \"<string,null>\",\n  \"auth_type\": \"<string>\",\n  \"auth_user_id_hash\": \"<string,null>\",\n  \"auth_username_hash\": \"<string,null>\",\n  \"email\": \"<string,null>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata\": \"<object>\",\n  \"name\": \"<string,null>\",\n  \"order\": \"<integer>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "75a576d1-668b-4c4d-864f-d8330d45468f",
-              "name": "submission data request updated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data_requests",
-                    ":data_request_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "data_request_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"metadata\": {\n    \"user_id\": 123\n  },\n  \"auth_type\": \"oauth\",\n  \"auth_provider\": \"google\",\n  \"auth_session_started_at\": \"2018-10-23 09:00:00 -0400\",\n  \"auth_session_id_hash\": \"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"success\",\n  \"data_request\": {\n    \"id\": \"drq_1234567890abcdef01\",\n    \"email\": \"jdoe@example.com\",\n    \"name\": \"John Doe\",\n    \"order\": 1,\n    \"sort_order\": 0,\n    \"fields\": [\n      \"last_name\"\n    ],\n    \"metadata\": {\n      \"user_id\": 123\n    },\n    \"state\": \"pending\",\n    \"viewed_at\": null,\n    \"completed_at\": null,\n    \"data\": {\n      \"last_name\": \"Smithers\"\n    },\n    \"auth_type\": \"oauth\",\n    \"auth_second_factor_type\": \"none\",\n    \"auth_provider\": \"google\",\n    \"auth_session_started_at\": \"2018-10-23T13:00:00Z\",\n    \"auth_session_id_hash\": \"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92\",\n    \"auth_user_id_hash\": null,\n    \"auth_username_hash\": null,\n    \"auth_phone_number_hash\": null,\n    \"ip_address\": \"1.1.1.1\",\n    \"user_agent\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36\",\n    \"submission_id\": \"sub_1234567890abcdef01\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "500d1e60-c402-448b-bd55-22ff871ea33b",
-              "name": "authentication failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data_requests",
-                    ":data_request_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "data_request_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"metadata\": {\n    \"user_id\": 123\n  },\n  \"auth_type\": \"oauth\",\n  \"auth_provider\": \"google\",\n  \"auth_session_started_at\": \"2018-10-23 09:00:00 -0400\",\n  \"auth_session_id_hash\": \"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Missing Basic Auth: Please provide an API token via Basic Auth. See: https://docspring.com/docs/api-guide/authentication/\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "0a0e9de7-dc79-43b5-8536-fb7e69741405",
-              "name": "submission data request not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data_requests",
-                    ":data_request_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "data_request_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"metadata\": {\n    \"user_id\": 123\n  },\n  \"auth_type\": \"oauth\",\n  \"auth_provider\": \"google\",\n  \"auth_session_started_at\": \"2018-10-23 09:00:00 -0400\",\n  \"auth_session_id_hash\": \"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"error\": \"Data request not found.\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5e2a4c9d-4c64-4828-880d-33cf005abd83",
-              "name": "invalid request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "data_requests",
-                    ":data_request_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "data_request_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"metadata\": {\n    \"user_id\": 123\n  },\n  \"auth_type\": \"oauth\",\n  \"auth_provider\": \"google\",\n  \"auth_session_started_at\": \"2018-10-23 09:00:00 -0400\",\n  \"auth_session_id_hash\": \"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"error\",\n  \"errors\": [\n    \"Data requests cannot be updated after they have been completed.\"\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "4b8c9908-2a98-4267-a406-7f815e325fc6",
+          "createdAt": "2026-10-22T01:40:25.000Z",
+          "updatedAt": "2026-10-22T01:40:25.000Z",
+          "uid": "35240-4b8c9908-2a98-4267-a406-7f815e325fc6"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://sync.api.docspring.com/api/v1",
-      "key": "baseUrl"
+      "id": "da157744-ec90-4bba-9ca4-d5a2cbd435d7",
+      "createdAt": "2026-10-22T01:40:25.000Z",
+      "updatedAt": "2026-10-22T01:40:25.000Z",
+      "uid": "35240-da157744-ec90-4bba-9ca4-d5a2cbd435d7"
     }
   ],
   "auth": {
@@ -1039,21 +1058,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "63fdf1e2-f3a9-4a6b-9aa1-fac6c1a19040",
-    "name": "DocSpring Authentication Data Requests API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Use DocSpring's API to programmatically fill out PDF forms, convert HTML to PDFs, merge PDFs, or request legally binding e-signatures.",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sync.api.docspring.com/api/v1"
     }
-  }
+  ]
 }
